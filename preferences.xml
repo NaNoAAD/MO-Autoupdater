@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<preferences>
+  <projects/>
+  <frameX>-8</frameX>
+  <frameY>-8</frameY>
+  <frameWidth>1382</frameWidth>
+  <frameHeight>744</frameHeight>
+  <server>http://mo-plugin-repository.herokuapp.com</server>
+  <localeCountry>CL</localeCountry>
+  <localeLanguage>es</localeLanguage>
+  <localeVariant></localeVariant>
+</preferences>

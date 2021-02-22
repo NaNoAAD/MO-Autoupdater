@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="562.0" prefWidth="660.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mo.wizardAnalysis.Controller.ParticipantController">
+   <children>
+      <Pane layoutY="29.0" prefHeight="100.0" prefWidth="660.0" style="-fx-background-color: #616161;">
+         <children>
+            <Label layoutX="48.0" layoutY="36.0" prefHeight="29.0" prefWidth="593.0" text="Nuevo Análisis &gt; Participantes" textFill="#f8f8f8">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Label layoutX="125.0" layoutY="169.0" text="Participantes Disponibles">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="383.0" layoutY="148.0">
+         <font>
+            <Font name="Lucida Sans Unicode" size="12.0" />
+         </font>
+      </Label>
+      <ListView fx:id="participantList" layoutX="98.0" layoutY="199.0" prefHeight="255.0" prefWidth="200.0" />
+      <ListView fx:id="useList" layoutX="363.0" layoutY="199.0" prefHeight="255.0" prefWidth="200.0" />
+      <Label layoutX="434.0" layoutY="169.0" text="Utilizados">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnAdd" contentDisplay="CENTER" layoutX="313.0" layoutY="302.0" onAction="#add" style="-fx-background-color: #167224;" text=" ">
+         <graphic>
+            <FontAwesomeIconView glyphName="ARROW_RIGHT" />
+         </graphic>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#33cc99" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill></JFXButton>
+      <JFXButton fx:id="btnDelete" contentDisplay="CENTER" layoutX="313.0" layoutY="343.0" onAction="#delete" style="-fx-background-color: #B40404;" text=" " textFill="WHITE">
+         <graphic>
+            <FontAwesomeIconView glyphName="ARROW_LEFT" />
+         </graphic></JFXButton>
+      <JFXButton fx:id="btnAddAll" layoutX="144.0" layoutY="459.0" onAction="#addAll" style="-fx-background-color: #166e22cc;" text="Agregar Todos" textFill="#ffffffe8">
+         <graphic>
+            <FontAwesomeIconView fill="WHITE" glyphName="PLUS" />
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnDeleteAll" layoutX="414.0" layoutY="459.0" onAction="#deleteAll" style="-fx-background-color: #B40404cc;" text="Quitar Todos" textFill="WHITE">
+         <graphic>
+            <FontAwesomeIconView fill="WHITE" glyphName="MINUS" />
+         </graphic>
+      </JFXButton>
+      <Label fx:id="warning" alignment="CENTER" layoutY="510.0" prefHeight="21.0" prefWidth="660.0" text="Warning" textFill="RED" visible="false">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="562" prefWidth="660" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mo.wizardAnalysis.Controller.GroupController">
+   <children>
+      <Pane layoutY="29.0" prefHeight="100.0" prefWidth="660.0" style="-fx-background-color: #616161;">
+         <children>
+            <Label layoutX="48.0" layoutY="36.0" prefHeight="21.0" prefWidth="585.0" text="Nuevo Análisis &gt; Grupos" textFill="#f8f8f8">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <TableView fx:id="TableParticipant" editable="true" layoutX="40.0" layoutY="188.0" prefHeight="290.0" prefWidth="355.0">
+        <columns>
+          <TableColumn fx:id="columnParticipant" editable="false" prefWidth="207.0" sortable="false" text="Participante" />
+          <TableColumn fx:id="columnGroup" minWidth="0.0" onEditCommit="#OnChangeGroup" prefWidth="70.0" resizable="false" style="-fx-text-alignment: CENTER; -fx-alignment: CENTER;" text="Grupo #" />
+            <TableColumn fx:id="columnFile" prefWidth="75.0" style="-fx-text-alignment: CENTER; -fx-alignment: CENTER;" text="Archivo" />
+        </columns>
+      </TableView>
+      <TableView fx:id="TableResume" editable="true" layoutX="403.0" layoutY="188.0" prefHeight="290.0" prefWidth="238.0">
+        <columns>
+          <TableColumn fx:id="columnNumber" editable="false" prefWidth="55.0" resizable="false" style="-fx-text-alignment: CENTER; -fx-alignment: CENTER;" text="Grupo #" />
+            <TableColumn fx:id="columnLabel" minWidth="0.0" onEditCommit="#onChangeLabel" prefWidth="89.0" sortable="false" text="Etiqueta" />
+            <TableColumn fx:id="columnResume" editable="false" prefWidth="65.0" resizable="false" style="-fx-alignment: CENTER;" text="Resumen" />
+        </columns>
+      </TableView>
+      <Label layoutX="40.0" layoutY="149.0" text="Cantidad de Grupos">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Spinner fx:id="spinner" layoutX="173.0" layoutY="146.0" prefHeight="26.0" prefWidth="75.0" />
+      <Label fx:id="warning" alignment="CENTER" layoutY="510.0" prefHeight="21.0" prefWidth="660.0" text="Warning" textFill="RED" visible="false">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
