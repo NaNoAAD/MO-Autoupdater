@@ -9,24 +9,17 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
-import javafx.scene.shape.Circle;
+import javafx.scene.control.ScrollPane;
 
 /**
  * FXML Controller class
  *
  * @author Francisco
  */
-public class NewProjectPaticipantsController implements Initializable {
+public class ProjectMenuController implements Initializable {
 
     @FXML
-    private GridPane gridParticipants;
-    @FXML
-    private Circle circleButton;
-    @FXML
-    private ImageView addParticipantButton;
+    private ScrollPane pane;
 
     /**
      * Initializes the controller class.
@@ -35,9 +28,5 @@ public class NewProjectPaticipantsController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-
-    @FXML
-    private void addClick(MouseEvent event) {
-    }
     
 }

@@ -86,7 +86,8 @@ public class OrgWizardAnalysis {
     loadPlugins(fileProject);
 
   }
-
+  
+  //This
   private void loadPlugins(File fileProject) {
     try {
       String path = "analysis.xml";
@@ -179,7 +180,8 @@ public class OrgWizardAnalysis {
   public void setParticipantsAll(List<Participant> participantsAll) {
     this.participantsAll = participantsAll;
   }
-
+  
+  //This
   private void loadParticipants(File fileProject) {
     org = new ProjectOrganization(fileProject.getAbsolutePath());
     participantsAll = org.getParticipants();

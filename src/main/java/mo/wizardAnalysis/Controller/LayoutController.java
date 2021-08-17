@@ -401,7 +401,6 @@ public class LayoutController implements Initializable {
           .getResource("/fxml/analysis/Open.fxml"), null,
           builderFactory, callback);
       Parent openParent = loaderOpen.load();
-
       openParent.getProperties()
           .put(CONTROLLER_KEY, loaderOpen.getController());
 

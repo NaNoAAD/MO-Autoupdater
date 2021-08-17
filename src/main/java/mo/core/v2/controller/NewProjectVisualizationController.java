@@ -3,34 +3,37 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mo.core;
+package mo.core.v2.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
  *
  * @author Francisco
  */
-public class MainViewController implements Initializable {
+public class NewProjectVisualizationController implements Initializable {
 
     @FXML
-    private BorderPane mainBorderPane;
+    private ScrollPane scrollPaneAnalysis;
     @FXML
-    private ImageView moIcon;
+    private GridPane gridPaneAnalysis;
     @FXML
-    private Button newProjectBnt;
+    private ImageView iconVisualization;
     @FXML
-    private Button projectsBtn;
+    private Text textVisualization;
     @FXML
-    private Button exitBtn;
+    private Circle addCircle;
+    @FXML
+    private ImageView addPlus;
 
     /**
      * Initializes the controller class.
@@ -39,17 +42,5 @@ public class MainViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-
-    @FXML
-    private void newProjectClick(MouseEvent event) {
-    }
-
-    @FXML
-    private void projectsClick(MouseEvent event) {
-    }
-
-    @FXML
-    private void exitClick(MouseEvent event) {
-    }
     
 }

@@ -136,7 +136,7 @@ public class PluginController implements Initializable, Controller {
   }
 
   @FXML
-  void newConfig(ActionEvent event) {
+  void newConfig(ActionEvent event) { //This
     StagePlugin plugin = pluginList.getSelectionModel().getSelectedItem();
     if (plugin == null) {
       return;
