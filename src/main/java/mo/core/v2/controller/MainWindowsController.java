@@ -7,10 +7,12 @@ package mo.core.v2.controller;
 
 import com.google.inject.Inject;
 import com.google.inject.Injector;
+import java.awt.Dimension;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,8 +34,11 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import mo.core.MultimodalObserver;
 import static mo.core.Utils.getBaseFolder;
 import mo.core.filemanagement.project.Project;
+import mo.core.preferences.AppPreferencesWrapper;
+import mo.core.preferences.PreferencesManager;
 import mo.core.v2.model.Organization;
 import mo.core.v2.model.OrganizationV2;
 import mo.organization.ProjectOrganization;
@@ -84,6 +89,26 @@ public class MainWindowsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        Class c = AppPreferencesWrapper.class;
+        File prefFile = new File(MultimodalObserver.APP_PREFERENCES_FILE);
+        AppPreferencesWrapper preferences = (AppPreferencesWrapper) PreferencesManager.loadOrCreate(c, prefFile);
+
+        List<String> projectsNotFound = new ArrayList<>();
+        preferences.getOpenedProjects().stream().forEach((openedProject) -> {
+            File f = new File(openedProject.getLocation());
+            System.out.println("File "+f);
+            if (f.exists()) {
+                //addFile(openedProject.getLocation()));
+                
+            } else {
+                projectsNotFound.add(openedProject.getLocation());
+            }
+
+        });
+        for (String projectPath : projectsNotFound) {
+            preferences.removeOpenedProject(projectPath);
+        }
+        PreferencesManager.save(preferences, prefFile);
     }    
 
     @FXML
@@ -93,7 +118,7 @@ public class MainWindowsController implements Initializable {
             textWelcome.setVisible(false);
             centerPane.getChildren().clear();
             newProjectCreation(popUp);
-            
+            org.newProyect = 1;
             final JavaFXBuilderFactory builderFactory = new JavaFXBuilderFactory();
             final Callback<Class<?>, Object> callback = (clazz) -> injector.getInstance(clazz);
             FXMLLoader loaderOpen = new FXMLLoader(MainWindowsController.class
@@ -121,13 +146,16 @@ public class MainWindowsController implements Initializable {
             final JavaFXBuilderFactory builderFactory = new JavaFXBuilderFactory();
             final Callback<Class<?>, Object> callback = (clazz) -> injector.getInstance(clazz);
             FXMLLoader loaderOpen= new FXMLLoader(MainWindowsController.class.
-                    getResource("/fxml/core/ui/ProjectMenu.fxml"), null,
+                    getResource("/fxml/core/ui/MyProjects.fxml"), null,
                     builderFactory, callback);
             
             Parent openParent = loaderOpen.load();
-            
+            org.newProyect = 0;
             openParent.getProperties().put(CONTROLLER_KEY, loaderOpen.getController());
             centerPane.getChildren().add(openParent);
+            
+            
+            
         }
         catch (IOException ex){
             Logger.getLogger(LayoutController.class

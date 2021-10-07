@@ -32,6 +32,4 @@ hs_err_pid*
 log.txt
 proyecto/
 
-build/libs/plugins/
-
-build/libs/1/
+build/

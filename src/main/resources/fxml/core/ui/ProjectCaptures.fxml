@@ -43,16 +43,24 @@
             </Text>
             <Circle id="circleAdd" fx:id="circleAdd" fill="#b4eda6" onMouseClicked="#addClick" radius="10.0" stroke="#b4eda6" strokeType="INSIDE">
                <GridPane.margin>
-                  <Insets left="147.0" />
+                  <Insets left="300.0" />
                </GridPane.margin>
             </Circle>
             <ImageView id="imageAdd" fx:id="imageAdd" fitHeight="12.0" fitWidth="12.0" onMouseClicked="#addClick" pickOnBounds="true" preserveRatio="true">
                <GridPane.margin>
-                  <Insets left="151.0" />
+                  <Insets left="304.0" />
                </GridPane.margin>
                <image>
                   <Image url="@../../../images/add.png" />
                </image>
+            </ImageView>
+            <ImageView id="deleteButton" fx:id="deleteButton" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#removeConfiguration" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/delete.png" />
+               </image>
+               <GridPane.margin>
+                  <Insets left="182.0" />
+               </GridPane.margin>
             </ImageView>
          </children>
       </GridPane>

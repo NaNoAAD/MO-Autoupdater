@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Accordion?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
 
-<ScrollPane id="scrollPaneCapture" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mo.core.v2.controller.MyProjectsController">
+<ScrollPane id="scrollPane" fx:id="scrollPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mo.core.v2.controller.MyProjectsController">
    <content>
-      <GridPane prefHeight="407.0" prefWidth="585.0">
+      <GridPane id="projectsGrid" fx:id="projectsGrid" prefHeight="400.0" prefWidth="600.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -21,15 +23,44 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Accordion>
-              <panes>
-                <TitledPane animated="false" prefHeight="141.0" prefWidth="293.0" text="detalkles">
-                     <graphic>
-                        <ImageView fitHeight="59.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
-                  </TitledPane>
-              </panes>
-            </Accordion>
+            <ImageView id="iconProject" fx:id="iconProject" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" GridPane.valignment="TOP">
+               <image>
+                  <Image url="@../../../../../../build/resources/main/images/folder.png" />
+               </image>
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
+               </GridPane.margin>
+            </ImageView>
+            <Text id="nameProject" fx:id="nameProject" strokeType="OUTSIDE" strokeWidth="0.0" text="Name: Example" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="40.0" top="10.0" />
+               </GridPane.margin>
+            </Text>
+            <Text id="participantsNumber" fx:id="participantsNumber" strokeType="OUTSIDE" strokeWidth="0.0" text="Participants: x" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="40.0" top="30.0" />
+               </GridPane.margin>
+            </Text>
+            <Text id="capturesNumber" fx:id="capturesNumber" strokeType="OUTSIDE" strokeWidth="0.0" text="Captures: x" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="40.0" top="50.0" />
+               </GridPane.margin>
+            </Text>
+            <Text id="analysisNumber" fx:id="analysisNumber" strokeType="OUTSIDE" strokeWidth="0.0" text="Analysis: x" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="40.0" top="70.0" />
+               </GridPane.margin>
+            </Text>
+            <Text id="visualizationsNumber" fx:id="visualizationsNumber" strokeType="OUTSIDE" strokeWidth="0.0" text="Visualizations: x" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="40.0" top="90.0" />
+               </GridPane.margin>
+            </Text>
+            <Button id="seeButton" fx:id="seeButton" mnemonicParsing="false" onMouseClicked="#seeProject" style="-fx-background-color: #3D3D3D40;" text="See" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="220.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+            </Button>
          </children>
       </GridPane>
    </content>

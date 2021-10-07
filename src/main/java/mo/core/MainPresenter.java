@@ -32,9 +32,9 @@ public class MainPresenter {
         List<String> projectsNotFound = new ArrayList<>();
         preferences.getOpenedProjects().stream().forEach((openedProject) -> {
             File f = new File(openedProject.getLocation());
-
             if (f.exists()) {
                 //addFile(openedProject.getLocation()));
+                
             } else {
                 projectsNotFound.add(openedProject.getLocation());
             }

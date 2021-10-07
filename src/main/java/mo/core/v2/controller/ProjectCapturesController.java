@@ -48,6 +48,8 @@ public class ProjectCapturesController implements Initializable {
     private Circle circleAdd;
     @FXML
     private ImageView imageAdd;
+    @FXML
+    private ImageView deleteButton;
     @Inject
     Organization model;
     private int row;
@@ -60,6 +62,7 @@ public class ProjectCapturesController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         init();
+        addObservablePlugin();
         initCaptureStage();
     }    
 
@@ -100,9 +103,15 @@ public class ProjectCapturesController implements Initializable {
         for(Plugin stagePlugin : stagePlugins){
             StageModule nodeProvider = (StageModule) stagePlugin.getNewInstance();
             if(nodeProvider.getName().equals(model.getCaptureStage().getName())){
-                model.setStageModule(nodeProvider);
+                //add stage
+                model.setStageModule(nodeProvider); 
+                System.out.println(model.getCaptureStage());
                 break;
             }
         }
+    }
+
+    @FXML
+    private void removeConfiguration(MouseEvent event) {
     }
 }

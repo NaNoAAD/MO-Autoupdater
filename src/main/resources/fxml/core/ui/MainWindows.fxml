@@ -79,6 +79,26 @@
                   <Font size="57.0" />
                </font>
             </Text>
+            <Text fx:id="textWelcome1" layoutX="14.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To create a new project select New Project" wrappingWidth="527.13671875">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Text>
+            <Text fx:id="textWelcome11" layoutX="14.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To see the projects created select My Project" wrappingWidth="527.13671875">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Text>
+            <Text fx:id="textWelcome111" layoutX="14.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To review the installed plugins select Plugins" wrappingWidth="527.13671875">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Text>
+            <Text fx:id="textWelcome1111" layoutX="14.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To view the settings select Settings" wrappingWidth="527.13671875">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
    </center>

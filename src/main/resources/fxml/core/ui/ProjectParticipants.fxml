@@ -43,12 +43,12 @@
             </Text>
             <Circle id="addCircle" fx:id="addCircle" fill="#b4eda6" onMouseClicked="#addParticipant" radius="10.0" stroke="#b4eda6" strokeType="INSIDE">
                <GridPane.margin>
-                  <Insets left="250.0" />
+                  <Insets left="300.0" />
                </GridPane.margin>
             </Circle>
             <ImageView id="addPlus" fx:id="addPlus" fitHeight="12.0" fitWidth="12.0" onMouseClicked="#addParticipant" pickOnBounds="true" preserveRatio="true">
                <GridPane.margin>
-                  <Insets left="254.0" />
+                  <Insets left="304.0" />
                </GridPane.margin>
                <image>
                   <Image url="@../../../images/add.png" />
@@ -77,11 +77,19 @@
             </ImageView>
             <ImageView id="deleteParticipant" fx:id="deleteParticipant" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#delete" pickOnBounds="true" preserveRatio="true">
                <GridPane.margin>
-                  <Insets left="208.0" />
+                  <Insets left="238.0" />
                </GridPane.margin>
                <image>
                   <Image url="@../../../images/delete.png" />
                </image>
+            </ImageView>
+            <ImageView id="visulizationParticipant" fx:id="visulizationParticipant" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#seeVisualizations" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/capture.png" />
+               </image>
+               <GridPane.margin>
+                  <Insets left="212.0" />
+               </GridPane.margin>
             </ImageView>
          </children>
       </GridPane>

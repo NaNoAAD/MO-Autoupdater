@@ -65,6 +65,9 @@ public class ProjectParticipantsController implements Initializable {
     private ImageView editParticipant;
     @FXML
     private ImageView deleteParticipant;
+    @FXML
+    private ImageView visulizationParticipant;
+    
     @Inject
     Organization model;
     private List<Participant> participants = new ArrayList<>();
@@ -107,6 +110,7 @@ public class ProjectParticipantsController implements Initializable {
         recordParticipant.opacityProperty().set(0.50);
         editParticipant.opacityProperty().set(0.50);
         deleteParticipant.opacityProperty().set(0.50);
+        visulizationParticipant.opacityProperty().set(0.50);
         
     }
 
@@ -123,7 +127,7 @@ public class ProjectParticipantsController implements Initializable {
         Label lbId, lbName, lbDate, lbDescription;
         btnCancel = new Button("Cancel");
         btnAdd = new Button("Add");
-        int numAux = model.getParticipantsAll().size()+1;
+        int numAux = model.getParticipants().size()+1;
         TextField id = new TextField(Integer.toString(numAux));
         TextField name = new TextField();
         DatePicker date = new DatePicker();
@@ -143,8 +147,8 @@ public class ProjectParticipantsController implements Initializable {
         popUp.setScene(popUp1);
         popUp.showAndWait();
         if(result==1){
-            System.out.println(model.getParticipantsAll().size());
-            if(model.getParticipantsAll().size()==1){
+            System.out.println(model.getParticipants().size());
+            if(model.getParticipants().size()==1){
             //Participant p = new Participant();
             iconParticipant.opacityProperty().set(1);
             textParticipant.opacityProperty().set(1);
@@ -192,9 +196,13 @@ public class ProjectParticipantsController implements Initializable {
         pAux.folder = model.getFileProject().getPath();
         participants.add(pAux);
         model.getOrg().addParticipant(pAux);
-        model.setParticipantsAll(participants);
+        model.setParticipants(participants);
         result = 1;
         System.out.println("Agregado :D");
         popUp.close(); 
+    }
+
+    @FXML
+    private void seeVisualizations(MouseEvent event) {
     }
 }

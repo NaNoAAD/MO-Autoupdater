@@ -24,17 +24,19 @@ public class Organization {
     File fileProject;
     List<Group> groups;
     int type;
+    public int newProyect;
     List<Participant> participants = new ArrayList<>();
-    List<Participant> participantsNoUsed =new ArrayList<>();
-    List<Participant> participantsAll = new ArrayList<>();
+    List<StageModule> stages;
+    StageModule stageModule;
+    //List<Participant> participantsNoUsed =new ArrayList<>();
+    //List<Participant> participantsAll = new ArrayList<>();
     List<StagePlugin> plugins;
     List<Configuration> configurations;
     StagePlugin pluginSelected;
     Configuration configurationSelected;
     ProjectOrganization org;
     Boolean restoreBoolean = false;
-    List<StageModule> stages;
-    StageModule stageModule;
+    
 
     @Inject
     public Organization(List<Participant> participants, List<StagePlugin> plugins, List<Configuration> configurations, StagePlugin pluginSelected, Configuration configurationSelected) {
@@ -78,7 +80,7 @@ public class Organization {
         this.participants = participants;
     }
 
-    public List<Participant> getParticipantsNoUsed() {
+    /*public List<Participant> getParticipantsNoUsed() {
         return participantsNoUsed;
     }
 
@@ -92,7 +94,7 @@ public class Organization {
 
     public void setParticipantsAll(List<Participant> participantsAll) {
         this.participantsAll = participantsAll;
-    }
+    }*/
 
     public List<StagePlugin> getPlugins() {
         return plugins;

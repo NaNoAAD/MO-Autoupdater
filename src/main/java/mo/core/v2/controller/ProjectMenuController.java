@@ -9,6 +9,7 @@ import com.google.inject.Inject;
 import com.google.inject.Injector;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,9 +28,12 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
+import mo.core.plugin.Plugin;
+import mo.core.plugin.PluginRegistry;
 import mo.core.v2.model.Organization;
 import mo.core.v2.model.OrganizationV2;
 import mo.organization.ProjectOrganization;
+import mo.organization.StageModule;
 
 /**
  * FXML Controller class
@@ -56,6 +60,8 @@ public class ProjectMenuController implements Initializable {
     private Button visualizationButton;
     @FXML
     private AnchorPane centerPane;
+    @FXML
+    private Pane tutorialPane;
     @Inject
     public Injector injector;
     @Inject 
@@ -67,6 +73,7 @@ public class ProjectMenuController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        init();
     }    
     
     @FXML
@@ -163,5 +170,31 @@ public class ProjectMenuController implements Initializable {
         
     }
 
+    public void init(){
+        System.out.println("inicia el init");
+        if(model.newProyect==0){
+            tutorialPane.getChildren().clear();
+        }
+        
+        List<Plugin> stagePlugins = PluginRegistry.getInstance().getPluginData().getPluginsFor("mo.organization.StageModule");
+        for(Plugin stagePlugin : stagePlugins){
+            StageModule nodeProvider = (StageModule) stagePlugin.getNewInstance();
+            System.out.println("Entrando al addStage");
+            addStageNodeIfNotExists(nodeProvider);
+            System.out.println("done con "+ nodeProvider.getName());
+        }
+    }
     
+    private void addStageNodeIfNotExists(StageModule stage){
+        String newNodeName = stage.getName();
+        System.out.println(newNodeName);
+        if(model.getOrg().getStages().isEmpty()||model.getOrg().getStages().size()<3){
+            System.out.println("Entro al if");
+            stage.setOrganization(model.getOrg());
+            model.getOrg().addStage(stage);
+            System.out.println("Agrego el stage");
+            model.getOrg().store();
+            System.out.println("Se guardo");
+        }
+    }
 }
