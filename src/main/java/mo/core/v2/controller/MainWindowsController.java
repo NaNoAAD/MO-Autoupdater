@@ -40,9 +40,7 @@ import mo.core.filemanagement.project.Project;
 import mo.core.preferences.AppPreferencesWrapper;
 import mo.core.preferences.PreferencesManager;
 import mo.core.v2.model.Organization;
-import mo.core.v2.model.OrganizationV2;
 import mo.organization.ProjectOrganization;
-import mo.wizardAnalysis.Controller.LayoutController;
 
 /**
  * FXML Controller class
@@ -158,7 +156,7 @@ public class MainWindowsController implements Initializable {
             
         }
         catch (IOException ex){
-            Logger.getLogger(LayoutController.class
+            Logger.getLogger(MainWindowsController.class
           .getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -183,7 +181,7 @@ public class MainWindowsController implements Initializable {
             centerPane.getChildren().add(openParent);
         }
         catch (IOException ex){
-            Logger.getLogger(LayoutController.class
+            Logger.getLogger(MainWindowsController.class
           .getName()).log(Level.SEVERE, null, ex);
         }
     }

@@ -11,8 +11,7 @@ import java.util.List;
 import mo.organization.Configuration;
 import mo.organization.Participant;
 import mo.organization.StagePlugin;
-import mo.wizardAnalysis.model.Group;
-import mo.wizardAnalysis.model.OrgWizardAnalysis;
+
 
 /**
  *
@@ -25,7 +24,6 @@ public class Module extends AbstractModule{
 
       List<Participant> participants = new ArrayList<>();
         List<StagePlugin> plugins = new ArrayList<>();
-        List<Group> group = new ArrayList<>();
         List<Configuration> configurations = new ArrayList<>();
         StagePlugin pluginSelected = null;
         Configuration configurationSelected = null;

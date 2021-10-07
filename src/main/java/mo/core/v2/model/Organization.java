@@ -14,7 +14,6 @@ import mo.organization.Participant;
 import mo.organization.ProjectOrganization;
 import mo.organization.StageModule;
 import mo.organization.StagePlugin;
-import mo.wizardAnalysis.model.Group;
 
 /**
  *
@@ -22,7 +21,6 @@ import mo.wizardAnalysis.model.Group;
  */
 public class Organization {
     File fileProject;
-    List<Group> groups;
     int type;
     public int newProyect;
     List<Participant> participants = new ArrayList<>();
@@ -54,14 +52,6 @@ public class Organization {
 
     public void setFileProject(File fileProject) {
         this.fileProject = fileProject;
-    }
-
-    public List<Group> getGroups() {
-        return groups;
-    }
-
-    public void setGroups(List<Group> groups) {
-        this.groups = groups;
     }
 
     public int getType() {

@@ -24,7 +24,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Callback;
 import mo.organization.ProjectOrganization;
-import mo.wizardAnalysis.Controller.LayoutController;
 
 /**
  * FXML Controller class
