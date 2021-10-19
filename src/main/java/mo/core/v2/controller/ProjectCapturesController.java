@@ -26,6 +26,7 @@ import javafx.stage.Stage;
 import mo.core.plugin.Plugin;
 import mo.core.plugin.PluginRegistry;
 import mo.core.v2.model.Organization;
+import mo.organization.StageAction;
 import mo.organization.StageModule;
 
 /**
@@ -69,14 +70,14 @@ public class ProjectCapturesController implements Initializable {
     @FXML
     private void addClick(MouseEvent event) {
         Stage popUp = new Stage();
-        Label lbCaptures;
+        Label lbCaptures = new Label("Captures");
         Button btnCancel, btnAdd;
         btnCancel = new Button("Cancel");
         btnAdd = new Button("Add");
         lbCaptures = new Label("Plugins");
         ComboBox plugins = new ComboBox();
-        //plugins.setItems();
-        
+        plugins.setItems(ObservablePlugins);
+        //plugins.setItems();        
     }
     
     private void init(){
@@ -84,17 +85,11 @@ public class ProjectCapturesController implements Initializable {
             iconCapture.opacityProperty().set(0.50);
             textCapture.opacityProperty().set(0.50);
             row=0;
-        }
-        else{
-            
-        }
-                
+        }                
     }
     
     public ObservableList<String> addObservablePlugin(){
-        for(int i=0;i<model.getStageModules().size();i++){
-            ObservablePlugins.add(model.getStageModules().get(i).getName());
-        }
+        ObservablePlugins.add(model.getOrg().getStages().get(1).getName());
         return ObservablePlugins;
     }
     
@@ -102,10 +97,16 @@ public class ProjectCapturesController implements Initializable {
         List<Plugin> stagePlugins = PluginRegistry.getInstance().getPluginData().getPluginsFor("mo.organization.StageModule");
         for(Plugin stagePlugin : stagePlugins){
             StageModule nodeProvider = (StageModule) stagePlugin.getNewInstance();
-            if(nodeProvider.getName().equals(model.getCaptureStage().getName())){
+            System.out.println(nodeProvider.getName());
+            System.out.println(ObservablePlugins);
+            if(nodeProvider.getName().equals("Captura")){
                 //add stage
                 model.setStageModule(nodeProvider); 
-                System.out.println(model.getCaptureStage());
+                List<StageAction> actions = nodeProvider.getActions();
+                for (StageAction action : actions){
+                    ObservablePlugins.add(action.getName());
+                }
+                System.out.println(ObservablePlugins);
                 break;
             }
         }
@@ -113,5 +114,10 @@ public class ProjectCapturesController implements Initializable {
 
     @FXML
     private void removeConfiguration(MouseEvent event) {
+    }
+    
+    private void addStageMenu(StageModule stage){
+        
+        
     }
 }

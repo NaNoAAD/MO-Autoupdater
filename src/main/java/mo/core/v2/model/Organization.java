@@ -34,7 +34,9 @@ public class Organization {
     Configuration configurationSelected;
     ProjectOrganization org;
     Boolean restoreBoolean = false;
-    
+    List<StageModule> captures;
+    List<StageModule> analysis;
+    List<StageModule> visualization;
 
     @Inject
     public Organization(List<Participant> participants, List<StagePlugin> plugins, List<Configuration> configurations, StagePlugin pluginSelected, Configuration configurationSelected) {
@@ -44,6 +46,9 @@ public class Organization {
         this.pluginSelected = pluginSelected;
         this.org = org;
         this.stageModule = stageModule;
+        captures = new ArrayList<StageModule>();
+        analysis = new ArrayList<StageModule>();
+        visualization = new ArrayList<StageModule>();
     }
     
     public File getFileProject() {
@@ -153,6 +158,30 @@ public class Organization {
 
     public void setStageModule(StageModule stageModule) {
         this.stageModule = stageModule;
+    }
+
+    public List<StageModule> getCaptures() {
+        return captures;
+    }
+
+    public void setCaptures(List<StageModule> captures) {
+        this.captures = captures;
+    }
+
+    public List<StageModule> getAnalysis() {
+        return analysis;
+    }
+
+    public void setAnalysis(List<StageModule> analysis) {
+        this.analysis = analysis;
+    }
+
+    public List<StageModule> getVisualization() {
+        return visualization;
+    }
+
+    public void setVisualization(List<StageModule> visualization) {
+        this.visualization = visualization;
     }
     
     

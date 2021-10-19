@@ -171,7 +171,6 @@ public class ProjectMenuController implements Initializable {
     }
 
     public void init(){
-        System.out.println("inicia el init");
         if(model.newProyect==0){
             tutorialPane.getChildren().clear();
         }
@@ -179,22 +178,18 @@ public class ProjectMenuController implements Initializable {
         List<Plugin> stagePlugins = PluginRegistry.getInstance().getPluginData().getPluginsFor("mo.organization.StageModule");
         for(Plugin stagePlugin : stagePlugins){
             StageModule nodeProvider = (StageModule) stagePlugin.getNewInstance();
-            System.out.println("Entrando al addStage");
             addStageNodeIfNotExists(nodeProvider);
-            System.out.println("done con "+ nodeProvider.getName());
         }
+        model.setStageModules(model.getOrg().getStages());
     }
     
     private void addStageNodeIfNotExists(StageModule stage){
         String newNodeName = stage.getName();
         System.out.println(newNodeName);
         if(model.getOrg().getStages().isEmpty()||model.getOrg().getStages().size()<3){
-            System.out.println("Entro al if");
             stage.setOrganization(model.getOrg());
             model.getOrg().addStage(stage);
-            System.out.println("Agrego el stage");
             model.getOrg().store();
-            System.out.println("Se guardo");
         }
     }
 }
