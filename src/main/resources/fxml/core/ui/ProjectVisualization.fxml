@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane id="scrollPaneAnalysis" fx:id="scrollPaneAnalysis" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<ScrollPane id="scrollPaneAnalysis" fx:id="scrollPaneAnalysis" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mo.core.v2.controller.ProjectVisualizationController">
    <content>
       <GridPane id="gridPaneAnalysis" fx:id="gridPaneAnalysis" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="584.0">
         <columnConstraints>
@@ -41,17 +41,25 @@
                   <Insets left="50.0" />
                </GridPane.margin>
             </Text>
-            <Circle id="addCircle" fx:id="addCircle" fill="#b4eda6" radius="10.0" stroke="#b4eda6" strokeType="INSIDE">
+            <Circle id="circleAdd" fx:id="circleAdd" fill="#b4eda6" onMouseClicked="#addClick" radius="10.0" stroke="#b4eda6" strokeType="INSIDE">
                <GridPane.margin>
-                  <Insets left="147.0" />
+                  <Insets left="300.0" />
                </GridPane.margin>
             </Circle>
-            <ImageView id="addPlus" fx:id="addPlus" fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView id="imageAdd" fx:id="imageAdd" fitHeight="12.0" fitWidth="12.0" onMouseClicked="#addClick" pickOnBounds="true" preserveRatio="true">
                <GridPane.margin>
-                  <Insets left="151.0" />
+                  <Insets left="304.0" />
                </GridPane.margin>
                <image>
                   <Image url="@../../../images/add.png" />
+               </image>
+            </ImageView>
+            <ImageView id="deleteButton" fx:id="deleteButton" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#removeConfiguration" pickOnBounds="true" preserveRatio="true">
+               <GridPane.margin>
+                  <Insets left="182.0" />
+               </GridPane.margin>
+               <image>
+                  <Image url="@../../../images/delete.png" />
                </image>
             </ImageView>
          </children>

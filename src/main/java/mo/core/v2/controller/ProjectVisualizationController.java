@@ -30,26 +30,27 @@ import mo.organization.StageModule;
  *
  * @author Francisco
  */
-public class ProjectAnalysisController implements Initializable {
+public class ProjectVisualizationController implements Initializable {
 
     @FXML
     private ScrollPane scrollPaneAnalysis;
     @FXML
     private GridPane gridPaneAnalysis;
     @FXML
-    private ImageView iconAnalysis;
+    private ImageView iconVisualization;
     @FXML
-    private Text textAnalysis;
+    private Text textVisualization;
     @FXML
     private Circle circleAdd;
     @FXML
     private ImageView imageAdd;
     @FXML
     private ImageView deleteButton;
-    private int row;
     @Inject
     Organization model;
+    private int row;
     ObservableList<String> ObservablePlugins = FXCollections.observableArrayList();
+
     /**
      * Initializes the controller class.
      */
@@ -57,7 +58,7 @@ public class ProjectAnalysisController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         init();
         addObservablePlugin();
-        initAnalysisStage();
+        initVisualizationStage();
     }    
 
     @FXML
@@ -67,42 +68,43 @@ public class ProjectAnalysisController implements Initializable {
     @FXML
     private void removeConfiguration(MouseEvent event) {
     }
- 
+    
     private void init(){
-        if(model.getAnalysis().isEmpty()){
-            model.setCaptures(model.getStageModules());
-            model.getStageModules();
-            iconAnalysis.opacityProperty().set(0.50);
-            textAnalysis.opacityProperty().set(0.50);
+        if(model.getPlugins().isEmpty()){
+            iconVisualization.opacityProperty().set(0.50);
+            textVisualization.opacityProperty().set(0.50);
+            deleteButton.opacityProperty().set(0.50);
             row=0;
         }
     }
     
     public ObservableList<String> addObservablePlugin(){
-        System.out.println("Observable 2 todo: "+model.getOrg().getStages());
+        System.out.println("Observable 3: "+model.getOrg().getStages().get(2).getName());
         if(ObservablePlugins.isEmpty()){
-            ObservablePlugins.add(model.getOrg().getStages().get(0).getName());
+            ObservablePlugins.add(model.getOrg().getStages().get(2).getName());
         }
         return ObservablePlugins;
     }
     
-    public void initAnalysisStage(){
+    private void initVisualizationStage(){
         ObservablePlugins.clear();
         List<Plugin> stagePlugins = PluginRegistry.getInstance().getPluginData().getPluginsFor("mo.organization.StageModule");
+        System.out.println(stagePlugins);
         for(Plugin stagePlugin : stagePlugins){
             StageModule nodeProvider = (StageModule) stagePlugin.getNewInstance();
-            System.out.println("name: "+nodeProvider.getName());
+            System.out.println(nodeProvider.getName());
             if(!nodeProvider.getName().equals("Captura")){
-                //add stage
+                //add stages
+                System.out.println("Dentro del if");
                 model.setStageModule(nodeProvider); 
                 List<StageAction> actions = nodeProvider.getActions();
+                System.out.println("Acciones visualizacion: "+actions);
                 for (StageAction action : actions){
                     ObservablePlugins.add(action.getName());
                 }
+                System.out.println(ObservablePlugins);
                 break;
             }
-            
         }
-        System.out.println(ObservablePlugins);
     }
 }

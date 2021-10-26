@@ -6,13 +6,21 @@
 package mo.core.v2.controller;
 
 import com.google.inject.Inject;
+import com.google.inject.Injector;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.fxml.JavaFXBuilderFactory;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -22,7 +30,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import mo.core.plugin.Plugin;
 import mo.core.plugin.PluginRegistry;
 import mo.core.v2.model.Organization;
@@ -52,6 +62,8 @@ public class ProjectCapturesController implements Initializable {
     @FXML
     private ImageView deleteButton;
     @Inject
+    public Injector injector;
+    @Inject
     Organization model;
     private int row;
     ObservableList<String> ObservablePlugins = FXCollections.observableArrayList();
@@ -69,15 +81,30 @@ public class ProjectCapturesController implements Initializable {
 
     @FXML
     private void addClick(MouseEvent event) {
-        Stage popUp = new Stage();
-        Label lbCaptures = new Label("Captures");
-        Button btnCancel, btnAdd;
-        btnCancel = new Button("Cancel");
-        btnAdd = new Button("Add");
-        lbCaptures = new Label("Plugins");
-        ComboBox plugins = new ComboBox();
-        plugins.setItems(ObservablePlugins);
-        //plugins.setItems();        
+        try{
+            Stage popUp = new Stage();
+            final JavaFXBuilderFactory builderFactory = new JavaFXBuilderFactory();
+            final Callback<Class<?>, Object> callback = (clazz) -> injector.getInstance(clazz);
+            FXMLLoader loaderOpen = new FXMLLoader(MainWindowsController.class
+                .getResource("/fxml/core/ui/AddCapture.fxml"), null,
+                builderFactory, callback);
+            Parent openParent = loaderOpen.load();
+            openParent.getProperties()
+                .put(CONTROLLER_KEY, loaderOpen.getController());
+            popUp.initModality(Modality.APPLICATION_MODAL);
+            popUp.setTitle("Add Capture");
+            popUp.setScene(new Scene(openParent));
+            popUp.showAndWait();
+            /*FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/fxml/core/ui/AddCapture.fxml"));
+            Parent parent = (Parent)fxmlloader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(parent));
+            stage.showAndWait();*/
+        }
+        catch(IOException ex){
+            Logger.getLogger(MainWindowsController.class
+          .getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     private void init(){
@@ -89,7 +116,10 @@ public class ProjectCapturesController implements Initializable {
     }
     
     public ObservableList<String> addObservablePlugin(){
-        ObservablePlugins.add(model.getOrg().getStages().get(1).getName());
+        //System.out.println("Observable 1: "+model.getOrg().getStages().get(1).getName());
+        if(ObservablePlugins.isEmpty()){
+            ObservablePlugins.add(model.getOrg().getStages().get(1).getName());
+        }
         return ObservablePlugins;
     }
     
@@ -110,7 +140,11 @@ public class ProjectCapturesController implements Initializable {
                 break;
             }
         }
+        model.setObservablePlugins(ObservablePlugins);
+        System.out.println("Ob " + ObservablePlugins);
+        System.out.println("model " + model.getObservablePlugins());
     }
+    
 
     @FXML
     private void removeConfiguration(MouseEvent event) {

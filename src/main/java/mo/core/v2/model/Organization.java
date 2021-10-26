@@ -9,6 +9,8 @@ import com.google.inject.Inject;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import mo.organization.Configuration;
 import mo.organization.Participant;
 import mo.organization.ProjectOrganization;
@@ -37,6 +39,7 @@ public class Organization {
     List<StageModule> captures;
     List<StageModule> analysis;
     List<StageModule> visualization;
+    ObservableList<String> ObservablePlugins = FXCollections.observableArrayList();
 
     @Inject
     public Organization(List<Participant> participants, List<StagePlugin> plugins, List<Configuration> configurations, StagePlugin pluginSelected, Configuration configurationSelected) {
@@ -183,7 +186,13 @@ public class Organization {
     public void setVisualization(List<StageModule> visualization) {
         this.visualization = visualization;
     }
-    
-    
-    
+
+    public ObservableList<String> getObservablePlugins() {
+        return ObservablePlugins;
+    }
+
+    public void setObservablePlugins(ObservableList<String> ObservablePlugins) {
+        this.ObservablePlugins = ObservablePlugins;
+    }
+        
 }
