@@ -11,11 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import mo.analysis.AnalysisProvider;
+import mo.capture.CaptureProvider;
 import mo.organization.Configuration;
 import mo.organization.Participant;
 import mo.organization.ProjectOrganization;
 import mo.organization.StageModule;
 import mo.organization.StagePlugin;
+import mo.visualization.VisualizationProvider;
 
 /**
  *
@@ -26,32 +29,34 @@ public class Organization {
     int type;
     public int newProyect;
     List<Participant> participants = new ArrayList<>();
-    List<StageModule> stages;
-    StageModule stageModule;
+    //List<StageModule> stages;
+    StageModule MOCaptureStage;
     //List<Participant> participantsNoUsed =new ArrayList<>();
     //List<Participant> participantsAll = new ArrayList<>();
-    List<StagePlugin> plugins;
+    List<StagePluginV2> plugins;
     List<Configuration> configurations;
     StagePlugin pluginSelected;
     Configuration configurationSelected;
     ProjectOrganization org;
     Boolean restoreBoolean = false;
-    List<StageModule> captures;
-    List<StageModule> analysis;
-    List<StageModule> visualization;
+    List<CaptureProvider> captures;
+    List<AnalysisProvider> analysis;
+    List<VisualizationProvider> visualization;
+    String config;
     ObservableList<String> ObservablePlugins = FXCollections.observableArrayList();
+    String aux;
+    List<StageModuleV2> stages;
 
     @Inject
-    public Organization(List<Participant> participants, List<StagePlugin> plugins, List<Configuration> configurations, StagePlugin pluginSelected, Configuration configurationSelected) {
+    public Organization(List<Participant> participants, List<StagePluginV2> plugins, List<Configuration> configurations, StagePlugin pluginSelected, Configuration configurationSelected, List<StageModuleV2> stages) {
         this.fileProject = fileProject;
         this.plugins = plugins;
         this.configurations = configurations;
         this.pluginSelected = pluginSelected;
-        this.org = org;
-        this.stageModule = stageModule;
-        captures = new ArrayList<StageModule>();
-        analysis = new ArrayList<StageModule>();
-        visualization = new ArrayList<StageModule>();
+        captures = new ArrayList<CaptureProvider>();
+        analysis = new ArrayList<AnalysisProvider>();
+        visualization = new ArrayList<VisualizationProvider>();
+        this.stages=stages;
     }
     
     public File getFileProject() {
@@ -94,11 +99,11 @@ public class Organization {
         this.participantsAll = participantsAll;
     }*/
 
-    public List<StagePlugin> getPlugins() {
+    public List<StagePluginV2> getPlugins() {
         return plugins;
     }
 
-    public void setPlugins(List<StagePlugin> plugins) {
+    public void setPlugins(List<StagePluginV2> plugins) {
         this.plugins = plugins;
     }
 
@@ -142,51 +147,59 @@ public class Organization {
         this.restoreBoolean = restoreBoolean;
     }
 
-    public List<StageModule> getStageModules(){
+    public List<StageModuleV2> getStageModules(){
         return stages;
     }
     
-    public StageModule getCaptureStage(){
+    public StageModuleV2 getCaptureStage(){
         return stages.get(0);
     }
     
-    public void setStageModules(List<StageModule> stages){
+    public void setStageModules(List<StageModuleV2> stages){
         this.stages = stages;
     }
     
     
-    public StageModule getStageModule() {
-        return stageModule;
+    public StageModule getMOCaptureStage() {
+        return MOCaptureStage;
     }
 
-    public void setStageModule(StageModule stageModule) {
-        this.stageModule = stageModule;
+    public void setMOCaptureStage(StageModule stageModule) {
+        this.MOCaptureStage = stageModule;
     }
 
-    public List<StageModule> getCaptures() {
+    public List<CaptureProvider> getCaptures() {
         return captures;
     }
 
-    public void setCaptures(List<StageModule> captures) {
+    public void setCaptures(List<CaptureProvider> captures) {
         this.captures = captures;
     }
 
-    public List<StageModule> getAnalysis() {
+    public List<AnalysisProvider> getAnalysis() {
         return analysis;
     }
 
-    public void setAnalysis(List<StageModule> analysis) {
+    public void setAnalysis(List<AnalysisProvider> analysis) {
         this.analysis = analysis;
     }
 
-    public List<StageModule> getVisualization() {
+    public List<VisualizationProvider> getVisualization() {
         return visualization;
     }
 
-    public void setVisualization(List<StageModule> visualization) {
+    public void setVisualization(List<VisualizationProvider> visualization) {
         this.visualization = visualization;
     }
 
+    public String getConfig() {
+        return config;
+    }
+
+    public void setConfig(String config) {
+        this.config = config;
+    }
+    
     public ObservableList<String> getObservablePlugins() {
         return ObservablePlugins;
     }

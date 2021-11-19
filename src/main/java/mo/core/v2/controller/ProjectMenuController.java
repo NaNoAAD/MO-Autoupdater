@@ -31,7 +31,6 @@ import javafx.util.Callback;
 import mo.core.plugin.Plugin;
 import mo.core.plugin.PluginRegistry;
 import mo.core.v2.model.Organization;
-import mo.core.v2.model.OrganizationV2;
 import mo.organization.ProjectOrganization;
 import mo.organization.StageModule;
 
@@ -175,12 +174,12 @@ public class ProjectMenuController implements Initializable {
             tutorialPane.getChildren().clear();
         }
         
-        List<Plugin> stagePlugins = PluginRegistry.getInstance().getPluginData().getPluginsFor("mo.organization.StageModule");
+        /*List<Plugin> stagePlugins = PluginRegistry.getInstance().getPluginData().getPluginsFor("mo.organization.StageModule");
         for(Plugin stagePlugin : stagePlugins){
             StageModule nodeProvider = (StageModule) stagePlugin.getNewInstance();
             addStageNodeIfNotExists(nodeProvider);
         }
-        model.setStageModules(model.getOrg().getStages());
+        model.setStageModules(model.getOrg().getStages());*/
     }
     
     private void addStageNodeIfNotExists(StageModule stage){
