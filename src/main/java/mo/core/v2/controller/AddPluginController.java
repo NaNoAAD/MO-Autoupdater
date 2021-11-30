@@ -11,28 +11,20 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import mo.analysis.AnalysisProvider;
 import mo.capture.CaptureProvider;
-import mo.core.plugin.Plugin;
-import mo.core.plugin.PluginRegistry;
 import mo.core.v2.model.Organization;
 import mo.core.v2.model.StagePluginV2;
-import mo.organization.StageAction;
-import mo.organization.StageModule;
-import mo.organization.StagePlugin;
 import mo.visualization.VisualizationProvider;
 
 /**
@@ -57,10 +49,6 @@ public class AddPluginController implements Initializable {
     public Injector injector;
     @Inject
     Organization model;
-    @FXML
-    private TextField nameConfiguration;
-    @FXML
-    private Text alertText;
     private List<String> config;
 
     /**
@@ -86,39 +74,39 @@ public class AddPluginController implements Initializable {
     }
     
     public void initComboBox(){
-        System.out.println("Observable " + model.getObservablePlugins());
+        //System.out.println("Observable " + model.getObservablePlugins());
         comboCaptures.setItems(model.getObservablePlugins());
-        System.out.println("Done");
+        //System.out.println("Done");
     }
 
     @FXML
     private void addOption(MouseEvent event) { 
-        System.out.println("Before: "+model.getObservablePlugins());
+        //System.out.println("Before: "+model.getObservablePlugins());
         if(type==1){
             //model.getCaptures().add(PluginRegistry.getInstance().getPluginData().getPluginsFor(comboCaptures.getSelectionModel().getSelectedItem())));
             model.getCaptures().add(addSelectedC(auxC,comboCaptures.getSelectionModel().getSelectedItem()));
-            System.out.println("Captures added: "+model.getCaptures());
-            config.add(nameConfiguration.getText());
+            //System.out.println("Captures added: "+model.getCaptures());
+            //config.add(nameConfiguration.getText());
             model.setPluginSelected(addSelectedC(auxC,comboCaptures.getSelectionModel().getSelectedItem()));
             
         }
         else if(type==2){
             model.getAnalysis().add(addSelectedA(auxA,comboCaptures.getSelectionModel().getSelectedItem()));
-            System.out.println("Analysis added: "+model.getAnalysis());
-            config.add(nameConfiguration.getText());
+            //System.out.println("Analysis added: "+model.getAnalysis());
+            //config.add(nameConfiguration.getText());
             model.setPluginSelected(addSelectedA(auxA,comboCaptures.getSelectionModel().getSelectedItem()));
         }
         else if(type==3){
             model.getVisualization().add(addSelectedV(auxV, comboCaptures.getSelectionModel().getSelectedItem()));
-            System.out.println("Visualization added: "+model.getVisualization());
-            config.add(nameConfiguration.getText());
+            //System.out.println("Visualization added: "+model.getVisualization());
+            //config.add(nameConfiguration.getText());
             model.setPluginSelected(addSelectedV(auxV,comboCaptures.getSelectionModel().getSelectedItem()));
         }
         String aux = comboCaptures.getSelectionModel().getSelectedItem();
         model.getObservablePlugins().remove(aux);
-        model.setConfig(nameConfiguration.getText());
-        System.out.println("Agregado");
-        System.out.println("After: "+model.getObservablePlugins());
+        //model.setConfig(nameConfiguration.getText());
+        //System.out.println("Agregado");
+        //System.out.println("After: "+model.getObservablePlugins());
         close(event);
     }
 
@@ -150,7 +138,7 @@ public class AddPluginController implements Initializable {
     }
     
     private CaptureProvider addSelectedC(List<CaptureProvider> aux, String selected){
-        System.out.println("0: "+aux);
+        //System.out.println("0: "+aux);
         for(CaptureProvider capture : aux){
             if(capture.getName().equals(selected)){
                 return capture;
@@ -177,22 +165,12 @@ public class AddPluginController implements Initializable {
         return null;  
     }
 
-    @FXML
-    private void check(MouseEvent event) {
-        if(nameConfiguration.getText().isEmpty()){
-            addButton.disableProperty().setValue(Boolean.TRUE);
-        }
-    }
-
-    private void check(ActionEvent event) {
-        if(nameConfiguration.getText().isEmpty()){
-            addButton.disableProperty().setValue(Boolean.TRUE);
-        }
-    }
-
-    @FXML
     private void allGood(KeyEvent event) {
         addButton.disableProperty().setValue(Boolean.FALSE);
+    }
+
+    @FXML
+    private void check(MouseEvent event) {
     }
 
 }

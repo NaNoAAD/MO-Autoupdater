@@ -62,11 +62,14 @@
                   <Image url="@../../../images/unlocked2.png" />
                </image>
             </ImageView>
-            <Circle id="recordParticipant" fx:id="recordParticipant" fill="#ff0f00" onMouseClicked="#recParticipant" radius="10.0" stroke="#ff0f00" strokeType="INSIDE">
+            <ImageView id="recordParticipant" fx:id="recordParticipant" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#record" pickOnBounds="true" preserveRatio="true">
                <GridPane.margin>
                   <Insets left="152.0" />
                </GridPane.margin>
-            </Circle>
+               <image>
+                  <Image url="@../../../images/rec.png" />
+               </image>
+            </ImageView>
             <ImageView id="editParticipant" fx:id="editParticipant" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#edit" pickOnBounds="true" preserveRatio="true">
                <GridPane.margin>
                   <Insets left="182.0" />

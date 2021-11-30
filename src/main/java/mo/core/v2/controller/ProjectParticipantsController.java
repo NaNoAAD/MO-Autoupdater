@@ -17,7 +17,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -60,7 +59,7 @@ public class ProjectParticipantsController implements Initializable {
     @FXML
     private ImageView lockParticipant;
     @FXML
-    private Circle recordParticipant;
+    private ImageView recordParticipant;
     @FXML
     private ImageView editParticipant;
     @FXML
@@ -90,14 +89,13 @@ public class ProjectParticipantsController implements Initializable {
 
     @FXML
     private void unLockParticipant(MouseEvent event) {
+        System.out.println("un/Lock");
     }
 
-    @FXML
-    private void recParticipant(MouseEvent event) {
-    }
 
     @FXML
     private void edit(MouseEvent event) {
+        System.out.println("Edit");
     }
 
     
@@ -116,6 +114,7 @@ public class ProjectParticipantsController implements Initializable {
 
     @FXML
     private void delete(MouseEvent event) {
+        System.out.println("Delete");
     }
     
     private void add(Participant p){
@@ -134,6 +133,8 @@ public class ProjectParticipantsController implements Initializable {
         TextArea description = new TextArea();
         btnCancel.setOnAction(e-> popUp.close());
         btnAdd.setOnAction(e-> buttonModal(e, id.getText(), name.getText(), date.getValue(), description.getText(), 1, popUp));
+        btnAdd.setLayoutX(btnCancel.getLayoutX());
+        btnAdd.setTranslateX(50);
         lbId = new Label("Id: ");
         lbName = new Label("Name: ");
         lbDate = new Label("Date: ");
@@ -159,26 +160,74 @@ public class ProjectParticipantsController implements Initializable {
             editParticipant.opacityProperty().set(1);
             deleteParticipant.opacityProperty().set(1);
             textParticipant.setText(participants.get(0).name);
+            visulizationParticipant.opacityProperty().set(1);
             row++;
             }
             else{
                 System.out.println(iconParticipant.getStyle());
                 javafx.scene.image.ImageView icon2 = new javafx.scene.image.ImageView();
                 icon2.setImage(iconParticipant.getImage());
-                icon2.setId("icon2");
+                icon2.setId("icon"+p.id);
                 icon2.setFitHeight(20);
                 icon2.setFitWidth(20);
-                icon2.setStyle("-fx-margin{-fx-padding-left: 25px;}");
+                icon2.setTranslateX(25);
                 //icon2.setPadding(new Insets(25, 25, 25, 25));
                 //icon2.setStyle(iconParticipant.getStyle());
                 gridPaneParticipants.add(icon2, 0, row);
-                Text text2 = new Text(participants.get(participants.size()-1).name);
-                text2.setStyle("text-with-margin{-fx-padding-left: 50px;}");
-                gridPaneParticipants.add(text2,0,1);
+                Text text2 = new Text(model.getParticipants().get(model.getParticipants().size()-1).name);
+                text2.setTranslateX(50);
+                gridPaneParticipants.add(text2,0,row);
                 ImageView lock2 = new ImageView();
                 lock2.setImage(lockParticipant.getImage());
-                lock2.setId("lock2");
-                lock2.setStyle("-fx-margin-left:25px;");
+                lock2.setFitHeight(20);
+                lock2.setFitWidth(20);
+                lock2.setId("lock"+p.id);
+                lock2.setTranslateX(125);
+                //lock2.setEventDispatcher(lockParticipant.getEventDispatcher());
+                lock2.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+                    unLockParticipant(event);
+                });
+                gridPaneParticipants.add(lock2,0,row);
+                javafx.scene.image.ImageView record2 = new javafx.scene.image.ImageView();
+                record2.setImage(recordParticipant.getImage());
+                record2.setId("record"+p.id);
+                record2.setFitHeight(20);
+                record2.setFitWidth(20);
+                record2.setTranslateX(152);
+                record2.addEventHandler(MouseEvent.MOUSE_CLICKED, event->{
+                    record(event);
+                });
+                gridPaneParticipants.add(record2,0,row);
+                javafx.scene.image.ImageView edit2 = new javafx.scene.image.ImageView();
+                edit2.setId("edit"+p.id);
+                edit2.setImage(editParticipant.getImage());
+                edit2.setFitHeight(20);
+                edit2.setFitWidth(20);
+                edit2.setTranslateX(182);
+                edit2.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+                    edit(event);
+                });
+                gridPaneParticipants.add(edit2,0,row);
+                javafx.scene.image.ImageView vizu2 = new javafx.scene.image.ImageView();
+                vizu2.setId("vizu"+p.id);
+                vizu2.setImage(visulizationParticipant.getImage());
+                vizu2.setFitHeight(20);
+                vizu2.setFitWidth(20);
+                vizu2.setTranslateX(212);
+                vizu2.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+                    seeVisualizations(event);
+                });
+                gridPaneParticipants.add(vizu2,0,row);
+                javafx.scene.image.ImageView delete2 = new javafx.scene.image.ImageView();
+                delete2.setId("delete"+p.id);
+                delete2.setImage(deleteParticipant.getImage());
+                delete2.setFitHeight(20);
+                delete2.setFitWidth(20);
+                delete2.setTranslateX(238);
+                delete2.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+                    delete(event);
+                });
+                gridPaneParticipants.add(delete2,0,row);
                 row++;   
             }
         }
@@ -204,5 +253,11 @@ public class ProjectParticipantsController implements Initializable {
 
     @FXML
     private void seeVisualizations(MouseEvent event) {
+        System.out.println("See");
+    }
+
+    @FXML
+    private void record(MouseEvent event) {
+        System.out.println("Record");
     }
 }

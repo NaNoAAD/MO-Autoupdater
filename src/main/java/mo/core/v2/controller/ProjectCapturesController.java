@@ -22,9 +22,6 @@ import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -42,7 +39,6 @@ import mo.core.v2.model.Organization;
 import mo.core.v2.model.StagePluginV2;
 import mo.organization.Configuration;
 import mo.organization.ProjectOrganization;
-import mo.organization.StageAction;
 import mo.organization.StageModule;
 import mo.organization.StagePlugin;
 
@@ -75,6 +71,7 @@ public class ProjectCapturesController implements Initializable {
     private int row;
     ObservableList<String> ObservablePlugins = FXCollections.observableArrayList();
     List<CaptureProvider> captures = new ArrayList<CaptureProvider>();
+    List<String> capturesAux = new ArrayList<String>();
     
     /**
      * Initializes the controller class.
@@ -115,9 +112,10 @@ public class ProjectCapturesController implements Initializable {
     }
     
     private void init(){
-        if(model.getPlugins().isEmpty()){
+        if(model.getCaptures().isEmpty()){
             iconCapture.opacityProperty().set(0.50);
             textCapture.opacityProperty().set(0.50);
+            deleteButton.opacityProperty().set(0.50);
             row=0;
         } 
         List<Plugin> stagePlugins = PluginRegistry.getInstance().getPluginData().getPluginsFor("mo.organization.StageModule");
@@ -152,16 +150,11 @@ public class ProjectCapturesController implements Initializable {
                         ObservablePlugins.add(c.getName());
                         captures.add(c);
                     }
-                    
-                    System.out.println("Plugin: " + c.getName());
                 }
             }
         }
-        System.out.println("0");
         model.setObservablePlugins(ObservablePlugins);
-        System.out.println("1");
         model.setCaptures(captures);
-        System.out.println("capturas antes de: "+captures);
     }
     
 
@@ -172,41 +165,65 @@ public class ProjectCapturesController implements Initializable {
     private void addPlugin(String name){
         System.out.println("GridPane: "+gridPaneCapture.getRowConstraints().size());
         System.out.println(name);
-        /*javafx.scene.image.ImageView icon2 = new javafx.scene.image.ImageView();
-        icon2.setImage(iconCapture.getImage());
-        icon2.setId(iconCapture.getId()+String.valueOf(id));
-        System.out.println("ID: "+icon2.idProperty());
-        icon2.setFitHeight(20);
-        icon2.setFitWidth(20);
-        icon2.setStyle("-fx-margin{-fx-padding-left: 25px;}");
-        gridPaneCapture.add(icon2, 0, row);
-        Text text2 = new Text(name);
-        text2.setStyle("text-with-margin{-fx-padding-left: 50px;}");
-        gridPaneCapture.add(text2, 0, row);
-        row++;*/
+        if(row>gridPaneCapture.getRowConstraints().size()){
+            gridPaneCapture.addRow(row, null);
+        }
+        System.out.println("1");
+        System.out.println(model.getCaptures().size());
+        System.out.println(model.getCaptures());
+        if(capturesAux.size()<1){
+            iconCapture.opacityProperty().set(1);
+            textCapture.opacityProperty().set(1);
+            deleteButton.opacityProperty().set(1);
+            textCapture.setText(name);
+            row++;
+            capturesAux.add(name);
+        }
+        else{
+            javafx.scene.image.ImageView icon2 = new javafx.scene.image.ImageView();
+            icon2.setImage(iconCapture.getImage());
+            //icon2.setId(iconCapture.getId()+String.valueOf(id));
+            System.out.println("ID: "+icon2.idProperty());
+            icon2.setFitHeight(20);
+            icon2.setFitWidth(20);
+            icon2.getStyleClass().add("~/Ejemplo.css");
+            icon2.setStyle(".icon");
+            System.out.println("XXXX "+iconCapture.getTranslateX());
+            icon2.setTranslateX(25);
+            gridPaneCapture.add(icon2, 0, row);
+            Text text2 = new Text(name);
+            text2.setTranslateX(50);
+            //text2.setStyle(textCapture.getStyle());
+            gridPaneCapture.add(text2, 0, row);
+            javafx.scene.image.ImageView delete2 = new javafx.scene.image.ImageView();
+            delete2.setImage(deleteButton.getImage());
+            delete2.setFitHeight(20);
+            delete2.setFitWidth(20);
+            delete2.setTranslateX(182);
+            gridPaneCapture.add(delete2, 0, row);
+            row++;
+            capturesAux.add(name);
+        }
+        
     }
     
     private void addConfiguration(){
         ProjectOrganization PO = new ProjectOrganization("");
         String SelectedPlugin = model.getPluginSelected().getName();
         for(Plugin plugin : PluginRegistry.getInstance().getPluginData().getPluginsFor("mo.capture.CaptureProvider")){
-            System.out.println("0");
             for(StagePlugin sp: model.getMOCaptureStage().getPlugins()){
-                System.out.println("1");
                 CaptureProvider c = (CaptureProvider) plugin.getNewInstance();
                 if(c != null){
-                    System.out.println("2");
                     if(c.getName().equals(SelectedPlugin)&&SelectedPlugin.equals(sp.getName())){
-                        System.out.println("3");
-                        System.out.println("Abre aca?");
                         Configuration config = c.initNewConfiguration(PO);
                         if(config != null){
-                            System.out.println("4");
                             saveConfiguration(SelectedPlugin, config.getId());
                             model.getConfigurations().add(config);
                             System.out.println(config);
                             //addPlugin(config.getId());
                             sp.getConfigurations().add(config);
+                            System.out.println(config.getId());
+                            System.out.println(sp.getName());
                             break;
                         }
                     }
@@ -222,10 +239,8 @@ public class ProjectCapturesController implements Initializable {
             if(spv.getName().equals(SelectedPlugin)){
                 ConfigurationV2 config = new ConfigurationV2(configId);
                 spv.addConfiguration(config);
-                addPlugin(spv.getName());
+                addPlugin(config.getName()+" ("+spv.getName()+")");
             }
         }
-        
-        System.out.println("Done");
     }
 }
