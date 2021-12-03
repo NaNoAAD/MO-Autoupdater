@@ -215,6 +215,7 @@ public class MainWindowsController implements Initializable {
         projectOrg = new ProjectOrganization(name);
         org.setOrg(projectOrg);
         org.setFileProject(proj);
+        org.getOrg().store();
         
     }
     

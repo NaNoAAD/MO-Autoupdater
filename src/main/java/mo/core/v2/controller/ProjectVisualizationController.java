@@ -34,6 +34,7 @@ import javafx.util.Callback;
 import mo.capture.CaptureProvider;
 import mo.core.plugin.Plugin;
 import mo.core.plugin.PluginRegistry;
+import mo.core.v2.model.Activity;
 import mo.core.v2.model.ConfigurationV2;
 import mo.core.v2.model.Organization;
 import mo.core.v2.model.StagePluginV2;
@@ -118,7 +119,7 @@ public class ProjectVisualizationController implements Initializable {
     }
     
     private void init(){
-        if(model.getPlugins().isEmpty()){
+        if(visualizationAux.isEmpty()){
             iconVisualization.opacityProperty().set(0.50);
             textVisualization.opacityProperty().set(0.50);
             deleteButton.opacityProperty().set(0.50);
@@ -127,11 +128,16 @@ public class ProjectVisualizationController implements Initializable {
         List<Plugin> stagePlugins = PluginRegistry.getInstance().getPluginData().getPluginsFor("mo.organization.StageModule");
         for(Plugin stagePlugin : stagePlugins){
             StageModule nodeProvider = (StageModule) stagePlugin.getNewInstance();
-            if(nodeProvider.getName().equals(model.getCaptureStage().gatName())){
+            System.out.println("VIZU: " + model.getVisualizationStage().getName());
+            System.out.println("NODE: " + nodeProvider.getName());
+            if(nodeProvider.getName().equals(model.getVisualizationStage().getName())){
                 model.setMOCaptureStage(nodeProvider);
                 break;
             }
         }
+        System.out.println("***************************************************************");
+        System.out.println(model.getMOCaptureStage().getActions());
+        System.out.println("***************************************************************");
     }
     
     /*public ObservableList<String> addObservablePlugin(){
@@ -145,18 +151,17 @@ public class ProjectVisualizationController implements Initializable {
         ObservablePlugins.clear();
         for(Plugin plugin : PluginRegistry.getInstance().getPluginData().getPluginsFor(pluginType)){
             for(StagePluginV2 sp: model.getCaptureStage().getPlugins()){
-                VisualizationProvider c = (VisualizationProvider) plugin.getNewInstance();
-                if(c != null){
+                VisualizationProvider v = (VisualizationProvider) plugin.getNewInstance();
+                if(v != null){
                     if(ObservablePlugins.isEmpty()){
-                        ObservablePlugins.add(c.getName());
-                        visualization.add(c);
+                        ObservablePlugins.add(v.getName());
+                        visualization.add(v);
                     }
-                    if(!ObservablePlugins.get(ObservablePlugins.size()-1).equals(c.getName())){
-                        ObservablePlugins.add(c.getName());
-                        visualization.add(c);
+                    if(!ObservablePlugins.get(ObservablePlugins.size()-1).equals(v.getName())){
+                        ObservablePlugins.add(v.getName());
+                        visualization.add(v);
                     }
-                    
-                    System.out.println("Plugin: " + c.getName());
+                    //System.out.println("Plugin: " + v.getName());
                 }
             }
         }
@@ -198,32 +203,43 @@ public class ProjectVisualizationController implements Initializable {
     }
     
     private void addConfiguration(){
-        ProjectOrganization PO = new ProjectOrganization("");
+        System.out.println("1");
         String SelectedPlugin = model.getPluginSelected().getName();
         for(Plugin plugin : PluginRegistry.getInstance().getPluginData().getPluginsFor(pluginType)){
+            System.out.println("2");
             for(StagePlugin sp : model.getMOCaptureStage().getPlugins()){
+                System.out.println("3");
                 VisualizationProvider v = (VisualizationProvider) plugin.getNewInstance();
                 if(v != null){
+                    System.out.println("4");
                     if(v.getName().equals(SelectedPlugin) && SelectedPlugin.equals(sp.getName())){
-                        Configuration config = v.initNewConfiguration(PO);
+                        System.out.println("5");
+                        Configuration config = v.initNewConfiguration(model.getOrg());
                         if(config != null){
-                            saveConfiguration(SelectedPlugin, config.getId());
+                            System.out.println("6");
                             model.getConfigurations().add(config);
-                            sp.getConfigurations().add(config);
+                            model.getOrg().store();
+                            saveConfiguration(SelectedPlugin, config.getId());
                             break;
                         }
                     }
                 }
             }
         }
+        System.out.println("7");
     }
     
     public void saveConfiguration(String SelectedPlugin, String configId){
-        for(StagePluginV2 spv : model.getCaptureStage().getPlugins()){
+        System.out.println(model.getVisualizationStage().getName());
+        System.out.println(model.getVisualizationStage().getPlugins());
+        for(StagePluginV2 spv : model.getVisualizationStage().getPlugins()){
+            System.out.println(spv.getName());
+            System.out.println(SelectedPlugin);
             if(spv.getName().equals(SelectedPlugin)){
                 ConfigurationV2 config = new ConfigurationV2(configId);
                 spv.addConfiguration(config);
                 addPlugin(config.getName()+" ("+spv.getName()+")");
+                break;
             }
         }
     }

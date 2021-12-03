@@ -39,7 +39,7 @@ public class StageModuleV2 {
     }
     
     @XmlElement(name="name")
-    public String gatName(){
+    public String getName(){
         return name;
     }
     @XmlElementWrapper(name="plugins")
@@ -52,10 +52,6 @@ public class StageModuleV2 {
     }
     public ObservableList<String> getConfigPluginObservable(){
         return configPluginObservable;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public void setName(String name) {

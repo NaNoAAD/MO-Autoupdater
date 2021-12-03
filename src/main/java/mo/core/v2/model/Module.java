@@ -8,12 +8,15 @@ package mo.core.v2.model;
 import com.google.inject.AbstractModule;
 import java.util.ArrayList;
 import java.util.List;
+import mo.analysis.AnalysisProvider;
 import mo.capture.CaptureProvider;
 import mo.core.plugin.Plugin;
 import mo.core.plugin.PluginRegistry;
 import mo.organization.Configuration;
 import mo.organization.Participant;
+import mo.organization.StageModule;
 import mo.organization.StagePlugin;
+import mo.visualization.VisualizationProvider;
 
 
 /**
@@ -27,15 +30,30 @@ public class Module extends AbstractModule{
 
         List<Participant> participants = new ArrayList<>();
         List<StagePluginV2> plugins = new ArrayList<>();
+        List<StagePluginV2> plugins2 = new ArrayList<>();
+        List<StagePluginV2> plugins3 = new ArrayList<>();
         List<Configuration> configurations = new ArrayList<>();
         List<StageModuleV2> stages = new ArrayList<>();
+        List<StageModuleV2> stages2 = new ArrayList<>();
+        List<StageModuleV2> stages3 = new ArrayList<>();
         addCapturePlugins(plugins);
+        addAnalysisPlugins(plugins2);
+        addVisualizationPlugins(plugins3);
         StageModuleV2 StageCapture = new StageModuleV2("Captura", plugins);
         stages.add(StageCapture);
+        List<Plugin> stagePlugins = PluginRegistry.getInstance().getPluginData().getPluginsFor("mo.organization.StageModule");
+        StageModule nodeProvider = (StageModule) stagePlugins.get(0).getNewInstance();
+        String Aux = nodeProvider.getName();
+        StageModuleV2 StageAnalysis = new StageModuleV2(Aux, plugins);
+        stages2.add(StageAnalysis);
+        StageModule nodeProvider2 = (StageModule) stagePlugins.get(2).getNewInstance();
+        String Aux2 = nodeProvider2.getName();
+        StageModuleV2 StageVisualization = new StageModuleV2(Aux2, plugins3);
+        stages3.add(StageVisualization);
         StagePlugin pluginSelected = null;
         Configuration configurationSelected = null;
         Integer type = new Integer(0);
-        Organization model = new Organization(participants,plugins,configurations,pluginSelected,configurationSelected, stages);
+        Organization model = new Organization(participants,plugins,plugins2,plugins3,configurations,pluginSelected,configurationSelected,stages,stages2,stages3);
         bind(Organization.class).toInstance(model);
     }
     
@@ -44,6 +62,24 @@ public class Module extends AbstractModule{
             List<ConfigurationV2> configurations = new ArrayList<>();
             CaptureProvider c = (CaptureProvider) plugin.getNewInstance();
             plugins.add(new StagePluginV2(c.getName(), configurations));
+        }
+        return plugins;
+    }
+    
+    public List<StagePluginV2> addAnalysisPlugins(List<StagePluginV2> plugins){
+        for(Plugin plugin : PluginRegistry.getInstance().getPluginData().getPluginsFor("mo.analysis.AnalysisProvider")){
+            List<ConfigurationV2> configurations = new ArrayList<>();
+            AnalysisProvider a = (AnalysisProvider) plugin.getNewInstance();
+            plugins.add(new StagePluginV2(a.getName(), configurations));
+        }
+        return plugins;
+    }
+    
+    public List<StagePluginV2> addVisualizationPlugins(List<StagePluginV2> plugins){
+        for(Plugin plugin : PluginRegistry.getInstance().getPluginData().getPluginsFor("mo.visualization.VisualizationProvider")){
+            List<ConfigurationV2> configurations = new ArrayList<>();
+            VisualizationProvider v = (VisualizationProvider) plugin.getNewInstance();
+            plugins.add(new StagePluginV2(v.getName(), configurations));
         }
         return plugins;
     }

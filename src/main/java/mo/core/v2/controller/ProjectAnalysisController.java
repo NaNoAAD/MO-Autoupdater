@@ -34,8 +34,10 @@ import javafx.util.Callback;
 import mo.analysis.AnalysisProvider;
 import mo.core.plugin.Plugin;
 import mo.core.plugin.PluginRegistry;
+import mo.core.v2.model.Activity;
 import mo.core.v2.model.ConfigurationV2;
 import mo.core.v2.model.Organization;
+import mo.core.v2.model.StageModuleV2;
 import mo.core.v2.model.StagePluginV2;
 import mo.organization.Configuration;
 import mo.organization.ProjectOrganization;
@@ -75,15 +77,19 @@ public class ProjectAnalysisController implements Initializable {
     private ObservableList<String> ObservablePlugins = FXCollections.observableArrayList();
     private List<AnalysisProvider> analysis = new ArrayList<AnalysisProvider>();
     private List<String> analysisAux = new ArrayList<String>();
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        //preInit(plugin);
         init();
-        //addObservablePlugin();
         initAnalysisStage();
+        //addObservablePlugin();
+        
         row=0;
+        
     }    
 
     @FXML
@@ -103,9 +109,7 @@ public class ProjectAnalysisController implements Initializable {
             popUp.setTitle("Add Analysis");
             popUp.setScene(new Scene(openParent));
             popUp.showAndWait();
-            System.out.println("addClick");
             addConfiguration();
-            System.out.println("1");
             
         }
         catch(IOException ex){
@@ -130,14 +134,15 @@ public class ProjectAnalysisController implements Initializable {
         List<Plugin> stagePlugins = PluginRegistry.getInstance().getPluginData().getPluginsFor("mo.organization.StageModule");
         for(Plugin stagePlugin : stagePlugins){
             StageModule nodeProvider = (StageModule) stagePlugin.getNewInstance();
-            if(nodeProvider.getName().equals(model.getCaptureStage().gatName())){
+            if(nodeProvider.getName().equals(model.getAnalysisStage().getName())){
                 model.setMOCaptureStage(nodeProvider);
-                System.out.println("Init");
                 break;
             }
         }
-        System.out.println("init");
-        System.out.println(model.getMOCaptureStage().getPlugins());
+        System.out.println("***************************************************************");
+        System.out.println(model.getMOCaptureStage().getActions());
+        System.out.println("***************************************************************");
+        //System.out.println(model.getMOCaptureStage().getPlugins());
     }
     
     /*public ObservableList<String> addObservablePlugin(){
@@ -150,25 +155,23 @@ public class ProjectAnalysisController implements Initializable {
     public void initAnalysisStage(){
         ObservablePlugins.clear();
         for(Plugin plugin : PluginRegistry.getInstance().getPluginData().getPluginsFor(pluginType)){
-            for(StagePluginV2 sp: model.getCaptureStage().getPlugins()){
-                AnalysisProvider c = (AnalysisProvider) plugin.getNewInstance();
-                if(c != null){
+            for(StagePluginV2 sp : model.getAnalysisStage().getPlugins()){
+                AnalysisProvider a = (AnalysisProvider) plugin.getNewInstance();
+                if(a != null){
                     if(ObservablePlugins.isEmpty()){
-                        ObservablePlugins.add(c.getName());
-                        analysis.add(c);
+                        ObservablePlugins.add(a.getName());
+                        analysis.add(a);
                     }
-                    if(!ObservablePlugins.get(ObservablePlugins.size()-1).equals(c.getName())){
-                        ObservablePlugins.add(c.getName());
-                        analysis.add(c);
+                    if(!ObservablePlugins.get(ObservablePlugins.size()-1).equals(a.getName())){
+                        ObservablePlugins.add(a.getName());
+                        analysis.add(a);
                     }
-                    
-                    System.out.println("Plugin: " + c.getName());
+                    //System.out.println("Plugin: " + c.getName());
                 }
             }
         }
         model.setObservablePlugins(ObservablePlugins);
         model.setAnalysis(analysis);
-        System.out.println("InitAnalysis");
     }
     
     private void addPlugin(String name){
@@ -209,43 +212,33 @@ public class ProjectAnalysisController implements Initializable {
     }
     
     private void addConfiguration(){
-        ProjectOrganization PO = new ProjectOrganization("");
-        String SelectedPlugin = model.getPluginSelected().getName();
-        System.out.println("addConfig");
-        for(Plugin plugin : PluginRegistry.getInstance().getPluginData().getPluginsFor(pluginType)){
-            System.out.println("1");
-            //CAMBIAR STAGEPLUGIN POR STAGEACTION, VER LO DE POLANCO
+	String SelectedPlugin = model.getPluginSelected().getName();
+	for(Plugin plugin : PluginRegistry.getInstance().getPluginData().getPluginsFor(pluginType)){
             for(StagePlugin sp : model.getMOCaptureStage().getPlugins()){
-                System.out.println("2");
                 AnalysisProvider a = (AnalysisProvider) plugin.getNewInstance();
-                System.out.println("3");
                 if(a != null){
-                    System.out.println("4");
-                    System.out.println(a.getName());
-                    System.out.println(SelectedPlugin);
-                    System.out.println(sp.getName());
                     if(a.getName().equals(SelectedPlugin)&&SelectedPlugin.equals(sp.getName())){
-                        System.out.println("5");
-                        Configuration config = a.initNewConfiguration(PO);
+                        Configuration config = a.initNewConfiguration(model.getOrg());
                         if(config != null){
-                            System.out.println("6");
+                            model.getConfigurations().add(config);
+                            model.getOrg().store();
                             saveConfiguration(SelectedPlugin, config.getId());
-                            System.out.println("7");
+                            break;
                         }
                     }
                 }
             }
-        }
+	}
     }
     
     public void saveConfiguration(String SelectedPlugin, String configId){
-        for(StagePluginV2 spv : model.getCaptureStage().getPlugins()){
+	for(StagePluginV2 spv : model.getCaptureStage().getPlugins()){
             if(spv.getName().equals(SelectedPlugin)){
                 ConfigurationV2 config = new ConfigurationV2(configId);
                 spv.addConfiguration(config);
                 addPlugin(config.getName()+" ("+spv.getName()+")");
-                System.out.println("SaveConfig");
             }            
-        }
+	}
     }
+
 }

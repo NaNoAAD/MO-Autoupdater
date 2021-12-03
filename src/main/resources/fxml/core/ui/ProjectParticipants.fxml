@@ -54,7 +54,7 @@
                   <Image url="@../../../images/add.png" />
                </image>
             </ImageView>
-            <ImageView id="lockParticipant" fx:id="lockParticipant" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#unLockParticipant" pickOnBounds="true" preserveRatio="true">
+            <ImageView id="lockParticipant" fx:id="lockParticipant" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <GridPane.margin>
                   <Insets left="125.0" />
                </GridPane.margin>
@@ -70,7 +70,7 @@
                   <Image url="@../../../images/rec.png" />
                </image>
             </ImageView>
-            <ImageView id="editParticipant" fx:id="editParticipant" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#edit" pickOnBounds="true" preserveRatio="true">
+            <ImageView id="editParticipant" fx:id="editParticipant" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <GridPane.margin>
                   <Insets left="182.0" />
                </GridPane.margin>
@@ -78,7 +78,7 @@
                   <Image url="@../../../images/edit.png" />
                </image>
             </ImageView>
-            <ImageView id="deleteParticipant" fx:id="deleteParticipant" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#delete" pickOnBounds="true" preserveRatio="true">
+            <ImageView id="deleteParticipant" fx:id="deleteParticipant" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <GridPane.margin>
                   <Insets left="238.0" />
                </GridPane.margin>
@@ -86,7 +86,7 @@
                   <Image url="@../../../images/delete.png" />
                </image>
             </ImageView>
-            <ImageView id="visulizationParticipant" fx:id="visulizationParticipant" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#seeVisualizations" pickOnBounds="true" preserveRatio="true">
+            <ImageView id="visulizationParticipant" fx:id="visulizationParticipant" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/capture.png" />
                </image>

@@ -23,6 +23,10 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import mo.analysis.AnalysisProvider;
 import mo.capture.CaptureProvider;
+import mo.core.plugin.Plugin;
+import mo.core.plugin.PluginRegistry;
+import mo.core.v2.model.Activity;
+import mo.core.v2.model.ConfigurationV2;
 import mo.core.v2.model.Organization;
 import mo.core.v2.model.StagePluginV2;
 import mo.visualization.VisualizationProvider;
@@ -68,45 +72,29 @@ public class AddPluginController implements Initializable {
         auxA= model.getAnalysis();
         auxV = model.getVisualization();
         config = new ArrayList<String>();
-        /*while(nameConfiguration.getText().isEmpty()){
-            alertText.visibleProperty().set(false);
-        }*/
     }
     
     public void initComboBox(){
-        //System.out.println("Observable " + model.getObservablePlugins());
         comboCaptures.setItems(model.getObservablePlugins());
-        //System.out.println("Done");
     }
 
     @FXML
     private void addOption(MouseEvent event) { 
-        //System.out.println("Before: "+model.getObservablePlugins());
         if(type==1){
-            //model.getCaptures().add(PluginRegistry.getInstance().getPluginData().getPluginsFor(comboCaptures.getSelectionModel().getSelectedItem())));
             model.getCaptures().add(addSelectedC(auxC,comboCaptures.getSelectionModel().getSelectedItem()));
-            //System.out.println("Captures added: "+model.getCaptures());
-            //config.add(nameConfiguration.getText());
             model.setPluginSelected(addSelectedC(auxC,comboCaptures.getSelectionModel().getSelectedItem()));
             
         }
         else if(type==2){
             model.getAnalysis().add(addSelectedA(auxA,comboCaptures.getSelectionModel().getSelectedItem()));
-            //System.out.println("Analysis added: "+model.getAnalysis());
-            //config.add(nameConfiguration.getText());
             model.setPluginSelected(addSelectedA(auxA,comboCaptures.getSelectionModel().getSelectedItem()));
         }
         else if(type==3){
             model.getVisualization().add(addSelectedV(auxV, comboCaptures.getSelectionModel().getSelectedItem()));
-            //System.out.println("Visualization added: "+model.getVisualization());
-            //config.add(nameConfiguration.getText());
             model.setPluginSelected(addSelectedV(auxV,comboCaptures.getSelectionModel().getSelectedItem()));
         }
         String aux = comboCaptures.getSelectionModel().getSelectedItem();
         model.getObservablePlugins().remove(aux);
-        //model.setConfig(nameConfiguration.getText());
-        //System.out.println("Agregado");
-        //System.out.println("After: "+model.getObservablePlugins());
         close(event);
     }
 
@@ -133,12 +121,11 @@ public class AddPluginController implements Initializable {
             auxV = new ArrayList<VisualizationProvider>();
             plugins.forEach((plugin) -> {
                 auxV.add((VisualizationProvider)plugin);
-            });
+            });   
         }        
     }
     
     private CaptureProvider addSelectedC(List<CaptureProvider> aux, String selected){
-        //System.out.println("0: "+aux);
         for(CaptureProvider capture : aux){
             if(capture.getName().equals(selected)){
                 return capture;
@@ -172,5 +159,5 @@ public class AddPluginController implements Initializable {
     @FXML
     private void check(MouseEvent event) {
     }
-
+    
 }

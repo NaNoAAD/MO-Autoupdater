@@ -31,9 +31,9 @@ public class Organization {
     List<Participant> participants = new ArrayList<>();
     //List<StageModule> stages;
     StageModule MOCaptureStage;
-    //List<Participant> participantsNoUsed =new ArrayList<>();
-    //List<Participant> participantsAll = new ArrayList<>();
     List<StagePluginV2> plugins;
+    List<StagePluginV2> plugins2;
+    List<StagePluginV2> plugins3;
     List<Configuration> configurations;
     StagePlugin pluginSelected;
     Configuration configurationSelected;
@@ -46,17 +46,23 @@ public class Organization {
     ObservableList<String> ObservablePlugins = FXCollections.observableArrayList();
     String aux;
     List<StageModuleV2> stages;
+    List<StageModuleV2> stages2;
+    List<StageModuleV2> stages3;
 
     @Inject
-    public Organization(List<Participant> participants, List<StagePluginV2> plugins, List<Configuration> configurations, StagePlugin pluginSelected, Configuration configurationSelected, List<StageModuleV2> stages) {
+    public Organization(List<Participant> participants, List<StagePluginV2> plugins, List<StagePluginV2> plugins2, List<StagePluginV2> plugins3, List<Configuration> configurations, StagePlugin pluginSelected, Configuration configurationSelected, List<StageModuleV2> stages, List<StageModuleV2> stages2, List<StageModuleV2> stages3) {
         this.fileProject = fileProject;
         this.plugins = plugins;
+        this.plugins2 = plugins2;
+        this.plugins3 = plugins3;
         this.configurations = configurations;
         this.pluginSelected = pluginSelected;
         captures = new ArrayList<CaptureProvider>();
         analysis = new ArrayList<AnalysisProvider>();
         visualization = new ArrayList<VisualizationProvider>();
-        this.stages=stages;
+        this.stages = stages;
+        this.stages2 = stages2;
+        this.stages3 = stages3;
     }
     
     public File getFileProject() {
@@ -107,6 +113,24 @@ public class Organization {
         this.plugins = plugins;
     }
 
+    public List<StagePluginV2> getPlugins2() {
+        return plugins2;
+    }
+
+    public void setPlugins2(List<StagePluginV2> plugins2) {
+        this.plugins2 = plugins2;
+    }
+
+    public List<StagePluginV2> getPlugins3() {
+        return plugins3;
+    }
+
+    public void setPlugins3(List<StagePluginV2> plugins3) {
+        this.plugins3 = plugins3;
+    }
+
+    
+    
     public List<Configuration> getConfigurations() {
         return configurations;
     }
@@ -158,6 +182,31 @@ public class Organization {
     public void setStageModules(List<StageModuleV2> stages){
         this.stages = stages;
     }
+
+    public List<StageModuleV2> getStages2() {
+        return stages2;
+    }
+
+    public StageModuleV2 getAnalysisStage(){
+        return stages2.get(0);
+    }
+    
+    public void setStages2(List<StageModuleV2> stages2) {
+        this.stages2 = stages2;
+    }
+
+    public List<StageModuleV2> getStages3() {
+        return stages3;
+    }
+
+    public StageModuleV2 getVisualizationStage(){
+        return stages3.get(0);
+    }
+    
+    public void setStages3(List<StageModuleV2> stages3) {
+        this.stages3 = stages3;
+    }
+    
     
     
     public StageModule getMOCaptureStage() {

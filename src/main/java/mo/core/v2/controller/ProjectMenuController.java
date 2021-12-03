@@ -73,6 +73,8 @@ public class ProjectMenuController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         init();
+        //addOneStage("name");
+        //addAllStages();
     }    
     
     @FXML
@@ -107,6 +109,7 @@ public class ProjectMenuController implements Initializable {
     @FXML
     private void clickCaptures(MouseEvent event) {
         try{
+            addOneStage("CaptureStage");
             centerPane.getChildren().clear();
             final JavaFXBuilderFactory builderFactory = new JavaFXBuilderFactory();
             final Callback<Class<?>, Object> callback = (clazz) -> injector.getInstance(clazz);
@@ -128,6 +131,7 @@ public class ProjectMenuController implements Initializable {
     @FXML
     private void clickAnalysis(MouseEvent event) {
         try{
+            addOneStage("AnalysisStage");
             centerPane.getChildren().clear();
             final JavaFXBuilderFactory builderFactory = new JavaFXBuilderFactory();
             final Callback<Class<?>, Object> callback = (clazz) -> injector.getInstance(clazz);
@@ -148,6 +152,7 @@ public class ProjectMenuController implements Initializable {
     @FXML
     private void clickVisualizations(MouseEvent event) {
         try{
+            addOneStage("VisualizationStage");
             centerPane.getChildren().clear();
             final JavaFXBuilderFactory builderFactory = new JavaFXBuilderFactory();
             final Callback<Class<?>, Object> callback = (clazz) -> injector.getInstance(clazz);
@@ -189,6 +194,24 @@ public class ProjectMenuController implements Initializable {
             stage.setOrganization(model.getOrg());
             model.getOrg().addStage(stage);
             model.getOrg().store();
+        }
+    }
+    
+    private void addAllStages(){
+        List<Plugin> stagePlugins = PluginRegistry.getInstance().getPluginData().getPluginsFor("mo.organization.StageModule");
+        for(Plugin stagePlugin : stagePlugins){
+            StageModule nodeProvider = (StageModule) stagePlugin.getNewInstance();
+            System.out.println(nodeProvider);
+            addStageNodeIfNotExists(nodeProvider);
+        }
+    }
+    private void addOneStage(String name){
+        List<Plugin> stagePlugins = PluginRegistry.getInstance().getPluginData().getPluginsFor("mo.organization.StageModule");
+        for(Plugin stagePlugin : stagePlugins){
+            if(stagePlugin.getName().equals(name)){
+                StageModule nodeProvider = (StageModule) stagePlugin.getNewInstance();
+                addStageNodeIfNotExists(nodeProvider);
+            }
         }
     }
 }

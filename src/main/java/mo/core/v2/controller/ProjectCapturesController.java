@@ -121,7 +121,7 @@ public class ProjectCapturesController implements Initializable {
         List<Plugin> stagePlugins = PluginRegistry.getInstance().getPluginData().getPluginsFor("mo.organization.StageModule");
         for(Plugin stagePlugin : stagePlugins){
             StageModule nodeProvider = (StageModule) stagePlugin.getNewInstance();
-            if(nodeProvider.getName().equals(model.getCaptureStage().gatName())){
+            if(nodeProvider.getName().equals(model.getCaptureStage().getName())){
                 model.setMOCaptureStage(nodeProvider);
                 break;
             }
@@ -139,7 +139,7 @@ public class ProjectCapturesController implements Initializable {
     public void initCaptureStage(){
         ObservablePlugins.clear();
         for(Plugin plugin : PluginRegistry.getInstance().getPluginData().getPluginsFor("mo.capture.CaptureProvider")){
-            for(StagePluginV2 sp: model.getCaptureStage().getPlugins()){
+            for(StagePluginV2 sp : model.getCaptureStage().getPlugins()){
                 CaptureProvider c = (CaptureProvider) plugin.getNewInstance();
                 if(c != null){
                     if(ObservablePlugins.isEmpty()){
@@ -208,14 +208,13 @@ public class ProjectCapturesController implements Initializable {
     }
     
     private void addConfiguration(){
-        ProjectOrganization PO = new ProjectOrganization("");
         String SelectedPlugin = model.getPluginSelected().getName();
         for(Plugin plugin : PluginRegistry.getInstance().getPluginData().getPluginsFor("mo.capture.CaptureProvider")){
             for(StagePlugin sp: model.getMOCaptureStage().getPlugins()){
                 CaptureProvider c = (CaptureProvider) plugin.getNewInstance();
                 if(c != null){
-                    if(c.getName().equals(SelectedPlugin)&&SelectedPlugin.equals(sp.getName())){
-                        Configuration config = c.initNewConfiguration(PO);
+                    if(c.getName().equals(SelectedPlugin) && SelectedPlugin.equals(sp.getName())){
+                        Configuration config = c.initNewConfiguration(model.getOrg());
                         if(config != null){
                             saveConfiguration(SelectedPlugin, config.getId());
                             model.getConfigurations().add(config);
@@ -224,6 +223,7 @@ public class ProjectCapturesController implements Initializable {
                             sp.getConfigurations().add(config);
                             System.out.println(config.getId());
                             System.out.println(sp.getName());
+                            model.getOrg().store();
                             break;
                         }
                     }
