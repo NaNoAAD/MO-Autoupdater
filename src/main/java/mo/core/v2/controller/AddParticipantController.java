@@ -62,6 +62,7 @@ public class AddParticipantController implements Initializable {
     @FXML
     private Text alertLabel;
     private int numParticipant;
+    private boolean edit = false;
     @Inject
     public Injector injector;
     @Inject
@@ -78,51 +79,65 @@ public class AddParticipantController implements Initializable {
     }    
     
     public void init(){
-        alert.setText("");
-        numParticipant = model.getParticipants().size();
-        int numAux = numParticipant + 1;
-        idText.setText(String.valueOf(numAux));
-        calendar.setValue(LocalDate.now());
+        if(model.getpSelected() != null){
+            edit = true;
+            Participant p = model.getpSelected();
+            addButton.setText("Edit");
+            idText.setText(p.id);
+            nameText.setText(p.name);
+            calendar.setValue(p.date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            noteText.setText(p.notes);
+            idText.disableProperty().set(edit);
+            calendar.disableProperty().set(edit);
+            
+        }
+        else{
+            alert.setText("");
+            numParticipant = model.getParticipants().size();
+            int numAux = numParticipant + 1;
+            idText.setText(String.valueOf(numAux));
+            calendar.setValue(LocalDate.now());
+        }
+        
+        
     }    
 
     @FXML
     private void addClick(MouseEvent event) {
-        System.out.println("1");
-        if(!model.getParticipants().isEmpty()){
-            System.out.println("2");
-            for(Participant p : model.getParticipants()){
-                System.out.println("3");
-                if(p.id.equals(idText.getText())){
-                    System.out.println("3.1");
-                    alertLabel.setText("The id must be unique");
-                    break;
+        if(!edit){
+            if(!model.getParticipants().isEmpty()){
+                for(Participant p : model.getParticipants()){
+                    if(p.id.equals(idText.getText())){
+                        System.out.println("3.1");
+                        alertLabel.setText("The id must be unique");
+                        break;
+                    }
+                    else {
+                        if(idText.getText().toCharArray().length<=0){
+                            //alert.setText("*");
+                            alertLabel.setText("you must write a name");
+                            break;
+                        }
+                        else{
+                            createParticipant();
+                            break;
+                        }
+                    }
                 }
-                else {
-                    System.out.println("3.2");
-                    if(idText.getText().toCharArray().length<=0){
-                        System.out.println("3.2.1");
-                        //alert.setText("*");
-                        alertLabel.setText("you must write a name");
-                        break;
-                    }
-                    else{
-                        System.out.println("3.2.2");
-                        createParticipant();
-                        break;
-                    }
+            }
+            else{
+
+                if(idText.getText().toCharArray().length<=0){
+                    alertLabel.setText("you must write a name");
+                }
+                else{
+                    createParticipant(); 
                 }
             }
         }
         else{
-            System.out.println("4");
-            if(idText.getText().toCharArray().length<=0){
-                System.out.println("4.1");
-                alertLabel.setText("you must write a name");
-            }
-            else{
-                System.out.println("4.2");
-                createParticipant(); 
-            }
+            model.getpSelected().name = nameText.getText();
+            model.getpSelected().notes = noteText.getText();
         }
         cancelClick(event);
     }

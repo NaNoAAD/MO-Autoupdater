@@ -31,6 +31,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import javafx.util.Pair;
 import mo.capture.CaptureProvider;
 import mo.core.plugin.Plugin;
 import mo.core.plugin.PluginRegistry;
@@ -38,7 +39,6 @@ import mo.core.v2.model.ConfigurationV2;
 import mo.core.v2.model.Organization;
 import mo.core.v2.model.StagePluginV2;
 import mo.organization.Configuration;
-import mo.organization.ProjectOrganization;
 import mo.organization.StageModule;
 import mo.organization.StagePlugin;
 
@@ -92,7 +92,7 @@ public class ProjectCapturesController implements Initializable {
             Stage popUp = new Stage();
             final JavaFXBuilderFactory builderFactory = new JavaFXBuilderFactory();
             final Callback<Class<?>, Object> callback = (clazz) -> injector.getInstance(clazz);
-            FXMLLoader loaderOpen = new FXMLLoader(MainWindowsController.class
+            FXMLLoader loaderOpen = new FXMLLoader(ProjectCapturesController.class
                 .getResource("/fxml/core/ui/AddPlugin.fxml"), null,
                 builderFactory, callback);
             Parent openParent = loaderOpen.load();
@@ -112,12 +112,19 @@ public class ProjectCapturesController implements Initializable {
     }
     
     private void init(){
+        int aux = 0;
         if(model.getCaptures().isEmpty()){
             iconCapture.opacityProperty().set(0.50);
             textCapture.opacityProperty().set(0.50);
             deleteButton.opacityProperty().set(0.50);
             row=0;
-        } 
+        }
+        else{
+            System.out.println("1");
+            for(Pair<String,String> p : model.getConfigCaptures()){
+                addPlugin(p.getKey()+"("+p.getValue()+")");
+            }
+        }
         List<Plugin> stagePlugins = PluginRegistry.getInstance().getPluginData().getPluginsFor("mo.organization.StageModule");
         for(Plugin stagePlugin : stagePlugins){
             StageModule nodeProvider = (StageModule) stagePlugin.getNewInstance();
@@ -218,6 +225,7 @@ public class ProjectCapturesController implements Initializable {
                         if(config != null){
                             saveConfiguration(SelectedPlugin, config.getId());
                             model.getConfigurations().add(config);
+                            //model.getConfigCaptures().add(config);
                             System.out.println(config);
                             //addPlugin(config.getId());
                             sp.getConfigurations().add(config);
@@ -239,8 +247,17 @@ public class ProjectCapturesController implements Initializable {
             if(spv.getName().equals(SelectedPlugin)){
                 ConfigurationV2 config = new ConfigurationV2(configId);
                 spv.addConfiguration(config);
+                Pair<String,String> configAux = new Pair<>(config.getName(),spv.getName());
+                model.getConfigCaptures().add(configAux);
                 addPlugin(config.getName()+" ("+spv.getName()+")");
+                
             }
+        }
+    }
+    
+    public void addAux(String name){
+        for(StagePluginV2 spv : model.getCaptureStage().getPlugins()){
+            
         }
     }
 }

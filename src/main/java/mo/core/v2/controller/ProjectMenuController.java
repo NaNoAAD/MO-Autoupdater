@@ -19,13 +19,11 @@ import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.RowConstraints;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
 import mo.core.plugin.Plugin;
@@ -210,7 +208,22 @@ public class ProjectMenuController implements Initializable {
         for(Plugin stagePlugin : stagePlugins){
             if(stagePlugin.getName().equals(name)){
                 StageModule nodeProvider = (StageModule) stagePlugin.getNewInstance();
-                addStageNodeIfNotExists(nodeProvider);
+                int aux = model.getOrg().getStages().size();
+                if(aux == 0){
+                    addStageNodeIfNotExists(nodeProvider);
+                }
+                else{
+                    if(aux == 1){
+                        if(!nodeProvider.equals(model.getOrg().getStages().get(0))){
+                            addStageNodeIfNotExists(nodeProvider);
+                        }
+                    }
+                    else if(aux == 2){
+                        if(!nodeProvider.getName().equals(model.getOrg().getStages().get(0).getName()) && !nodeProvider.getName().equals(model.getOrg().getStages().get(1).getName())){
+                            addStageNodeIfNotExists(nodeProvider);
+                        }
+                    }
+                }
             }
         }
     }

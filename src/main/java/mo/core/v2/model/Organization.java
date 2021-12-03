@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.util.Pair;
 import mo.analysis.AnalysisProvider;
 import mo.capture.CaptureProvider;
 import mo.organization.Configuration;
@@ -29,6 +30,7 @@ public class Organization {
     int type;
     public int newProyect;
     List<Participant> participants = new ArrayList<>();
+    Participant pSelected = null;
     //List<StageModule> stages;
     StageModule MOCaptureStage;
     List<StagePluginV2> plugins;
@@ -40,6 +42,7 @@ public class Organization {
     ProjectOrganization org;
     Boolean restoreBoolean = false;
     List<CaptureProvider> captures;
+    List<Pair<String,String>> configCaptures = new ArrayList<Pair<String,String>>();
     List<AnalysisProvider> analysis;
     List<VisualizationProvider> visualization;
     String config;
@@ -89,6 +92,22 @@ public class Organization {
         this.participants = participants;
     }
 
+    public Participant getpSelected() {
+        return pSelected;
+    }
+
+    public void setpSelected(Participant pSelected) {
+        this.pSelected = pSelected;
+    }
+
+    public List<Pair<String, String>> getConfigCaptures() {
+        return configCaptures;
+    }
+
+    public void setConfigCaptures(List<Pair<String, String>> configCaptures) {
+        this.configCaptures = configCaptures;
+    }
+    
     /*public List<Participant> getParticipantsNoUsed() {
         return participantsNoUsed;
     }
@@ -129,8 +148,6 @@ public class Organization {
         this.plugins3 = plugins3;
     }
 
-    
-    
     public List<Configuration> getConfigurations() {
         return configurations;
     }

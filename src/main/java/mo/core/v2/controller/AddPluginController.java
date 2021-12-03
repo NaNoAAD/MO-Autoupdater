@@ -104,27 +104,6 @@ public class AddPluginController implements Initializable {
         stage.close();
     }
     
-    private void parse(List<StagePluginV2> plugins){
-        if(type==1){
-            auxC = new ArrayList<CaptureProvider>();
-            plugins.forEach((plugin) -> {
-                auxC.add((CaptureProvider)plugin);
-            });   
-        }
-        else if(type==2){
-            auxA = new ArrayList<AnalysisProvider>();
-            plugins.forEach((plugin) -> {
-                auxA.add((AnalysisProvider)plugin);
-            });
-        }
-        else if(type==3){
-            auxV = new ArrayList<VisualizationProvider>();
-            plugins.forEach((plugin) -> {
-                auxV.add((VisualizationProvider)plugin);
-            });   
-        }        
-    }
-    
     private CaptureProvider addSelectedC(List<CaptureProvider> aux, String selected){
         for(CaptureProvider capture : aux){
             if(capture.getName().equals(selected)){
@@ -150,14 +129,9 @@ public class AddPluginController implements Initializable {
             }
         }
         return null;  
-    }
-
-    private void allGood(KeyEvent event) {
-        addButton.disableProperty().setValue(Boolean.FALSE);
-    }
+    }    
 
     @FXML
     private void check(MouseEvent event) {
     }
-    
 }
