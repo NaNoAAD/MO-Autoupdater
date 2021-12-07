@@ -23,44 +23,69 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ImageView id="iconProject" fx:id="iconProject" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" GridPane.valignment="TOP">
+            <ImageView id="iconProject" fx:id="iconProject" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../build/resources/main/images/folder.png" />
+                  <Image url="@../../../images/folder.png" />
                </image>
                <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
+                  <Insets bottom="90.0" left="5.0" />
                </GridPane.margin>
             </ImageView>
-            <Text id="nameProject" fx:id="nameProject" strokeType="OUTSIDE" strokeWidth="0.0" text="Name: Example" GridPane.valignment="TOP">
+            <Text id="nameProject" fx:id="nameProject" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets left="40.0" top="10.0" />
                </GridPane.margin>
             </Text>
-            <Text id="participantsNumber" fx:id="participantsNumber" strokeType="OUTSIDE" strokeWidth="0.0" text="Participants: x" GridPane.valignment="TOP">
+            <Text id="participantsNumber" fx:id="participantsNumber" strokeType="OUTSIDE" strokeWidth="0.0" text="Participants:" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets left="40.0" top="30.0" />
                </GridPane.margin>
             </Text>
-            <Text id="capturesNumber" fx:id="capturesNumber" strokeType="OUTSIDE" strokeWidth="0.0" text="Captures: x" GridPane.valignment="TOP">
+            <Text id="capturesNumber" fx:id="capturesNumber" strokeType="OUTSIDE" strokeWidth="0.0" text="Captures:" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets left="40.0" top="50.0" />
                </GridPane.margin>
             </Text>
-            <Text id="analysisNumber" fx:id="analysisNumber" strokeType="OUTSIDE" strokeWidth="0.0" text="Analysis: x" GridPane.valignment="TOP">
+            <Text id="analysisNumber" fx:id="analysisNumber" strokeType="OUTSIDE" strokeWidth="0.0" text="Analysis:" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets left="40.0" top="70.0" />
                </GridPane.margin>
             </Text>
-            <Text id="visualizationsNumber" fx:id="visualizationsNumber" strokeType="OUTSIDE" strokeWidth="0.0" text="Visualizations: x" GridPane.valignment="TOP">
+            <Text id="visualizationsNumber" fx:id="visualizationsNumber" strokeType="OUTSIDE" strokeWidth="0.0" text="Visualizations:" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets left="40.0" top="90.0" />
                </GridPane.margin>
             </Text>
-            <Button id="seeButton" fx:id="seeButton" mnemonicParsing="false" onMouseClicked="#seeProject" style="-fx-background-color: #3D3D3D40;" text="See" GridPane.valignment="BOTTOM">
+            <Button id="seeButton" fx:id="seeButton" mnemonicParsing="false" style="-fx-background-color: #3D3D3D40;" text="See" GridPane.valignment="BOTTOM">
                <GridPane.margin>
                   <Insets bottom="10.0" left="220.0" right="10.0" top="10.0" />
                </GridPane.margin>
             </Button>
+            <Text id="nameProject2" fx:id="nameProject2" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="120.0" top="10.0" />
+               </GridPane.margin>
+            </Text>
+            <Text id="participantsNumber2" fx:id="participantsNumber2" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="120.0" top="30.0" />
+               </GridPane.margin>
+            </Text>
+            <Text id="capturesNumber2" fx:id="capturesNumber2" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="120.0" top="50.0" />
+               </GridPane.margin>
+            </Text>
+            <Text id="analysisNumber2" fx:id="analysisNumber2" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="120.0" top="70.0" />
+               </GridPane.margin>
+            </Text>
+            <Text id="visualizationsNumber2" fx:id="visualizationsNumber2" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="120.0" top="90.0" />
+               </GridPane.margin>
+            </Text>
          </children>
       </GridPane>
    </content>

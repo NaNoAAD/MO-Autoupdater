@@ -31,20 +31,16 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import javafx.util.Pair;
 import mo.analysis.AnalysisProvider;
 import mo.core.plugin.Plugin;
 import mo.core.plugin.PluginRegistry;
-import mo.core.v2.model.Activity;
 import mo.core.v2.model.ConfigurationV2;
 import mo.core.v2.model.Organization;
-import mo.core.v2.model.StageModuleV2;
 import mo.core.v2.model.StagePluginV2;
 import mo.organization.Configuration;
-import mo.organization.ProjectOrganization;
-import mo.organization.StageAction;
 import mo.organization.StageModule;
 import mo.organization.StagePlugin;
-import mo.visualization.VisualizationProvider;
 
 /**
  * FXML Controller class
@@ -66,8 +62,6 @@ public class ProjectAnalysisController implements Initializable {
     private Circle circleAdd;
     @FXML
     private ImageView imageAdd;
-    @FXML
-    private ImageView deleteButton;
     @Inject
     public Injector injector;
     @Inject
@@ -119,7 +113,6 @@ public class ProjectAnalysisController implements Initializable {
         
     }
 
-    @FXML
     private void removeConfiguration(MouseEvent event) {
         System.out.println("Analysis remove");
     }
@@ -128,8 +121,12 @@ public class ProjectAnalysisController implements Initializable {
         if(model.getAnalysis().isEmpty()){
             iconAnalysis.opacityProperty().set(0.50);
             textAnalysis.opacityProperty().set(0.50);
-            deleteButton.opacityProperty().set(0.50);
             row=0;
+        }
+        else{
+            for(Pair<String,String> p : model.getConfigAnalysis()){
+                addPlugin(p.getKey()+"("+p.getValue()+")");
+            }
         }
         List<Plugin> stagePlugins = PluginRegistry.getInstance().getPluginData().getPluginsFor("mo.organization.StageModule");
         for(Plugin stagePlugin : stagePlugins){
@@ -139,9 +136,6 @@ public class ProjectAnalysisController implements Initializable {
                 break;
             }
         }
-        System.out.println("***************************************************************");
-        System.out.println(model.getMOCaptureStage().getActions());
-        System.out.println("***************************************************************");
         //System.out.println(model.getMOCaptureStage().getPlugins());
     }
     
@@ -166,7 +160,6 @@ public class ProjectAnalysisController implements Initializable {
                         ObservablePlugins.add(a.getName());
                         analysis.add(a);
                     }
-                    //System.out.println("Plugin: " + c.getName());
                 }
             }
         }
@@ -181,7 +174,6 @@ public class ProjectAnalysisController implements Initializable {
         if(analysisAux.size()<1){
             iconAnalysis.opacityProperty().set(1);
             textAnalysis.opacityProperty().set(1);
-            deleteButton.opacityProperty().set(1);
             textAnalysis.setText(name);
             row++;
             analysisAux.add(name);
@@ -196,19 +188,10 @@ public class ProjectAnalysisController implements Initializable {
             Text text2 = new Text(name);
             text2.setTranslateX(50);
             gridPaneAnalysis.add(text2, 0, row);
-            javafx.scene.image.ImageView delete2 = new javafx.scene.image.ImageView();
-            delete2.setImage(deleteButton.getImage());
-            delete2.setFitHeight(20);
-            delete2.setFitWidth(20);
-            delete2.setTranslateX(182);
-            delete2.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-                removeConfiguration(event);
-            });
             gridPaneAnalysis.add(text2, 0, row);
             row++;
             analysisAux.add(name);
         }
-        System.out.println("AddVisu");
     }
     
     private void addConfiguration(){
@@ -221,6 +204,7 @@ public class ProjectAnalysisController implements Initializable {
                         Configuration config = a.initNewConfiguration(model.getOrg());
                         if(config != null){
                             model.getConfigurations().add(config);
+                            sp.getConfigurations().add(config);
                             model.getOrg().store();
                             saveConfiguration(SelectedPlugin, config.getId());
                             break;
@@ -232,7 +216,7 @@ public class ProjectAnalysisController implements Initializable {
     }
     
     public void saveConfiguration(String SelectedPlugin, String configId){
-	for(StagePluginV2 spv : model.getCaptureStage().getPlugins()){
+	for(StagePluginV2 spv : model.getAnalysisStage().getPlugins()){
             if(spv.getName().equals(SelectedPlugin)){
                 ConfigurationV2 config = new ConfigurationV2(configId);
                 spv.addConfiguration(config);

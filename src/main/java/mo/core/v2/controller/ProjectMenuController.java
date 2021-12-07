@@ -18,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -25,6 +26,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import mo.core.plugin.Plugin;
 import mo.core.plugin.PluginRegistry;
@@ -70,6 +73,9 @@ public class ProjectMenuController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        if(model.newProyect!=0){
+            name();
+        }
         init();
         //addOneStage("name");
         //addAllStages();
@@ -86,7 +92,7 @@ public class ProjectMenuController implements Initializable {
             centerPane.getChildren().clear();
             final JavaFXBuilderFactory builderFactory = new JavaFXBuilderFactory();
             final Callback<Class<?>, Object> callback = (clazz) -> injector.getInstance(clazz);
-            FXMLLoader loaderParticipants = new FXMLLoader(MainWindowsController.class
+            FXMLLoader loaderParticipants = new FXMLLoader(ProjectMenuController.class
                 .getResource("/fxml/core/ui/ProjectParticipants.fxml"), null,
                 builderFactory, callback);
 
@@ -97,7 +103,7 @@ public class ProjectMenuController implements Initializable {
             centerPane.getChildren().add(participantParent);
         }
         catch (IOException ex) {
-            Logger.getLogger(MainWindowsController.class
+            Logger.getLogger(ProjectMenuController.class
           .getName()).log(Level.SEVERE, null, ex);
         }
         
@@ -175,6 +181,10 @@ public class ProjectMenuController implements Initializable {
     public void init(){
         if(model.newProyect==0){
             tutorialPane.getChildren().clear();
+            nameProjectText.setText(model.getOrg().getLocation().getName());
+        }
+        else{
+            nameProjectText.setText(model.getOrg().getLocation().getName());
         }
         
         /*List<Plugin> stagePlugins = PluginRegistry.getInstance().getPluginData().getPluginsFor("mo.organization.StageModule");
@@ -225,6 +235,27 @@ public class ProjectMenuController implements Initializable {
                     }
                 }
             }
+        }
+    }
+    
+    private void name(){
+        try{
+            Stage popUp = new Stage();
+            final JavaFXBuilderFactory builderFactory = new JavaFXBuilderFactory();
+            final Callback<Class<?>, Object> callback = (clazz) -> injector.getInstance(clazz);
+            FXMLLoader loaderOpen = new FXMLLoader(ProjectParticipantsController.class
+                    .getResource("/fxml/core/ui/NewProject.fxml"), null,
+                    builderFactory, callback);
+            Parent openParent = loaderOpen.load();
+            openParent.getProperties()
+                    .put(CONTROLLER_KEY, loaderOpen.getController());
+            popUp.initModality(Modality.APPLICATION_MODAL);
+            popUp.setScene(new Scene(openParent));
+            popUp.showAndWait();
+        }
+        catch(IOException ex){
+            Logger.getLogger(MainWindowsController.class
+          .getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

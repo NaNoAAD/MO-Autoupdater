@@ -7,7 +7,6 @@ package mo.core.v2.controller;
 
 import com.google.inject.Inject;
 import com.google.inject.Injector;
-import java.awt.Dimension;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -22,20 +21,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import mo.core.MultimodalObserver;
-import static mo.core.Utils.getBaseFolder;
 import mo.core.filemanagement.project.Project;
 import mo.core.preferences.AppPreferencesWrapper;
 import mo.core.preferences.PreferencesManager;
@@ -49,8 +42,6 @@ import mo.organization.ProjectOrganization;
  */
 public class MainWindowsController implements Initializable {
     private final String CONTROLLER_KEY = "controller";
-    private Project project;
-    public ProjectOrganization projectOrg;
     
     @FXML
     private BorderPane mainPane;
@@ -75,10 +66,7 @@ public class MainWindowsController implements Initializable {
     @Inject
     public Injector injector;
     @Inject 
-    Organization org;
-    
-    public ArrayList<Object> controllers;
-  
+    Organization model;
     private String name;
     
     /**
@@ -112,11 +100,9 @@ public class MainWindowsController implements Initializable {
     @FXML
     private void newProject(ActionEvent event) {
         try{
-            Stage popUp = new Stage();
             textWelcome.setVisible(false);
             centerPane.getChildren().clear();
-            newProjectCreation(popUp);
-            org.newProyect = 1;
+            model.newProyect = 1;
             final JavaFXBuilderFactory builderFactory = new JavaFXBuilderFactory();
             final Callback<Class<?>, Object> callback = (clazz) -> injector.getInstance(clazz);
             FXMLLoader loaderOpen = new FXMLLoader(MainWindowsController.class
@@ -125,7 +111,7 @@ public class MainWindowsController implements Initializable {
             Parent openParent = loaderOpen.load();
             openParent.getProperties()
                 .put(CONTROLLER_KEY, loaderOpen.getController());
-            System.out.println(org.getFileProject());
+            System.out.println(model.getFileProject());
             centerPane.getChildren().add(openParent);
             
             
@@ -148,12 +134,8 @@ public class MainWindowsController implements Initializable {
                     builderFactory, callback);
             
             Parent openParent = loaderOpen.load();
-            org.newProyect = 0;
             openParent.getProperties().put(CONTROLLER_KEY, loaderOpen.getController());
             centerPane.getChildren().add(openParent);
-            
-            
-            
         }
         catch (IOException ex){
             Logger.getLogger(MainWindowsController.class
@@ -163,6 +145,21 @@ public class MainWindowsController implements Initializable {
 
     @FXML
     private void plugins(ActionEvent event) {
+        try {
+            textWelcome.setVisible(false);
+            centerPane.getChildren().clear();
+            final JavaFXBuilderFactory builderFactory = new JavaFXBuilderFactory();
+            final Callback<Class<?>, Object> callback = (clazz) -> injector.getInstance(clazz);
+            FXMLLoader loaderOpen= new FXMLLoader(MainWindowsController.class.
+                    getResource("/fxml/core/ui/Plugins.fxml"), null,
+                    builderFactory, callback);
+            
+            Parent openParent = loaderOpen.load();
+            openParent.getProperties().put(CONTROLLER_KEY, loaderOpen.getController());
+            centerPane.getChildren().add(openParent);
+        } catch (IOException ex) {
+            Logger.getLogger(MainWindowsController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
@@ -191,44 +188,21 @@ public class MainWindowsController implements Initializable {
         System.exit(0);
     }
     
-    private void newProjectCreation(Stage popUp){
-        Button btnCancel, btnCreate;
-        Label lbl;
-        btnCancel = new Button("Cancel");
-        btnCreate = new Button("Create");
-        TextField text = new TextField(getBaseFolder()+ "\\" +"newproject");
-        btnCancel.setOnAction(e-> buttonModal(e, btnCreate, text.getText(), popUp));
-        btnCreate.setOnAction(e-> buttonModal(e, btnCreate, text.getText(), popUp));
-        lbl = new Label("Name of project");
-        popUp.initModality(Modality.APPLICATION_MODAL);
-        VBox pop = new VBox(20);
-        pop.setStyle("-fx-padding:10px;");
-        pop.getChildren().addAll(new Text("New project"), text, btnCreate, btnCancel);
-        Scene popUp1 = new Scene(pop, 300, 200);
-        popUp.setTitle("New project");
-        popUp.setScene(popUp1);
-        popUp.showAndWait();
-        System.out.println(name);
-        popUp.close();
-        File proj = new File(name);
-        proj.mkdir();
-        projectOrg = new ProjectOrganization(name);
-        org.setOrg(projectOrg);
-        org.setFileProject(proj);
-        org.getOrg().store();
-        
-    }
-    
-    private void buttonModal(ActionEvent e, Button btn, String text, Stage popUp){
-        if(e.getSource()==btn){
-            System.out.println("Creado :D");
-            name = text;
-            popUp.close();
-        }
-        else{
-            popUp.close();
-        }
+    public void buildSteps(){
+        try{
+            final JavaFXBuilderFactory bf = new JavaFXBuilderFactory();
+            final Callback<Class<?>,Object> cb = (clazz) -> injector.getInstance(clazz);
+            FXMLLoader fxmlLoaderPath = new FXMLLoader( MainWindowsController.class.getResource("/fxml/core/ui/MyProjects.fxml"), null, bf, cb);
+            Parent myProjects = fxmlLoaderPath.load();
+            myProjects.getProperties().put(CONTROLLER_KEY, fxmlLoaderPath.getController());
             
+            FXMLLoader fxmlLoaderProject = new FXMLLoader( MainWindowsController.class.getResource("/fxml/core/ui/ProjectMenu.fxml"), null, bf, cb);
+            Parent project = fxmlLoaderPath.load();
+            project.getProperties().put(CONTROLLER_KEY, fxmlLoaderPath.getController());
+            
+        }
+        catch(IOException ex){
+            
+        }
     }
-    
 }

@@ -21,18 +21,18 @@
     <RowConstraints maxHeight="96.0" minHeight="10.0" prefHeight="96.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Project name:  " GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Text id="nameProjectText" fx:id="nameProjectText" strokeType="OUTSIDE" strokeWidth="0.0" text="Project name:  " GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets top="3.0" />
          </GridPane.margin>
       </Text>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Project location:  " GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP">
+      <Text id="newProjectLocationLabel" fx:id="newProjectLocationLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Project location:  " GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP">
          <GridPane.margin>
             <Insets top="20.0" />
          </GridPane.margin>
       </Text>
-      <TextField id="nameProjectText" fx:id="nameProjectText" prefHeight="25.0" prefWidth="232.0" text="newproject" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-      <TextField id="newProjectLocationText" fx:id="newProjectLocationText" prefHeight="25.0" prefWidth="232.0" text="C:\Users\MultimodalObserver\newproject" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <TextField id="nameProjectText" fx:id="nameProjectText" onKeyTyped="#writeEvent" prefHeight="25.0" prefWidth="232.0" text="newproject" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+      <TextField id="newProjectLocationText" fx:id="newProjectLocationText" prefHeight="25.0" prefWidth="232.0" text="C:\Users\MultimodalObserver\" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets top="14.0" />
          </GridPane.margin>

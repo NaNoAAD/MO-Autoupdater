@@ -31,6 +31,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import javafx.util.Pair;
 import mo.capture.CaptureProvider;
 import mo.core.plugin.Plugin;
 import mo.core.plugin.PluginRegistry;
@@ -65,8 +66,6 @@ public class ProjectVisualizationController implements Initializable {
     private Circle circleAdd;
     @FXML
     private ImageView imageAdd;
-    @FXML
-    private ImageView deleteButton;
     private String pluginType = "mo.visualization.VisualizationProvider";
     @Inject
     public Injector injector;
@@ -102,7 +101,7 @@ public class ProjectVisualizationController implements Initializable {
             openParent.getProperties()
                 .put(CONTROLLER_KEY, loaderOpen.getController());
             popUp.initModality(Modality.APPLICATION_MODAL);
-            popUp.setTitle("Add Analysis");
+            popUp.setTitle("Add Visualization");
             popUp.setScene(new Scene(openParent));
             popUp.showAndWait();
             addConfiguration();
@@ -112,32 +111,28 @@ public class ProjectVisualizationController implements Initializable {
           .getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    @FXML
-    private void removeConfiguration(MouseEvent event) {
-        System.out.println("Visualization remove");
-    }
     
     private void init(){
-        if(visualizationAux.isEmpty()){
+        if(model.getVisualization().isEmpty()){
             iconVisualization.opacityProperty().set(0.50);
             textVisualization.opacityProperty().set(0.50);
-            deleteButton.opacityProperty().set(0.50);
             row=0;
+        }
+        else{
+            System.out.println("1");
+            for(Pair<String,String> p : model.getConfigVisualizations()){
+                System.out.println("2");
+                addPlugin(p.getKey()+"("+p.getValue()+")");
+            }
         }
         List<Plugin> stagePlugins = PluginRegistry.getInstance().getPluginData().getPluginsFor("mo.organization.StageModule");
         for(Plugin stagePlugin : stagePlugins){
             StageModule nodeProvider = (StageModule) stagePlugin.getNewInstance();
-            System.out.println("VIZU: " + model.getVisualizationStage().getName());
-            System.out.println("NODE: " + nodeProvider.getName());
             if(nodeProvider.getName().equals(model.getVisualizationStage().getName())){
                 model.setMOCaptureStage(nodeProvider);
                 break;
             }
         }
-        System.out.println("***************************************************************");
-        System.out.println(model.getMOCaptureStage().getActions());
-        System.out.println("***************************************************************");
     }
     
     /*public ObservableList<String> addObservablePlugin(){
@@ -170,18 +165,20 @@ public class ProjectVisualizationController implements Initializable {
     }
     
     public void addPlugin(String name){
+        System.out.println("3");
         if(row>gridPaneAnalysis.getRowConstraints().size()){
             gridPaneAnalysis.addRow(row, null);
         }
         if(visualizationAux.size()<1){
+            System.out.println("4");
             iconVisualization.opacityProperty().set(1);
             textVisualization.opacityProperty().set(1);
-            deleteButton.opacityProperty().set(1);
             textVisualization.setText(name);
             row++;
             visualizationAux.add(name);
         }
         else{
+            System.out.println("4");
             javafx.scene.image.ImageView icon2 = new javafx.scene.image.ImageView();
             icon2.setImage(iconVisualization.getImage());
             icon2.setFitHeight(20);
@@ -191,32 +188,20 @@ public class ProjectVisualizationController implements Initializable {
             Text text2 = new Text(name);
             text2.setTranslateX(50);
             gridPaneAnalysis.add(text2, 0, row);
-            javafx.scene.image.ImageView delete2 = new javafx.scene.image.ImageView();
-            delete2.setImage(deleteButton.getImage());
-            delete2.setFitHeight(20);
-            delete2.setFitWidth(20);
-            delete2.setTranslateX(182);
-            gridPaneAnalysis.add(text2, 0, row);
             row++;
             visualizationAux.add(name);
         }
     }
     
     private void addConfiguration(){
-        System.out.println("1");
         String SelectedPlugin = model.getPluginSelected().getName();
         for(Plugin plugin : PluginRegistry.getInstance().getPluginData().getPluginsFor(pluginType)){
-            System.out.println("2");
             for(StagePlugin sp : model.getMOCaptureStage().getPlugins()){
-                System.out.println("3");
                 VisualizationProvider v = (VisualizationProvider) plugin.getNewInstance();
                 if(v != null){
-                    System.out.println("4");
                     if(v.getName().equals(SelectedPlugin) && SelectedPlugin.equals(sp.getName())){
-                        System.out.println("5");
                         Configuration config = v.initNewConfiguration(model.getOrg());
                         if(config != null){
-                            System.out.println("6");
                             model.getConfigurations().add(config);
                             model.getOrg().store();
                             saveConfiguration(SelectedPlugin, config.getId());
@@ -230,14 +215,12 @@ public class ProjectVisualizationController implements Initializable {
     }
     
     public void saveConfiguration(String SelectedPlugin, String configId){
-        System.out.println(model.getVisualizationStage().getName());
-        System.out.println(model.getVisualizationStage().getPlugins());
         for(StagePluginV2 spv : model.getVisualizationStage().getPlugins()){
-            System.out.println(spv.getName());
-            System.out.println(SelectedPlugin);
             if(spv.getName().equals(SelectedPlugin)){
                 ConfigurationV2 config = new ConfigurationV2(configId);
                 spv.addConfiguration(config);
+                Pair<String,String> configAux = new Pair<>(config.getName(),spv.getName());
+                model.getConfigVisualizations().add(configAux);
                 addPlugin(config.getName()+" ("+spv.getName()+")");
                 break;
             }

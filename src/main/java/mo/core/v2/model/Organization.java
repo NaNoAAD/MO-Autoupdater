@@ -14,6 +14,8 @@ import javafx.collections.ObservableList;
 import javafx.util.Pair;
 import mo.analysis.AnalysisProvider;
 import mo.capture.CaptureProvider;
+import mo.core.plugin.Plugin;
+import mo.core.plugin.PluginRegistry;
 import mo.organization.Configuration;
 import mo.organization.Participant;
 import mo.organization.ProjectOrganization;
@@ -42,12 +44,13 @@ public class Organization {
     ProjectOrganization org;
     Boolean restoreBoolean = false;
     List<CaptureProvider> captures;
-    List<Pair<String,String>> configCaptures = new ArrayList<Pair<String,String>>();
     List<AnalysisProvider> analysis;
     List<VisualizationProvider> visualization;
+    List<Pair<String,String>> configCaptures = new ArrayList<Pair<String,String>>();
+    List<Pair<String,String>> configAnalysis = new ArrayList<Pair<String,String>>();
+    List<Pair<String,String>> configVisualizations = new ArrayList<Pair<String,String>>();
     String config;
     ObservableList<String> ObservablePlugins = FXCollections.observableArrayList();
-    String aux;
     List<StageModuleV2> stages;
     List<StageModuleV2> stages2;
     List<StageModuleV2> stages3;
@@ -107,6 +110,24 @@ public class Organization {
     public void setConfigCaptures(List<Pair<String, String>> configCaptures) {
         this.configCaptures = configCaptures;
     }
+
+    public List<Pair<String, String>> getConfigAnalysis() {
+        return configAnalysis;
+    }
+
+    public void setConfigAnalysis(List<Pair<String, String>> configAnalysis) {
+        this.configAnalysis = configAnalysis;
+    }
+
+    public List<Pair<String, String>> getConfigVisualizations() {
+        return configVisualizations;
+    }
+
+    public void setConfigVisualizations(List<Pair<String, String>> configVisualizations) {
+        this.configVisualizations = configVisualizations;
+    }
+    
+    
     
     /*public List<Participant> getParticipantsNoUsed() {
         return participantsNoUsed;
@@ -273,5 +294,42 @@ public class Organization {
     public void setObservablePlugins(ObservableList<String> ObservablePlugins) {
         this.ObservablePlugins = ObservablePlugins;
     }
-        
+    
+    public void getProviderFromOrg(){
+        for(int i=0; i<this.org.getStages().get(0).getPlugins().size(); i++){
+            if(!org.getStages().get(0).getPlugins().get(i).getConfigurations().isEmpty()){
+                for(Plugin plugin : PluginRegistry.getInstance().getPluginData().getPluginsFor("mo.capture.CaptureProvider")){
+                    CaptureProvider c = (CaptureProvider) plugin.getNewInstance();
+                    if(org.getStages().get(0).getPlugins().get(i).getName().equals(c.getName())){
+                        for(int j=0; j<org.getStages().get(0).getPlugins().get(i).getConfigurations().size();j++){
+                            saveConfiguration(org.getStages().get(0).getName(),c.getName(),org.getStages().get(0).getPlugins().get(i).getConfigurations().get(j).getId());
+                        }
+                    }
+                }
+            }
+        }      
+    }
+    
+    public void saveConfiguration(String stage,String SelectedPlugin, String configId){
+        for(StagePluginV2 spv: this.getCaptureStage().getPlugins()){
+            if(spv.getName().equals(SelectedPlugin)){
+                ConfigurationV2 config = new ConfigurationV2(configId);
+                spv.addConfiguration(config);
+                Pair<String,String> configAux = new Pair<>(config.getName(),spv.getName());
+                if(stage.equals(this.stages.get(0).name)){
+                    this.getConfigCaptures().add(configAux);
+                }
+                else if(stage.equals(this.stages2.get(0).name)){
+                    this.getConfigAnalysis().add(configAux);
+                }
+                else if(stage.equals(this.stages3.get(0).name)){
+                    this.getConfigVisualizations().add(configAux);
+                }
+                
+            }
+        }
+    }
 }
+
+
+

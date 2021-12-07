@@ -72,7 +72,7 @@ public class ProjectParticipantsController implements Initializable {
     @Inject
     Organization model;
     private List<Participant> participants = new ArrayList<>();
-    int result = 4;
+    int result = 0;
     int row = 0;
     int aux = -1;
 
@@ -82,6 +82,9 @@ public class ProjectParticipantsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        if(!model.getParticipants().isEmpty()){
+            participants = model.getParticipants();
+        }
         iniciar();
     } 
     
@@ -108,7 +111,6 @@ public class ProjectParticipantsController implements Initializable {
                 }
             }
         });
-        System.out.println(model.getOrg().getParticipants().get(0).isLocked);
     }
 
 
@@ -124,8 +126,6 @@ public class ProjectParticipantsController implements Initializable {
                 break;
             }
         }
-        
-        
     }
 
     
@@ -138,6 +138,19 @@ public class ProjectParticipantsController implements Initializable {
             editParticipant.opacityProperty().set(0.50);
             deleteParticipant.opacityProperty().set(0.50);
             visulizationParticipant.opacityProperty().set(0.50);
+            if(result == 1){
+                textParticipant.setText("Participant");
+                gridPaneParticipants.add(addCircle,0,row);
+                gridPaneParticipants.add(addPlus,0,row);
+                gridPaneParticipants.add(iconParticipant, 0, row);
+                gridPaneParticipants.add(textParticipant, 0, row);
+                gridPaneParticipants.add(lockParticipant, 0, row);
+                gridPaneParticipants.add(recordParticipant, 0, row);
+                gridPaneParticipants.add(editParticipant, 0, row);
+                gridPaneParticipants.add(deleteParticipant, 0, row);
+                gridPaneParticipants.add(visulizationParticipant, 0, row);
+                
+            }
         }
         else{
             addAgain(0);
@@ -145,6 +158,7 @@ public class ProjectParticipantsController implements Initializable {
     }
 
     private void delete(MouseEvent event, String id) {
+        System.out.println("in delet");
         aux=-1;
         participants = model.getParticipants();
         for(Participant p : participants){
@@ -190,7 +204,7 @@ public class ProjectParticipantsController implements Initializable {
             deleteParticipant.setId(p.id);
             deleteParticipant.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
                 delete(event, deleteParticipant.getId());
-            });
+            }); 
             visulizationParticipant.opacityProperty().set(1);
             visulizationParticipant.setId(p.id);
             visulizationParticipant.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
@@ -380,12 +394,8 @@ public class ProjectParticipantsController implements Initializable {
             popUp.setTitle(action);
             popUp.setScene(new Scene(openParent));
             popUp.showAndWait();
-            if(model.getpSelected() != null){
-            }
-            else{
+            if(participants.size()!=model.getParticipants().size())
                 add(model.getParticipants().get(row),0);
-            }
-            
         }
         catch(IOException ex){
             Logger.getLogger(ProjectParticipantsController.class
@@ -394,51 +404,62 @@ public class ProjectParticipantsController implements Initializable {
     }
     
     private void deleteOfGrid(){
-        System.out.println("2");
+
         List<Node> nodes = gridPaneParticipants.getChildren();
         gridPaneParticipants.getChildren().removeAll(nodes);
         gridPaneParticipants.getChildren().removeAll(nodes);
-        System.out.println("3");
-        addAgain(1);
+        row = 0;
+        if(model.getParticipants().size()==0){
+            result = 1;
+            iniciar();
+        }
+        else{
+            addAgain(1);
+        }
     }
     
     private void addAgain(int n){
-        row = 0;
-        if(n==1){
-            gridPaneParticipants.add(addCircle,0,row);
-            gridPaneParticipants.add(addPlus,0,row);
-        }
-        else{
-            for(Participant p : model.getParticipants()){;
+        if(!model.getParticipants().isEmpty()){
+            for(Participant p : model.getParticipants()){
                 if(row==0){
+                    if(n==1){
+                        gridPaneParticipants.add(addCircle,0,row);
+                        gridPaneParticipants.add(addPlus,0,row);
+                    }
                     iconParticipant.opacityProperty().set(1);
                     iconParticipant.setId(p.id);
+                    gridPaneParticipants.add(iconParticipant, 0, row);
                     textParticipant.opacityProperty().set(1);
                     textParticipant.setId(p.id);
                     textParticipant.setText(p.name);
+                    gridPaneParticipants.add(textParticipant, 0, row);
                     lockParticipant.opacityProperty().set(1);
                     lockParticipant.setId(p.id);
                     lockParticipant.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
                         unLockParticipant(event, lockParticipant);
                     });
+                    gridPaneParticipants.add(lockParticipant, 0, row);
                     recordParticipant.opacityProperty().set(1);
                     recordParticipant.setId(p.id);
-
+                    gridPaneParticipants.add(recordParticipant, 0, row);
                     editParticipant.opacityProperty().set(1);
                     editParticipant.setId(p.id);
                     editParticipant.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
                         edit(event, editParticipant.getId());
                     });
+                    gridPaneParticipants.add(editParticipant, 0, row);
                     deleteParticipant.opacityProperty().set(1);
                     deleteParticipant.setId(p.id);
                     deleteParticipant.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
                         delete(event, deleteParticipant.getId());
                     });
+                    gridPaneParticipants.add(deleteParticipant, 0, row);
                     visulizationParticipant.opacityProperty().set(1);
                     visulizationParticipant.setId(p.id);
                     visulizationParticipant.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
                         seeVisualizations(event, visulizationParticipant.getId());
                     });
+                    gridPaneParticipants.add(visulizationParticipant, 0, row);
                     row++;
                 }
                 else{
@@ -447,6 +468,10 @@ public class ProjectParticipantsController implements Initializable {
 
             }
         }
+        else{
+            iniciar();
+        }
+        
     }
     
     private void addAgain2(){

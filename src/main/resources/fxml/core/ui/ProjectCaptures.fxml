@@ -54,14 +54,6 @@
                   <Image url="@../../../images/add.png" />
                </image>
             </ImageView>
-            <ImageView id="deleteButton" fx:id="deleteButton" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#removeConfiguration" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../images/delete.png" />
-               </image>
-               <GridPane.margin>
-                  <Insets left="182.0" />
-               </GridPane.margin>
-            </ImageView>
          </children>
       </GridPane>
    </content>

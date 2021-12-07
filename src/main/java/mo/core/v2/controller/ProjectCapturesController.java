@@ -62,8 +62,6 @@ public class ProjectCapturesController implements Initializable {
     private Circle circleAdd;
     @FXML
     private ImageView imageAdd;
-    @FXML
-    private ImageView deleteButton;
     @Inject
     public Injector injector;
     @Inject
@@ -112,15 +110,12 @@ public class ProjectCapturesController implements Initializable {
     }
     
     private void init(){
-        int aux = 0;
         if(model.getCaptures().isEmpty()){
             iconCapture.opacityProperty().set(0.50);
             textCapture.opacityProperty().set(0.50);
-            deleteButton.opacityProperty().set(0.50);
             row=0;
         }
         else{
-            System.out.println("1");
             for(Pair<String,String> p : model.getConfigCaptures()){
                 addPlugin(p.getKey()+"("+p.getValue()+")");
             }
@@ -165,9 +160,6 @@ public class ProjectCapturesController implements Initializable {
     }
     
 
-    @FXML
-    private void removeConfiguration(MouseEvent event) {
-    }
     
     private void addPlugin(String name){
         System.out.println("GridPane: "+gridPaneCapture.getRowConstraints().size());
@@ -175,13 +167,9 @@ public class ProjectCapturesController implements Initializable {
         if(row>gridPaneCapture.getRowConstraints().size()){
             gridPaneCapture.addRow(row, null);
         }
-        System.out.println("1");
-        System.out.println(model.getCaptures().size());
-        System.out.println(model.getCaptures());
         if(capturesAux.size()<1){
             iconCapture.opacityProperty().set(1);
             textCapture.opacityProperty().set(1);
-            deleteButton.opacityProperty().set(1);
             textCapture.setText(name);
             row++;
             capturesAux.add(name);
@@ -193,21 +181,12 @@ public class ProjectCapturesController implements Initializable {
             System.out.println("ID: "+icon2.idProperty());
             icon2.setFitHeight(20);
             icon2.setFitWidth(20);
-            icon2.getStyleClass().add("~/Ejemplo.css");
-            icon2.setStyle(".icon");
-            System.out.println("XXXX "+iconCapture.getTranslateX());
             icon2.setTranslateX(25);
             gridPaneCapture.add(icon2, 0, row);
             Text text2 = new Text(name);
             text2.setTranslateX(50);
             //text2.setStyle(textCapture.getStyle());
             gridPaneCapture.add(text2, 0, row);
-            javafx.scene.image.ImageView delete2 = new javafx.scene.image.ImageView();
-            delete2.setImage(deleteButton.getImage());
-            delete2.setFitHeight(20);
-            delete2.setFitWidth(20);
-            delete2.setTranslateX(182);
-            gridPaneCapture.add(delete2, 0, row);
             row++;
             capturesAux.add(name);
         }
@@ -252,12 +231,6 @@ public class ProjectCapturesController implements Initializable {
                 addPlugin(config.getName()+" ("+spv.getName()+")");
                 
             }
-        }
-    }
-    
-    public void addAux(String name){
-        for(StagePluginV2 spv : model.getCaptureStage().getPlugins()){
-            
         }
     }
 }

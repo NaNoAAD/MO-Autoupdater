@@ -10,9 +10,7 @@ import com.google.inject.Injector;
 import java.net.URL;
 import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -21,7 +19,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -108,7 +105,6 @@ public class AddParticipantController implements Initializable {
             if(!model.getParticipants().isEmpty()){
                 for(Participant p : model.getParticipants()){
                     if(p.id.equals(idText.getText())){
-                        System.out.println("3.1");
                         alertLabel.setText("The id must be unique");
                         break;
                     }
@@ -126,7 +122,6 @@ public class AddParticipantController implements Initializable {
                 }
             }
             else{
-
                 if(idText.getText().toCharArray().length<=0){
                     alertLabel.setText("you must write a name");
                 }
@@ -159,5 +154,6 @@ public class AddParticipantController implements Initializable {
         p.date = dateAux;
         p.folder = "/participant-"+p.id;
         model.getParticipants().add(p);
+        System.out.println("Creado");
     }
 }
