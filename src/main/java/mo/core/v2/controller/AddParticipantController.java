@@ -92,7 +92,7 @@ public class AddParticipantController implements Initializable {
             alert.setText("");
             numParticipant = model.getParticipants().size();
             int numAux = numParticipant + 1;
-            idText.setText(String.valueOf(numAux));
+            //idText.setText(String.valueOf(numAux));
             calendar.setValue(LocalDate.now());
         }
         
@@ -153,7 +153,14 @@ public class AddParticipantController implements Initializable {
         Date dateAux = Date.from(instant);
         p.date = dateAux;
         p.folder = "/participant-"+p.id;
-        model.getParticipants().add(p);
+        System.out.println("num participants1: " + model.getParticipants().size());
+        //model.getParticipants().add(p);
+        System.out.println("num participants2: " + model.getParticipants().size());
+        System.out.println("num participants3: " + model.getOrg().getParticipants().size());
+        model.getOrg().getParticipants().add(p);
+        System.out.println("num participants4: " + model.getOrg().getParticipants().size());
+        System.out.println("num participants5: " + model.getParticipants().size());
+        model.getOrg().store();
         System.out.println("Creado");
     }
 }

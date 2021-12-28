@@ -9,6 +9,7 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import mo.core.v2.controller.MainWindowsController;
 import java.awt.BorderLayout;
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,6 +21,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javax.swing.JFrame;
 import mo.core.v2.model.Module;
+import mo.core.v2.model.Organization;
 
 /**
  *
@@ -31,6 +33,7 @@ public class Managment {
     public static int height = 650;
     public static int width = 915;
     public static MainWindowsController controller;
+    public Organization model;
     
     private void initFxml(JFXPanel jfxPanel){
         final Injector injector = Guice.createInjector(new Module());
@@ -60,11 +63,16 @@ public class Managment {
        JFrame frame = new JFrame ("Multimodal Observer");
        frame.setResizable(true);
        JFXPanel jfxPanel = new JFXPanel();
-       frame.setSize(654,800);
+       frame.setSize(1200,800);
        frame.getContentPane().add(jfxPanel, BorderLayout.CENTER);
-       frame.setVisible(true);
-       
+       frame.setVisible(true);       
        Platform.runLater(() -> initFxml(jfxPanel));
-   }
-    
+       
+       frame.addWindowListener(new java.awt.event.WindowAdapter(){
+           @Override
+           public void windowClosing(java.awt.event.WindowEvent windowEvent){
+               System.exit(0);
+           }
+       });
+   }    
 }

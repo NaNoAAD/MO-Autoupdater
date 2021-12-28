@@ -1,4 +1,9 @@
-package mo.visualization;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package mo.core.v2.Vizualization;
 
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -20,10 +25,17 @@ import javax.swing.JPanel;
 import static mo.core.DataFileFinder.findFilesCreatedBy;
 import mo.core.ui.GridBConstraints;
 import mo.core.ui.WizardDialog;
+import mo.core.v2.model.Organization;
 import mo.organization.Configuration;
+import mo.visualization.VisualizableConfiguration;
+import mo.visualization.VisualizationDialog2;
 
-public class VisualizationDialog2 {
-
+/**
+ *
+ * @author Francisco
+ */
+public class VisualizationDialog2V2 {
+    
     WizardDialog dialog;
 
     List<Configuration> configurations;
@@ -38,8 +50,12 @@ public class VisualizationDialog2 {
     JPanel filesPane;
 
     GridBConstraints gbc;
+    
+    Organization model;
 
-    public VisualizationDialog2(List<Configuration> configs, File project) {
+    public VisualizationDialog2V2(List<Configuration> configs, File project, Organization org) {
+        model = org;
+        model.getConfigurationSelected().clear();
         gbc = new GridBConstraints();
         projectRoot = project;
         dialog = new WizardDialog(null, "Visualization setup");
@@ -62,6 +78,7 @@ public class VisualizationDialog2 {
             c.addItemListener(new ItemListener() {
                 @Override
                 public void itemStateChanged(ItemEvent e) {
+                    model.getConfigurationSelected().add(configuration);
                     updateState();
                 }
             });
@@ -73,7 +90,6 @@ public class VisualizationDialog2 {
         filesPane.setName("Select files");
 
         dialog.addPanel(filesPane);
-
         dialog.addActionListener(new WizardDialog.WizardListener() {
             @Override
             public void onStepChanged() {

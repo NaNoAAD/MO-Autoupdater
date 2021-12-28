@@ -11,24 +11,16 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import mo.analysis.AnalysisProvider;
 import mo.capture.CaptureProvider;
-import mo.core.plugin.Plugin;
-import mo.core.plugin.PluginRegistry;
-import mo.core.v2.model.Activity;
-import mo.core.v2.model.ConfigurationV2;
 import mo.core.v2.model.Organization;
-import mo.core.v2.model.StagePluginV2;
 import mo.visualization.VisualizationProvider;
 
 /**
@@ -54,6 +46,8 @@ public class AddPluginController implements Initializable {
     @Inject
     Organization model;
     private List<String> config;
+    @FXML
+    private Text AddText;
 
     /**
      * Initializes the controller class.
@@ -62,6 +56,17 @@ public class AddPluginController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         init();
         initComboBox();
+        switch(type){
+            case 1: 
+                AddText.setText("Add Capture");
+                break;
+            case 2:
+                AddText.setText("Add Analysis");
+                break;
+            case 3:
+                AddText.setText("Add Visualization");
+                break;
+        }
     }
 
     private void init(){
@@ -81,20 +86,20 @@ public class AddPluginController implements Initializable {
     @FXML
     private void addOption(MouseEvent event) { 
         if(type==1){
-            model.getCaptures().add(addSelectedC(auxC,comboCaptures.getSelectionModel().getSelectedItem()));
+            //model.getCaptures().add(addSelectedC(auxC,comboCaptures.getSelectionModel().getSelectedItem()));
             model.setPluginSelected(addSelectedC(auxC,comboCaptures.getSelectionModel().getSelectedItem()));
             
         }
         else if(type==2){
-            model.getAnalysis().add(addSelectedA(auxA,comboCaptures.getSelectionModel().getSelectedItem()));
+            //model.getAnalysis().add(addSelectedA(auxA,comboCaptures.getSelectionModel().getSelectedItem()));
             model.setPluginSelected(addSelectedA(auxA,comboCaptures.getSelectionModel().getSelectedItem()));
         }
         else if(type==3){
-            model.getVisualization().add(addSelectedV(auxV, comboCaptures.getSelectionModel().getSelectedItem()));
+            //model.getVisualization().add(addSelectedV(auxV, comboCaptures.getSelectionModel().getSelectedItem()));
             model.setPluginSelected(addSelectedV(auxV,comboCaptures.getSelectionModel().getSelectedItem()));
         }
         String aux = comboCaptures.getSelectionModel().getSelectedItem();
-        model.getObservablePlugins().remove(aux);
+        //model.getObservablePlugins().remove(aux);
         close(event);
     }
 

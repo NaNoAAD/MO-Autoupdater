@@ -1,4 +1,9 @@
-package mo.analysis;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package mo.core.v2.Analysis;
 
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -17,16 +22,25 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import mo.analysis.AnalyzableConfiguration;
+import mo.analysis.NotPlayableAnalyzableConfiguration;
+import mo.analysis.NotesAnalysisConfig;
+import mo.analysis.NotesVisualization;
+import mo.analysis.PlayableAnalyzableConfiguration;
 import static mo.core.DataFileFinder.findFilesCreatedBy;
 import mo.core.ui.GridBConstraints;
 import mo.core.ui.WizardDialog;
+import mo.core.v2.model.Organization;
 import mo.organization.Configuration;
+import mo.organization.StagePlugin;
 import mo.visualization.VisualizableConfiguration;
 
-import mo.organization.StagePlugin;
-
-public class AnalysisDialog {
-
+/**
+ *
+ * @author Francisco
+ */
+public class AnalysisDialogV2 {
+    
     WizardDialog dialog;
 
     List<Configuration> configurations;
@@ -41,11 +55,14 @@ public class AnalysisDialog {
     JPanel filesPane;
 
     GridBConstraints gbc;
+    
+    Organization model;
 
     private StagePlugin notesPlugin;
     private PlayableAnalyzableConfiguration notesConfiguration;
-
-    public AnalysisDialog(StagePlugin notesPlugin, List<Configuration> configs, File project) {
+    
+    public AnalysisDialogV2(StagePlugin notesPlugin, List<Configuration> configs, File project, Organization model , File storeFile) {
+        this.model = model;
         this.notesPlugin = notesPlugin;
         notesConfiguration = (PlayableAnalyzableConfiguration) notesPlugin.getConfigurations().get(0);
         gbc = new GridBConstraints();
@@ -68,6 +85,7 @@ public class AnalysisDialog {
             c.addItemListener(new ItemListener() {
                 @Override
                 public void itemStateChanged(ItemEvent e) {
+                    model.getConfigurationSelected().add(configuration);
                     updateState();
                 }
             });
@@ -83,24 +101,24 @@ public class AnalysisDialog {
         dialog.addActionListener(new WizardDialog.WizardListener() {
             @Override
             public void onStepChanged() {
+                System.out.println("D: D: D:");
                 stepChanged();
             }
         });
         
         dialog.setWarningMessage("");
     }
-
+    
     private void updateState() {
         if (dialog.getCurrentStep() == 0) {
             Configuration aConfiguration;
             for (JCheckBox checkBox : checkBoxs) {
                 Configuration rc;
                 if("VisualizableConfiguration".equals((checkBox.getClientProperty("configuration").getClass().getInterfaces()[0]).getSimpleName())) {
-
+                    System.out.println(((Configuration)checkBox.getClientProperty("configuration")).getId());
                     rc = (VisualizableConfiguration) checkBox.getClientProperty("configuration");
                 } else {
-
-                rc = (AnalyzableConfiguration) checkBox.getClientProperty("configuration");
+                    rc = (AnalyzableConfiguration) checkBox.getClientProperty("configuration");
                 }
                 if (checkBox.isSelected()) {
                     if (!configurations.contains(rc)) {
@@ -156,11 +174,11 @@ public class AnalysisDialog {
                         b.addItem("Select a file");
                         for (File file : files) {
                             try {
-                                b.addItem(new FilePath(projectRoot, file));
-                                FilePath fPath = new FilePath(projectRoot, file);
+                                b.addItem(new AnalysisDialogV2.FilePath(projectRoot, file));
+                                AnalysisDialogV2.FilePath fPath = new AnalysisDialogV2.FilePath(projectRoot, file);
                                 String archivoCombobox = fPath.toString();
                             } catch (IOException ex) {
-                                Logger.getLogger(AnalysisDialog.class.getName()).log(Level.SEVERE, null, ex);
+                                Logger.getLogger(AnalysisDialogV2.class.getName()).log(Level.SEVERE, null, ex);
                             }
 
                         }
@@ -182,11 +200,11 @@ public class AnalysisDialog {
                     b.addItem("Select a file");
                     for (File file : files) {
                         try {
-                            b.addItem(new FilePath(projectRoot, file));
-                            FilePath fPath = new FilePath(projectRoot, file);
+                            b.addItem(new AnalysisDialogV2.FilePath(projectRoot, file));
+                            AnalysisDialogV2.FilePath fPath = new AnalysisDialogV2.FilePath(projectRoot, file);
                             String archivoCombobox = fPath.toString();
                         } catch (IOException ex) {
-                            Logger.getLogger(AnalysisDialog.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(AnalysisDialogV2.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }
                     filesComboBoxes.add(b);
@@ -198,12 +216,11 @@ public class AnalysisDialog {
                     });
                     filesPane.add(b, gbc.gy(row++));
                 }
-            }
-            
+            } 
         } 
         updateState();
     }
-
+    
     public static void main(String[] args) {
     }
     
@@ -245,6 +262,7 @@ public class AnalysisDialog {
                 list.add(vc);
             } else {
                 npac = (NotPlayableAnalyzableConfiguration) c;
+                System.out.println("f.file: " + f.file);
                 npac.addFile(f.file);
                 list.add(npac);
             }
@@ -301,24 +319,25 @@ public class AnalysisDialog {
         NotesVisualization notesVisualization;
         for (JComboBox filesComboBox : filesComboBoxes) {
             FilePath f = (FilePath) filesComboBox.getSelectedItem();
+            model.setFile(f.file);
+            System.out.println("done con el f: " + f.file.getAbsolutePath());
             c = (Configuration) filesComboBox.getClientProperty("configuration");
             
-            if(c instanceof PlayableAnalyzableConfiguration)
+            /*if(c instanceof PlayableAnalyzableConfiguration)
                 continue;
 
             if (c instanceof VisualizableConfiguration) {
                 vc = (VisualizableConfiguration) c;
-                System.out.println("f.file: " + f.file.getAbsolutePath());
                 vc.addFile(f.file);
                 list.add(vc);
                 notesConfiguration.addFile(f.file);
                 notesVisualization = new NotesVisualization(f.file.getAbsolutePath(),vc.getClass().getName());
                 ((NotesAnalysisConfig) notesConfiguration).addVisualizable(notesVisualization);// #marca
-            }
+            }*/
         }
         return list;
     }
-
+        
     class FilePath {
 
         File from;
@@ -336,6 +355,5 @@ public class AnalysisDialog {
             Path r = from.toPath();
             return r.relativize(p).toString();
         }
-
     }
 }

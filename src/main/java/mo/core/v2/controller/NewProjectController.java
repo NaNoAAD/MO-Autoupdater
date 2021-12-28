@@ -95,6 +95,7 @@ public class NewProjectController implements Initializable {
             saveProjectInAppPreferences(p);
             FileRegistry.getInstance().addOpenedProject(p);
             ProjectOrganization org = new ProjectOrganization(name);
+            model.setProject(p);
             model.setOrg(org);
             model.setFileProject(proj);
             model.getOrg().store();

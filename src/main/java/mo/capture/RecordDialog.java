@@ -87,5 +87,4 @@ public class RecordDialog extends JDialog {
             recordButton.setEnabled(false);
         }
     }
-
 }

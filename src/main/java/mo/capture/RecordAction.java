@@ -73,12 +73,11 @@ public class RecordAction implements StageAction, ConnectionListener {
                 configs.add(configuration);
             }
         }
-
+        System.out.println("??????????: " + stage.getCodeName().toLowerCase());
         storageFolder = new File(org.getLocation(),
                 "participant-" + participant.id + "/"
                 + stage.getCodeName().toLowerCase());
         storageFolder.mkdirs();
-
         dialog = new RecordDialog(configs);
         configurations = dialog.showDialog();
         if (configurations != null) {
@@ -87,8 +86,8 @@ public class RecordAction implements StageAction, ConnectionListener {
     }
 
     private void startRecording() {
-
         try {
+            System.out.println("?????????: : " + storageFolder.getAbsolutePath());
             for (RecordableConfiguration config : configurations) {
                 config.setupRecording(storageFolder, org, participant);
             }

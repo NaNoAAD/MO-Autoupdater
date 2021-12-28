@@ -39,9 +39,13 @@ public class Module extends AbstractModule{
         addCapturePlugins(plugins);
         addAnalysisPlugins(plugins2);
         addVisualizationPlugins(plugins3);
-        StageModuleV2 StageCapture = new StageModuleV2("Captura", plugins);
-        stages.add(StageCapture);
         List<Plugin> stagePlugins = PluginRegistry.getInstance().getPluginData().getPluginsFor("mo.organization.StageModule");
+        StageModule nodeProvider0 = (StageModule) stagePlugins.get(1).getNewInstance();
+        String Aux0 = nodeProvider0.getName();
+        StageModuleV2 StageCapture = new StageModuleV2(Aux0, plugins);
+        System.out.println("captura agregado :S");
+        stages.add(StageCapture);
+        System.out.println("captura agregado :S2");
         StageModule nodeProvider = (StageModule) stagePlugins.get(0).getNewInstance();
         String Aux = nodeProvider.getName();
         StageModuleV2 StageAnalysis = new StageModuleV2(Aux, plugins2);
@@ -68,7 +72,6 @@ public class Module extends AbstractModule{
     
     public List<StagePluginV2> addAnalysisPlugins(List<StagePluginV2> plugins2){
         for(Plugin plugin : PluginRegistry.getInstance().getPluginData().getPluginsFor("mo.analysis.AnalysisProvider")){
-            System.out.println(plugin.getName());
             List<ConfigurationV2> configurations = new ArrayList<>();
             AnalysisProvider a = (AnalysisProvider) plugin.getNewInstance();
             plugins2.add(new StagePluginV2(a.getName(), configurations));

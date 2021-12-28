@@ -134,6 +134,7 @@ public class VisualizationStage implements StageModule {
                         p.mkdirs();
                     }
                     File f = plugin.toFile(p);
+                    System.out.println("*****F: " + f.getAbsolutePath());
                     if (f != null) {
                         XElement pluginX = new XElement("plugin");
                         XAttribute clazz = new XAttribute("class");

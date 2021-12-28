@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
 <ScrollPane id="scrollPane" fx:id="scrollPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mo.core.v2.controller.MyProjectsController">
@@ -86,6 +87,7 @@
                   <Insets left="120.0" top="90.0" />
                </GridPane.margin>
             </Text>
+            <Line id="line" fx:id="line" endX="600.0" stroke="#3d3d3d" GridPane.valignment="BOTTOM" />
          </children>
       </GridPane>
    </content>

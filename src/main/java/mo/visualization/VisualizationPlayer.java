@@ -32,8 +32,8 @@ public class VisualizationPlayer {
     public VisualizationPlayer(List<VisualizableConfiguration> configurations) {
         configs = configurations;
         for (VisualizableConfiguration config : configs) {
-          System.out.println("ESTO ES  "+config.getId());
-      }
+            System.out.println("ESTO ES  "+config.getId());
+        }
         obtainMinAndMaxTime();
 
         panel = new PlayerControlsPanel(this);
@@ -59,7 +59,6 @@ public class VisualizationPlayer {
         if (max == Long.MIN_VALUE) {
             max = 100000;
         }
-
         current = start = min;
 
         end = max;

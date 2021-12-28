@@ -43,12 +43,12 @@
             </Text>
             <Circle id="addCircle" fx:id="addCircle" fill="#b4eda6" onMouseClicked="#addParticipant" radius="10.0" stroke="#b4eda6" strokeType="INSIDE">
                <GridPane.margin>
-                  <Insets left="300.0" />
+                  <Insets left="400.0" />
                </GridPane.margin>
             </Circle>
             <ImageView id="addPlus" fx:id="addPlus" fitHeight="12.0" fitWidth="12.0" onMouseClicked="#addParticipant" pickOnBounds="true" preserveRatio="true">
                <GridPane.margin>
-                  <Insets left="304.0" />
+                  <Insets left="404.0" />
                </GridPane.margin>
                <image>
                   <Image url="@../../../images/add.png" />
@@ -56,15 +56,15 @@
             </ImageView>
             <ImageView id="lockParticipant" fx:id="lockParticipant" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <GridPane.margin>
-                  <Insets left="125.0" />
+                  <Insets left="142.0" />
                </GridPane.margin>
                <image>
                   <Image url="@../../../images/unlocked2.png" />
                </image>
             </ImageView>
-            <ImageView id="recordParticipant" fx:id="recordParticipant" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#record" pickOnBounds="true" preserveRatio="true">
+            <ImageView id="recordParticipant" fx:id="recordParticipant" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <GridPane.margin>
-                  <Insets left="152.0" />
+                  <Insets left="172.0" />
                </GridPane.margin>
                <image>
                   <Image url="@../../../images/rec.png" />
@@ -72,7 +72,7 @@
             </ImageView>
             <ImageView id="editParticipant" fx:id="editParticipant" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <GridPane.margin>
-                  <Insets left="182.0" />
+                  <Insets left="202.0" />
                </GridPane.margin>
                <image>
                   <Image url="@../../../images/edit.png" />
@@ -80,7 +80,7 @@
             </ImageView>
             <ImageView id="deleteParticipant" fx:id="deleteParticipant" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <GridPane.margin>
-                  <Insets left="238.0" />
+                  <Insets left="288.0" />
                </GridPane.margin>
                <image>
                   <Image url="@../../../images/delete.png" />
@@ -91,8 +91,16 @@
                   <Image url="@../../../images/capture.png" />
                </image>
                <GridPane.margin>
-                  <Insets left="212.0" />
+                  <Insets left="262.0" />
                </GridPane.margin>
+            </ImageView>
+            <ImageView id="analysisParticipant" fx:id="analysisParticipant" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <GridPane.margin>
+                  <Insets left="232.0" />
+               </GridPane.margin>
+               <image>
+                  <Image url="@../../../images/analysis.png" />
+               </image>
             </ImageView>
          </children>
       </GridPane>

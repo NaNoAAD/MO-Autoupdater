@@ -1,53 +1,46 @@
 /*
-Para soportar el plugins de notas remotamente se agregó y/o modificó lo siguiente:
-    -Se agregó la variable boolean remote (true si son notas remotas, false para notas locales post-captura)
-    -Se sobrecargó el constructor para que al tener "remote = true" el método "init" llame a el método "initRemote"
-    -se agregó initRemote para la captura de notas remotas
-*/
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package mo.core.v2.Analysis;
 
-package mo.analysis;
-
+import com.google.inject.Inject;
+import com.google.inject.Injector;
+import java.awt.BorderLayout;
+import java.awt.Dialog;
+import java.awt.event.ActionEvent;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import mo.core.ui.dockables.DockablesRegistry;
-import mo.organization.Configuration;
-import mo.organization.StagePlugin;
-
-import mo.organization.StageAction;
-import mo.organization.ProjectOrganization;
-import mo.organization.Participant;
-import mo.organization.StageModule;
-import mo.visualization.VisualizationDialog2;
-import mo.visualization.VisualizationPlayer;
-import mo.visualization.VisualizableConfiguration;
-
-import java.awt.GridBagLayout;
-import java.awt.Dialog.ModalityType;
-
-import java.io.File;
-
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-
-import javax.swing.JPanel;
-
-import javax.swing.JButton;
-
-import java.awt.FlowLayout;
-
-import javax.swing.SwingWorker;
-
-import javax.swing.JFrame;
-
-import java.awt.event.ActionEvent;
-import java.awt.BorderLayout;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingWorker;
+import mo.analysis.AnalyzableConfiguration;
+import mo.analysis.AnalyzeAction;
+import mo.analysis.NotPlayableAnalyzableConfiguration;
+import mo.analysis.NotesPlayer;
+import mo.analysis.PlayableAnalyzableConfiguration;
+import mo.core.ui.dockables.DockablesRegistry;
+import mo.core.v2.model.Organization;
+import mo.organization.Configuration;
+import mo.organization.Participant;
+import mo.organization.ProjectOrganization;
+import mo.organization.StageAction;
+import mo.organization.StageModule;
+import mo.organization.StagePlugin;
+import mo.visualization.VisualizableConfiguration;
+import mo.visualization.VisualizationPlayer;
 
-
-public class AnalyzeAction implements StageAction {
+/**
+ *
+ * @author Francisco
+ */
+public class AnalyzeActionV2 implements StageAction{
 
     private File storageFolder;
     private ProjectOrganization org;
@@ -65,17 +58,24 @@ public class AnalyzeAction implements StageAction {
 
     private List<AnalyzableConfiguration> analyzableConfigurations;
 
+    private List<PlayableAnalyzableConfiguration> playableConfigurations = new ArrayList<>();
+    
+    Organization  model;
+    
+    File storeFile;
+    
     private static final Logger logger = Logger.getLogger(AnalyzeAction.class.getName());
 
     public static void main(String[] args) {
         
     }
     
-    public AnalyzeAction(){
+    public AnalyzeActionV2(Organization model){
         this.remote = false;
+        this.model = model;
     }
     
-    public AnalyzeAction(boolean remote){
+    public AnalyzeActionV2(boolean remote){
         this.remote = remote;
     }
     
@@ -88,16 +88,13 @@ public class AnalyzeAction implements StageAction {
         
     }
 
-    @Override
+    @Override    
     public void init(ProjectOrganization organization, Participant participant, StageModule stage) {
+        System.out.println("init------------------------------------------------------");
         if(remote){
             initRemoteNotes();
             return;
         }
-        
-        /*
-            
-        */
         ArrayList<Configuration> configs = new ArrayList<>();
         analyzableConfigurations = new ArrayList<>();
         for (StageModule astage : organization.getStages()) {
@@ -109,16 +106,13 @@ public class AnalyzeAction implements StageAction {
                 }
             }
         }
-
+        
         this.org = organization;
         this.participant = participant;
 
         storageFolder = new File(org.getLocation(),"participant-" + participant.id + "/" + stage.getCodeName().toLowerCase());
         storageFolder.mkdirs();
-
-        /*
-            
-        */
+        
         for (StagePlugin plugin : stage.getPlugins()) {
             if(plugin.getName().equals("Notes plugin")) {
                 notesPlugin = plugin;
@@ -129,29 +123,28 @@ public class AnalyzeAction implements StageAction {
                 analyzableConfigurations.add((AnalyzableConfiguration) configuration);
             }
         }
-        AnalysisDialog analysisDialog = new AnalysisDialog(notesPlugin, configs, organization.getLocation());
+        AnalysisDialogV2 analysisDialog = new AnalysisDialogV2(notesPlugin, configs, organization.getLocation(), model, storeFile);
         boolean accept = analysisDialog.show();
-
+        
         if (accept) {
-
             List<PlayableAnalyzableConfiguration> playableConfigurations = analysisDialog.getPlayableConfigurations();
             List<NotPlayableAnalyzableConfiguration> notPlayableConfigurations = analysisDialog.getNotPlayableConfigurations();
             List<VisualizableConfiguration> visualizableConfiguration = analysisDialog.getVisualizableConfigurations();
-
+        
             analyzableConfigurations = new ArrayList<>(playableConfigurations);
             analyzableConfigurations.addAll(notPlayableConfigurations);
-
+            
             List<AnalyzableConfiguration> analyzableList = new ArrayList(analyzableConfigurations);
             analyzableList.add(analysisDialog.getNotesConfiguration());
-
+            
             JDialog waitDialog = new JDialog();
             JLabel label = new JLabel("Procesando, por favor espere.");
-
+            
             JPanel panel = new JPanel();
             panel.setLayout(new BorderLayout());
 
             JPanel buttonsPanel = new JPanel();
-
+            
             cancelButon = new JButton("Cancelar");
             cancelButon.setEnabled(true);
             cancelButon.addActionListener((ActionEvent e) -> {
@@ -171,11 +164,11 @@ public class AnalyzeAction implements StageAction {
                 waitDialog.dispose();
 
             });
-
+            
             buttonsPanel.add(okButon);
             buttonsPanel.add(cancelButon);
 
-            waitDialog.setModalityType(ModalityType.APPLICATION_MODAL);
+            waitDialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
             waitDialog.setLocationRelativeTo(null);
             waitDialog.setTitle("Please Wait...");
 
@@ -185,7 +178,7 @@ public class AnalyzeAction implements StageAction {
 
             waitDialog.pack();
             waitDialog.setVisible(false);
-
+            
             SwingWorker<Void, Void> mySwingWorker = new SwingWorker<Void, Void>(){
                 @Override
                 protected Void doInBackground() throws Exception {
@@ -210,11 +203,11 @@ public class AnalyzeAction implements StageAction {
                 return null;
                 }
             };
-
+            
             mySwingWorker.execute();
             waitDialog.setVisible(true);
-
-            if(accepted) {
+            
+            if(accepted){
                 List<VisualizableConfiguration> vlista = (List<VisualizableConfiguration>) (List<?>) analysisDialog.getPlayableConfigurations();
                 vlista.addAll(visualizableConfiguration);
                 obtainMinAndMaxTime(vlista);
@@ -226,7 +219,7 @@ public class AnalyzeAction implements StageAction {
             }
         }
     }
-
+    
     public void cancelAnalysis(List<AnalyzableConfiguration> analyzables) {
         for(Thread thread : threads) {
             thread.interrupt();
@@ -236,7 +229,7 @@ public class AnalyzeAction implements StageAction {
             config.cancelAnalysis();
         }
     }
-
+    
     public void startAnalysis(List<AnalyzableConfiguration> configurations) {
         try {
             for (AnalyzableConfiguration config : configurations) {
@@ -247,11 +240,12 @@ public class AnalyzeAction implements StageAction {
             logger.log(Level.SEVERE, null, ex);
         }
     }
-
+    
     private void obtainMinAndMaxTime(List<VisualizableConfiguration> configs) {
         long min = Long.MAX_VALUE, max = Long.MIN_VALUE;
         for (VisualizableConfiguration config : configs) {
             if (config.getPlayer().getStart() < min) {
+                System.out.println("min: " + config.getPlayer().getStart());
                 min = config.getPlayer().getStart();
             }
             if (config.getPlayer().getEnd() > max) {
@@ -267,5 +261,10 @@ public class AnalyzeAction implements StageAction {
 
         current = start = min;
         end = max;
+    }
+    
+    public File getFile(){
+        System.out.println("555555555555555555555555: " + storeFile.getAbsolutePath());
+        return this.storeFile;
     }
 }
