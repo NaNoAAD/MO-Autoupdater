@@ -410,7 +410,9 @@ public class Organization {
                 }
             }
             if(sm.getName().equals(this.stages3.get(0).name)){
+                System.out.println("in visu");
                 for(StagePlugin p : sm.getPlugins()){
+                    System.out.println("empty: " + p.getConfigurations().isEmpty());
                     if(!p.getConfigurations().isEmpty()){
                         for(Configuration c : p.getConfigurations()){
                             this.configurationsV.add(c);

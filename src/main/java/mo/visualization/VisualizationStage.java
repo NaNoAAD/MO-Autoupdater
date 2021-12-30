@@ -126,6 +126,9 @@ public class VisualizationStage implements StageModule {
             visStageFile.createNewFile();
             
             XElement xElem = new XElement("visualization");
+            XElement name = new XElement("name");
+            name.setString(getName());
+            xElem.addElement(name);
             
             for (StagePlugin plugin : plugins) {
                 if ( !plugin.getConfigurations().isEmpty()) {

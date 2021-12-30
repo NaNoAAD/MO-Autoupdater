@@ -5,6 +5,8 @@
  */
 package mo.core.v2.controller;
 
+import bibliothek.util.xml.XAttribute;
+import bibliothek.util.xml.XElement;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 import java.io.File;
@@ -33,6 +35,7 @@ import mo.organization.Configuration;
 import mo.organization.StageModule;
 import mo.organization.StagePlugin;
 import mo.visualization.VisualizationProvider;
+import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -56,8 +59,10 @@ public class ProjectVisualizationControllerAux {
     List<String> visualizationAux = new ArrayList<>();
     String path/*Path del la crapeta del proyecto*/, 
             pathStage/*Path de la carpeta del stage (Capture)*/, 
-            pathConfig;/*Path de la crapeta de la configuracion*/
+            pathConfig/*Path de la crapeta de la configuracion*/,
+            pathAux;
     File pathConfigXml, pathXml;
+    StagePlugin pluginAux = null;
 
     public ProjectVisualizationControllerAux(Organization aux){
         this.model = aux;
@@ -108,6 +113,7 @@ public class ProjectVisualizationControllerAux {
                         if(config != null){
                             model.getConfigurationsV().add(config);
                             String aux = saveConfiguration(SelectedPlugin, config.getId());
+                            sp.getConfigurations().add(config);
                             model.getOrg().store();                            
                             for(StageModule sm : model.getOrg().getStages()){
                                 if(sm.getName().equals(model.getStages3().get(0).getName())){
@@ -142,34 +148,40 @@ public class ProjectVisualizationControllerAux {
     }
     
     private void createFolder(){
-
-        System.out.println("createFolder");
-        System.out.println(path);
         pathStage = path + "\\visualization";
         File folder = new File(pathStage);
         folder.mkdir();
-        System.out.println("pathStage: " + pathStage);
     }
     
     private void fileOfVisualization(Configuration config, String name){
-        System.out.println("sp: "+name);
         createFolder();
         String nameAux = name.toLowerCase();
         String[] aux = nameAux.split(" ");
-        System.out.println("nameAux: " + aux[0]);
         pathConfig = pathStage+"\\"+aux[0]+"-visualization";
         pathConfigXml = new File(pathConfig);
-        System.out.println("path: " + pathConfig);
-        
         pathConfigXml.mkdirs();
         pathXml = config.toFile(pathConfigXml);
-        fileOfVisualizations(name);
+        fileOfVisualizations(aux[0]);
+        for(StageModule sm : model.getOrg().getStages()){
+            for(StagePlugin sp : sm.getPlugins()){
+                if(!sp.getConfigurations().isEmpty()){
+                    for(Configuration c : sp.getConfigurations()){
+                        if(c.equals(config)){
+                            pluginAux = sp;
+                            String[] aux2 = sp.toString().split("@");
+                            writeInVisu(aux2[0]);
+                        }
+                    }
+                }
+            }
+        }
+        
     }
     
     private void fileOfVisualizations(String name){
         try {
-            String aux[] = name.split(" ");
-            File file = new File(pathStage + "\\" + aux[0].toLowerCase()+"-visualization.xml");
+            pathAux = pathStage + "\\" + name.toLowerCase()+"-visualization.xml";
+            File file = new File(pathStage + "\\" + name.toLowerCase()+"-visualization.xml");
             if(file.exists()){
                 DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
                 DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
@@ -208,5 +220,29 @@ public class ProjectVisualizationControllerAux {
         } catch (ParserConfigurationException | TransformerException | SAXException | IOException  ex) {
             Logger.getLogger(ProjectCapturesControllerAux.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    private void writeInVisu(String plugin){
+        
+        File file = new File(path + "visualization.xml");
+        if(file.exists()){
+            try {
+                DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+                DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+                Document doc = docBuilder.parse(file);
+                Element element1 = doc.createElement("plugin");
+                Attr clase = doc.createAttribute("class");
+                clase.setValue(plugin);
+                element1.setAttributeNode(clase);
+                Element element2 = doc.createElement("path");
+                element2.setTextContent(pathAux);
+                element1.appendChild(element2); 
+            } catch (ParserConfigurationException | SAXException | IOException ex) {
+                Logger.getLogger(ProjectVisualizationControllerAux.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        //File f = new File(pathAux); //SEGUIR ACA
+        
     }
 }

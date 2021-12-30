@@ -60,6 +60,7 @@ import mo.core.ui.dockables.DockableElement;
 import mo.core.ui.dockables.DockablesRegistry;
 import mo.core.v2.Analysis.AnalyzeActionV2;
 import mo.core.v2.model.Organization;
+import mo.core.v2.Vizualization.VisualizeActionV2;
 import mo.organization.Configuration;
 import mo.organization.Participant;
 import mo.organization.ProjectOrganization;
@@ -289,9 +290,11 @@ public class ProjectMenuController implements Initializable {
         gridPane2.getChildren().removeAll(nodes);
         gridPane2.setPrefWidth(600);
         gridPane2.setPrefHeight(400);
+        System.out.println("preee: " + model.getConfigVisualizations().size());
         initVistaCaptures(2, model.getConfigVisualizations());
         visuAux.clear();
         for(Pair<String, String> c : model.getConfigVisualizations()){
+            System.out.println("config visu");
             addConfigsV(c.getValue() + " (" + c.getKey() + ")", 2, visuAux);
         }
         scrollParticipants.backgroundProperty().set(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -315,6 +318,7 @@ public class ProjectMenuController implements Initializable {
     
     private void addStageNodeIfNotExists(StageModule stage){
         String newNodeName = stage.getName();
+        System.out.println("name stage: " + stage.getName());
         if(model.getOrg().getStages().isEmpty()||model.getOrg().getStages().size()<3){
             stage.setOrganization(model.getOrg());
             model.getOrg().addStage(stage);
@@ -658,21 +662,81 @@ public class ProjectMenuController implements Initializable {
         createSwingContent(swingNode, panel);
         centerPane.getChildren().clear();
         centerPane.getChildren().add(swingNode);*/
-        /*List<VisualizableConfiguration> vlista = (List<VisualizableConfiguration>) (List<?>) new ArrayList<>(model.getConfigurationsV());
-        List<VisualizableConfiguration> visualizableConfiguration = new ArrayList<>();
-        for(Configuration c : model.getConfigurationsV()){
-            VisualizableConfiguration cAux = (VisualizableConfiguration) c;
-            System.out.println("c: " + c.getId());
-            System.out.println("cAux: " + cAux);
-            visualizableConfiguration.add(cAux);
+        Participant p = model.getParticipantById(id);
+        //File storageFile = new File(model.getOrg().getLocation().getAbsolutePath() + p.folder + "\\capture");
+        StageModule sm = null;
+        File storageFolder = new File(model.getOrg().getLocation() + "/" + p.folder + "/visualization");
+        for(StageModule smAux : model.getOrg().getStages()){
+            if(smAux.getName().equals(model.getVisualizationStage().getName())){
+                sm=smAux;
+            }
         }
-        vlista.addAll(visualizableConfiguration);
-        VisualizationPlayer player = new VisualizationPlayer(vlista);
-        JPanel panelB = (JPanel) player.getDockable().getContentPane();
-        SwingNode nodo = new SwingNode();
-        createSwingContent(nodo, panelB);
-        centerPane.getChildren().clear();
-        centerPane.getChildren().add(nodo);*/
+        VisualizeActionV2 action = new VisualizeActionV2(model);
+        action.init(model.getOrg(), p, sm);
+        Configuration c = model.getConfigurationSelected().get(0);
+        try {
+            c = c.getClass().getConstructor(String.class).newInstance(model.getConfigurationSelected().get(0).getId());
+        } catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
+            Logger.getLogger(ProjectMenuController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        int countA = DockablesRegistry.getInstance().getControl().getCDockableCount();
+        countA--;
+        CControl controlA = DockablesRegistry.getInstance().getControl();
+        IndexDockable = getIndexNewDockable(countA, controlA);
+        JPanel panelA = null;
+        JPanel panelAux = null;
+        if(IndexDockable != null){
+            ((DockableElement) controlA.getCDockable(IndexDockable)).setTitleText("testststs");
+            //IndexDockable-2 para el analisis??
+            DockableElement docka = (DockableElement) controlA.getCDockable(IndexDockable);
+            docka.setVisible(false);
+            panelA = (JPanel) docka.getContentPane();
+            panelA.setSize(200, 200);
+            DockableElement docka2 = (DockableElement) controlA.getCDockable(IndexDockable-1);
+            docka2.setVisible(false);
+            panelAux = (JPanel) docka2.getContentPane();
+        }
+        SwingNode swingNode = new SwingNode();
+        createSwingContent(swingNode, panelA);
+        SwingNode nodo2 = new SwingNode();
+        createSwingContent(nodo2, panelAux);
+        
+        StackPane pane = new StackPane();
+        pane.getChildren().clear();
+        pane.getChildren().add(swingNode);
+        
+        StackPane pane2 = new StackPane();
+        pane2.getChildren().clear();
+        pane2.getChildren().add(nodo2);
+        
+        pane.setMinHeight(200);
+        pane.setMaxHeight(400);
+        pane.setMinWidth(200);
+        pane.setMaxWidth(200);
+        pane.alignmentProperty().set(Pos.CENTER_RIGHT);
+        
+        pane2.setMinHeight(200);
+        pane2.setMaxHeight(200);
+        pane2.setMinWidth(200);
+        pane2.setMaxWidth(200);
+        
+        List<Node> nodos = gridPane3.getChildren();
+        gridPane3.getChildren().removeAll(nodos);
+        gridPane3.setPrefSize(600, 600);
+        gridPane3.alignmentProperty().set(Pos.CENTER);
+        if(gridPane.getRowConstraints().size()==0){
+            System.out.println("22222");
+            for(int i=0; i<3;i++){
+                System.out.println("333333");
+                RowConstraints aux = new RowConstraints(200);
+                aux.setMaxHeight(200);
+                aux.setMinHeight(200);
+                gridPane3.getRowConstraints().add(aux);
+            } 
+        }      
+        gridPane3.add(pane, 0, 0);
+        gridPane3.add(pane2, 0, 1);
+        projectMenuPane.setCenter(gridPane3);
     }
     
     private void createSwingContent(SwingNode swingNode, JPanel p) {

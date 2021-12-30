@@ -136,7 +136,7 @@ public class MainWindowsController implements Initializable {
         try{
             textWelcome.setVisible(false);
             centerPane.getChildren().clear();
-            if(model.getParticipants().isEmpty()){
+            if(model.getParticipants().isEmpty() && model.getConfigurationsA().isEmpty() && model.getConfigurationsC().isEmpty() && model.getConfigurationsV().isEmpty()){
                 model.newProyect = 1;
             }
             final JavaFXBuilderFactory builderFactory = new JavaFXBuilderFactory();

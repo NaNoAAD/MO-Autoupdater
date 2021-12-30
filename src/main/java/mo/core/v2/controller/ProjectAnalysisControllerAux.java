@@ -105,8 +105,8 @@ public class ProjectAnalysisControllerAux {
                     if(a.getName().equals(SelectedPlugin)&&SelectedPlugin.equals(sp.getName())){
                         Configuration config = a.initNewConfiguration(model.getOrg());
                         if(config != null){
-                            String aux = saveConfiguration(SelectedPlugin, config.getId());
                             model.getConfigurationsA().add(config);
+                            String aux = saveConfiguration(SelectedPlugin, config.getId());
                             sp.getConfigurations().add(config);
                             model.getOrg().store();
                             for(StageModule sm : model.getOrg().getStages()){
@@ -142,19 +142,14 @@ public class ProjectAnalysisControllerAux {
     }
     
     private void createFolder(){
-
-        System.out.println("createFolder");
-        System.out.println(path);
         pathStage = path + "\\analysis";
         File folder = new File(pathStage);
         folder.mkdir();
     }
 
     private void fileOfAnalysis(Configuration config, String name){
-        System.out.println("fileOfAnaly: "+name);
         createFolder();
         String nameAux = name.toLowerCase();
-        System.out.println("fileOfAnaly: "+nameAux);
         String[] aux = nameAux.split(" ");
         pathConfig = pathStage+"\\"+aux[0]+"-analysis";
         pathConfigXml = new File(pathConfig);
@@ -166,7 +161,6 @@ public class ProjectAnalysisControllerAux {
     
     private void fileOfAnalysis2(String name){
         try{
-            System.out.println("fileOfAnaly2" + name);
             File file = new File(pathStage + "\\" + name.toLowerCase()+"-analysis.xml");
             if(file.exists()){
                 DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();

@@ -113,6 +113,7 @@ public class ProjectOrganization {
                     Path stagePath = Paths.get(file.toURI());
 
                     Path relative = projectRoot.relativize(stagePath);
+                    System.out.println("relative to add in stage xml: " + relative.toString());
                     st.setString(relative.toString());
                     root.addElement(st);
                 }
