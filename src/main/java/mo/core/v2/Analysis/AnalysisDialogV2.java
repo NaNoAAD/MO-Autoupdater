@@ -101,7 +101,6 @@ public class AnalysisDialogV2 {
         dialog.addActionListener(new WizardDialog.WizardListener() {
             @Override
             public void onStepChanged() {
-                System.out.println("D: D: D:");
                 stepChanged();
             }
         });

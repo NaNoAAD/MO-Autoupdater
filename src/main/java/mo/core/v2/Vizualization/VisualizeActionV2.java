@@ -44,11 +44,11 @@ public class VisualizeActionV2 implements StageAction {
                 configs.add(configuration);
             }
         }
-        VisualizationDialog2 d = new VisualizationDialog2(configs, organization.getLocation());
+        VisualizationDialogV2 d = new VisualizationDialogV2(configs, organization.getLocation(), model);
         boolean accept = d.show();
         if (accept) {
             VisualizationPlayer p = new VisualizationPlayer(d.getConfigurations());
-            p.getDockable().setVisible(false);
+            //p.getDockable().setVisible(true);
             DockablesRegistry.getInstance()
                     .addDockableInProjectGroup(
                             organization.getLocation().getAbsolutePath(),

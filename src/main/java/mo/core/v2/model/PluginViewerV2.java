@@ -52,7 +52,6 @@ public class PluginViewerV2 extends JPanel {
         // Plugin list tab
         pluginList = new PluginList();
         tabbedPane.addTab("Installed plugins", pluginList);
-        System.out.println("1");
         
         // Plugin installer tab
         localInstaller = new LocalPluginInstaller();
@@ -61,21 +60,17 @@ public class PluginViewerV2 extends JPanel {
         installer.addTab("Local", new JScrollPane(localInstaller));
         installer.addTab("Download", new JScrollPane(remoteInstaller));
         tabbedPane.addTab("Get plugins", installer);
-        System.out.println("2");
 
         // Plugins tab
         populatePluginsTree();
         pluginsScrollPane = new JScrollPane(pluginsTree);
         tabbedPane.addTab("Plugins", pluginsScrollPane);
         pluginsTree.expandRow(2);
-        System.out.println("3");
         
         // Extension points tab
         populateExtensionPointTree();
         extPointScrollPane = new JScrollPane(extPointsTree);
         tabbedPane.addTab("Extension Points", extPointScrollPane);
-        System.out.println("4");
-        
         
         tabbedPane.addChangeListener((ChangeEvent e) -> {
             /* Event - tab change */
@@ -83,14 +78,12 @@ public class PluginViewerV2 extends JPanel {
             
         });
 
-        System.out.println("5");
         
         TreeNode r = (TreeNode) pluginsTree.getModel().getRoot();
         expandAll(pluginsTree, new TreePath(r));
         r = (TreeNode) extPointsTree.getModel().getRoot();
         expandAll(extPointsTree, new TreePath(r));
 
-        System.out.println("6");
         
         mainPanel = new JPanel();
         mainPanel.setLayout(new GridBagLayout()); 
@@ -101,7 +94,6 @@ public class PluginViewerV2 extends JPanel {
        
         c.f(GridBConstraints.BOTH);
         mainPanel.add(tabbedPane, c.gy(1).wy(1));
-        System.out.println("7");
     }
     
     private void populateExtensionPointTree() {

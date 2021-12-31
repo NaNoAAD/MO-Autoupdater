@@ -45,6 +45,7 @@ public class DataFileFinder {
                                         if (prop.containsKey("file")) {
                                             File f = t.resolve(prop.getProperty("file")).normalize().toFile();
                                             if (f.exists()) {
+                                                System.out.println("file: " + f.getAbsolutePath());
                                                 result.add(f);
                                             }
                                         }

@@ -90,7 +90,6 @@ public class AnalyzeActionV2 implements StageAction{
 
     @Override    
     public void init(ProjectOrganization organization, Participant participant, StageModule stage) {
-        System.out.println("init------------------------------------------------------");
         if(remote){
             initRemoteNotes();
             return;
@@ -101,6 +100,7 @@ public class AnalyzeActionV2 implements StageAction{
             if(astage.getCodeName().equals("visualization")) {
                 for(StagePlugin aplugin : astage.getPlugins()) {
                     for(Configuration aconfiguration : aplugin.getConfigurations()) {
+                        System.out.println("1");
                         configs.add(aconfiguration);
                     }
                 }
@@ -116,7 +116,7 @@ public class AnalyzeActionV2 implements StageAction{
         for (StagePlugin plugin : stage.getPlugins()) {
             if(plugin.getName().equals("Notes plugin")) {
                 notesPlugin = plugin;
-                continue;
+                //continue;
             }
             for (Configuration configuration : plugin.getConfigurations()) {
                 configs.add(configuration);
@@ -245,7 +245,6 @@ public class AnalyzeActionV2 implements StageAction{
         long min = Long.MAX_VALUE, max = Long.MIN_VALUE;
         for (VisualizableConfiguration config : configs) {
             if (config.getPlayer().getStart() < min) {
-                System.out.println("min: " + config.getPlayer().getStart());
                 min = config.getPlayer().getStart();
             }
             if (config.getPlayer().getEnd() > max) {
@@ -264,7 +263,6 @@ public class AnalyzeActionV2 implements StageAction{
     }
     
     public File getFile(){
-        System.out.println("555555555555555555555555: " + storeFile.getAbsolutePath());
         return this.storeFile;
     }
 }

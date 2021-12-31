@@ -34,7 +34,7 @@ import mo.visualization.VisualizationDialog2;
  *
  * @author Francisco
  */
-public class VisualizationDialog2V2 {
+public class VisualizationDialogV2 {
     
     WizardDialog dialog;
 
@@ -53,7 +53,7 @@ public class VisualizationDialog2V2 {
     
     Organization model;
 
-    public VisualizationDialog2V2(List<Configuration> configs, File project, Organization org) {
+    public VisualizationDialogV2(List<Configuration> configs, File project, Organization org) {
         model = org;
         model.getConfigurationSelected().clear();
         gbc = new GridBConstraints();

@@ -133,7 +133,6 @@ public class ProjectMenuController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        System.out.println("newProject?: " + model.newProyect);
         if(model.newProyect!=0){
             name();
         }
@@ -173,7 +172,6 @@ public class ProjectMenuController implements Initializable {
             action = ppca.actions();
         }
         projectMenuPane.setCenter(centerPane);
-        //System.out.println("is empty?: "+action.get(0));
     }
 
     @FXML
@@ -243,13 +241,11 @@ public class ProjectMenuController implements Initializable {
         paca = new ProjectAnalysisControllerAux(model);
         paca.init();
         paca.initAnalysisStage();
-        System.out.println("a");
         List<Node> nodes = gridPane2.getChildren();
         gridPane2.getChildren().removeAll(nodes);
         gridPane2.setPrefWidth(600);
         gridPane2.setPrefHeight(400);
         initVistaCaptures(1, model.getConfigAnalysis());
-        System.out.println("b");
         analysisAux.clear();
         if(!model.getConfigAnalysis().isEmpty()){
             for(Pair<String, String> c : model.getConfigAnalysis()){
@@ -290,11 +286,9 @@ public class ProjectMenuController implements Initializable {
         gridPane2.getChildren().removeAll(nodes);
         gridPane2.setPrefWidth(600);
         gridPane2.setPrefHeight(400);
-        System.out.println("preee: " + model.getConfigVisualizations().size());
         initVistaCaptures(2, model.getConfigVisualizations());
         visuAux.clear();
         for(Pair<String, String> c : model.getConfigVisualizations()){
-            System.out.println("config visu");
             addConfigsV(c.getValue() + " (" + c.getKey() + ")", 2, visuAux);
         }
         scrollParticipants.backgroundProperty().set(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -318,12 +312,10 @@ public class ProjectMenuController implements Initializable {
     
     private void addStageNodeIfNotExists(StageModule stage){
         String newNodeName = stage.getName();
-        System.out.println("name stage: " + stage.getName());
         if(model.getOrg().getStages().isEmpty()||model.getOrg().getStages().size()<3){
             stage.setOrganization(model.getOrg());
             model.getOrg().addStage(stage);
             model.getOrg().store();
-            System.out.println("added stage??_: "+model.getOrg().getStages().isEmpty());
         }
     }
     
@@ -331,7 +323,6 @@ public class ProjectMenuController implements Initializable {
         List<Plugin> stagePlugins = PluginRegistry.getInstance().getPluginData().getPluginsFor("mo.organization.StageModule");
         for(Plugin stagePlugin : stagePlugins){
             StageModule nodeProvider = (StageModule) stagePlugin.getNewInstance();
-            System.out.println(nodeProvider);
             addStageNodeIfNotExists(nodeProvider);
         }
     }
@@ -388,42 +379,29 @@ public class ProjectMenuController implements Initializable {
     }
     
     private void unLockParticipant(MouseEvent event, ImageView i) {
-        System.out.println("1");
         model.getOrg().getParticipants().forEach((participant) -> {
-            System.out.println("2");
             if(participant.id.equals(i.getId())){
-                System.out.println("3");
                 if(participant.isLocked){
-                    System.out.println("4");
                     participant.isLocked=false;
                     ImageView iAux = new javafx.scene.image.ImageView("/images/unlocked2.png");
                     i.setImage(iAux.getImage());
-                    System.out.println("cambio");
                     model.setParticipants(model.getOrg().getParticipants());
                     
                 }
                 else{
-                    System.out.println("5");
                    participant.isLocked=true;
                    ImageView iAux = new javafx.scene.image.ImageView("/images/locked2.png");
                    i.setImage(iAux.getImage());
-                   System.out.println("Cambio");
                    model.setParticipants(model.getOrg().getParticipants());
                 }
             }
-            System.out.println("participant locked?: " + participant.isLocked);
         });
     }
     
     public void record(MouseEvent event, String id){
-        System.out.println("1");
         Participant p = model.getParticipantById(id);
-        System.out.println("2");
-        System.out.println(model.getOrg().getStages().isEmpty());
         for(StageModule sm : model.getOrg().getStages()){
-            System.out.println("3");
             if(sm.getName().equals("Captura")){
-                System.out.println("4");
                 action.get(0).init(model.getOrg(), p, sm);
             }
         }
@@ -467,7 +445,6 @@ public class ProjectMenuController implements Initializable {
             Participant pAux = model.getParticipantById(id);
             model.getOrg().deleteParticipant(pAux);
         }
-        System.out.println("org: " + model.getOrg().getParticipants().size());
     }
     
     public void analysis(MouseEvent event, String id){
@@ -507,7 +484,7 @@ public class ProjectMenuController implements Initializable {
             pac.addFile(model.getFile());
             playableConfigurations.add(pac);
             System.out.println("Path: " + model.getFile().getAbsolutePath());
-            System.out.println("play: " + pac.getClass().getName());
+            //System.out.println("play: " + pac.getClass().getName());
             NotesVisualization notesVisualization = new NotesVisualization(model.getFile().getAbsolutePath(), pac.getClass().getName());
             ((NotesAnalysisConfig) notesConfiguration).addPlayable(notesVisualization);
         }else if (c instanceof VisualizableConfiguration) {
@@ -525,7 +502,7 @@ public class ProjectMenuController implements Initializable {
         analyzableConfigurations.addAll(notPlayableConfigurations);
         List<AnalyzableConfiguration> analyzableList = new ArrayList(analyzableConfigurations);
         analyzableList.add(notesConfiguration);
-        SwingWorker<Void, Void> mySwingWorker = new SwingWorker<Void, Void>() {
+        /*SwingWorker<Void, Void> mySwingWorker = new SwingWorker<Void, Void>() {
             @Override
             protected Void doInBackground() throws Exception {
                 threads = new Thread[analyzableList.size()];
@@ -549,30 +526,30 @@ public class ProjectMenuController implements Initializable {
                 }
                 return null;
             }
-        };
+        };*/
         int countA = DockablesRegistry.getInstance().getControl().getCDockableCount();
         countA--;
         CControl controlA = DockablesRegistry.getInstance().getControl();
         //mySwingWorker.execute();
         IndexDockable = getIndexNewDockable(countA, controlA);
-        System.out.println("Index: " + IndexDockable);
         JPanel panelA = null;
         JPanel panelAux = null;
         if(IndexDockable != null){
+            System.out.println("Index: " + IndexDockable + "SHineeeeeeeeeeeeeeeeeeeee");
             ((DockableElement) controlA.getCDockable(IndexDockable)).setTitleText("testststs");
             //IndexDockable-2 para el analisis??
-            DockableElement docka = (DockableElement) controlA.getCDockable(IndexDockable);
-            docka.setVisible(false);
+            DockableElement docka = (DockableElement) controlA.getCDockable(IndexDockable+1);
+            //docka.setVisible(false);
             panelA = (JPanel) docka.getContentPane();
             panelA.setSize(200, 200);
-            DockableElement docka2 = (DockableElement) controlA.getCDockable(IndexDockable-2);
-            docka2.setVisible(false);
+            DockableElement docka2 = (DockableElement) controlA.getCDockable(IndexDockable-1);
+            //docka2.setVisible(false);
             panelAux = (JPanel) docka2.getContentPane();
         }
         List<VisualizableConfiguration> vlista = (List<VisualizableConfiguration>) (List<?>) new ArrayList<>(playableConfigurations);
         vlista.addAll(visualizableConfiguration);
         VisualizationPlayer player = new VisualizationPlayer(vlista);
-        player.getDockable().setTitleText("Test222");
+        //player.getDockable();
         JPanel panelB = (JPanel) player.getDockable().getContentPane();
         
         
@@ -615,14 +592,10 @@ public class ProjectMenuController implements Initializable {
         //pane.getChildren().add(nodo);
         List<Node> nodos = gridPane3.getChildren();
         gridPane3.getChildren().removeAll(nodos);
-        System.out.println(gridPane3.getRowConstraints().size());
         gridPane3.setPrefSize(600, 600);
         gridPane3.alignmentProperty().set(Pos.CENTER);
-        System.out.println("11111");
         if(gridPane.getRowConstraints().size()==0){
-            System.out.println("22222");
             for(int i=0; i<3;i++){
-                System.out.println("333333");
                 RowConstraints aux = new RowConstraints(200);
                 aux.setMaxHeight(200);
                 aux.setMinHeight(200);
@@ -653,7 +626,6 @@ public class ProjectMenuController implements Initializable {
         CControl controlA = DockablesRegistry.getInstance().getControl();
         DockablesRegistry.getInstance().getItem();
         JPanel panel = new JPanel();
-        System.out.println("Num dockable: " + DockablesRegistry.getInstance().getControl());
         //3 no se que tiene
         DockableElement element  = (DockableElement)controlA.getCDockable(5);
         panel.add(element.getContentPane());
@@ -725,17 +697,15 @@ public class ProjectMenuController implements Initializable {
         gridPane3.setPrefSize(600, 600);
         gridPane3.alignmentProperty().set(Pos.CENTER);
         if(gridPane.getRowConstraints().size()==0){
-            System.out.println("22222");
             for(int i=0; i<3;i++){
-                System.out.println("333333");
                 RowConstraints aux = new RowConstraints(200);
                 aux.setMaxHeight(200);
                 aux.setMinHeight(200);
                 gridPane3.getRowConstraints().add(aux);
             } 
         }      
-        gridPane3.add(pane, 0, 0);
-        gridPane3.add(pane2, 0, 1);
+        gridPane3.add(pane, 0, 1);
+        gridPane3.add(pane2, 0, 0);
         projectMenuPane.setCenter(gridPane3);
     }
     
@@ -984,7 +954,6 @@ public class ProjectMenuController implements Initializable {
         gridPane.getChildren().removeAll(nodos);
         row=0;
         for(Participant p : model.getParticipants()){
-            System.out.println("a");
             add(p);
         }
     }
@@ -1064,10 +1033,8 @@ public class ProjectMenuController implements Initializable {
 
     //Funciones de gestion de iconografia de stages
     private void initVistaCaptures(int type, List<Pair<String,String>> configs){
-        System.out.println("a.1");
         int size=20, trasI=25, trasN=50, trasAdd=500;
         if(configs.isEmpty()){ 
-            System.out.println("a.1.1");
             for(int i=0; i<8; i++){
                 RowConstraints aux = new RowConstraints(50);
                 aux.setMinHeight(50);
@@ -1091,7 +1058,6 @@ public class ProjectMenuController implements Initializable {
             javafx.scene.image.ImageView icon;
             Text name;
             if(type==0){
-                System.out.println("1");
                 icon = new javafx.scene.image.ImageView("/images/capture.png");
                 name = new Text("Capture");
                 addCircle.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
@@ -1102,7 +1068,6 @@ public class ProjectMenuController implements Initializable {
                 });
             }
             else if(type==1){
-                System.out.println("2");
                 icon = new javafx.scene.image.ImageView("/images/analysis.png");
                 name = new Text("Analysis");
                 addCircle.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
@@ -1120,7 +1085,6 @@ public class ProjectMenuController implements Initializable {
                 });
             }
             
-            System.out.println("a.1");
             icon.opacityProperty().set(0.5);
             icon.setTranslateX(trasI);
             icon.setFitHeight(size);
@@ -1215,11 +1179,7 @@ public class ProjectMenuController implements Initializable {
         Integer IndexDockable = null;
         int countB = DockablesRegistry.getInstance().getControl().getCDockableCount();
         CControl controlB = DockablesRegistry.getInstance().getControl();
-        
-        System.out.println("countB: " + countB);
-        System.out.println("cantPrev: " + cantPrev);
         if (countB > cantPrev) {
-            System.out.println("1");
             ArrayList<String> idsA = new ArrayList<String>();
             ArrayList<String> idsB = new ArrayList<String>();
             int j;
@@ -1232,9 +1192,7 @@ public class ProjectMenuController implements Initializable {
             idsB.add(((DockableElement) controlB.getCDockable(j)).getId());
             for (j = 0; j < countB; j++) {
                 String idB = idsB.get(j);
-                System.out.println("j1: " + j);
                 if (!idsA.contains(idB)) {
-                    System.out.println("j2: " + j);
                     IndexDockable = j;
                     break;
                 }

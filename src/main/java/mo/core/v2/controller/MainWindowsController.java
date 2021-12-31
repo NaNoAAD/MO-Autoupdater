@@ -132,7 +132,7 @@ public class MainWindowsController implements Initializable {
     }    
 
     @FXML
-     void newProject(MouseEvent event) {
+    void newProject(MouseEvent event) {
         try{
             textWelcome.setVisible(false);
             centerPane.getChildren().clear();

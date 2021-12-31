@@ -41,6 +41,7 @@ public class MainWindow extends JFrame {
 
         pack();
         setVisible(true);
+        setVisible(false);
     }
 
     private void setLookAndFeel() {

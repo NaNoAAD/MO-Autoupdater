@@ -243,7 +243,7 @@ public class RecordAction implements StageAction, ConnectionListener {
             configuration.cancelRecording();
         }
         JFrame frame = DockablesRegistry.getInstance().getMainFrame();
-        frame.setVisible(true);
+        frame.setVisible(false);
         isRecording = false;
         HashMap<String,Object> map = new HashMap<>();
         map.put("recording_state_r", Command.CANCEL_RECORDING);
@@ -256,7 +256,7 @@ public class RecordAction implements StageAction, ConnectionListener {
             configuration.stopRecording();
         }
         JFrame frame = DockablesRegistry.getInstance().getMainFrame();
-        frame.setVisible(true);
+        frame.setVisible(false);
         isRecording = false;
         HashMap<String,Object> map = new HashMap<>();
         map.put("recording_state_r", Command.STOP_RECORDING);
