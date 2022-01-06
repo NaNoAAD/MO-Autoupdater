@@ -488,7 +488,7 @@ public class ServerConnection implements PluginCaptureListener,ConnectionSender,
         return firstWords;
     }
 
-    int getPortTCP() {
+    public int getPortTCP() {
         return portTCP;
     }
 

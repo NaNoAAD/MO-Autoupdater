@@ -7,20 +7,19 @@ package mo.core.v2.controller;
 
 import com.google.inject.Inject;
 import com.google.inject.Injector;
-import java.io.IOException;
+import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.fxml.JavaFXBuilderFactory;
-import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.util.Callback;
-import mo.core.v2.controller.MainWindowsController;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
+import mo.core.v2.model.CommunicationManagementV2;
+import mo.core.v2.model.LanguageV2;
 
 /**
  * FXML Controller class
@@ -34,7 +33,21 @@ public class SettingsController implements Initializable {
     @Inject
     public Injector injector;
     @FXML
-    private AnchorPane pane;
+    private BorderPane pane;
+    @FXML
+    private Text textSettings;
+    @FXML
+    private Button languageButton;
+    @FXML
+    private Button serverConfigBtn;
+    
+    private Pane paneLanguage;
+    private Pane paneServer;
+    private Text languageText;
+    private Text serverText;
+    
+    private CommunicationManagementV2 cmv2;
+    private LanguageV2 lv2;
 
     /**
      * Initializes the controller class.
@@ -42,5 +55,27 @@ public class SettingsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
+        
+        //final SwingNode swingNode = new SwingNode();   
+        
+        //createSwingContent(swingNode);
+        
+        //swingNode.setContent(new JButton("dddf"));
+        
+        //pane.getChildren().add(swingNode);
+        //System.out.println("Create swing");
+    }
+
+    @FXML
+    private void languageClick(MouseEvent event) {
+        lv2 = new LanguageV2();
+        lv2.actionPerformed();
+    }
+
+    @FXML
+    private void configServerClick(MouseEvent event) {
+        cmv2 = new CommunicationManagementV2();
+        cmv2.newConnection(new ActionEvent(this, 1, "test"));
     }
 }

@@ -222,7 +222,7 @@ public class MainWindowsController implements Initializable {
             final JavaFXBuilderFactory builderFactory = new JavaFXBuilderFactory();
             final Callback<Class<?>, Object> callback = (clazz) -> injector.getInstance(clazz);
             FXMLLoader loaderOpen= new FXMLLoader(MainWindowsController.class.
-                    getResource("/fxml/core/ui/SettingsMenu.fxml"), null,
+                    getResource("/fxml/core/ui/Settings.fxml"), null,
                     builderFactory, callback);
             Parent openParent = loaderOpen.load();
             
