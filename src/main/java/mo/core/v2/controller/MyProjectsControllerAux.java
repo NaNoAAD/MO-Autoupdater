@@ -72,9 +72,6 @@ public class MyProjectsControllerAux {
         for(String path : projectsPath){
             Project p = new Project(path);
             ProjectOrganization po = new ProjectOrganization(p);
-            System.out.println("PO1: " + po.getStages().get(0).getCodeName());
-            System.out.println("PO2: " + po.getStages().get(1).getCodeName());
-            System.out.println("PO3: " + po.getStages().get(2).getCodeName());
             projectsOrgs.add(po);
         }
         return projectsOrgs;

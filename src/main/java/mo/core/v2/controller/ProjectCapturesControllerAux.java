@@ -148,7 +148,6 @@ public class ProjectCapturesControllerAux {
     }
     
     private void fileOfCapture(Configuration config, String name){
-        System.out.println("sp: "+name);
         createFolder();
         String nameAux = name.toLowerCase();
         pathConfig = pathStage+"\\"+nameAux+"-capture";

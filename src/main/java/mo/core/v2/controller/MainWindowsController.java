@@ -116,7 +116,6 @@ public class MainWindowsController implements Initializable {
         List<String> projectsNotFound = new ArrayList<>();
         preferences.getOpenedProjects().stream().forEach((openedProject) -> {
             File f = new File(openedProject.getLocation());
-            System.out.println("File "+f);
             if (f.exists()) {
                 //addFile(openedProject.getLocation()));
                 
@@ -147,7 +146,6 @@ public class MainWindowsController implements Initializable {
             Parent openParent = loaderOpen.load();
             openParent.getProperties()
                 .put(CONTROLLER_KEY, loaderOpen.getController());
-            System.out.println(model.getFileProject());
             centerPane.getChildren().add(openParent);
         }
         catch (IOException ex) {
@@ -171,7 +169,6 @@ public class MainWindowsController implements Initializable {
         projectsGrid.getChildren().clear();
         projectsGrid.getColumnConstraints().add(new ColumnConstraints(300));
         projectsGrid.getColumnConstraints().add(new ColumnConstraints(300));
-        System.out.println("columns: " + projectsGrid.getColumnConstraints().size());
         for(int i=0; i<3;i++){
             RowConstraints rowAux2 = new RowConstraints(133);
             rowAux2.vgrowProperty().set(Priority.NEVER);
@@ -184,7 +181,6 @@ public class MainWindowsController implements Initializable {
         scrollPane.fitToHeightProperty().set(true);
         scrollPane.hbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setContent(projectsGrid);
-        System.out.println("Row: " + projectsGrid.getRowConstraints().size());
         for(RowConstraints o : projectsGrid.getRowConstraints()){
             //o.setPrefHeight(200);
             //o.setMinHeight(200);
@@ -243,7 +239,6 @@ public class MainWindowsController implements Initializable {
     
     //My projects
     private void initModules(){
-        System.out.println("init");
         iconProject = new javafx.scene.image.ImageView("/images/folder.png");
         iconProject.setFitHeight(25);
         iconProject.setFitWidth(25);
@@ -317,7 +312,6 @@ public class MainWindowsController implements Initializable {
     }
     
     private void showInfo(){
-        System.out.println("show");
         int aux = 0;
         numCaptures2.setText("0");
         numAnalysis2.setText("0");
@@ -341,21 +335,19 @@ public class MainWindowsController implements Initializable {
                                 aux = aux + (PO.getStages().get(j).getPlugins().get(k).getConfigurations().size());
                             }
                         }
-                        switch(j){
-                            case 0:
-                                numCaptures2.setText(Integer.toString(aux));  
-                                break;
-                            case 1:
-                                numAnalysis2.setText(String.valueOf(aux));
-                                break;
-                            case 2:
-                                numVisualization2.setText(String.valueOf(aux));
-                                break;
+                        if(PO.getStages().get(j).getName().equals(model.getCaptureStage().getName())){
+                            numCaptures2.setText(Integer.toString(aux));
                         }
+                        if(PO.getStages().get(j).getName().equals(model.getAnalysisStage().getName())){
+                            numAnalysis2.setText(String.valueOf(aux));
+                        }
+                        if(PO.getStages().get(j).getName().equals(model.getVisualizationStage().getName())){
+                            numVisualization2.setText(String.valueOf(aux));
+                        }                         
                     }
                 }
                 colum++;
-            }
+            }   
             else{
                 if(row>projectsGrid.getRowConstraints().size()){
                     RowConstraints rowAux = new RowConstraints(100);
@@ -376,6 +368,7 @@ public class MainWindowsController implements Initializable {
     }
     
     public void createAndAddToGrid(ProjectOrganization PO, int row, int colum){
+        System.out.println("createAndAdd----------------------");
         javafx.scene.image.ImageView icon2 = new javafx.scene.image.ImageView("/images/folder.png");
         String idAux = PO.getLocation().getName();
         icon2.setId(idAux);
@@ -454,8 +447,10 @@ public class MainWindowsController implements Initializable {
         seeButton2.setTranslateY(60);
         projectsGrid.add(seeButton2, colum, row);
         seeButton2.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-            //seeProject(event, seeButton.getId());
-        });
+                    model.setOrg(PO);
+                    model.newProyect=0;
+                    this.newProject(event);
+                });
         
         line = new Line();
         line.setEndX(600);
@@ -465,7 +460,6 @@ public class MainWindowsController implements Initializable {
         projectsGrid.add(line, colum, row);
         
         if(PO.getStages().isEmpty()){
-            System.out.println("empty?");
             numCaptures2.setText("0");
             numAnalysis2.setText("0");
             numVisualization2.setText("0");
@@ -476,19 +470,20 @@ public class MainWindowsController implements Initializable {
                 for(int j=0; j<PO.getStages().get(i).getPlugins().size(); j++){
                     if(!PO.getStages().get(i).getPlugins().get(j).getConfigurations().isEmpty()){
                         aux = aux + PO.getStages().get(i).getPlugins().get(j).getConfigurations().size();
+                        System.out.println("Stage: " + PO.getStages().get(i).getName());
+                        System.out.println("plugins: " + PO.getStages().get(i).getPlugins().get(j).getConfigurations().size());
+                        System.out.println("aux: " + aux);
                     }
                 }
-                switch(i){
-                    case 0:
-                        captureLabel2.setText(String.valueOf(aux));
-                        break;
-                    case 1:
-                        analysisLabel2.setText(String.valueOf(aux));
-                        break;
-                    case 2:
-                        visualizationLabel2.setText(String.valueOf(aux));
-                        break;
+                if(PO.getStages().get(i).getName().equals(model.getCaptureStage().getName())){
+                    captureLabel2.setText(Integer.toString(aux));
                 }
+                if(PO.getStages().get(i).getName().equals(model.getAnalysisStage().getName())){
+                    analysisLabel2.setText(String.valueOf(aux));
+                }
+                if(PO.getStages().get(i).getName().equals(model.getVisualizationStage().getName())){
+                    visualizationLabel2.setText(String.valueOf(aux));
+                }               
             }
         }
     }

@@ -153,14 +153,8 @@ public class AddParticipantController implements Initializable {
         Date dateAux = Date.from(instant);
         p.date = dateAux;
         p.folder = "/participant-"+p.id;
-        System.out.println("num participants1: " + model.getParticipants().size());
         //model.getParticipants().add(p);
-        System.out.println("num participants2: " + model.getParticipants().size());
-        System.out.println("num participants3: " + model.getOrg().getParticipants().size());
         model.getOrg().getParticipants().add(p);
-        System.out.println("num participants4: " + model.getOrg().getParticipants().size());
-        System.out.println("num participants5: " + model.getParticipants().size());
         model.getOrg().store();
-        System.out.println("Creado");
     }
 }

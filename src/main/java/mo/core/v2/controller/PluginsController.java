@@ -42,7 +42,6 @@ public class PluginsController implements Initializable {
         //swingNode.setContent(new JButton("dddf"));
         
         pluginsPane.getChildren().add(swingNode);
-        System.out.println("Create swing");
     }    
 
     private void createSwingContent(SwingNode swingNode) {
