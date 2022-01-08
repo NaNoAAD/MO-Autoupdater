@@ -229,7 +229,9 @@ public class VisualizationDialogV2 {
         @Override
         public String toString() {
             Path p = file.toPath();
+            System.out.println("P: " + p);
             Path r = from.toPath();
+            System.out.println("R: " + r);
             Path r2 = p.relativize(p);
             return r.relativize(p).toString();
             //return p.toString();

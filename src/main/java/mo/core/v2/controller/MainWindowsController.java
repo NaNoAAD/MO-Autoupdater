@@ -15,8 +15,10 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -24,6 +26,7 @@ import javafx.fxml.JavaFXBuilderFactory;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
@@ -40,6 +43,9 @@ import javafx.scene.layout.RowConstraints;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 import javafx.util.Pair;
 import mo.core.MultimodalObserver;
@@ -117,9 +123,11 @@ public class MainWindowsController implements Initializable {
         preferences.getOpenedProjects().stream().forEach((openedProject) -> {
             File f = new File(openedProject.getLocation());
             if (f.exists()) {
+                System.out.println("openedProject: " + openedProject.toString());
                 //addFile(openedProject.getLocation()));
                 
             } else {
+                System.out.println("openedProject: " + openedProject.toString());
                 projectsNotFound.add(openedProject.getLocation());
             }
 
@@ -132,25 +140,20 @@ public class MainWindowsController implements Initializable {
 
     @FXML
     void newProject(MouseEvent event) {
-        try{
-            textWelcome.setVisible(false);
-            centerPane.getChildren().clear();
-            if(model.getParticipants().isEmpty() && model.getConfigurationsA().isEmpty() && model.getConfigurationsC().isEmpty() && model.getConfigurationsV().isEmpty()){
-                model.newProyect = 1;
-            }
-            final JavaFXBuilderFactory builderFactory = new JavaFXBuilderFactory();
-            final Callback<Class<?>, Object> callback = (clazz) -> injector.getInstance(clazz);
-            FXMLLoader loaderOpen = new FXMLLoader(MainWindowsController.class
-                .getResource("/fxml/core/ui/ProjectMenu.fxml"), null,
-                builderFactory, callback);
-            Parent openParent = loaderOpen.load();
-            openParent.getProperties()
-                .put(CONTROLLER_KEY, loaderOpen.getController());
-            centerPane.getChildren().add(openParent);
+        if(model.newProyect==1){
+            name();
         }
-        catch (IOException ex) {
-            Logger.getLogger(MainWindowsController.class
-          .getName()).log(Level.SEVERE, null, ex);
+        switch(model.newProyect){
+            case 0:
+                newProject();
+                break;
+            case -1:
+                
+                break;
+            default:
+                name();
+                newProject();
+                break;
         }
     }
 
@@ -160,6 +163,7 @@ public class MainWindowsController implements Initializable {
         colum=0;
         mpca = new MyProjectsControllerAux();
         this.projectsOrgs = mpca.getDataByPath();
+        System.out.println("ProjectsOrgs: " + projectsOrgs.size());
         //projectsOrgs = 
         centerPane.getChildren().clear();
         projectsGrid.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -233,8 +237,8 @@ public class MainWindowsController implements Initializable {
 
     @FXML
     public void exit(ActionEvent event) {
-        System.exit(0);
         saveProjectInAppPreferences(model.getProject());
+        System.exit(0);
     }  
     
     //My projects
@@ -246,14 +250,15 @@ public class MainWindowsController implements Initializable {
         iconProject.setTranslateY(-20);
         projectsGrid.add(iconProject, colum, row);
         
-        name.setText("Name: ");
+        /*name.setText("Name: ");
         name.setTranslateX(5);
         name.setTranslateY(-24);
-        //projectsGrid.add(name, 0, 0);
+        projectsGrid.add(name, 0, 0);*/
         
         name2.setText("---");
         name2.setTranslateX(35);
         name2.setTranslateY(-20);
+        name2.setStyle("-fx-font-weight: bold");
         projectsGrid.add(name2, 0, 0);
         
         numParticipants.setText("Participants: ");
@@ -368,7 +373,6 @@ public class MainWindowsController implements Initializable {
     }
     
     public void createAndAddToGrid(ProjectOrganization PO, int row, int colum){
-        System.out.println("createAndAdd----------------------");
         javafx.scene.image.ImageView icon2 = new javafx.scene.image.ImageView("/images/folder.png");
         String idAux = PO.getLocation().getName();
         icon2.setId(idAux);
@@ -470,9 +474,6 @@ public class MainWindowsController implements Initializable {
                 for(int j=0; j<PO.getStages().get(i).getPlugins().size(); j++){
                     if(!PO.getStages().get(i).getPlugins().get(j).getConfigurations().isEmpty()){
                         aux = aux + PO.getStages().get(i).getPlugins().get(j).getConfigurations().size();
-                        System.out.println("Stage: " + PO.getStages().get(i).getName());
-                        System.out.println("plugins: " + PO.getStages().get(i).getPlugins().get(j).getConfigurations().size());
-                        System.out.println("aux: " + aux);
                     }
                 }
                 if(PO.getStages().get(i).getName().equals(model.getCaptureStage().getName())){
@@ -494,4 +495,48 @@ public class MainWindowsController implements Initializable {
         app.addOpenedProject(project.getFolder().getAbsolutePath());
         pm.save(app, new File(MultimodalObserver.APP_PREFERENCES_FILE));
     } 
+    
+    private void name(){
+        try{
+            Stage popUp = new Stage();
+            final JavaFXBuilderFactory builderFactory = new JavaFXBuilderFactory();
+            final Callback<Class<?>, Object> callback = (clazz) -> injector.getInstance(clazz);
+            FXMLLoader loaderOpen = new FXMLLoader(ProjectMenuController.class
+                    .getResource("/fxml/core/ui/NewProject.fxml"), null,
+                    builderFactory, callback);
+            Parent openParent = loaderOpen.load();
+            openParent.getProperties()
+                    .put(CONTROLLER_KEY, loaderOpen.getController());
+            popUp.initModality(Modality.APPLICATION_MODAL);
+            popUp.setScene(new Scene(openParent));
+            popUp.getScene().getWindow().addEventHandler(WindowEvent.WINDOW_CLOSE_REQUEST, event -> {
+                model.newProyect = -1;
+            });
+            popUp.showAndWait();
+        }
+        catch(IOException ex){
+            Logger.getLogger(MainWindowsController.class
+          .getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void newProject(){
+        try{
+            textWelcome.setVisible(false);
+            centerPane.getChildren().clear();
+            final JavaFXBuilderFactory builderFactory = new JavaFXBuilderFactory();
+            final Callback<Class<?>, Object> callback = (clazz) -> injector.getInstance(clazz);
+            FXMLLoader loaderOpen = new FXMLLoader(MainWindowsController.class
+                .getResource("/fxml/core/ui/ProjectMenu.fxml"), null,
+                builderFactory, callback);
+            Parent openParent = loaderOpen.load();
+            openParent.getProperties()
+                .put(CONTROLLER_KEY, loaderOpen.getController());
+            centerPane.getChildren().add(openParent);
+        }
+        catch (IOException ex) {
+            Logger.getLogger(MainWindowsController.class
+          .getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

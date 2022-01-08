@@ -55,16 +55,6 @@ public class SettingsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
-        
-        //final SwingNode swingNode = new SwingNode();   
-        
-        //createSwingContent(swingNode);
-        
-        //swingNode.setContent(new JButton("dddf"));
-        
-        //pane.getChildren().add(swingNode);
-        //System.out.println("Create swing");
     }
 
     @FXML

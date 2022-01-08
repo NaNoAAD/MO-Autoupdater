@@ -72,24 +72,18 @@ public class ProjectParticipantsControllerAux {
         String analysis = model2.getStages2().get(0).getName();
         String visu = model2.getStages3().get(0).getName();
         StageAction c = null, a = null, v = null;
-        System.out.println("stage empty: " + model2.getOrg().getStages().isEmpty());
         if(!model2.getOrg().getStages().isEmpty()){
-            System.out.println("---------------");
             for(StageModule module : model2.getOrg().getStages()){
                 if(module.getName().equals(capture)){
                     c = module.getActions().get(0);
-                    System.out.println(module.getActions().get(0).getName());
                 }
                 if(module.getName().equals(analysis)){
                     a = module.getActions().get(0);
-                    System.out.println(module.getActions().get(0).getName());
                 }
                 if(module.getName().equals(visu)){
                     v = module.getActions().get(0);
-                    System.out.println(module.getActions().get(0).getName());
                 }
             }
-            System.out.println("---------------");
         }
         this.action.add(c);
         this.action.add(a);

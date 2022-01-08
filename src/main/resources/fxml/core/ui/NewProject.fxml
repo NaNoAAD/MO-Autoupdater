@@ -22,7 +22,7 @@
   </rowConstraints>
    <children>
       <Text id="newProjectLabel" fx:id="newProjectLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="New Project" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
-      <TextField id="nameText" fx:id="nameText" onKeyTyped="#writeName" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+      <TextField id="nameText" fx:id="nameText" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
       <TextField id="locationLabel" fx:id="locationLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <Text id="projectNameLabel" fx:id="projectNameLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Project name:" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
          <GridPane.margin>

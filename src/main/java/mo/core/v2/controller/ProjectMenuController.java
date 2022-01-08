@@ -133,9 +133,6 @@ public class ProjectMenuController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        if(model.newProyect!=0){
-            name();
-        }
         init();
         //addOneStage("name");
         //addAllStages();
@@ -352,27 +349,6 @@ public class ProjectMenuController implements Initializable {
         }
     }
     
-    private void name(){
-        try{
-            Stage popUp = new Stage();
-            final JavaFXBuilderFactory builderFactory = new JavaFXBuilderFactory();
-            final Callback<Class<?>, Object> callback = (clazz) -> injector.getInstance(clazz);
-            FXMLLoader loaderOpen = new FXMLLoader(ProjectMenuController.class
-                    .getResource("/fxml/core/ui/NewProject.fxml"), null,
-                    builderFactory, callback);
-            Parent openParent = loaderOpen.load();
-            openParent.getProperties()
-                    .put(CONTROLLER_KEY, loaderOpen.getController());
-            popUp.initModality(Modality.APPLICATION_MODAL);
-            popUp.setScene(new Scene(openParent));
-            popUp.showAndWait();
-        }
-        catch(IOException ex){
-            Logger.getLogger(MainWindowsController.class
-          .getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
     //Funciones de gestion de info de Participant
     public void addParticipant(MouseEvent event){
         addView("New Participant");
@@ -448,6 +424,9 @@ public class ProjectMenuController implements Initializable {
     }
     
     public void analysis(MouseEvent event, String id){
+        int tipo = 0;
+        int countAux = DockablesRegistry.getInstance().getControl().getCDockableCount();
+        System.out.println("CountAux: " + countAux);
         Participant p = model.getParticipantById(id);
         //File storageFile = new File(model.getOrg().getLocation().getAbsolutePath() + p.folder + "\\capture");
         StageModule sm = null;
@@ -480,20 +459,26 @@ public class ProjectMenuController implements Initializable {
         VisualizableConfiguration vc;
         NotPlayableAnalyzableConfiguration npac;
         if (c instanceof PlayableAnalyzableConfiguration) {
+            System.out.println("cayo en 1");
+            tipo = 1;
             pac = (PlayableAnalyzableConfiguration) c;
             pac.addFile(model.getFile());
             playableConfigurations.add(pac);
-            System.out.println("Path: " + model.getFile().getAbsolutePath());
-            //System.out.println("play: " + pac.getClass().getName());
             NotesVisualization notesVisualization = new NotesVisualization(model.getFile().getAbsolutePath(), pac.getClass().getName());
             ((NotesAnalysisConfig) notesConfiguration).addPlayable(notesVisualization);
-        }else if (c instanceof VisualizableConfiguration) {
+        }
+        //Analisis de una fuente y un analisis
+        else if (c instanceof VisualizableConfiguration) {
+            System.out.println("cayo en 2");
+            tipo = 2;
             vc = (VisualizableConfiguration) c;
             vc.addFile(model.getFile());
             visualizableConfiguration.add(vc);
             NotesVisualization notesVisualization = new NotesVisualization(model.getFile().getAbsolutePath(), vc.getClass().getName());
             ((NotesAnalysisConfig) notesConfiguration).addVisualizable(notesVisualization);// #marca
         } else {
+            System.out.println("cayo en 3");
+            tipo = 3;
             npac = (NotPlayableAnalyzableConfiguration) c;
             npac.addFile(model.getFile());
             notPlayableConfigurations.add(npac);
@@ -530,26 +515,22 @@ public class ProjectMenuController implements Initializable {
         int countA = DockablesRegistry.getInstance().getControl().getCDockableCount();
         countA--;
         CControl controlA = DockablesRegistry.getInstance().getControl();
-        //mySwingWorker.execute();
         IndexDockable = getIndexNewDockable(countA, controlA);
         JPanel panelA = null;
         JPanel panelAux = null;
         if(IndexDockable != null){
-            System.out.println("Index: " + IndexDockable + "SHineeeeeeeeeeeeeeeeeeeee");
-            ((DockableElement) controlA.getCDockable(IndexDockable)).setTitleText("testststs");
+            System.out.println("tipo: " + tipo);
             //IndexDockable-2 para el analisis??
+            System.out.println("Index: " +IndexDockable);
             DockableElement docka = (DockableElement) controlA.getCDockable(IndexDockable+1);
-            //docka.setVisible(false);
             panelA = (JPanel) docka.getContentPane();
             panelA.setSize(200, 200);
             DockableElement docka2 = (DockableElement) controlA.getCDockable(IndexDockable-1);
-            //docka2.setVisible(false);
             panelAux = (JPanel) docka2.getContentPane();
         }
         List<VisualizableConfiguration> vlista = (List<VisualizableConfiguration>) (List<?>) new ArrayList<>(playableConfigurations);
         vlista.addAll(visualizableConfiguration);
         VisualizationPlayer player = new VisualizationPlayer(vlista);
-        //player.getDockable();
         JPanel panelB = (JPanel) player.getDockable().getContentPane();
         
         
@@ -577,6 +558,7 @@ public class ProjectMenuController implements Initializable {
         pane.setMinWidth(200);
         pane.setMaxWidth(200);
         pane.alignmentProperty().set(Pos.CENTER_RIGHT);
+        pane2.alignmentProperty().set(Pos.CENTER_RIGHT);
         pane2.setMinHeight(200);
         pane2.setMaxHeight(200);
         pane2.setMinWidth(200);
@@ -614,6 +596,7 @@ public class ProjectMenuController implements Initializable {
     }
     
     public void visualization(MouseEvent event, String id){
+        System.out.println("-------------Visu--------------------");
         /*VisualizeAction visuAction = new VisualizeAction();
         Participant p = model.getParticipantById(id);
         StageModule sm = null;
@@ -658,7 +641,6 @@ public class ProjectMenuController implements Initializable {
         JPanel panelA = null;
         JPanel panelAux = null;
         if(IndexDockable != null){
-            ((DockableElement) controlA.getCDockable(IndexDockable)).setTitleText("testststs");
             //IndexDockable-2 para el analisis??
             DockableElement docka = (DockableElement) controlA.getCDockable(IndexDockable);
             docka.setVisible(false);

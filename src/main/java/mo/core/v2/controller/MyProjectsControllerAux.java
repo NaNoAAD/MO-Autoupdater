@@ -49,6 +49,7 @@ public class MyProjectsControllerAux {
             document.getDocumentElement().normalize();
             NodeList nlist = document.getDocumentElement().getChildNodes();
             int aux;
+            System.out.println("nList: " + nlist.getLength());
             for(aux=0; aux<nlist.getLength(); aux++){
                 Node node = nlist.item(aux);
                 if(node.getNodeType() == Node.ELEMENT_NODE){
