@@ -5,8 +5,6 @@
  */
 package mo.core.v2.controller;
 
-import bibliothek.util.xml.XAttribute;
-import bibliothek.util.xml.XElement;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 import java.io.File;
@@ -94,7 +92,6 @@ public class ProjectVisualizationControllerAux {
                         ObservablePlugins.add(v.getName());
                         visualization.add(v);
                     }
-                    //System.out.println("Plugin: " + v.getName());
                 }
             }
         }
@@ -113,8 +110,8 @@ public class ProjectVisualizationControllerAux {
                         if(config != null){
                             model.getConfigurationsV().add(config);
                             String aux = saveConfiguration(SelectedPlugin, config.getId());
-                            sp.getConfigurations().add(config);
-                            model.getOrg().store();                            
+                            model.getOrg().store(); 
+                            sp.getConfigurations().add(config);                           
                             for(StageModule sm : model.getOrg().getStages()){
                                 if(sm.getName().equals(model.getStages3().get(0).getName())){
                                     for(int i=0; i<sm.getPlugins().size(); i++){
@@ -125,6 +122,7 @@ public class ProjectVisualizationControllerAux {
                                 }
                             }
                             fileOfVisualization(config, sp.getName());
+                            writeInVisu(model.getPluginSelected().toString());
                             return aux;
                         }
                     }
@@ -159,28 +157,15 @@ public class ProjectVisualizationControllerAux {
         String[] aux = nameAux.split(" ");
         pathConfig = pathStage+"\\"+aux[0]+"-visualization";
         pathConfigXml = new File(pathConfig);
+        
         pathConfigXml.mkdirs();
         pathXml = config.toFile(pathConfigXml);
-        fileOfVisualizations(aux[0]);
-        for(StageModule sm : model.getOrg().getStages()){
-            for(StagePlugin sp : sm.getPlugins()){
-                if(!sp.getConfigurations().isEmpty()){
-                    for(Configuration c : sp.getConfigurations()){
-                        if(c.equals(config)){
-                            pluginAux = sp;
-                            String[] aux2 = sp.toString().split("@");
-                            writeInVisu(aux2[0]);
-                        }
-                    }
-                }
-            }
-        }
-        
+        String pathAuxString = pathStage + "\\" + aux[0].toLowerCase()+"-visualization.xml";
+        fileOfVisualizations(aux[0]);       
     }
     
     private void fileOfVisualizations(String name){
         try {
-            pathAux = pathStage + "\\" + name.toLowerCase()+"-visualization.xml";
             File file = new File(pathStage + "\\" + name.toLowerCase()+"-visualization.xml");
             if(file.exists()){
                 DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -223,8 +208,8 @@ public class ProjectVisualizationControllerAux {
     }
     
     private void writeInVisu(String plugin){
-        
-        File file = new File(path + "visualization.xml");
+        String pathAux = pathConfigXml.getName()+"\\"+pathXml.getName();
+        File file = new File(path + "\\"+ "visualization.xml");
         if(file.exists()){
             try {
                 DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -232,17 +217,22 @@ public class ProjectVisualizationControllerAux {
                 Document doc = docBuilder.parse(file);
                 Element element1 = doc.createElement("plugin");
                 Attr clase = doc.createAttribute("class");
-                clase.setValue(plugin);
+                clase.setValue(plugin.split("@")[0]);
                 element1.setAttributeNode(clase);
                 Element element2 = doc.createElement("path");
-                element2.setTextContent(pathAux);
-                element1.appendChild(element2); 
-            } catch (ParserConfigurationException | SAXException | IOException ex) {
+                element2.setTextContent(pathConfigXml.getName()+"\\"+pathXml.getName());
+                element1.appendChild(element2);
+                
+                TransformerFactory transformerFactory = TransformerFactory.newInstance();
+                Transformer transformer;
+                transformer = transformerFactory.newTransformer();
+                DOMSource source = new DOMSource(doc);
+                StreamResult result = new StreamResult(file);
+
+                transformer.transform(source, result);
+            } catch (ParserConfigurationException | SAXException | IOException | TransformerException ex) {
                 Logger.getLogger(ProjectVisualizationControllerAux.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        
-        //File f = new File(pathAux); //SEGUIR ACA
-        
+        }        
     }
 }

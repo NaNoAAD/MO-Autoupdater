@@ -16,7 +16,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import mo.core.plugin.Extends;
 import mo.core.plugin.Extension;
-import mo.core.plugin.PluginRegistry;
 import mo.core.preferences.AppPreferencesWrapper;
 import mo.core.preferences.PreferencesManager;
 import mo.core.ui.menubar.IMenuBarItemProvider;

@@ -15,10 +15,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.application.Platform;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -47,7 +44,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import javafx.util.Callback;
-import javafx.util.Pair;
 import mo.core.MultimodalObserver;
 import mo.core.filemanagement.project.Project;
 import mo.core.preferences.AppPreferencesWrapper;
@@ -100,6 +96,7 @@ public class MainWindowsController implements Initializable {
     public MyProjectsControllerAux mpca;
     public List<ProjectOrganization> projectsOrgs = new ArrayList<>();
     public int row = 0, colum = 0;
+    private int confirm = -1;
     @FXML
     private Text textWelcome1;
     @FXML
@@ -123,11 +120,9 @@ public class MainWindowsController implements Initializable {
         preferences.getOpenedProjects().stream().forEach((openedProject) -> {
             File f = new File(openedProject.getLocation());
             if (f.exists()) {
-                System.out.println("openedProject: " + openedProject.toString());
                 //addFile(openedProject.getLocation()));
                 
             } else {
-                System.out.println("openedProject: " + openedProject.toString());
                 projectsNotFound.add(openedProject.getLocation());
             }
 
@@ -136,34 +131,59 @@ public class MainWindowsController implements Initializable {
             preferences.removeOpenedProject(projectPath);
         }
         PreferencesManager.save(preferences, prefFile);
-    }    
+    }   
+    
+    @FXML
+    private void returnToBegining(MouseEvent event) {
+        centerPane.getChildren().clear();
+        textWelcome.setVisible(true);
+        centerPane.getChildren().add(textWelcome);
+        centerPane.getChildren().add(textWelcome1);
+        centerPane.getChildren().add(textWelcome11);
+        centerPane.getChildren().add(textWelcome111);
+        centerPane.getChildren().add(textWelcome1111);
+    }
 
     @FXML
     void newProject(MouseEvent event) {
+        if(model.newProyect==0){
+            if(confirm == 1){
+                newProject();
+                confirm = -1;
+            }
+            else{
+                centerPane.getChildren().clear();
+                textWelcome.setVisible(true);
+                centerPane.getChildren().add(textWelcome);
+                centerPane.getChildren().add(textWelcome1);
+                centerPane.getChildren().add(textWelcome11);
+                centerPane.getChildren().add(textWelcome111);
+                centerPane.getChildren().add(textWelcome1111);
+                model.newProyect = 1;
+            }
+        }
         if(model.newProyect==1){
             name();
+            if(confirm == 1){
+                newProject();
+            }
+            else{
+                model.newProyect=-1;
+                newProject(event);
+            }
         }
-        switch(model.newProyect){
-            case 0:
-                newProject();
-                break;
-            case -1:
-                
-                break;
-            default:
-                name();
-                newProject();
-                break;
+        if(model.newProyect==-1){
+            newProject();
         }
     }
 
     @FXML
     public void myProjects(ActionEvent event) {
+        
         row=0;
         colum=0;
         mpca = new MyProjectsControllerAux();
         this.projectsOrgs = mpca.getDataByPath();
-        System.out.println("ProjectsOrgs: " + projectsOrgs.size());
         //projectsOrgs = 
         centerPane.getChildren().clear();
         projectsGrid.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -190,7 +210,7 @@ public class MainWindowsController implements Initializable {
             //o.setMinHeight(200);
             //o.minHeightProperty().set(200);
         }
-        initModules();
+        //initModules();
         showInfo();
         centerPane.getChildren().add(scrollPane);
     }
@@ -323,52 +343,21 @@ public class MainWindowsController implements Initializable {
         numVisualization2.setText("0");
         for(int i=0; i<projectsOrgs.size(); i++){
             ProjectOrganization PO = projectsOrgs.get(i);
-            if(i==0){
-                name2.setText(PO.getLocation().getName());
-                numParticipants2.setText(String.valueOf(PO.getParticipants().size()));
-                seeButton.setId(PO.getLocation().getName());
-                seeButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-                    model.setOrg(PO);
-                    model.newProyect=0;
-                    this.newProject(event);
-                });
-                if(!PO.getStages().isEmpty()){
-                    for(int j=0; j<PO.getStages().size(); j++){
-                        aux=0;
-                        for(int k=0; k<PO.getStages().get(j).getPlugins().size(); k++){
-                            if(!PO.getStages().get(j).getPlugins().get(k).getConfigurations().isEmpty()){
-                                aux = aux + (PO.getStages().get(j).getPlugins().get(k).getConfigurations().size());
-                            }
-                        }
-                        if(PO.getStages().get(j).getName().equals(model.getCaptureStage().getName())){
-                            numCaptures2.setText(Integer.toString(aux));
-                        }
-                        if(PO.getStages().get(j).getName().equals(model.getAnalysisStage().getName())){
-                            numAnalysis2.setText(String.valueOf(aux));
-                        }
-                        if(PO.getStages().get(j).getName().equals(model.getVisualizationStage().getName())){
-                            numVisualization2.setText(String.valueOf(aux));
-                        }                         
-                    }
+            if(row>projectsGrid.getRowConstraints().size()){
+                RowConstraints rowAux = new RowConstraints(100);
+                projectsGrid.getRowConstraints().add(rowAux);
+            }
+            if(colum<2){
+                createAndAddToGrid(PO,row,colum);
+                if(colum==1){
+                    colum=0;
+                    row++;
                 }
-                colum++;
-            }   
-            else{
-                if(row>projectsGrid.getRowConstraints().size()){
-                    RowConstraints rowAux = new RowConstraints(100);
-                    projectsGrid.getRowConstraints().add(rowAux);
-                }
-                if(colum<2){
-                    createAndAddToGrid(PO,row,colum);
-                    if(colum==1){
-                        colum=0;
-                        row++;
-                    }
-                    else{
-                        colum++;
-                    }
+                else{
+                    colum++;
                 }
             }
+            //}
         }
     }
     
@@ -376,18 +365,18 @@ public class MainWindowsController implements Initializable {
         javafx.scene.image.ImageView icon2 = new javafx.scene.image.ImageView("/images/folder.png");
         String idAux = PO.getLocation().getName();
         icon2.setId(idAux);
-        icon2.setImage(iconProject.getImage());
+        //icon2.setImage(iconProject.getImage());
         icon2.setFitHeight(25);
         icon2.setFitWidth(25);
         icon2.setTranslateX(5);
         icon2.setTranslateY(-20);
         projectsGrid.add(icon2, colum, row);
         
-        Text name2 = new Text ("Name:");
+        /*Text name2 = new Text ("Name:");
         name2.setId(idAux);
         name2.setTranslateX(5);
         name2.setTranslateY(-24);
-        //projectsGrid.add(name2, colum, row);
+        projectsGrid.add(name2, colum, row);*/
 
         Text nameLabel2 = new Text(PO.getLocation().getName());
         nameLabel2.setId(idAux);
@@ -396,7 +385,7 @@ public class MainWindowsController implements Initializable {
         nameLabel2.setStyle("-fx-font-weight: bold");
         projectsGrid.add(nameLabel2, colum, row);
 
-        Text participant2 = new Text(numParticipants.getText());
+        Text participant2 = new Text("Participants:");
         participant2.setId(idAux);
         participant2.setTranslateX(5);
         participant2.setTranslateY(10);
@@ -453,6 +442,7 @@ public class MainWindowsController implements Initializable {
         seeButton2.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
                     model.setOrg(PO);
                     model.newProyect=0;
+                    confirm = 1;
                     this.newProject(event);
                 });
         

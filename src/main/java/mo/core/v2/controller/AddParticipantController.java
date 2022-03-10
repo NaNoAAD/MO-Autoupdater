@@ -111,7 +111,7 @@ public class AddParticipantController implements Initializable {
                     else {
                         if(idText.getText().toCharArray().length<=0){
                             //alert.setText("*");
-                            alertLabel.setText("you must write a name");
+                            alertLabel.setText("you must write a id");
                             break;
                         }
                         else{
@@ -122,7 +122,7 @@ public class AddParticipantController implements Initializable {
                 }
             }
             else{
-                if(idText.getText().toCharArray().length<=0){
+                if(nameText.getText().toCharArray().length<=0){
                     alertLabel.setText("you must write a name");
                 }
                 else{

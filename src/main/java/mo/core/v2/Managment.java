@@ -59,20 +59,20 @@ public class Managment {
         }*/
     }
     
-   public void initAndShow(){
-       JFrame frame = new JFrame ("Multimodal Observer");
-       frame.setResizable(true);
-       JFXPanel jfxPanel = new JFXPanel();
-       frame.setSize(1200,800);
-       frame.getContentPane().add(jfxPanel, BorderLayout.CENTER);
-       frame.setVisible(true);       
-       Platform.runLater(() -> initFxml(jfxPanel));
-       
-       frame.addWindowListener(new java.awt.event.WindowAdapter(){
+    public void initAndShow(){
+        JFrame frame = new JFrame ("Multimodal Observer");
+        frame.setResizable(true);
+        JFXPanel jfxPanel = new JFXPanel();
+        frame.setSize(1200,800);
+        frame.getContentPane().add(jfxPanel, BorderLayout.CENTER);
+        frame.setVisible(true);       
+        Platform.runLater(() -> initFxml(jfxPanel));
+
+        frame.addWindowListener(new java.awt.event.WindowAdapter(){
            @Override
            public void windowClosing(java.awt.event.WindowEvent windowEvent){
                System.exit(0);
            }
        });
-   }    
+    }    
 }

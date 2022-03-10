@@ -48,7 +48,6 @@ import javafx.util.Callback;
 import javafx.util.Pair;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-import javax.swing.SwingWorker;
 import mo.analysis.AnalyzableConfiguration;
 import mo.analysis.NotPlayableAnalyzableConfiguration;
 import mo.analysis.NotesAnalysisConfig;
@@ -82,8 +81,6 @@ public class ProjectMenuController implements Initializable {
     @FXML
     private BorderPane projectMenuPane;
     @FXML
-    private ImageView closeButton;
-    @FXML
     private Text nameProjectText;
     @FXML
     private Button participantsButton;
@@ -99,7 +96,9 @@ public class ProjectMenuController implements Initializable {
     private Pane tutorialPane;
     int row=0;
     Integer IndexDockable = null;
-    private Thread[] threads;
+    
+    private int numCaptures, numAnalysis, numVisu;
+    
     
     //Participants
     private ScrollPane scrollParticipants = new ScrollPane();
@@ -120,6 +119,7 @@ public class ProjectMenuController implements Initializable {
     ProjectVisualizationControllerAux pvca;
     
     //Visu
+    private ScrollPane scroll = new ScrollPane();
     List<PlayableAnalyzableConfiguration> playableConfigurations = new ArrayList<>();
     
     @Inject
@@ -134,13 +134,13 @@ public class ProjectMenuController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         init();
-        //addOneStage("name");
-        //addAllStages();
+        numCaptures = model.getConfigCaptures().size();
+        numAnalysis = model.getConfigAnalysis().size();
+        numVisu = model.getConfigVisualizations().size();
+        System.out.println("numbers::::::::::::"+  numCaptures +", " + numAnalysis +", " + numVisu);
+        
     }    
     
-    @FXML
-    private void closeButton(MouseEvent event) {
-    }
 
     @FXML
     private void clickParticipants(MouseEvent event) {
@@ -174,28 +174,14 @@ public class ProjectMenuController implements Initializable {
     @FXML
     private void clickCaptures(MouseEvent event) {
         addOneStage("CaptureStage");
-        /*try {
-            
-            centerPane.getChildren().clear();
-            final JavaFXBuilderFactory builderFactory = new JavaFXBuilderFactory();
-            final Callback<Class<?>, Object> callback = (clazz) -> injector.getInstance(clazz);
-            FXMLLoader loaderCaptures = new FXMLLoader(MainWindowsController.class
-                    .getResource("/fxml/core/ui/ProjectCaptures.fxml"), null,
-                    builderFactory, callback);
-            Parent captureParent = loaderCaptures.load();
-            
-            captureParent.getProperties()
-                    .put(CONTROLLER_KEY, loaderCaptures.getController());
-            centerPane.getChildren().add(captureParent);
-        } catch (IOException ex) {
-            Logger.getLogger(ProjectMenuController.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
         row=0;
+        System.out.println("capture number: " + model.getConfigCaptures().size());
         pcca = new ProjectCapturesControllerAux(model);
         pcca.init();
         pcca.initCaptureStage();
         List<Node> nodes = gridPane2.getChildren();
         gridPane2.getChildren().removeAll(nodes);
+        System.out.println("Removido");
         gridPane2.setPrefWidth(600);
         gridPane2.setPrefHeight(400);
         gridPane2.backgroundProperty().set(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -217,23 +203,6 @@ public class ProjectMenuController implements Initializable {
     @FXML
     private void clickAnalysis(MouseEvent event) {
         addOneStage("AnalysisStage");
-        /*try{
-            addOneStage("AnalysisStage");
-            centerPane.getChildren().clear();
-            final JavaFXBuilderFactory builderFactory = new JavaFXBuilderFactory();
-            final Callback<Class<?>, Object> callback = (clazz) -> injector.getInstance(clazz);
-            FXMLLoader loaderAnalysis = new FXMLLoader(MainWindowsController.class
-                    .getResource("/fxml/core/ui/ProjectAnalysis.fxml"), null,
-                    builderFactory, callback);
-            Parent analysisParent = loaderAnalysis.load();
-            
-            analysisParent.getProperties()
-                    .put(CONTROLLER_KEY, loaderAnalysis.getController());
-            centerPane.getChildren().add(analysisParent);
-        }
-        catch(IOException ex){
-            Logger.getLogger(MainWindowsController.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
         row=0;
         paca = new ProjectAnalysisControllerAux(model);
         paca.init();
@@ -258,23 +227,6 @@ public class ProjectMenuController implements Initializable {
     @FXML
     private void clickVisualizations(MouseEvent event) {
         addOneStage("VisualizationStage");
-        /*try{
-            addOneStage("VisualizationStage");
-            centerPane.getChildren().clear();
-            final JavaFXBuilderFactory builderFactory = new JavaFXBuilderFactory();
-            final Callback<Class<?>, Object> callback = (clazz) -> injector.getInstance(clazz);
-            FXMLLoader loaderVisualization = new FXMLLoader(MainWindowsController.class
-                    .getResource("/fxml/core/ui/ProjectVisualization.fxml"), null,
-                    builderFactory, callback);
-            Parent visualizationParent = loaderVisualization.load();
-            
-            visualizationParent.getProperties()
-                    .put(CONTROLLER_KEY, loaderVisualization.getController());
-            centerPane.getChildren().add(visualizationParent);
-        }
-        catch(IOException ex){
-            Logger.getLogger(MainWindowsController.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
         row=0;
         pvca = new ProjectVisualizationControllerAux(model);
         pvca.init();
@@ -301,10 +253,17 @@ public class ProjectMenuController implements Initializable {
         if(model.newProyect==0){
             tutorialPane.getChildren().clear();
             nameProjectText.setText(model.getOrg().getLocation().getName());
+            List<Node> nodes = gridPane2.getChildren();
+            gridPane2.getChildren().removeAll(nodes);
+            nodes = gridPane.getChildren();
+            gridPane.getChildren().removeAll(nodes);
+            nodes = gridPane3.getChildren();
+            gridPane3.getChildren().removeAll(nodes);
         }
         else{
             nameProjectText.setText(model.getOrg().getLocation().getName());
         }
+        
     }
     
     private void addStageNodeIfNotExists(StageModule stage){
@@ -423,10 +382,11 @@ public class ProjectMenuController implements Initializable {
         }
     }
     
+    //Funcion que se encarga de ejecutar los analisis y mostrar resultados
     public void analysis(MouseEvent event, String id){
+        projectMenuPane.setCenter(new Pane());
         int tipo = 0;
         int countAux = DockablesRegistry.getInstance().getControl().getCDockableCount();
-        System.out.println("CountAux: " + countAux);
         Participant p = model.getParticipantById(id);
         //File storageFile = new File(model.getOrg().getLocation().getAbsolutePath() + p.folder + "\\capture");
         StageModule sm = null;
@@ -444,7 +404,6 @@ public class ProjectMenuController implements Initializable {
                 notesConfiguration = (PlayableAnalyzableConfiguration) plugin.getConfigurations().get(0);
             }
         }
-        //AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
         Configuration c = model.getConfigurationSelected().get(0);
         try {
             c = c.getClass().getConstructor(String.class).newInstance(model.getConfigurationSelected().get(0).getId());
@@ -459,7 +418,6 @@ public class ProjectMenuController implements Initializable {
         VisualizableConfiguration vc;
         NotPlayableAnalyzableConfiguration npac;
         if (c instanceof PlayableAnalyzableConfiguration) {
-            System.out.println("cayo en 1");
             tipo = 1;
             pac = (PlayableAnalyzableConfiguration) c;
             pac.addFile(model.getFile());
@@ -469,7 +427,6 @@ public class ProjectMenuController implements Initializable {
         }
         //Analisis de una fuente y un analisis
         else if (c instanceof VisualizableConfiguration) {
-            System.out.println("cayo en 2");
             tipo = 2;
             vc = (VisualizableConfiguration) c;
             vc.addFile(model.getFile());
@@ -477,7 +434,6 @@ public class ProjectMenuController implements Initializable {
             NotesVisualization notesVisualization = new NotesVisualization(model.getFile().getAbsolutePath(), vc.getClass().getName());
             ((NotesAnalysisConfig) notesConfiguration).addVisualizable(notesVisualization);// #marca
         } else {
-            System.out.println("cayo en 3");
             tipo = 3;
             npac = (NotPlayableAnalyzableConfiguration) c;
             npac.addFile(model.getFile());
@@ -487,31 +443,6 @@ public class ProjectMenuController implements Initializable {
         analyzableConfigurations.addAll(notPlayableConfigurations);
         List<AnalyzableConfiguration> analyzableList = new ArrayList(analyzableConfigurations);
         analyzableList.add(notesConfiguration);
-        /*SwingWorker<Void, Void> mySwingWorker = new SwingWorker<Void, Void>() {
-            @Override
-            protected Void doInBackground() throws Exception {
-                threads = new Thread[analyzableList.size()];
-                int i = 0;
-                for (AnalyzableConfiguration config : analyzableList) {
-                    threads[i] = new Thread(new Runnable() {
-                        Integer Index;
-                        Integer IndexDockable;
-
-                        @Override
-                        public void run() {
-                          //config.setupAnalysis(storageFolder, model.getOrg(), p);
-                          //config.startAnalysis();
-                        }
-                    });
-
-                    threads[i].start();
-                    threads[i].join();
-                    threads[i].interrupt();
-                    i++;
-                }
-                return null;
-            }
-        };*/
         int countA = DockablesRegistry.getInstance().getControl().getCDockableCount();
         countA--;
         CControl controlA = DockablesRegistry.getInstance().getControl();
@@ -519,9 +450,7 @@ public class ProjectMenuController implements Initializable {
         JPanel panelA = null;
         JPanel panelAux = null;
         if(IndexDockable != null){
-            System.out.println("tipo: " + tipo);
-            //IndexDockable-2 para el analisis??
-            System.out.println("Index: " +IndexDockable);
+            //IndexDockable-2 para el analisis
             DockableElement docka = (DockableElement) controlA.getCDockable(IndexDockable+1);
             panelA = (JPanel) docka.getContentPane();
             panelA.setSize(200, 200);
@@ -559,6 +488,7 @@ public class ProjectMenuController implements Initializable {
         pane.setMaxWidth(200);
         pane.alignmentProperty().set(Pos.CENTER_RIGHT);
         pane2.alignmentProperty().set(Pos.CENTER_RIGHT);
+        pane3.alignmentProperty().set(Pos.CENTER_RIGHT);
         pane2.setMinHeight(200);
         pane2.setMaxHeight(200);
         pane2.setMinWidth(200);
@@ -567,11 +497,6 @@ public class ProjectMenuController implements Initializable {
         pane3.setMaxHeight(200);
         pane3.setMinWidth(200);
         pane3.setMaxWidth(200);
-        //Stage stage = new Stage();
-        //stage.setTitle("Swing in JavaFX");
-        //stage.setScene(new Scene(pane, 250, 150));
-        //stage.show();
-        //pane.getChildren().add(nodo);
         List<Node> nodos = gridPane3.getChildren();
         gridPane3.getChildren().removeAll(nodos);
         gridPane3.setPrefSize(600, 600);
@@ -589,34 +514,18 @@ public class ProjectMenuController implements Initializable {
         gridPane3.add(pane2, 0, 1);
         gridPane3.add(pane3, 0, 2);
         
-        projectMenuPane.setCenter(gridPane3);
+        scroll.setMaxSize(600, 500);
+        scroll.setMinSize(600, 500);
+        scroll.setContent(gridPane3);
+        
+        projectMenuPane.setCenter(scroll);
         
         //centerPane.getChildren().clear();
         //centerPane.getChildren().add(pane);        
     }
     
+    //Funcion que se encarga de mostrar lo que se quiere visualizar
     public void visualization(MouseEvent event, String id){
-        System.out.println("-------------Visu--------------------");
-        /*VisualizeAction visuAction = new VisualizeAction();
-        Participant p = model.getParticipantById(id);
-        StageModule sm = null;
-        for(StageModule m : model.getOrg().getStages()){
-            if(m.getName().equals(model.getStages3().get(0).getName())){
-                sm=m;
-            }
-        }
-        visuAction.init(model.getOrg(), p, sm);
-        CControl controlA = DockablesRegistry.getInstance().getControl();
-        DockablesRegistry.getInstance().getItem();
-        JPanel panel = new JPanel();
-        //3 no se que tiene
-        DockableElement element  = (DockableElement)controlA.getCDockable(5);
-        panel.add(element.getContentPane());
-        panel.setBounds(50, 50, 200, 200);
-        SwingNode swingNode = new SwingNode();
-        createSwingContent(swingNode, panel);
-        centerPane.getChildren().clear();
-        centerPane.getChildren().add(swingNode);*/
         Participant p = model.getParticipantById(id);
         //File storageFile = new File(model.getOrg().getLocation().getAbsolutePath() + p.folder + "\\capture");
         StageModule sm = null;
@@ -673,6 +582,11 @@ public class ProjectMenuController implements Initializable {
         pane2.setMaxHeight(200);
         pane2.setMinWidth(200);
         pane2.setMaxWidth(200);
+        pane2.alignmentProperty().set(Pos.CENTER_RIGHT);
+        
+        scroll.setMaxSize(600, 500);
+        scroll.setMinSize(600, 500);
+        scroll.setContent(gridPane3);
         
         List<Node> nodos = gridPane3.getChildren();
         gridPane3.getChildren().removeAll(nodos);
@@ -688,7 +602,8 @@ public class ProjectMenuController implements Initializable {
         }      
         gridPane3.add(pane, 0, 1);
         gridPane3.add(pane2, 0, 0);
-        projectMenuPane.setCenter(gridPane3);
+        //projectMenuPane.setCenter(gridPane3);
+        projectMenuPane.setCenter(scroll);
     }
     
     private void createSwingContent(SwingNode swingNode, JPanel p) {
@@ -696,7 +611,6 @@ public class ProjectMenuController implements Initializable {
             
             @Override
             public void run() {
-                //JPanel test = new JPanel();
                 swingNode.setContent(p);
             }
         });
@@ -990,6 +904,7 @@ public class ProjectMenuController implements Initializable {
         }
     }
     
+    //Funciones de gestion de info de Visualizations
     private void addVisu(MouseEvent event){
         try {
             model.setType(3);

@@ -19,6 +19,8 @@ import javax.xml.parsers.ParserConfigurationException;
 import mo.core.filemanagement.project.Project;
 import mo.core.v2.model.Organization;
 import mo.organization.ProjectOrganization;
+import mo.organization.StageModule;
+import mo.organization.StagePlugin;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -49,8 +51,8 @@ public class MyProjectsControllerAux {
             document.getDocumentElement().normalize();
             NodeList nlist = document.getDocumentElement().getChildNodes();
             int aux;
-            System.out.println("nList: " + nlist.getLength());
             for(aux=0; aux<nlist.getLength(); aux++){
+                System.out.println("aux: " + aux);
                 Node node = nlist.item(aux);
                 if(node.getNodeType() == Node.ELEMENT_NODE){
                     Element elem = (Element) node;
@@ -58,7 +60,9 @@ public class MyProjectsControllerAux {
                     break;
                 }
             }
+            System.out.println("numProjects: " + numProjects + "------------------------------------");
             for(int i=0; i<numProjects; i++){
+                System.out.println("i: " + i);
                 Node node = nlist.item(aux);
                 Element elem = (Element) node;
                 projectsPath.add(elem.getElementsByTagName("project").item(i).getChildNodes().item(0).getNodeValue());
@@ -73,6 +77,15 @@ public class MyProjectsControllerAux {
         for(String path : projectsPath){
             Project p = new Project(path);
             ProjectOrganization po = new ProjectOrganization(p);
+            int aux = 0;
+            System.out.println("PO: " + po.getLocation().getName());
+            for(StageModule sm : po.getStages()){
+                for(StagePlugin pl : sm.getPlugins()){
+                    aux = pl.getConfigurations().size();
+                    System.out.println("pl: " + pl.getConfigurations().size());
+                }
+                System.out.println("Aux: " + aux);
+            }
             projectsOrgs.add(po);
         }
         return projectsOrgs;

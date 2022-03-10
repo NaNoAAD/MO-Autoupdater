@@ -87,7 +87,7 @@ public class RecordAction implements StageAction, ConnectionListener {
 
     private void startRecording() {
         try {
-            System.out.println("?????????: : " + storageFolder.getAbsolutePath());
+            System.out.println("?????????: " + storageFolder.getAbsolutePath());
             for (RecordableConfiguration config : configurations) {
                 config.setupRecording(storageFolder, org, participant);
             }

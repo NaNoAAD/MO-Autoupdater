@@ -390,6 +390,9 @@ public class Organization {
     
     public void setData(){
         participants = org.getParticipants();
+        this.configurationsC = new ArrayList<>();
+        this.configurationsA = new ArrayList<>();
+        this.configurationsV = new ArrayList<>();
         for(StageModule sm : org.getStages()){
             if(sm.getName().equals(this.stages.get(0).name)){
                 for(StagePlugin p : sm.getPlugins()){
@@ -425,7 +428,9 @@ public class Organization {
     }
     
     public void pairOfConfig(){
-        System.out.println("--------------------------------");
+        this.configCaptures = new ArrayList<>();
+        this.configAnalysis = new ArrayList<>();
+        this.configVisualizations = new ArrayList<>();
         for(StageModule m : org.getStages()){
             for(StagePlugin p : m.getPlugins()){
                 if(!p.getConfigurations().isEmpty()){

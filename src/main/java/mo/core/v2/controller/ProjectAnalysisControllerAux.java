@@ -33,6 +33,7 @@ import mo.core.v2.model.StagePluginV2;
 import mo.organization.Configuration;
 import mo.organization.StageModule;
 import mo.organization.StagePlugin;
+import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -119,6 +120,7 @@ public class ProjectAnalysisControllerAux {
                                 }
                             }
                             fileOfAnalysis(config, sp.getName());
+                            writeInAnalysis(model.getPluginSelected().toString());
                             return aux;
                         }
                     }
@@ -199,6 +201,32 @@ public class ProjectAnalysisControllerAux {
             }
         }catch (ParserConfigurationException | TransformerException | SAXException | IOException  ex) {
             Logger.getLogger(ProjectCapturesControllerAux.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void writeInAnalysis(String plugin){
+        File file = new File(path + "\\"+ "analysis.xml");
+        try {
+            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+            Document doc = docBuilder.parse(file);
+            Element element1 = doc.createElement("plugin");
+            Attr clase = doc.createAttribute("class");
+            clase.setValue(plugin.split("@")[0]);
+            element1.setAttributeNode(clase);
+            Element element2 = doc.createElement("path");
+            element2.setTextContent(pathConfigXml.getName()+"\\"+pathXml.getName());
+            element1.appendChild(element2);
+
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer;
+            transformer = transformerFactory.newTransformer();
+            DOMSource source = new DOMSource(doc);
+            StreamResult result = new StreamResult(file);
+
+            transformer.transform(source, result);
+        } catch (ParserConfigurationException | SAXException | IOException | TransformerException ex) {
+            Logger.getLogger(ProjectVisualizationControllerAux.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

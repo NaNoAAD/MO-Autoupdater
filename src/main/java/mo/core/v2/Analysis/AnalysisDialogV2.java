@@ -261,7 +261,7 @@ public class AnalysisDialogV2 {
                 list.add(vc);
             } else {
                 npac = (NotPlayableAnalyzableConfiguration) c;
-                System.out.println("f.file: " + f.file);
+                System.out.println("fileeee: " + f.file);
                 npac.addFile(f.file);
                 list.add(npac);
             }
@@ -352,7 +352,9 @@ public class AnalysisDialogV2 {
         public String toString() {
             Path p = file.toPath();
             Path r = from.toPath();
-            return r.relativize(p).toString();
+            System.out.println("P: " + p.toString());
+            System.out.println("R: " + r.toString());
+            return p.toString();
         }
     }
 }
