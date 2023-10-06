@@ -155,6 +155,7 @@ dependencies {
    
 }
 
+
 jar {
     manifest {
         attributes( 'Implementation-Title'   : 'Gradle',
@@ -181,6 +182,25 @@ jar {
         }
     }
 }
+
+
+// Configuración para el proyecto updater
+//sourceSets {
+ //   updater {
+   //     java {
+    //       srcDirs 'src/main/java/mo/updating'
+    //    }
+   // }
+//}
+
+//task updaterJar(type: Jar, dependsOn: classes){
+ //   from(sourceSets.updater.output)
+ //   archiveFileName = 'updater.jar'
+  //  destinationDir = file('build/libs')
+//}
+
+//build.dependsOn updaterJar
+
 
 
 //build.doLast{
