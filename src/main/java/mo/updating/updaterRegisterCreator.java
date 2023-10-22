@@ -65,6 +65,7 @@ public class updaterRegisterCreator {
             BufferedWriter writer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.APPEND);
     
             for (Path pathfile : pathList) {
+                //Es posible delimitar carpetas con funciones como (Files.isDirectory(path) && path.getFileName().toString().contains("updater")) o parecidos
                 try {
                     BasicFileAttributes attributes = Files.readAttributes(pathfile, BasicFileAttributes.class);
                     long milisegundos = attributes.lastModifiedTime().toMillis();
