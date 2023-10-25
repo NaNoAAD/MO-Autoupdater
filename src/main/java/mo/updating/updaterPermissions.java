@@ -19,9 +19,8 @@ public class updaterPermissions {
     //Metodo que permite obtener la version de MO indicada en el texto de notas de MO
     //Retorna la primera linea del archivo de notas de version "version=x.x.x.x"
     public static String getMOVersion(){
-        String version = "";
         String versionString = "";
-        Path file = Paths.get("../../../versionNotes.txt");
+        Path file = Paths.get("../../../version.txt");
         List<String> lines;
         
 
@@ -29,19 +28,17 @@ public class updaterPermissions {
             // Si el archivo de Notas de version no existe, se cancela la opcion de actualizar y se da el paso a ejecutar directamente MO
             if (!Files.exists(file)) {
                 //Files.createFile(file);
-                System.out.println("El archivo de Notas de version no existe \n");
-                return version = "NULL";
+                System.out.println("El archivo de version no existe \n");
+                return versionString = "NULL";
             } else {
-                System.out.println("El archivo de Notas exsite ya existe. Se Procede con Launcher\n");
+                System.out.println("El archivo de version ya existe. Se Procede con Launcher\n");
                 //Files.delete(file);
                 //Files.createFile(file);
                 //System.out.println("Se ha creado otro archivo 'Register.txt'");
                 // Creating object of FileReader and BufferedReader  
                 lines = Files.readAllLines(file);
                 versionString = lines.get(0);
-                String[] versionStringArray = versionString.split("=");
-                version = versionStringArray[1];
-                System.out.println("version indicada: " + version + "\n Lo demas indica esto");
+                System.out.println("version indicada: " + versionString + "\n Lo demas indica esto");
                 for(String line : lines){
                     System.out.println(line + "\n");
                 }
@@ -49,7 +46,7 @@ public class updaterPermissions {
         } catch (IOException e) {
             e.printStackTrace();
         }        
-        return version;
+        return versionString;
     }
 
     //Metodo que obtiene la version indicada en el txt remoto en el repositorio
@@ -67,7 +64,7 @@ public class updaterPermissions {
         String githubToken = a + b + c; 
 
         //Solicitud que se hace a la API de Github
-        String apiUrl = String.format("https://raw.githubusercontent.com/%s/%s/content/version.txt", RepoOwner, repoName);
+        String apiUrl = String.format("https://raw.githubusercontent.com/%s/%s/master/version.txt", RepoOwner, repoName);
         
         URL url = new URL(apiUrl);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -93,28 +90,28 @@ public class updaterPermissions {
             
             //Se obtiene la version remota a traves del txt que lo indica
             version = jsonResponse.toString();
-            //String[] jsonToStrings = version.split("\n");
-            //version = jsonToStrings[0];
-
+            
             System.out.println("DEL JSON SE OBTIENE: " + version + "\n");
             return version;
             
             
         } else {
-            System.err.println("Error en la solicitud. Codigo: " + responseCode);
+            System.err.println("Error en la solicitud de obtencion de version remota. Codigo: " + responseCode);
             version = "NULL";
             return version;
         }
     }
 
+    //Metodo que comparara 2 strings que indican versiones
+    // 
     public static void versionComparison(String localVersion, String RemoteVersion) throws IOException{
-        System.out.println("Versiones a comparar >> local " + localVersion + " " + "remoto: " + RemoteVersion);
+        System.out.println("Versiones a comparar >> local " + localVersion + " " + "remoto: " + RemoteVersion + "\n");
         if (localVersion.compareTo(RemoteVersion) < 0) {
-            System.out.println("localVersion" + " es menor que " + "RemoteVersion");
+            System.out.println("localVersion" + " es menor que " + "RemoteVersion\nSe procede a Actualizar\n");
         } else if (localVersion.compareTo(RemoteVersion) > 0) {
-            System.out.println("localVersion" + " es mayor que " + "RemoteVersion");
+            System.out.println("localVersion" + " es mayor que " + "RemoteVersion\n Innecesario Actualizar\n");
         } else {
-            System.out.println("Los txt indican versiones iguales\n");
+            System.out.println("Los txt indican versiones iguales, no se Actualiza\n");
         }
     }
 

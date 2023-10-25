@@ -53,13 +53,10 @@ public class updaterRemoteFilesProcess {
             System.out.println(jsonResponse.toString());
 
             FileWriter fileWriter = new FileWriter("RemoteRegister.txt");
-            // Procesa el JSON para obtener la lista de archivos y guárdalos en el archivo.
-            // Esto dependerá del formato del JSON de respuesta de GitHub.
-            // Aquí, estamos asumiendo que los archivos están en un arreglo "files".
-            // Debes ajustar esto según la estructura real de la respuesta de GitHub.
-            // Por ejemplo, puedes usar la biblioteca Gson para analizar el JSON.
+            // Procesar el JSON para obtener la lista de archivos y guárdalos en el archivo.
+            // se puee usar usar la biblioteca Gson o simple json 
             fileWriter.write("Lista de archivos del commit:\n");
-            // Reemplaza esto con tu lógica para procesar el JSON y extraer los nombres de archivo.
+            // Reemplazar con lógica para procesar el JSON y extraer los nombres de archivos.
             // Ejemplo: JSONArray filesArray = new JSONArray(jsonResponse);
             // for (int i = 0; i < filesArray.length(); i++) {
             //     JSONObject fileObject = filesArray.getJSONObject(i);

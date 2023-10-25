@@ -49,12 +49,12 @@ public class updaterRegisterCreator {
             // Crea el archivo si no existe
             if (!Files.exists(file)) {
                 Files.createFile(file);
-                System.out.println("Se ha creado el archivo 'Register.txt' con lo necesario");
+                System.out.println("El registro no existia, Se ha creado el archivo 'Register.txt' con lo necesario\n");
             } else {
-                System.out.println("El archivo 'Register.txt' ya existe. Se borra para crear uno nuevo");
+                System.out.println("El archivo 'Register.txt' ya existe. Se borra para crear uno nuevo\n");
                 Files.delete(file);
                 Files.createFile(file);
-                System.out.println("Se ha creado otro archivo 'Register.txt'");
+                System.out.println("Se ha creado otro archivo 'Register.txt\n");
             }
         } catch (IOException e) {
             e.printStackTrace();
