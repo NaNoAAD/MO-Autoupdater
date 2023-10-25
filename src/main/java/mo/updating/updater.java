@@ -14,6 +14,11 @@ public class updater {
             //Creo que es mejor ter un txt con su infomacion
             String localVersion = updaterPermissions.getMOVersion();
 
+            //Funcion que obtiene txt remoto
+            String remoteVersion = updaterPermissions.remoteVersionRepository();
+
+            updaterPermissions.versionComparison(localVersion, remoteVersion);
+
             //Se crea una lista con todas las rutas de los archivos locales de MO
             List<Path> PathFiles = updaterRegisterCreator.listPathFiles();
 

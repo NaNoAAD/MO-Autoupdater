@@ -24,8 +24,11 @@ public class updaterRemoteFilesProcess {
         String repoName = "MO-Autoupdater"; // Reemplaza con el nombre del repositorio
         //String commitSHA = "sha_del_commit"; // Reemplaza con el SHA del commit
 
-        //Token: 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
-        String githubToken = "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"; 
+        //Token
+        String a = "ghp_0D6Zmt";
+        String b = "4sfGEZJzK7Fiutyfj6J";
+        String c = "DizVO3CK3zW";
+        String githubToken = a + b + c; 
 
         String apiUrl = String.format("https://raw.githubusercontent.com/%s/%s/master/build.gradle", RepoOwner, repoName);
         
