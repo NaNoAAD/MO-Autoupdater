@@ -67,16 +67,18 @@ public class updaterRegisterCreator {
             for (Path pathfile : pathList) {
                 //Es posible delimitar carpetas con funciones como (Files.isDirectory(path) && path.getFileName().toString().contains("updater")) o parecidos
                 try {
-                    BasicFileAttributes attributes = Files.readAttributes(pathfile, BasicFileAttributes.class);
-                    long milisegundos = attributes.lastModifiedTime().toMillis();
-                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-                    String modificationDate = sdf.format(milisegundos);
+                    if ( !(pathfile.toString().contains("\\mo\\updating")) || !(pathfile.toString().contains("\\java\\Register.txt")) || !(pathfile.toString().contains("\\java\\RemoteRegister.txt")) ){
+                        BasicFileAttributes attributes = Files.readAttributes(pathfile, BasicFileAttributes.class);
+                        long milisegundos = attributes.lastModifiedTime().toMillis();
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                        String modificationDate = sdf.format(milisegundos);
     
-                    // Escribe en el archivo
-                    writer.write(pathfile.toString());
-                    writer.newLine();
-                    writer.write(modificationDate);
-                    writer.newLine();
+                        // Escribe en el archivo
+                        writer.write(pathfile.toString());
+                        writer.newLine();
+                        writer.write(modificationDate);
+                        writer.newLine();
+                    }                    
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

@@ -341,21 +341,21 @@
 ..\java\mo\organization\visualization\tree\ProjectOrganizationPlugin.java
 03/10/2023 16:55:45
 ..\java\mo\updating\updater.class
-24/10/2023 23:47:53
+26/10/2023 00:24:14
 ..\java\mo\updating\updater.java
 23/10/2023 00:33:43
 ..\java\mo\updating\updaterPermissions.class
-24/10/2023 23:47:54
+26/10/2023 00:24:14
 ..\java\mo\updating\updaterPermissions.java
 24/10/2023 23:17:31
 ..\java\mo\updating\updaterRegisterCreator.class
-24/10/2023 23:47:54
+26/10/2023 00:24:14
 ..\java\mo\updating\updaterRegisterCreator.java
-24/10/2023 23:38:33
+26/10/2023 00:24:09
 ..\java\mo\updating\updaterRemoteFilesProcess.class
-24/10/2023 23:47:54
+26/10/2023 00:24:14
 ..\java\mo\updating\updaterRemoteFilesProcess.java
-24/10/2023 23:42:44
+25/10/2023 00:04:51
 ..\java\mo\visualization\gamelooptest\GameLoopPlayer.java
 03/10/2023 16:55:45
 ..\java\mo\visualization\gamelooptest\Playable2.java
@@ -391,9 +391,9 @@
 ..\java\mo\wizardproject\controllers\EditActivityDialogController.java
 03/10/2023 16:55:45
 ..\java\Register.txt
-24/10/2023 23:48:00
+26/10/2023 00:24:21
 ..\java\RemoteRegister.txt
-24/10/2023 23:42:59
+26/10/2023 00:05:57
 ..\resources\controlador\MainViewController.java
 03/10/2023 16:55:45
 ..\resources\fxml\core\ui\AddParticipant.fxml

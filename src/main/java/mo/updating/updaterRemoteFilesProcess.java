@@ -8,22 +8,14 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.stream.Collectors;
 
-//importacion para decodificar Base64
-import java.util.Base64;
-
-
-
-
 public class updaterRemoteFilesProcess {
 
     //Metodo que obtiene una lista de todos los archivos de un commit desde un repositorio de github publico
     public static void getRemoteFiles() throws IOException {
 
 
-        String RepoOwner = "NaNoAAD"; // Reemplaza con el dueño del repositorio
-        String repoName = "MO-Autoupdater"; // Reemplaza con el nombre del repositorio
-        //String commitSHA = "sha_del_commit"; // Reemplaza con el SHA del commit
-
+        String RepoOwner = "NaNoAAD"; // Reemplazar con el dueño del repositorio
+        String repoName = "MO-Autoupdater"; // Reemplazar con el nombre del repositorio
         //Token
         String a = "ghp_0D6Zmt";
         String b = "4sfGEZJzK7Fiutyfj6J";
