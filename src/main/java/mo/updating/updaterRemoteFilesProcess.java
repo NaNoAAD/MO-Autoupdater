@@ -22,7 +22,7 @@ public class updaterRemoteFilesProcess {
         String c = "DizVO3CK3zW";
         String githubToken = a + b + c; 
 
-        String apiUrl = String.format("https://raw.githubusercontent.com/%s/%s/master/build.gradle", RepoOwner, repoName);
+        String apiUrl = String.format("https://raw.githubusercontent.com/%s/%s/master/FileRegister.txt", RepoOwner, repoName);
         
         URL url = new URL(apiUrl);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -35,19 +35,21 @@ public class updaterRemoteFilesProcess {
         //Si la solicitud tiene exito (codigo 200)
         if (responseCode == 200) {
 
-            System.out.println("Ingresamos sin problemas al Repositorio! \nLink: " + apiUrl + "\n");
+            System.out.println(" (updaterRemoteFilesProcess) Ingresamos sin problemas al Repositorio! \nLink: " + apiUrl + "\n");
             
+            //Se genera un buffer que leera la respuesta de la solicitud de la API
             BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            //JSON respuesta con contenidos de la solicitud
-            String jsonResponse = reader.lines().collect(Collectors.joining());
+            //JSON respuesta con contenidos de la solicitud, unidos como string y delimitados por salto de linea
+            String jsonResponse = reader.lines().collect(Collectors.joining("\n"));
             reader.close();
 
-            System.out.println(jsonResponse.toString());
+            //System.out.println(jsonResponse.toString());
+            System.out.println(jsonResponse);
 
             FileWriter fileWriter = new FileWriter("RemoteRegister.txt");
             // Procesar el JSON para obtener la lista de archivos y guárdalos en el archivo.
             // se puee usar usar la biblioteca Gson o simple json 
-            fileWriter.write("Lista de archivos del commit:\n");
+            fileWriter.write(jsonResponse);
             // Reemplazar con lógica para procesar el JSON y extraer los nombres de archivos.
             // Ejemplo: JSONArray filesArray = new JSONArray(jsonResponse);
             // for (int i = 0; i < filesArray.length(); i++) {

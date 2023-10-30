@@ -41,9 +41,11 @@ public class updaterRegisterCreator {
     }
 
     //METODO
-    //Escribe en un archivo todos los archivos y su fecha de modificacion
+    //Escribe en un archivo todos los archivos y su fecha de modificacion, sin contar los excluidos en la funcion misma. Se utiliza un limitador para no escribir un \n al final
     public static void createRegisterFile(List<Path> pathList){
         Path file = Paths.get("Register.txt");
+        int limit = pathList.size() - 1;
+        System.out.printf("\n Limite es: %s", limit);
 
         try {
             // Crea el archivo si no existe
@@ -65,19 +67,29 @@ public class updaterRegisterCreator {
             BufferedWriter writer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.APPEND);
     
             for (Path pathfile : pathList) {
-                //Es posible delimitar carpetas con funciones como (Files.isDirectory(path) && path.getFileName().toString().contains("updater")) o parecidos
+                //Se anotan de manera local todos los directorios y fechas de modificacion mientras no contengan las frases en el IF siguiente
                 try {
                     if ( !(pathfile.toString().contains("\\mo\\updating")) || !(pathfile.toString().contains("\\java\\Register.txt")) || !(pathfile.toString().contains("\\java\\RemoteRegister.txt")) ){
                         BasicFileAttributes attributes = Files.readAttributes(pathfile, BasicFileAttributes.class);
                         long milisegundos = attributes.lastModifiedTime().toMillis();
                         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
                         String modificationDate = sdf.format(milisegundos);
-    
-                        // Escribe en el archivo
-                        writer.write(pathfile.toString());
-                        writer.newLine();
-                        writer.write(modificationDate);
-                        writer.newLine();
+
+                        System.out.printf("\n Limite es: %s", limit);
+
+                        // Escribe en el archivo siguiendo el limitador
+                        if(limit != 0){
+                            writer.write(pathfile.toString());
+                            writer.newLine();
+                            writer.write(modificationDate);
+                            writer.newLine();
+                            limit -= 1;
+                        }else{
+                            writer.write(pathfile.toString());
+                            writer.newLine();
+                            writer.write(modificationDate);
+                        }
+                            
                     }                    
                 } catch (IOException e) {
                     e.printStackTrace();
