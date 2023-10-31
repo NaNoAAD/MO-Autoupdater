@@ -6,7 +6,6 @@ import java.nio.file.Path;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Date;
 import mo.updating.fileClass;
@@ -23,23 +22,12 @@ public class updaterRegisterComparison {
         boolean answer = false;
         //Variables limitadoras
         int evenOdd = 0;
-        int index = 0;
         String fileName = "";
         //Se guarda todo el contenido respectivo de los archivos en bruto como strings
         List<String> localFileContent = Files.readAllLines(localFile);
         List<String> remoteFileContent = Files.readAllLines(remoteFile);
 
-        //Se inicializan listas date para guardar las fechas de los registros
-        List<Date> localFileDates = new ArrayList<>();
-        List<Date> remoteFileDates = new ArrayList<>();
-
-        //Se inicializan listas de string para guardar los nombres los archivos
-        List<String> localFileNames = new ArrayList<>();
-        List<String> remoteFileNames = new ArrayList<>();
-
-        //Se inicializan listas con indices para procesado
-        List<Integer> localIndexs = new ArrayList<>();
-        List<Integer> remoteIndexs = new ArrayList<>();
+        System.out.println("tamaños de listas iniciales ->" + String.valueOf(localFileContent.size()) + " VS " + String.valueOf(remoteFileContent.size())+ "\n");
 
         //Se inicializa una lista con objetos File
         ArrayList<fileClass> localFileArray = new ArrayList<>();
@@ -63,7 +51,6 @@ public class updaterRegisterComparison {
                     evenOdd -= 1;
                     fileClass file = new fileClass(fileName, date);
                     localFileArray.add(file);
-                    index += 1;
                 }
             } 
 
@@ -73,7 +60,7 @@ public class updaterRegisterComparison {
 
         //IDEM con el registro local, pero ahora ocupando lo remoto
         System.out.println("Se procesa el registro remoto en arreglos\n");
-        index = 0;
+        evenOdd = 0;
         try {
             for (String content : remoteFileContent) {
                 if(evenOdd == 0){
@@ -83,8 +70,7 @@ public class updaterRegisterComparison {
                     date = dateFormat.parse(content);
                     evenOdd -= 1;
                     fileClass file = new fileClass(fileName, date);
-                    localFileArray.add(file);
-                    index += 1;
+                    remoteFileArray.add(file);
                 }
             } 
 
@@ -94,7 +80,9 @@ public class updaterRegisterComparison {
 
         //Primera regla: Los registros deben llevar la misma cantidad de archivos
         //Caso contrario: (por ahora) no tenemos formas de saber como afectara a la compilacion de mo
+        System.out.println("Comparacion de tamaños de arreglos ->" + String.valueOf(localFileArray.size()) + "VS " + String.valueOf(remoteFileArray.size())+ "\n");
         if(!(localFileArray.size() == remoteFileArray.size())){
+            System.out.println("Caso 1: Tamaños Diferentes\n");
             return answer = true;
         }
 
@@ -103,6 +91,7 @@ public class updaterRegisterComparison {
             if(remoteFileArray.contains(fileRevisor)){
                 continue;
             } else{
+                System.out.println("Caso 2: discrepancia en archivos\n");
                 return answer = true;
             }
         }
