@@ -1,7 +1,9 @@
 package mo.updating;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -44,8 +46,6 @@ public class updaterRegisterCreator {
     //Escribe en un archivo todos los archivos y su fecha de modificacion, sin contar los excluidos en la funcion misma. Se utiliza un limitador para no escribir un \n al final
     public static void createRegisterFile(List<Path> pathList){
         Path file = Paths.get("Register.txt");
-        int limit = pathList.size() - 1;
-        System.out.printf("\n Limite es: %s", limit);
 
         try {
             // Crea el archivo si no existe
@@ -75,30 +75,29 @@ public class updaterRegisterCreator {
                         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
                         String modificationDate = sdf.format(milisegundos);
 
-                        //Print de verificacion de limites
-                        //System.out.printf("\n Limite es: %s", limit);
-
                         // Escribe en el archivo siguiendo el limitador
-                        if(limit != 0){
-                            writer.write(pathfile.toString());
-                            writer.newLine();
-                            writer.write(modificationDate);
-                            writer.newLine();
-                            limit -= 1;
-                        }else{
-                            writer.write(pathfile.toString());
-                            writer.newLine();
-                            writer.write(modificationDate);
-                        }
-                            
+                        writer.write(pathfile.toString());
+                        writer.newLine();
+                        writer.write(modificationDate);
+                        writer.newLine();
                     }                    
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
     
-            // Cierra el archivo
+            // Cierra el archivo para guardar cambios
             writer.close();
+            System.out.println("Eliminando ultimo salto de linea\n");
+            //Lo volvemos a abrir para eliminar el ultimo salto de linea
+            File file2 = new File("Register.txt");
+            RandomAccessFile raf = new RandomAccessFile(file2, "rw");
+            long size = raf.length();
+            if (size > 0) {
+                raf.setLength(size - 2);
+                }
+            raf.close();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
