@@ -340,22 +340,6 @@
 03/10/2023 16:55:45
 ..\java\mo\organization\visualization\tree\ProjectOrganizationPlugin.java
 03/10/2023 16:55:45
-..\java\mo\updating\updater.class
-29/10/2023 23:01:34
-..\java\mo\updating\updater.java
-23/10/2023 00:33:43
-..\java\mo\updating\updaterPermissions.class
-29/10/2023 23:01:35
-..\java\mo\updating\updaterPermissions.java
-24/10/2023 23:17:31
-..\java\mo\updating\updaterRegisterCreator.class
-29/10/2023 23:01:34
-..\java\mo\updating\updaterRegisterCreator.java
-29/10/2023 22:59:44
-..\java\mo\updating\updaterRemoteFilesProcess.class
-29/10/2023 23:01:35
-..\java\mo\updating\updaterRemoteFilesProcess.java
-29/10/2023 22:37:23
 ..\java\mo\visualization\gamelooptest\GameLoopPlayer.java
 03/10/2023 16:55:45
 ..\java\mo\visualization\gamelooptest\Playable2.java

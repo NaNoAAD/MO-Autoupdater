@@ -43,21 +43,12 @@ public class updaterRemoteFilesProcess {
             String jsonResponse = reader.lines().collect(Collectors.joining("\n"));
             reader.close();
 
-            //System.out.println(jsonResponse.toString());
             System.out.println(jsonResponse);
 
             FileWriter fileWriter = new FileWriter("RemoteRegister.txt");
-            // Procesar el JSON para obtener la lista de archivos y guárdalos en el archivo.
-            // se puee usar usar la biblioteca Gson o simple json 
             fileWriter.write(jsonResponse);
-            // Reemplazar con lógica para procesar el JSON y extraer los nombres de archivos.
-            // Ejemplo: JSONArray filesArray = new JSONArray(jsonResponse);
-            // for (int i = 0; i < filesArray.length(); i++) {
-            //     JSONObject fileObject = filesArray.getJSONObject(i);
-            //     String filename = fileObject.getString("filename");
-            //     fileWriter.write(filename + "\n");
-            // }
             fileWriter.close();
+
         } else {
             System.err.println("Error en la solicitud. Codigo: " + responseCode);
         }
