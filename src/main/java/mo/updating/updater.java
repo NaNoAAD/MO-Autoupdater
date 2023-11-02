@@ -30,7 +30,7 @@ public class updater {
             updaterRemoteFilesProcess.getRemoteFiles();
 
             //Se comparan los registros generados para verificarpor segunda vez si corresponde actualizar
-            String answer = String.valueOf(updaterRegisterComparison.compareRegisterFiles(Paths.get("Register.txt"), Paths.get("remoteRegister.txt")));
+            String answer = String.valueOf(updaterRegisterComparison.compareRegisterFiles(Paths.get("Register.txt"), Paths.get("RemoteRegister.txt")));
             System.out.println("Procesados los registros en arreglos!\nLa respuesta por ahora es : " + answer + "\n");
 
             // Ruta al archivo JAR MO

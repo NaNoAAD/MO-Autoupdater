@@ -22,6 +22,7 @@ public class updaterRegisterComparison {
         boolean answer = false;
         //Variables limitadoras
         int evenOdd = 0;
+        int index = 0;
         String fileName = "";
         //Se guarda todo el contenido respectivo de los archivos en bruto como strings
         List<String> localFileContent = Files.readAllLines(localFile);
@@ -86,24 +87,50 @@ public class updaterRegisterComparison {
             return answer = true;
         }
 
-        //Segunda regla: Si anteriormente los largos son iguales, se debe revisar que todos los archivos locales estan en el repositorio
-        for (fileClass fileRevisor :localFileArray) {
-            if(remoteFileArray.contains(fileRevisor)){
+        System.out.println("Caso 1 SUPERADO\n");
+
+        //Segunda regla: Si anteriormente los largos son iguales, se debe revisar que todos los archivos locales estan en el repositorio remoto
+        //nota: Esta parte del metodo puede usarse para definir que elementos pueden ser ignorados por su tipo de archivo ej; .jpg o .info
+        for (fileClass localFileRevisor :localFileArray) {
+            if(remoteFileContent.contains(localFileRevisor.getName())){
                 continue;
             } else{
                 System.out.println("Caso 2: discrepancia en archivos\n");
+                System.out.println("El archivo que tiene descrepancia es " + localFileRevisor.getName() + " con fecha: " + localFileRevisor.getDate() + "\n");
                 return answer = true;
             }
         }
 
-        //Tercera regla; Si los largo son iguales, si todos los archivos locales estan, entonces 
+        System.out.println("Caso 2 SUPERADO\n");
+
+        //Tercera regla; Si los largo son iguales y si todos los archivos locales estan en los remotos, entonces 
         //Con la informacion de los arreglos de fileclass en posesion, se procede a generar la comparacion de los archivos segun su nombre y fecha de modificacion 
         //Aprovechando que estan en arreglos, tienen metodos get y los arreglos les dan indice
-        //index = 0;
-        //for (fileClass fileRevisor : localFileArray) {
-
-        //}
+        //NOTA DEBUG; no olvidar que los cambios en codigo fuente de updater no afectan a los registros
+        index = 0;
+        for (fileClass localFileRevisor : localFileArray) {
+            for(fileClass remoteFileRevisor : remoteFileArray){
+                //System.out.println("Comparando " + localFileRevisor.getName() + " con " + remoteFileRevisor.getName() + "\n");
+                if(localFileRevisor.getName().equals(remoteFileRevisor.getName())){
+                    if(fileClass.isSameFile(localFileRevisor, remoteFileRevisor)){
+                        //Si el archivo revisado es el mismo tanto en nombre como en fecha de modificacion, se rompe el bucle interno
+                        //System.out.println("Exitio Similiritud\n");
+                        break;
+                    } else {
+                        //caso contrario, difieren en la fecha de modificacion y se debe actualizar mo
+                        System.out.println("Caso 3: Un archivo presenta diferencias en la fecha de modificacion .> " + localFileRevisor.getName() + " local: " + localFileRevisor.getDate() + " remoto: " + remoteFileRevisor.getDate() + " \n");
+                        return answer = true;
+                    }
+                } else {
+                    //Si el nombre del archivo remoto a revisar no es igual al local a revisar
+                    continue;
+                }
+            }
+            //Si el for interno fue roto con break, entonces se toma el proximo localFileRevisor para evitar trabajo redundante
+            continue;
+        }
     
+        System.out.println("Caso 3 SUPERADO\n");
 
         return answer;
     }
