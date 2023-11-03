@@ -15,14 +15,13 @@ public class updaterRegisterComparison {
     //METODO
     //Compara 2 archivos con igual formato, para obtener respuesta a si los archivos remotos han sido modificados
     //Retorna un boolean que permite proceder con posterioridad
-    ////False si son diferentes
     ////True si son iguales
+    ////false si son diferentes
     public static boolean compareRegisterFiles(Path localFile, Path remoteFile) throws IOException {
         //Declaro variable de salida
-        boolean answer = false;
+        boolean answer = true;
         //Variables limitadoras
         int evenOdd = 0;
-        int index = 0;
         String fileName = "";
         //Se guarda todo el contenido respectivo de los archivos en bruto como strings
         List<String> localFileContent = Files.readAllLines(localFile);
@@ -84,7 +83,7 @@ public class updaterRegisterComparison {
         System.out.println("Comparacion de tamaños de arreglos ->" + String.valueOf(localFileArray.size()) + "VS " + String.valueOf(remoteFileArray.size())+ "\n");
         if(!(localFileArray.size() == remoteFileArray.size())){
             System.out.println("Caso 1: Tamaños Diferentes\n");
-            return answer = true;
+            return answer = false;
         }
 
         System.out.println("Caso 1 SUPERADO\n");
@@ -97,7 +96,7 @@ public class updaterRegisterComparison {
             } else{
                 System.out.println("Caso 2: discrepancia en archivos\n");
                 System.out.println("El archivo que tiene descrepancia es " + localFileRevisor.getName() + " con fecha: " + localFileRevisor.getDate() + "\n");
-                return answer = true;
+                return answer = false;
             }
         }
 
@@ -107,19 +106,19 @@ public class updaterRegisterComparison {
         //Con la informacion de los arreglos de fileclass en posesion, se procede a generar la comparacion de los archivos segun su nombre y fecha de modificacion 
         //Aprovechando que estan en arreglos, tienen metodos get y los arreglos les dan indice
         //NOTA DEBUG; no olvidar que los cambios en codigo fuente de updater no afectan a los registros
-        index = 0;
         for (fileClass localFileRevisor : localFileArray) {
             for(fileClass remoteFileRevisor : remoteFileArray){
                 //System.out.println("Comparando " + localFileRevisor.getName() + " con " + remoteFileRevisor.getName() + "\n");
+                //Cuando los fileClass a revisar sean iguales en nombre
                 if(localFileRevisor.getName().equals(remoteFileRevisor.getName())){
                     if(fileClass.isSameFile(localFileRevisor, remoteFileRevisor)){
                         //Si el archivo revisado es el mismo tanto en nombre como en fecha de modificacion, se rompe el bucle interno
                         //System.out.println("Exitio Similiritud\n");
                         break;
-                    } else {
+                    } else  {
                         //caso contrario, difieren en la fecha de modificacion y se debe actualizar mo
                         System.out.println("Caso 3: Un archivo presenta diferencias en la fecha de modificacion .> " + localFileRevisor.getName() + " local: " + localFileRevisor.getDate() + " remoto: " + remoteFileRevisor.getDate() + " \n");
-                        return answer = true;
+                        return answer = false;
                     }
                 } else {
                     //Si el nombre del archivo remoto a revisar no es igual al local a revisar
@@ -131,6 +130,8 @@ public class updaterRegisterComparison {
         }
     
         System.out.println("Caso 3 SUPERADO\n");
+        System.out.println("Casos superados: Los registros no indican diferencia\n");
+
 
         return answer;
     }

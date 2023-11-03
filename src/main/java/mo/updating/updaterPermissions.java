@@ -1,7 +1,6 @@
 package mo.updating;
 
 import java.io.BufferedReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -38,10 +37,7 @@ public class updaterPermissions {
                 // Creating object of FileReader and BufferedReader  
                 lines = Files.readAllLines(file);
                 versionString = lines.get(0);
-                System.out.println("version indicada: " + versionString + "\n Lo demas indica esto");
-                for(String line : lines){
-                    System.out.println(line + "\n");
-                }
+                System.out.println("version indicada en version.txt local: " + versionString + "\n" );
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -103,15 +99,22 @@ public class updaterPermissions {
     }
 
     //Metodo que comparara 2 strings que indican versiones
-    // 
-    public static void versionComparison(String localVersion, String RemoteVersion) throws IOException{
+    // true si es necesario actualizar
+    //False en caso contrario
+    public static boolean versionComparison(String localVersion, String RemoteVersion) throws IOException{
         System.out.println("Versiones a comparar >> local " + localVersion + " " + "remoto: " + RemoteVersion + "\n");
-        if (localVersion.compareTo(RemoteVersion) < 0) {
+        if(localVersion == "NULL"){
+            System.out.println("localVersion indica NULL, no hay actualizacion\n");
+            return false;
+        } else if (localVersion.compareTo(RemoteVersion) < 0) {
             System.out.println("localVersion" + " es menor que " + "RemoteVersion\nSe procede a Actualizar\n");
+            return true;
         } else if (localVersion.compareTo(RemoteVersion) > 0) {
             System.out.println("localVersion" + " es mayor que " + "RemoteVersion\n Innecesario Actualizar\n");
+            return false;
         } else {
             System.out.println("Los txt indican versiones iguales, no se Actualiza\n");
+            return false;
         }
     }
 

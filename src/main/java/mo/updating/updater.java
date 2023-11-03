@@ -18,7 +18,8 @@ public class updater {
             //Funcion que obtiene txt remoto
             String remoteVersion = updaterPermissions.remoteVersionRepository();
 
-            updaterPermissions.versionComparison(localVersion, remoteVersion);
+            //Se comparan las versiones declaradas en los txt de version (true == necesario actualizar)
+            boolean permission1 = updaterPermissions.versionComparison(localVersion, remoteVersion);
 
             //Se crea una lista con todas las rutas de los archivos locales de MO
             List<Path> PathFiles = updaterRegisterCreator.listPathFiles();
@@ -29,9 +30,9 @@ public class updater {
             //Se crea registro de los archivos remotos en el repositorio correspondiente
             updaterRemoteFilesProcess.getRemoteFiles();
 
-            //Se comparan los registros generados para verificarpor segunda vez si corresponde actualizar
+            //Se comparan los registros generados para verificarpor segunda vez si corresponde actualizar (true == iguales)
             String answer = String.valueOf(updaterRegisterComparison.compareRegisterFiles(Paths.get("Register.txt"), Paths.get("RemoteRegister.txt")));
-            System.out.println("Procesados los registros en arreglos!\nLa respuesta por ahora es : " + answer + "\n");
+            System.out.println("Procesados los registros en arreglos!\nLa respuesta por ahora es : " + answer + "\nY en las versiones declaradas es: " + String.valueOf(permission1));
 
             // Ruta al archivo JAR MO
             String Mo = "multimodal-observer-server-5-0.0.0"; // Reemplazar con la ruta correcta
