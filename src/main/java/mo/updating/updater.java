@@ -31,8 +31,11 @@ public class updater {
             updaterRemoteFilesProcess.getRemoteFiles();
 
             //Se comparan los registros generados para verificarpor segunda vez si corresponde actualizar (true == iguales)
-            String answer = String.valueOf(updaterRegisterComparison.compareRegisterFiles(Paths.get("Register.txt"), Paths.get("RemoteRegister.txt")));
-            System.out.println("Procesados los registros en arreglos!\nLa respuesta por ahora es : " + answer + "\nY en las versiones declaradas es: " + String.valueOf(permission1));
+            boolean answer = updaterRegisterComparison.compareRegisterFiles(Paths.get("Register.txt"), Paths.get("RemoteRegister.txt"));
+            System.out.println("Procesados los registros en arreglos!\nLa respuesta por ahora es : " + String.valueOf(answer) + "\nY en las versiones declaradas es: " + String.valueOf(permission1));
+
+            //Si las respuestas son las esperadas, se procede a la descarga de los archivos del repositorio
+            updaterDownloader.downloadFilesFromRepository(permission1, answer);
 
             // Ruta al archivo JAR MO
             String Mo = "multimodal-observer-server-5-0.0.0"; // Reemplazar con la ruta correcta

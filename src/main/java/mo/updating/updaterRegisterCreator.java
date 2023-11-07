@@ -69,7 +69,7 @@ public class updaterRegisterCreator {
             for (Path pathfile : pathList) {
                 //Se anotan de manera local todos los directorios y fechas de modificacion mientras no contengan las frases en el IF siguiente
                 try {
-                    if ( !(pathfile.toString().contains("java\\mo\\updating")) && !(pathfile.toString().contains("Register.txt")) && !(pathfile.toString().contains("RemoteRegister.txt")) && !(pathfile.toString().contains("FileRegister.txt"))){
+                    if ( !(pathfile.toString().contains("java\\mo\\updating")) && !(pathfile.toString().contains("Register.txt")) && !(pathfile.toString().contains("RemoteRegister.txt")) && !(pathfile.toString().contains("FileRegister.txt")) && !(pathfile.toString().contains("Repo.zip"))){
                         BasicFileAttributes attributes = Files.readAttributes(pathfile, BasicFileAttributes.class);
                         long milisegundos = attributes.lastModifiedTime().toMillis();
                         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
