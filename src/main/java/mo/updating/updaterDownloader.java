@@ -7,6 +7,10 @@ import java.io.FileOutputStream;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 
 //Clase que permite la descarga de los archivos remotos de Multimodal observer
@@ -28,7 +32,13 @@ public class updaterDownloader {
                 FileOutputStream fos = new FileOutputStream("Repo.zip");
                 fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
                 fos.close();
-                // Aca es probable colocar codigo para mover el archivo si es necesario
+                rbc.close();
+                // Se mueve el archivo descargado a la raiz de la carpeta del proyecto
+                //Nota: Esto podria ser modificado a posteriori
+                Path fileDownloaded = Paths.get("Repo.zip");
+                Path targetDirectory = Paths.get("../../..");               
+                Path targetFile = targetDirectory.resolve(fileDownloaded.getFileName());
+                Path temp = Files.move(fileDownloaded, targetFile, StandardCopyOption.REPLACE_EXISTING);
             } catch (IOException e){
                 e.printStackTrace();
             }
