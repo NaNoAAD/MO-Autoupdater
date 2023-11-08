@@ -27,6 +27,7 @@ public class MultimodalObserver {
         
         PluginRegistry.getInstance();
 
+        
         MainWindow window = new MainWindow();
         MainPresenter presenter = new MainPresenter(window);
         presenter.start();

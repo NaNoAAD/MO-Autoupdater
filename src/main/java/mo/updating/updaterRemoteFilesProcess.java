@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.stream.Collectors;
 
 public class updaterRemoteFilesProcess {
@@ -43,11 +46,27 @@ public class updaterRemoteFilesProcess {
             String jsonResponse = reader.lines().collect(Collectors.joining("\n"));
             reader.close();
 
-            System.out.println(jsonResponse);
+            //DEBUG: print mostrara como el json fue capturado
+            //System.out.println(jsonResponse);
 
-            FileWriter fileWriter = new FileWriter("RemoteRegister.txt");
-            fileWriter.write(jsonResponse);
-            fileWriter.close();
+            Path registerPath = Paths.get("RemoteRegister.txt");
+
+            if (Files.exists(registerPath)) {
+                try {
+                    //Si archivo existe, se borra y se crea de nuevo
+                    Files.delete(registerPath);
+                    FileWriter fileWriter = new FileWriter("RemoteRegister.txt");
+                    fileWriter.write(jsonResponse);
+                    fileWriter.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                //Caso contrario, simplemente se crea
+                FileWriter fileWriter = new FileWriter("RemoteRegister.txt");
+                fileWriter.write(jsonResponse);
+                fileWriter.close();
+            }          
 
         } else {
             System.err.println("Error en la solicitud. Codigo: " + responseCode);
