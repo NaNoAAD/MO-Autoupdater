@@ -1,8 +1,6 @@
 package mo.updating;
 
 import java.io.IOException;
-import java.io.BufferedInputStream;
-import java.io.File;
 import java.io.FileOutputStream;
 import java.net.URL;
 import java.nio.channels.Channels;
@@ -15,9 +13,7 @@ import java.nio.file.StandardCopyOption;
 
 //Clase que permite la descarga de los archivos remotos de Multimodal observer
 public class updaterDownloader {
-    //Variables
-    //static String fileURL = "https://github.com/NaNoAAD/MO-Autoupdater/archive/refs/heads/master.zip";
-    
+        
     public static void downloadFilesFromRepository(boolean equalsVersionsTxt, boolean comparissonAnswer) throws IOException{
         //Se revisan los permisos dados por los resultados de las comparaciones
         if(equalsVersionsTxt == false && comparissonAnswer == true){
@@ -34,7 +30,7 @@ public class updaterDownloader {
                 fos.close();
                 rbc.close();
                 // Se mueve el archivo descargado a la raiz de la carpeta del proyecto
-                //Nota: Esto podria ser modificado a posteriori
+                //Nota: Las rutas indicadas aca podrian ser modificadas a posteriormente
                 Path fileDownloaded = Paths.get("Repo.zip");
                 Path targetDirectory = Paths.get("../../..");               
                 Path targetFile = targetDirectory.resolve(fileDownloaded.getFileName());

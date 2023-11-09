@@ -12,10 +12,10 @@ public class updater {
     public static void main(String[] args) {
         try {
 
-            //Creo que es mejor ter un txt con su infomacion
+            //Lectura de la version local indicada en version.txt
             String localVersion = updaterPermissions.getMOVersion();
 
-            //Funcion que obtiene txt remoto
+            //Funcion que obtiene version.txt desde el repositorio, que sera anotado como Remoteregister.txt localmente
             String remoteVersion = updaterPermissions.remoteVersionRepository();
 
             //Se comparan las versiones declaradas en los txt de version (true == necesario actualizar)
@@ -34,8 +34,10 @@ public class updater {
             boolean answer = updaterRegisterComparison.compareRegisterFiles(Paths.get("Register.txt"), Paths.get("RemoteRegister.txt"));
             System.out.println("Procesados los registros en arreglos!\nLa respuesta por ahora es : " + String.valueOf(answer) + "\nY en las versiones declaradas es: " + String.valueOf(permission1));
 
-            //Si las respuestas son las esperadas, se procede a la descarga de los archivos del repositorio
+            //Si las respuestas son las esperadas, se procede a la descarga de los archivos del repositorio en formato .zip desde link predeterminado
             updaterDownloader.downloadFilesFromRepository(permission1, answer);
+
+            //Se procede a reemplazar los archivos con los del comprimible
 
             // Ruta al archivo JAR MO
             String Mo = "multimodal-observer-server-5-0.0.0"; // Reemplazar con la ruta correcta
@@ -47,8 +49,6 @@ public class updater {
             Process process = Runtime.getRuntime().exec("java -jar multimodal-observer-server-5-0.0.0.jar");
 
             
-
-
             // Esperar a que el proceso termine (en este caso, nunca terminará)
             process.waitFor();
         } catch (IOException | InterruptedException e) {

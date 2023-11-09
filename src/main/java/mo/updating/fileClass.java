@@ -3,7 +3,7 @@ package mo.updating;
 import java.util.Date;
 
 
-//Clase publica que permite el manejo de los archivos que se procesan desde el arreglo de archivos obtenidos desde los registros txt
+//Clase publica que permite el manejo de los archivos que se procesan desde los arreglos obtenidos desde los registros txt que indican los archivos y su fecha de modificacion
 public class fileClass {
     private String name;
     private Date modificationDate;

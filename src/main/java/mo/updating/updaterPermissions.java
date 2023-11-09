@@ -20,8 +20,7 @@ public class updaterPermissions {
     public static String getMOVersion(){
         String versionString = "";
         Path file = Paths.get("../../../version.txt");
-        List<String> lines;
-        
+        List<String> lines;        
 
         try {
             // Si el archivo de Notas de version no existe, se cancela la opcion de actualizar y se da el paso a ejecutar directamente MO
