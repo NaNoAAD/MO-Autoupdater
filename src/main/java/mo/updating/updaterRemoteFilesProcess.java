@@ -54,6 +54,7 @@ public class updaterRemoteFilesProcess {
             if (Files.exists(registerPath)) {
                 try {
                     //Si archivo existe, se borra y se crea de nuevo
+                    System.out.println("Registro remoto existia localmente\n");
                     Files.delete(registerPath);
                     FileWriter fileWriter = new FileWriter("RemoteRegister.txt");
                     fileWriter.write(jsonResponse);
@@ -63,6 +64,7 @@ public class updaterRemoteFilesProcess {
                 }
             } else {
                 //Caso contrario, simplemente se crea
+                System.out.println("Registro remoto no existia localmente\n");
                 FileWriter fileWriter = new FileWriter("RemoteRegister.txt");
                 fileWriter.write(jsonResponse);
                 fileWriter.close();
