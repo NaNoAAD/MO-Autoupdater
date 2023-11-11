@@ -35,9 +35,10 @@ public class updater {
             System.out.println("Procesados los registros en arreglos!\nLa respuesta por ahora es : " + String.valueOf(answer) + "\nY en las versiones declaradas es: " + String.valueOf(permission1));
 
             //Si las respuestas son las esperadas, se procede a la descarga de los archivos del repositorio en formato .zip desde link predeterminado
-            updaterDownloader.downloadFilesFromRepository(permission1, answer);
+            boolean downloadZip = updaterDownloader.downloadFilesFromRepository(permission1, answer);
 
             //Se procede a reemplazar los archivos con los del comprimible
+            updaterZipProcess.unzipFile("../../../Repo.zip", "../../../", downloadZip);
 
             // Ruta al archivo JAR MO
             String Mo = "multimodal-observer-server-5-0.0.0"; // Reemplazar con la ruta correcta

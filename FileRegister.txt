@@ -159,7 +159,7 @@
 ..\java\mo\core\MainWindow.java
 03/10/2023 16:55:45
 ..\java\mo\core\MultimodalObserver.java
-08/11/2023 18:18:59
+09/11/2023 01:28:19
 ..\java\mo\core\plugin\Dependency.java
 03/10/2023 16:55:45
 ..\java\mo\core\plugin\Extends.java

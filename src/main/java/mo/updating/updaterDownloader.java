@@ -13,12 +13,14 @@ import java.nio.file.StandardCopyOption;
 
 //Clase que permite la descarga de los archivos remotos de Multimodal observer
 public class updaterDownloader {
-        
-    public static void downloadFilesFromRepository(boolean equalsVersionsTxt, boolean comparissonAnswer) throws IOException{
+
+    //Metodo que descarga el .zip que provee github desde el link predeterminado, si existen los permisos necesarios
+    //Retorna un boolean para los procesos posteriores        
+    public static boolean downloadFilesFromRepository(boolean equalsVersionsTxt, boolean comparissonAnswer) throws IOException{
         //Se revisan los permisos dados por los resultados de las comparaciones
         if(equalsVersionsTxt == false && comparissonAnswer == true){
             System.out.println("No se cumplen los requisitos para actualizar\nSe vuelve a Updater main");
-            return;
+            return false;
         } else {
             try {
                 //Se descarga el codigo fuente del repositorio de github desde el link predeterminado
@@ -35,10 +37,14 @@ public class updaterDownloader {
                 Path targetDirectory = Paths.get("../../..");               
                 Path targetFile = targetDirectory.resolve(fileDownloaded.getFileName());
                 Path temp = Files.move(fileDownloaded, targetFile, StandardCopyOption.REPLACE_EXISTING);
+
             } catch (IOException e){
                 e.printStackTrace();
             }
-            
+            //Con los archivos descargados sin problemas, se retorna true para indicar a la clase de procesamiento del .zip posterior que tiene luz verde para continuar
+            return true;
         }
+        
+        
     }
 }
