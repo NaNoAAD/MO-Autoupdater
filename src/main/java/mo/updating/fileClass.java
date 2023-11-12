@@ -21,10 +21,10 @@ public class fileClass {
         return modificationDate;
     }
 
-    //Metodo de clase que permite comparar entre 2 objetos fileClass con fin de saber si son iguales
-    //Si son iguales true, caso contrario false
+    //Metodo de clase que permite comparar entre 2 objetos fileClass con fin de saber si son iguales en nombre y en fecha de modificacion
+    //Si son iguales en nombre y file1 es posterior o igual a file2 entrega true
     public static boolean isSameFile(fileClass file1, fileClass file2){
-        if(file1.getName().equals(file2.getName()) && file1.getDate().equals(file2.getDate())){
+        if(file1.getName().equals(file2.getName()) &&  (file1.getDate().compareTo(file2.getDate()) >= 0) ){
             return true;
         } else {
             return false;

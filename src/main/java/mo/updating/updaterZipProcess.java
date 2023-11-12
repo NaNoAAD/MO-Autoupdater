@@ -1,8 +1,6 @@
 package mo.updating;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -39,6 +37,11 @@ public class updaterZipProcess {
                 //obteniendo su nombre se crea un nuevo File
                 String fileName = zipEntry.getName();
                 File newFile = new File(targetDirectory, fileName);
+
+                //Como el .zip descargado incluye el nombre del arbol principal, se le reemplaza con un "" (asi al unzip se hace reemplazo directo de los archivos!)
+                if(fileName.contains("-master")){
+                    newFile = new File(targetDirectory, fileName.replace("-master", ""));
+                }
 
                 if (zipEntry.isDirectory()) {
                     //Si lo procesado resulta ser un directorio, se crea un igual como tal

@@ -112,16 +112,16 @@ public class updaterRegisterComparison {
                 //Cuando los fileClass a revisar sean iguales en nombre
                 if(localFileRevisor.getName().equals(remoteFileRevisor.getName())){
                     if(fileClass.isSameFile(localFileRevisor, remoteFileRevisor)){
-                        //Si el archivo revisado es el mismo tanto en nombre como en fecha de modificacion, se rompe el bucle interno
+                        //Si el archivo local revisado es el mismo tanto en nombre y posterior en fecha de modificacion al remoteFileRevisor, se rompe el bucle interno (porque es innecesario seguir buscando)
                         //System.out.println("Exitio Similiritud\n");
                         break;
                     } else  {
-                        //caso contrario, difieren en la fecha de modificacion y se debe actualizar mo
-                        System.out.println("Caso 3: Un archivo presenta diferencias en la fecha de modificacion .> " + localFileRevisor.getName() + " local: " + localFileRevisor.getDate() + " remoto: " + remoteFileRevisor.getDate() + " \n");
+                        //caso contrario, la fecha de modificacion del remoto es superior al del local, y se debe actualizar mo
+                        System.out.println("Caso 3: Un archivo presenta diferencias desfavorables en la fecha de modificacion .> " + localFileRevisor.getName() + " local: " + localFileRevisor.getDate() + " remoto: " + remoteFileRevisor.getDate() + " \n");
                         return answer = false;
                     }
                 } else {
-                    //Si el nombre del archivo remoto a revisar no es igual al local a revisar
+                    //Si el nombre del archivo remoto a revisar no es igual al local a revisar, se continua con otro remoteFileRevisor
                     continue;
                 }
             }

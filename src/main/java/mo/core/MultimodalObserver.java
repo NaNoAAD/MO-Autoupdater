@@ -26,6 +26,7 @@ public class MultimodalObserver {
         loadLocale();
         
         PluginRegistry.getInstance();
+        
 
         MainWindow window = new MainWindow();
         MainPresenter presenter = new MainPresenter(window);
