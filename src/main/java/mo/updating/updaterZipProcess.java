@@ -1,6 +1,9 @@
 package mo.updating;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -68,6 +71,18 @@ public class updaterZipProcess {
             e.printStackTrace();
         }
         System.out.println("El proceso de unzipping ha terminado\n");
+        //Se procede con el borrado del archivo .zip descargado
+        try {
+            // Se obtiene la ruta del .zip descargado
+            Path ZIPdownloaded = Paths.get("../../../Repo.zip");
+
+            // Si existe el archivo, se eliminara
+            Files.deleteIfExists(ZIPdownloaded);
+
+            System.out.println("Archivo .zip Descargado Eliminado");
+        } catch (IOException e) {
+            System.out.println("Error intentando eliminar el .zip" + e.getMessage());
+        }
     }
 
 }
