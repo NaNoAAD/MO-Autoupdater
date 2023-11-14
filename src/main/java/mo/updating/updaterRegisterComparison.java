@@ -3,6 +3,7 @@ package mo.updating;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -132,6 +133,15 @@ public class updaterRegisterComparison {
         System.out.println("Caso 3 SUPERADO\n");
         System.out.println("Casos superados: Los registros no indican diferencia\n");
 
+        //Se borran los registros generados para la comparacion
+        try {
+            // Elimina los registros que fueron sometidos a comparacion (argumentos de este metodo)
+            Files.deleteIfExists(localFile);
+            Files.deleteIfExists(remoteFile);
+            System.out.println("Los archivos de registro comparados fueron borrados");
+        } catch (IOException e) {
+            System.out.println("Error al borrar los archivos de registro comparados" + e.getMessage());
+        }
 
         return answer;
     }
