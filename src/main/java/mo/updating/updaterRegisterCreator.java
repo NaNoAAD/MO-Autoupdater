@@ -32,8 +32,8 @@ public class updaterRegisterCreator {
             pathList = Files.walk(startDir)
                                         .filter(Files::isRegularFile)
                                         .collect(Collectors.toList());
-
-            pathList.forEach(System.out::println);
+            //DEBUG: Se muestran todos los path recolectados via cmd
+            //pathList.forEach(System.out::println);
 
         } catch (IOException e) {
             e.printStackTrace();

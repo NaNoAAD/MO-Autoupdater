@@ -18,8 +18,9 @@ public class updaterDownloader {
     //Retorna un boolean para los procesos posteriores        
     public static boolean downloadFilesFromRepository(boolean equalsVersionsTxt, boolean comparissonAnswer) throws IOException{
         //Se revisan los permisos dados por los resultados de las comparaciones
-        if(equalsVersionsTxt == false && comparissonAnswer == true){
-            System.out.println("No se cumplen los requisitos para actualizar\nSe vuelve a Updater main");
+        if(equalsVersionsTxt == false || comparissonAnswer == false){
+            System.out.println("No se cumplen los requisitos para actualizar\nSe vuelve a Updater.main() \n");
+            System.out.println("EqualsVersion indica: " + String.valueOf(equalsVersionsTxt) + "\n" + "comparisson Answer indica: " + String.valueOf(comparissonAnswer) + "\n");
             return false;
         } else {
             try {
