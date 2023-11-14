@@ -461,7 +461,7 @@
 ..\..\..\bin\main\mo\core\MainWindow.class
 13/11/2023 22:32:46
 ..\..\..\bin\main\mo\core\MultimodalObserver.class
-13/11/2023 22:32:46
+14/11/2023 01:35:30
 ..\..\..\bin\main\mo\core\plugin\Dependency.class
 13/11/2023 22:32:47
 ..\..\..\bin\main\mo\core\plugin\Extends.class
@@ -745,13 +745,13 @@
 ..\..\..\bin\main\mo\updating\updater.class
 13/11/2023 22:32:51
 ..\..\..\bin\main\mo\updating\updaterDownloader.class
-13/11/2023 22:32:51
+14/11/2023 00:48:32
 ..\..\..\bin\main\mo\updating\updaterPermissions.class
 13/11/2023 22:32:51
 ..\..\..\bin\main\mo\updating\updaterRegisterComparison.class
-13/11/2023 22:32:52
+14/11/2023 01:36:56
 ..\..\..\bin\main\mo\updating\updaterRegisterCreator.class
-13/11/2023 23:04:50
+14/11/2023 00:40:01
 ..\..\..\bin\main\mo\updating\updaterRemoteFilesProcess.class
 13/11/2023 22:32:52
 ..\..\..\bin\main\mo\updating\updaterZipProcess.class
@@ -2101,7 +2101,7 @@
 ..\..\..\src\main\java\mo\core\MainWindow.java
 03/10/2023 16:55:45
 ..\..\..\src\main\java\mo\core\MultimodalObserver.java
-11/11/2023 23:33:19
+14/11/2023 01:35:29
 ..\..\..\src\main\java\mo\core\plugin\Dependency.java
 03/10/2023 16:55:45
 ..\..\..\src\main\java\mo\core\plugin\Extends.java

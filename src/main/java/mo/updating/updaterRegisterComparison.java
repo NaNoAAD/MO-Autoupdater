@@ -135,7 +135,7 @@ public class updaterRegisterComparison {
 
         //Se borran los registros generados para la comparacion
         try {
-            // Elimina los registros que fueron sometidos a comparacion (argumentos de este metodo)
+            // Elimina los registros que fueron sometidos a comparacion (argumentos de este metodo).
             Files.deleteIfExists(localFile);
             Files.deleteIfExists(remoteFile);
             System.out.println("Los archivos de registro comparados fueron borrados");
