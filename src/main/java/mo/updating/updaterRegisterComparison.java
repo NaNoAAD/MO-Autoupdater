@@ -3,24 +3,20 @@ package mo.updating;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
-import mo.updating.fileClass;
 
 public class updaterRegisterComparison {
 
     //METODO
     //Compara 2 archivos con igual formato, para obtener respuesta a si los archivos remotos han sido modificados
     //Retorna un boolean que permite proceder con posterioridad
-    ////True si son iguales
-    ////false si son diferentes
-    public static boolean compareRegisterFiles(Path localFile, Path remoteFile) throws IOException {
-        //Declaro variable de salida
-        boolean answer = true;
+    ////True si hay diferencias
+    ////false si no hay diferencias
+    public static boolean differencesInRegisters(Path localFile, Path remoteFile) throws IOException {
         //Variables limitadoras
         int evenOdd = 0;
         String fileName = "";
@@ -84,7 +80,7 @@ public class updaterRegisterComparison {
         System.out.println("Comparacion de tamaños de arreglos ->" + String.valueOf(localFileArray.size()) + "VS " + String.valueOf(remoteFileArray.size())+ "\n");
         if(!(localFileArray.size() == remoteFileArray.size())){
             System.out.println("Caso 1: Tamaños Diferentes\n");
-            return answer = false;
+            return true;
         }
 
         System.out.println("Caso 1 SUPERADO\n");
@@ -97,7 +93,7 @@ public class updaterRegisterComparison {
             } else{
                 System.out.println("Caso 2: discrepancia en archivos\n");
                 System.out.println("El archivo que tiene descrepancia es " + localFileRevisor.getName() + " con fecha: " + localFileRevisor.getDate() + "\n");
-                return answer = false;
+                return true;
             }
         }
 
@@ -112,14 +108,14 @@ public class updaterRegisterComparison {
                 //System.out.println("Comparando " + localFileRevisor.getName() + " con " + remoteFileRevisor.getName() + "\n");
                 //Cuando los fileClass a revisar sean iguales en nombre
                 if(localFileRevisor.getName().equals(remoteFileRevisor.getName())){
-                    if(fileClass.isSameFile(localFileRevisor, remoteFileRevisor)){
-                        //Si el archivo local revisado es el mismo tanto en nombre y posterior en fecha de modificacion al remoteFileRevisor, se rompe el bucle interno (porque es innecesario seguir buscando)
-                        //System.out.println("Exitio Similiritud\n");
-                        break;
-                    } else  {
-                        //caso contrario, la fecha de modificacion del remoto es superior al del local, y se debe actualizar mo
+                    if(fileClass.isSameFileButBeforeDate(localFileRevisor, remoteFileRevisor)){
+                        //Si el archivo local revisado es el mismo tanto en nombre pero es anterior en fecha de modificacion al remoteFileRevisor, Existe diferencia (atraso) en un archivo y se debe actualizar
                         System.out.println("Caso 3: Un archivo presenta diferencias desfavorables en la fecha de modificacion .> " + localFileRevisor.getName() + " local: " + localFileRevisor.getDate() + " remoto: " + remoteFileRevisor.getDate() + " \n");
-                        return answer = false;
+                        return true;
+                        
+                    } else  {
+                        //caso contrario, la fecha de localFileRevisor es igual o superior, seguimos con el siguiente archivo
+                        break;                        
                     }
                 } else {
                     //Si el nombre del archivo remoto a revisar no es igual al local a revisar, se continua con otro remoteFileRevisor
@@ -134,15 +130,17 @@ public class updaterRegisterComparison {
         System.out.println("Casos superados: Los registros no indican diferencia\n");
 
         //Se borran los registros generados para la comparacion
+        //DEBUG: Descomentar si es necesario hacer una comparacion
+        
         try {
             // Elimina los registros que fueron sometidos a comparacion (argumentos de este metodo).
-            Files.deleteIfExists(localFile);
+            //Files.deleteIfExists(localFile);
             Files.deleteIfExists(remoteFile);
             System.out.println("Los archivos de registro comparados fueron borrados");
         } catch (IOException e) {
             System.out.println("Error al borrar los archivos de registro comparados" + e.getMessage());
         }
 
-        return answer;
+        return false;
     }
 }

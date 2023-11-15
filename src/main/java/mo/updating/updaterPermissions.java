@@ -100,10 +100,10 @@ public class updaterPermissions {
     //Metodo que comparara 2 strings que indican versiones
     // true si es necesario actualizar
     //False en caso contrario
-    public static boolean versionComparison(String localVersion, String RemoteVersion) throws IOException{
+    public static boolean permissionToUpdateByVersions(String localVersion, String RemoteVersion) throws IOException{
         System.out.println("Versiones a comparar >> local " + localVersion + " " + "remoto: " + RemoteVersion + "\n");
-        if(localVersion == "NULL"){
-            System.out.println("localVersion indica NULL, no hay actualizacion\n");
+        if(localVersion == "NULL" || RemoteVersion == "NULL"){
+            System.out.println("localVersion o RemoteVersion indican NULL, no hay actualizacion\n");
             return false;
         } else if (localVersion.compareTo(RemoteVersion) < 0) {
             System.out.println("localVersion" + " es menor que " + "RemoteVersion\nSe procede a Actualizar\n");

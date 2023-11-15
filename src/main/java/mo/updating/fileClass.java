@@ -22,9 +22,9 @@ public class fileClass {
     }
 
     //Metodo de clase que permite comparar entre 2 objetos fileClass con fin de saber si son iguales en nombre y en fecha de modificacion
-    //Si son iguales en nombre y si file1 es posterior a file2 en la fecha de modificacion entrega true
-    public static boolean isSameFile(fileClass file1, fileClass file2){
-        if(file1.getName().equals(file2.getName()) &&  (file1.getDate().compareTo(file2.getDate()) >= 0) ){
+    //Si son iguales en nombre y si file1 es anterior a file2 en la fecha de modificacion entrega true
+    public static boolean isSameFileButBeforeDate(fileClass file1, fileClass file2){
+        if(file1.getName().equals(file2.getName()) && file1.getDate().before(file2.getDate()) ){
             return true;
         } else {
             return false;

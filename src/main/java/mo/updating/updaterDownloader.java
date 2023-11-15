@@ -15,12 +15,14 @@ import java.nio.file.StandardCopyOption;
 public class updaterDownloader {
 
     //Metodo que descarga el .zip que provee github desde el link predeterminado, si existen los permisos necesarios
-    //Retorna un boolean para los procesos posteriores        
-    public static boolean downloadFilesFromRepository(boolean equalsVersionsTxt, boolean comparissonAnswer) throws IOException{
+    //Retorna un boolean para los procesos posteriores
+    //true si se da permiso para descomprimir
+    //False si no        
+    public static boolean downloadFilesFromRepository(boolean permissionToUpdateByVersions, boolean differencesInRegisters) throws IOException{
         //Se revisan los permisos dados por los resultados de las comparaciones
-        if(equalsVersionsTxt == false || comparissonAnswer == false){
+        if(permissionToUpdateByVersions == false || differencesInRegisters == false){
             System.out.println("No se cumplen los requisitos para actualizar\nSe vuelve a Updater.main() \n");
-            System.out.println("EqualsVersion indica: " + String.valueOf(equalsVersionsTxt) + "\n" + "comparisson Answer indica: " + String.valueOf(comparissonAnswer) + "\n");
+            System.out.println("permissionToUpdateByVersions indica: " + String.valueOf(permissionToUpdateByVersions) + "\n" + "differencesInRegisters indica: " + String.valueOf(differencesInRegisters) + "\n");
             return false;
         } else {
             try {
