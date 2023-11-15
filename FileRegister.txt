@@ -9,9 +9,9 @@
 ..\..\..\.vscode\settings.json
 04/10/2023 00:34:57
 ..\..\..\bin\main\controlador\MainViewController.class
-13/11/2023 22:32:52
+14/11/2023 22:46:47
 ..\..\..\bin\main\es\eucm\i18n\I18N.class
-13/11/2023 22:32:42
+14/11/2023 22:46:32
 ..\..\..\bin\main\fxml\core\ui\AddParticipant.fxml
 03/10/2023 16:55:45
 ..\..\..\bin\main\fxml\core\ui\AddPlugin.fxml
@@ -201,621 +201,621 @@
 ..\..\..\bin\main\images\unlocked2.png
 03/10/2023 16:55:45
 ..\..\..\bin\main\mo\analysis\AnalysisDialog$1.class
-13/11/2023 22:32:42
+14/11/2023 22:46:32
 ..\..\..\bin\main\mo\analysis\AnalysisDialog$2.class
-13/11/2023 22:32:42
+14/11/2023 22:46:32
 ..\..\..\bin\main\mo\analysis\AnalysisDialog$3.class
-13/11/2023 22:32:42
+14/11/2023 22:46:32
 ..\..\..\bin\main\mo\analysis\AnalysisDialog$4.class
-13/11/2023 22:32:42
+14/11/2023 22:46:32
 ..\..\..\bin\main\mo\analysis\AnalysisDialog$FilePath.class
-13/11/2023 22:32:42
+14/11/2023 22:46:32
 ..\..\..\bin\main\mo\analysis\AnalysisDialog.class
-13/11/2023 22:32:42
+14/11/2023 22:46:32
 ..\..\..\bin\main\mo\analysis\AnalysisPlayer.class
-13/11/2023 22:32:42
+14/11/2023 22:46:32
 ..\..\..\bin\main\mo\analysis\AnalysisProvider.class
-13/11/2023 22:32:42
+14/11/2023 22:46:32
 ..\..\..\bin\main\mo\analysis\AnalysisStage.class
-13/11/2023 22:32:43
+14/11/2023 22:46:32
 ..\..\..\bin\main\mo\analysis\AnalysisTimePanel$DrawingPane.class
-13/11/2023 22:32:43
+14/11/2023 22:46:33
 ..\..\..\bin\main\mo\analysis\AnalysisTimePanel.class
-13/11/2023 22:32:43
+14/11/2023 22:46:33
 ..\..\..\bin\main\mo\analysis\AnalyzableConfiguration.class
-13/11/2023 22:32:43
+14/11/2023 22:46:33
 ..\..\..\bin\main\mo\analysis\AnalyzeAction$1$1.class
-13/11/2023 22:32:43
+14/11/2023 22:46:33
 ..\..\..\bin\main\mo\analysis\AnalyzeAction$1.class
-13/11/2023 22:32:43
+14/11/2023 22:46:33
 ..\..\..\bin\main\mo\analysis\AnalyzeAction.class
-13/11/2023 22:32:43
+14/11/2023 22:46:33
 ..\..\..\bin\main\mo\analysis\IndividualAnalisisAction.class
-13/11/2023 22:32:43
+14/11/2023 22:46:33
 ..\..\..\bin\main\mo\analysis\IndividualAnalisisDialog$1.class
-13/11/2023 22:32:43
+14/11/2023 22:46:33
 ..\..\..\bin\main\mo\analysis\IndividualAnalisisDialog$2.class
-13/11/2023 22:32:43
+14/11/2023 22:46:33
 ..\..\..\bin\main\mo\analysis\IndividualAnalisisDialog$3$1.class
-13/11/2023 22:32:43
+14/11/2023 22:46:33
 ..\..\..\bin\main\mo\analysis\IndividualAnalisisDialog$3.class
-13/11/2023 22:32:43
+14/11/2023 22:46:33
 ..\..\..\bin\main\mo\analysis\IndividualAnalisisDialog.class
-13/11/2023 22:32:43
+14/11/2023 22:46:33
 ..\..\..\bin\main\mo\analysis\IndividualAnalisisDialog.form
 03/10/2023 16:55:45
 ..\..\..\bin\main\mo\analysis\IndividualAnalysisConfiguration.class
-13/11/2023 22:32:43
+14/11/2023 22:46:33
 ..\..\..\bin\main\mo\analysis\MouseAnalysisPlugin.class
-13/11/2023 22:32:43
+14/11/2023 22:46:33
 ..\..\..\bin\main\mo\analysis\Note.class
-13/11/2023 22:32:43
+14/11/2023 22:46:33
 ..\..\..\bin\main\mo\analysis\NotesAnalysisConfig.class
-13/11/2023 22:32:43
+14/11/2023 22:46:33
 ..\..\..\bin\main\mo\analysis\NotesAnalysisPlugin.class
-13/11/2023 22:32:43
+14/11/2023 22:46:33
 ..\..\..\bin\main\mo\analysis\NotesConfigDialog$1.class
-13/11/2023 22:32:43
+14/11/2023 22:46:33
 ..\..\..\bin\main\mo\analysis\NotesConfigDialog$2.class
-13/11/2023 22:32:43
+14/11/2023 22:46:34
 ..\..\..\bin\main\mo\analysis\NotesConfigDialog.class
-13/11/2023 22:32:43
+14/11/2023 22:46:33
 ..\..\..\bin\main\mo\analysis\NotesPlayer.class
-13/11/2023 22:32:44
+14/11/2023 22:46:34
 ..\..\..\bin\main\mo\analysis\NotesRecorder.class
-13/11/2023 22:32:44
+14/11/2023 22:46:34
 ..\..\..\bin\main\mo\analysis\NotesVisualization.class
-13/11/2023 22:32:44
+14/11/2023 22:46:34
 ..\..\..\bin\main\mo\analysis\NotPlayableAnalyzableConfiguration.class
-13/11/2023 22:32:43
+14/11/2023 22:46:33
 ..\..\..\bin\main\mo\analysis\PlayableAnalyzableConfiguration.class
-13/11/2023 22:32:44
+14/11/2023 22:46:34
 ..\..\..\bin\main\mo\analysis\PluginTrack.class
-13/11/2023 22:32:44
+14/11/2023 22:46:34
 ..\..\..\bin\main\mo\analysis\TextBox.class
-13/11/2023 22:32:44
+14/11/2023 22:46:34
 ..\..\..\bin\main\mo\analysis\TimePanelScroll.class
-13/11/2023 22:32:44
+14/11/2023 22:46:34
 ..\..\..\bin\main\mo\analysis\TimeRuler.class
-13/11/2023 22:32:44
+14/11/2023 22:46:34
 ..\..\..\bin\main\mo\capture\CaptureProvider.class
-13/11/2023 22:32:44
+14/11/2023 22:46:34
 ..\..\..\bin\main\mo\capture\CaptureStage.class
-13/11/2023 22:32:44
+14/11/2023 22:46:34
 ..\..\..\bin\main\mo\capture\RecordableConfiguration.class
-13/11/2023 22:32:44
+14/11/2023 22:46:34
 ..\..\..\bin\main\mo\capture\RecordAction$1.class
-13/11/2023 22:32:44
+14/11/2023 22:46:34
 ..\..\..\bin\main\mo\capture\RecordAction$2.class
-13/11/2023 22:32:44
+14/11/2023 22:46:34
 ..\..\..\bin\main\mo\capture\RecordAction$3.class
-13/11/2023 22:32:44
+14/11/2023 22:46:34
 ..\..\..\bin\main\mo\capture\RecordAction$4.class
-13/11/2023 22:32:44
+14/11/2023 22:46:34
 ..\..\..\bin\main\mo\capture\RecordAction$5.class
-13/11/2023 22:32:44
+14/11/2023 22:46:34
 ..\..\..\bin\main\mo\capture\RecordAction$6.class
-13/11/2023 22:32:44
+14/11/2023 22:46:34
 ..\..\..\bin\main\mo\capture\RecordAction$7.class
-13/11/2023 22:32:44
+14/11/2023 22:46:34
 ..\..\..\bin\main\mo\capture\RecordAction.class
-13/11/2023 22:32:44
+14/11/2023 22:46:34
 ..\..\..\bin\main\mo\capture\RecordDialog$1.class
-13/11/2023 22:32:44
+14/11/2023 22:46:34
 ..\..\..\bin\main\mo\capture\RecordDialog$2.class
-13/11/2023 22:32:44
+14/11/2023 22:46:34
 ..\..\..\bin\main\mo\capture\RecordDialog$3.class
-13/11/2023 22:32:44
+14/11/2023 22:46:34
 ..\..\..\bin\main\mo\capture\RecordDialog.class
-13/11/2023 22:32:44
+14/11/2023 22:46:34
 ..\..\..\bin\main\mo\communication\chat\BubblePane.class
-13/11/2023 22:32:45
+14/11/2023 22:46:36
 ..\..\..\bin\main\mo\communication\chat\ChatEntry.class
-13/11/2023 22:32:45
+14/11/2023 22:46:36
 ..\..\..\bin\main\mo\communication\chat\ChatPlugin.class
-13/11/2023 22:32:45
+14/11/2023 22:46:36
 ..\..\..\bin\main\mo\communication\chat\ChatWindow$1.class
-13/11/2023 22:32:45
+14/11/2023 22:46:36
 ..\..\..\bin\main\mo\communication\chat\ChatWindow$2.class
-13/11/2023 22:32:45
+14/11/2023 22:46:36
 ..\..\..\bin\main\mo\communication\chat\ChatWindow$3.class
-13/11/2023 22:32:45
+14/11/2023 22:46:36
 ..\..\..\bin\main\mo\communication\chat\ChatWindow$4.class
-13/11/2023 22:32:45
+14/11/2023 22:46:36
 ..\..\..\bin\main\mo\communication\chat\ChatWindow.class
-13/11/2023 22:32:45
+14/11/2023 22:46:36
 ..\..\..\bin\main\mo\communication\chat\VerticalScrollPane.class
-13/11/2023 22:32:45
+14/11/2023 22:46:36
 ..\..\..\bin\main\mo\communication\Command.class
-13/11/2023 22:32:44
+14/11/2023 22:46:34
 ..\..\..\bin\main\mo\communication\CommunicationConfiguration.class
-13/11/2023 22:32:44
+14/11/2023 22:46:34
 ..\..\..\bin\main\mo\communication\CommunicationManagement$1.class
-13/11/2023 22:32:44
+14/11/2023 22:46:34
 ..\..\..\bin\main\mo\communication\CommunicationManagement.class
-13/11/2023 22:32:44
+14/11/2023 22:46:34
 ..\..\..\bin\main\mo\communication\CommunicationProvider.class
-13/11/2023 22:32:44
+14/11/2023 22:46:35
 ..\..\..\bin\main\mo\communication\CommunicationProvider1.class
-13/11/2023 22:32:44
+14/11/2023 22:46:35
 ..\..\..\bin\main\mo\communication\CommunicationViewer.class
-13/11/2023 22:32:44
+14/11/2023 22:46:35
 ..\..\..\bin\main\mo\communication\ConnectionListener.class
-13/11/2023 22:32:44
+14/11/2023 22:46:35
 ..\..\..\bin\main\mo\communication\ConnectionSender.class
-13/11/2023 22:32:44
+14/11/2023 22:46:35
 ..\..\..\bin\main\mo\communication\DevicesConfigurationWizardPanel$1.class
-13/11/2023 22:32:44
+14/11/2023 22:46:35
 ..\..\..\bin\main\mo\communication\DevicesConfigurationWizardPanel$2.class
-13/11/2023 22:32:44
+14/11/2023 22:46:35
 ..\..\..\bin\main\mo\communication\DevicesConfigurationWizardPanel.class
-13/11/2023 22:32:44
+14/11/2023 22:46:35
 ..\..\..\bin\main\mo\communication\FinishConnectionWizardPanel$1.class
-13/11/2023 22:32:44
+14/11/2023 22:46:35
 ..\..\..\bin\main\mo\communication\FinishConnectionWizardPanel$2.class
-13/11/2023 22:32:44
+14/11/2023 22:46:35
 ..\..\..\bin\main\mo\communication\FinishConnectionWizardPanel$3.class
-13/11/2023 22:32:44
+14/11/2023 22:46:35
 ..\..\..\bin\main\mo\communication\FinishConnectionWizardPanel.class
-13/11/2023 22:32:44
+14/11/2023 22:46:35
 ..\..\..\bin\main\mo\communication\NewConnectionWizardPanel$1.class
-13/11/2023 22:32:45
+14/11/2023 22:46:35
 ..\..\..\bin\main\mo\communication\NewConnectionWizardPanel$2.class
-13/11/2023 22:32:45
+14/11/2023 22:46:35
 ..\..\..\bin\main\mo\communication\NewConnectionWizardPanel$3.class
-13/11/2023 22:32:45
+14/11/2023 22:46:35
 ..\..\..\bin\main\mo\communication\NewConnectionWizardPanel.class
-13/11/2023 22:32:45
+14/11/2023 22:46:35
 ..\..\..\bin\main\mo\communication\notes\RemoteNotes.class
-13/11/2023 22:32:45
+14/11/2023 22:46:36
 ..\..\..\bin\main\mo\communication\PetitionResponse.class
-13/11/2023 22:32:45
+14/11/2023 22:46:35
 ..\..\..\bin\main\mo\communication\RemoteClient.class
-13/11/2023 22:32:45
+14/11/2023 22:46:35
 ..\..\..\bin\main\mo\communication\ServerConnection$1.class
-13/11/2023 22:32:45
+14/11/2023 22:46:35
 ..\..\..\bin\main\mo\communication\ServerConnection.class
-13/11/2023 22:32:45
+14/11/2023 22:46:35
 ..\..\..\bin\main\mo\communication\ServerTCP.class
-13/11/2023 22:32:45
+14/11/2023 22:46:35
 ..\..\..\bin\main\mo\communication\ServerUDP.class
-13/11/2023 22:32:45
+14/11/2023 22:46:35
 ..\..\..\bin\main\mo\communication\StreamableConfiguration.class
-13/11/2023 22:32:45
+14/11/2023 22:46:35
 ..\..\..\bin\main\mo\communication\streaming\capture\CaptureConfig.class
-13/11/2023 22:32:45
+14/11/2023 22:46:36
 ..\..\..\bin\main\mo\communication\streaming\capture\CaptureEvent.class
-13/11/2023 22:32:46
+14/11/2023 22:46:36
 ..\..\..\bin\main\mo\communication\streaming\capture\PluginCaptureListener.class
-13/11/2023 22:32:46
+14/11/2023 22:46:36
 ..\..\..\bin\main\mo\communication\streaming\capture\PluginCaptureSender.class
-13/11/2023 22:32:46
+14/11/2023 22:46:36
 ..\..\..\bin\main\mo\core\DataFileFinder.class
-13/11/2023 22:32:46
+14/11/2023 22:46:36
 ..\..\..\bin\main\mo\core\DirectoryWatcher$1.class
-13/11/2023 22:32:46
+14/11/2023 22:46:36
 ..\..\..\bin\main\mo\core\DirectoryWatcher$2.class
-13/11/2023 22:32:46
+14/11/2023 22:46:36
 ..\..\..\bin\main\mo\core\DirectoryWatcher$3.class
-13/11/2023 22:32:46
+14/11/2023 22:46:36
 ..\..\..\bin\main\mo\core\DirectoryWatcher.class
-13/11/2023 22:32:46
+14/11/2023 22:46:36
 ..\..\..\bin\main\mo\core\filemanagement\FilePopupMenu.class
-13/11/2023 22:32:46
+14/11/2023 22:46:37
 ..\..\..\bin\main\mo\core\filemanagement\FileRegistry.class
-13/11/2023 22:32:46
+14/11/2023 22:46:37
 ..\..\..\bin\main\mo\core\filemanagement\FilesPane.class
-13/11/2023 22:32:46
+14/11/2023 22:46:37
 ..\..\..\bin\main\mo\core\filemanagement\FilesTreeModel$1.class
-13/11/2023 22:32:46
+14/11/2023 22:46:37
 ..\..\..\bin\main\mo\core\filemanagement\FilesTreeModel.class
-13/11/2023 22:32:46
+14/11/2023 22:46:37
 ..\..\..\bin\main\mo\core\filemanagement\FileType.class
-13/11/2023 22:32:46
+14/11/2023 22:46:37
 ..\..\..\bin\main\mo\core\filemanagement\IFilePopup.class
-13/11/2023 22:32:46
+14/11/2023 22:46:37
 ..\..\..\bin\main\mo\core\filemanagement\OpenFileLocation$1.class
-13/11/2023 22:32:46
+14/11/2023 22:46:37
 ..\..\..\bin\main\mo\core\filemanagement\OpenFileLocation.class
-13/11/2023 22:32:46
+14/11/2023 22:46:37
 ..\..\..\bin\main\mo\core\filemanagement\PopupItem.class
-13/11/2023 22:32:46
+14/11/2023 22:46:37
 ..\..\..\bin\main\mo\core\filemanagement\PopupOptionProvider.class
-13/11/2023 22:32:46
+14/11/2023 22:46:37
 ..\..\..\bin\main\mo\core\filemanagement\PopupRegistry.class
-13/11/2023 22:32:46
+14/11/2023 22:46:37
 ..\..\..\bin\main\mo\core\filemanagement\project\NewProjectWizardPanel$1.class
-13/11/2023 22:32:47
+14/11/2023 22:46:37
 ..\..\..\bin\main\mo\core\filemanagement\project\NewProjectWizardPanel$2.class
-13/11/2023 22:32:47
+14/11/2023 22:46:37
 ..\..\..\bin\main\mo\core\filemanagement\project\NewProjectWizardPanel.class
-13/11/2023 22:32:47
+14/11/2023 22:46:37
 ..\..\..\bin\main\mo\core\filemanagement\project\Project.class
-13/11/2023 22:32:47
+14/11/2023 22:46:37
 ..\..\..\bin\main\mo\core\filemanagement\project\ProjectCloser$1.class
-13/11/2023 22:32:47
+14/11/2023 22:46:37
 ..\..\..\bin\main\mo\core\filemanagement\project\ProjectCloser.class
-13/11/2023 22:32:47
+14/11/2023 22:46:37
 ..\..\..\bin\main\mo\core\filemanagement\project\ProjectManagement$1.class
-13/11/2023 22:32:47
+14/11/2023 22:46:37
 ..\..\..\bin\main\mo\core\filemanagement\project\ProjectManagement.class
-13/11/2023 22:32:47
+14/11/2023 22:46:37
 ..\..\..\bin\main\mo\core\filemanagement\project\ProjectOptionProvider.class
-13/11/2023 22:32:47
+14/11/2023 22:46:37
 ..\..\..\bin\main\mo\core\filemanagement\project\ProjectUtils.class
-13/11/2023 22:32:47
+14/11/2023 22:46:37
 ..\..\..\bin\main\mo\core\I18n$LocalizablePropertyResourceBundle.class
-13/11/2023 22:32:46
+14/11/2023 22:46:36
 ..\..\..\bin\main\mo\core\I18n$MatchLevels.class
-13/11/2023 22:32:46
+14/11/2023 22:46:36
 ..\..\..\bin\main\mo\core\I18n.class
-13/11/2023 22:32:46
+14/11/2023 22:46:36
 ..\..\..\bin\main\mo\core\Language$1.class
-13/11/2023 22:32:46
+14/11/2023 22:46:37
 ..\..\..\bin\main\mo\core\Language.class
-13/11/2023 22:32:46
+14/11/2023 22:46:36
 ..\..\..\bin\main\mo\core\MainPresenter$1.class
-13/11/2023 22:32:46
+14/11/2023 22:46:37
 ..\..\..\bin\main\mo\core\MainPresenter.class
-13/11/2023 22:32:46
+14/11/2023 22:46:37
 ..\..\..\bin\main\mo\core\MainWindow.class
-13/11/2023 22:32:46
+14/11/2023 22:46:37
 ..\..\..\bin\main\mo\core\MultimodalObserver.class
-14/11/2023 01:35:30
+14/11/2023 22:46:37
 ..\..\..\bin\main\mo\core\plugin\Dependency.class
-13/11/2023 22:32:47
+14/11/2023 22:46:37
 ..\..\..\bin\main\mo\core\plugin\Extends.class
-13/11/2023 22:32:47
+14/11/2023 22:46:38
 ..\..\..\bin\main\mo\core\plugin\Extension.class
-13/11/2023 22:32:47
+14/11/2023 22:46:38
 ..\..\..\bin\main\mo\core\plugin\ExtensionPoint.class
-13/11/2023 22:32:47
+14/11/2023 22:46:38
 ..\..\..\bin\main\mo\core\plugin\ExtensionScanner.class
-13/11/2023 22:32:47
+14/11/2023 22:46:38
 ..\..\..\bin\main\mo\core\plugin\ExtPoint.class
-13/11/2023 22:32:47
+14/11/2023 22:46:38
 ..\..\..\bin\main\mo\core\plugin\gui\Link$1.class
-13/11/2023 22:32:47
+14/11/2023 22:46:38
 ..\..\..\bin\main\mo\core\plugin\gui\Link.class
-13/11/2023 22:32:47
+14/11/2023 22:46:38
 ..\..\..\bin\main\mo\core\plugin\gui\LocalPluginInstaller$1.class
-13/11/2023 22:32:47
+14/11/2023 22:46:38
 ..\..\..\bin\main\mo\core\plugin\gui\LocalPluginInstaller$2.class
-13/11/2023 22:32:47
+14/11/2023 22:46:38
 ..\..\..\bin\main\mo\core\plugin\gui\LocalPluginInstaller.class
-13/11/2023 22:32:47
+14/11/2023 22:46:38
 ..\..\..\bin\main\mo\core\plugin\gui\LogScroll.class
-13/11/2023 22:32:48
+14/11/2023 22:46:38
 ..\..\..\bin\main\mo\core\plugin\gui\PlaceholderTextField.class
-13/11/2023 22:32:48
+14/11/2023 22:46:38
 ..\..\..\bin\main\mo\core\plugin\gui\Plugin.class
-13/11/2023 22:32:48
+14/11/2023 22:46:40
 ..\..\..\bin\main\mo\core\plugin\gui\PluginError.class
-13/11/2023 22:32:48
+14/11/2023 22:46:38
 ..\..\..\bin\main\mo\core\plugin\gui\PluginInfo$1.class
-13/11/2023 22:32:48
+14/11/2023 22:46:38
 ..\..\..\bin\main\mo\core\plugin\gui\PluginInfo.class
-13/11/2023 22:32:48
+14/11/2023 22:46:38
 ..\..\..\bin\main\mo\core\plugin\gui\PluginList$1.class
-13/11/2023 22:32:48
+14/11/2023 22:46:38
 ..\..\..\bin\main\mo\core\plugin\gui\PluginList$PluginTreeNode.class
-13/11/2023 22:32:48
+14/11/2023 22:46:38
 ..\..\..\bin\main\mo\core\plugin\gui\PluginList.class
-13/11/2023 22:32:48
+14/11/2023 22:46:38
 ..\..\..\bin\main\mo\core\plugin\gui\PluginPlainViewer.class
-13/11/2023 22:32:48
+14/11/2023 22:46:38
 ..\..\..\bin\main\mo\core\plugin\gui\PluginUncompressor.class
-13/11/2023 22:32:48
+14/11/2023 22:46:38
 ..\..\..\bin\main\mo\core\plugin\gui\PluginViewer$PluginCellRenderer.class
-13/11/2023 22:32:48
+14/11/2023 22:46:39
 ..\..\..\bin\main\mo\core\plugin\gui\PluginViewer.class
-13/11/2023 22:32:48
+14/11/2023 22:46:39
 ..\..\..\bin\main\mo\core\plugin\gui\RemotePluginInfo$1.class
-13/11/2023 22:32:48
+14/11/2023 22:46:40
 ..\..\..\bin\main\mo\core\plugin\gui\RemotePluginInfo.class
-13/11/2023 22:32:48
+14/11/2023 22:46:39
 ..\..\..\bin\main\mo\core\plugin\gui\RemotePluginInstaller$1.class
-13/11/2023 22:32:48
+14/11/2023 22:46:40
 ..\..\..\bin\main\mo\core\plugin\gui\RemotePluginInstaller$2.class
-13/11/2023 22:32:48
+14/11/2023 22:46:40
 ..\..\..\bin\main\mo\core\plugin\gui\RemotePluginInstaller$3.class
-13/11/2023 22:32:48
+14/11/2023 22:46:40
 ..\..\..\bin\main\mo\core\plugin\gui\RemotePluginInstaller$4.class
-13/11/2023 22:32:48
+14/11/2023 22:46:39
 ..\..\..\bin\main\mo\core\plugin\gui\RemotePluginInstaller$5.class
-13/11/2023 22:32:48
+14/11/2023 22:46:40
 ..\..\..\bin\main\mo\core\plugin\gui\RemotePluginInstaller$6.class
-13/11/2023 22:32:48
+14/11/2023 22:46:39
 ..\..\..\bin\main\mo\core\plugin\gui\RemotePluginInstaller$7.class
-13/11/2023 22:32:48
+14/11/2023 22:46:40
 ..\..\..\bin\main\mo\core\plugin\gui\RemotePluginInstaller$8.class
-13/11/2023 22:32:48
+14/11/2023 22:46:40
 ..\..\..\bin\main\mo\core\plugin\gui\RemotePluginInstaller.class
-13/11/2023 22:32:48
+14/11/2023 22:46:40
 ..\..\..\bin\main\mo\core\plugin\gui\Spinner.class
-13/11/2023 22:32:48
+14/11/2023 22:46:40
 ..\..\..\bin\main\mo\core\plugin\gui\SplitPaneTriple.class
-13/11/2023 22:32:48
+14/11/2023 22:46:40
 ..\..\..\bin\main\mo\core\plugin\gui\TagNode.class
-13/11/2023 22:32:48
+14/11/2023 22:46:40
 ..\..\..\bin\main\mo\core\plugin\gui\Title.class
-13/11/2023 22:32:48
+14/11/2023 22:46:40
 ..\..\..\bin\main\mo\core\plugin\gui\TupleList.class
-13/11/2023 22:32:48
+14/11/2023 22:46:40
 ..\..\..\bin\main\mo\core\plugin\gui\UpdateRightClick$DropDownMenu$1.class
-13/11/2023 22:32:48
+14/11/2023 22:46:40
 ..\..\..\bin\main\mo\core\plugin\gui\UpdateRightClick$DropDownMenu.class
-13/11/2023 22:32:48
+14/11/2023 22:46:40
 ..\..\..\bin\main\mo\core\plugin\gui\UpdateRightClick.class
-13/11/2023 22:32:48
+14/11/2023 22:46:40
 ..\..\..\bin\main\mo\core\plugin\IUpdatable.class
-13/11/2023 22:32:47
+14/11/2023 22:46:38
 ..\..\..\bin\main\mo\core\plugin\Plugin.class
-13/11/2023 22:32:47
+14/11/2023 22:46:38
 ..\..\..\bin\main\mo\core\plugin\PluginData.class
-13/11/2023 22:32:47
+14/11/2023 22:46:38
 ..\..\..\bin\main\mo\core\plugin\PluginListener.class
-13/11/2023 22:32:47
+14/11/2023 22:46:38
 ..\..\..\bin\main\mo\core\plugin\PluginRegistry$1.class
-13/11/2023 22:32:47
+14/11/2023 22:46:38
 ..\..\..\bin\main\mo\core\plugin\PluginRegistry.class
-13/11/2023 22:32:47
+14/11/2023 22:46:38
 ..\..\..\bin\main\mo\core\plugin\VersionUtils.class
-13/11/2023 22:32:47
+14/11/2023 22:46:38
 ..\..\..\bin\main\mo\core\preferences\AppPreferencesWrapper.class
-13/11/2023 22:32:48
+14/11/2023 22:46:42
 ..\..\..\bin\main\mo\core\preferences\AppProjectPreferencesWrapper.class
-13/11/2023 22:32:48
+14/11/2023 22:46:42
 ..\..\..\bin\main\mo\core\preferences\PreferencesManager.class
-13/11/2023 22:32:48
+14/11/2023 22:46:42
 ..\..\..\bin\main\mo\core\Translations_ja.class
-13/11/2023 22:32:46
+14/11/2023 22:46:37
 ..\..\..\bin\main\mo\core\ui\dockables\DockableElement.class
-13/11/2023 22:32:49
+14/11/2023 22:46:42
 ..\..\..\bin\main\mo\core\ui\dockables\DockablesRegistry$DockableCheckBoxMenuItem.class
-13/11/2023 22:32:49
+14/11/2023 22:46:43
 ..\..\..\bin\main\mo\core\ui\dockables\DockablesRegistry.class
-13/11/2023 22:32:49
+14/11/2023 22:46:42
 ..\..\..\bin\main\mo\core\ui\dockables\DockablesTreeRecreator$ChildrenOrientation.class
-13/11/2023 22:32:49
+14/11/2023 22:46:43
 ..\..\..\bin\main\mo\core\ui\dockables\DockablesTreeRecreator$Location.class
-13/11/2023 22:32:49
+14/11/2023 22:46:43
 ..\..\..\bin\main\mo\core\ui\dockables\DockablesTreeRecreator$LocationNode.class
-13/11/2023 22:32:49
+14/11/2023 22:46:43
 ..\..\..\bin\main\mo\core\ui\dockables\DockablesTreeRecreator.class
-13/11/2023 22:32:49
+14/11/2023 22:46:43
 ..\..\..\bin\main\mo\core\ui\dockables\IDockableElementProvider.class
-13/11/2023 22:32:49
+14/11/2023 22:46:43
 ..\..\..\bin\main\mo\core\ui\dockables\StartupDockableProvider.class
-13/11/2023 22:32:49
+14/11/2023 22:46:43
 ..\..\..\bin\main\mo\core\ui\dockables\StorableDockable.class
-13/11/2023 22:32:49
+14/11/2023 22:46:43
 ..\..\..\bin\main\mo\core\ui\GridBConstraints.class
-13/11/2023 22:32:48
+14/11/2023 22:46:42
 ..\..\..\bin\main\mo\core\ui\menubar\IMenuBarItemImpl.class
-13/11/2023 22:32:49
+14/11/2023 22:46:43
 ..\..\..\bin\main\mo\core\ui\menubar\IMenuBarItemProvider.class
-13/11/2023 22:32:49
+14/11/2023 22:46:43
 ..\..\..\bin\main\mo\core\ui\menubar\IMenuBarItems.class
-13/11/2023 22:32:49
+14/11/2023 22:46:43
 ..\..\..\bin\main\mo\core\ui\menubar\MenuBar$1.class
-13/11/2023 22:32:49
+14/11/2023 22:46:43
 ..\..\..\bin\main\mo\core\ui\menubar\MenuBar.class
-13/11/2023 22:32:49
+14/11/2023 22:46:43
 ..\..\..\bin\main\mo\core\ui\menubar\MenuBarItem.class
-13/11/2023 22:32:49
+14/11/2023 22:46:43
 ..\..\..\bin\main\mo\core\ui\menubar\MenuItem.class
-13/11/2023 22:32:49
+14/11/2023 22:46:43
 ..\..\..\bin\main\mo\core\ui\menubar\MenuItemLocations.class
-13/11/2023 22:32:49
+14/11/2023 22:46:43
 ..\..\..\bin\main\mo\core\ui\Utils.class
-13/11/2023 22:32:48
+14/11/2023 22:46:42
 ..\..\..\bin\main\mo\core\ui\WizardDialog$1.class
-13/11/2023 22:32:48
+14/11/2023 22:46:42
 ..\..\..\bin\main\mo\core\ui\WizardDialog$WizardListener.class
-13/11/2023 22:32:48
+14/11/2023 22:46:42
 ..\..\..\bin\main\mo\core\ui\WizardDialog.class
-13/11/2023 22:32:48
+14/11/2023 22:46:42
 ..\..\..\bin\main\mo\core\Utils.class
-13/11/2023 22:32:46
+14/11/2023 22:46:37
 ..\..\..\bin\main\mo\core\v2\Analysis\AnalysisDialogV2$1.class
-13/11/2023 22:32:49
+14/11/2023 22:46:43
 ..\..\..\bin\main\mo\core\v2\Analysis\AnalysisDialogV2$2.class
-13/11/2023 22:32:49
+14/11/2023 22:46:43
 ..\..\..\bin\main\mo\core\v2\Analysis\AnalysisDialogV2$3.class
-13/11/2023 22:32:49
+14/11/2023 22:46:43
 ..\..\..\bin\main\mo\core\v2\Analysis\AnalysisDialogV2$4.class
-13/11/2023 22:32:49
+14/11/2023 22:46:43
 ..\..\..\bin\main\mo\core\v2\Analysis\AnalysisDialogV2$FilePath.class
-13/11/2023 22:32:49
+14/11/2023 22:46:43
 ..\..\..\bin\main\mo\core\v2\Analysis\AnalysisDialogV2.class
-13/11/2023 22:32:49
+14/11/2023 22:46:43
 ..\..\..\bin\main\mo\core\v2\Analysis\AnalyzeActionV2$1$1.class
-13/11/2023 22:32:49
+14/11/2023 22:46:43
 ..\..\..\bin\main\mo\core\v2\Analysis\AnalyzeActionV2$1.class
-13/11/2023 22:32:49
+14/11/2023 22:46:43
 ..\..\..\bin\main\mo\core\v2\Analysis\AnalyzeActionV2.class
-13/11/2023 22:32:49
+14/11/2023 22:46:43
 ..\..\..\bin\main\mo\core\v2\controller\AddParticipantController.class
-13/11/2023 22:32:49
+14/11/2023 22:46:45
 ..\..\..\bin\main\mo\core\v2\controller\AddPluginController.class
-13/11/2023 22:32:49
+14/11/2023 22:46:45
 ..\..\..\bin\main\mo\core\v2\controller\MainWindowsController.class
-13/11/2023 22:32:50
+14/11/2023 22:46:45
 ..\..\..\bin\main\mo\core\v2\controller\MyProjectsControllerAux.class
-13/11/2023 22:32:50
+14/11/2023 22:46:45
 ..\..\..\bin\main\mo\core\v2\controller\NewProjectController.class
-13/11/2023 22:32:50
+14/11/2023 22:46:45
 ..\..\..\bin\main\mo\core\v2\controller\PluginsController$1.class
-13/11/2023 22:32:50
+14/11/2023 22:46:45
 ..\..\..\bin\main\mo\core\v2\controller\PluginsController.class
-13/11/2023 22:32:50
+14/11/2023 22:46:45
 ..\..\..\bin\main\mo\core\v2\controller\ProjectAnalysisControllerAux.class
-13/11/2023 22:32:50
+14/11/2023 22:46:45
 ..\..\..\bin\main\mo\core\v2\controller\ProjectCapturesControllerAux.class
-13/11/2023 22:32:50
+14/11/2023 22:46:45
 ..\..\..\bin\main\mo\core\v2\controller\ProjectMenuController.class
-13/11/2023 22:32:50
+14/11/2023 22:46:45
 ..\..\..\bin\main\mo\core\v2\controller\ProjectParticipantsControllerAux.class
-13/11/2023 22:32:50
+14/11/2023 22:46:45
 ..\..\..\bin\main\mo\core\v2\controller\ProjectVisualizationControllerAux.class
-13/11/2023 22:32:50
+14/11/2023 22:46:45
 ..\..\..\bin\main\mo\core\v2\controller\SettingsController.class
-13/11/2023 22:32:50
+14/11/2023 22:46:45
 ..\..\..\bin\main\mo\core\v2\Managment$1.class
-13/11/2023 22:32:49
+14/11/2023 22:46:45
 ..\..\..\bin\main\mo\core\v2\Managment.class
-13/11/2023 22:32:49
+14/11/2023 22:46:45
 ..\..\..\bin\main\mo\core\v2\model\Activity.class
-13/11/2023 22:32:50
+14/11/2023 22:46:45
 ..\..\..\bin\main\mo\core\v2\model\CommunicationManagementV2$1.class
-13/11/2023 22:32:50
+14/11/2023 22:46:45
 ..\..\..\bin\main\mo\core\v2\model\CommunicationManagementV2.class
-13/11/2023 22:32:50
+14/11/2023 22:46:45
 ..\..\..\bin\main\mo\core\v2\model\ConfigurationV2.class
-13/11/2023 22:32:50
+14/11/2023 22:46:45
 ..\..\..\bin\main\mo\core\v2\model\Controller.class
-13/11/2023 22:32:50
+14/11/2023 22:46:45
 ..\..\..\bin\main\mo\core\v2\model\LanguageV2$1.class
-13/11/2023 22:32:51
+14/11/2023 22:46:45
 ..\..\..\bin\main\mo\core\v2\model\LanguageV2.class
-13/11/2023 22:32:51
+14/11/2023 22:46:45
 ..\..\..\bin\main\mo\core\v2\model\Module.class
-13/11/2023 22:32:51
+14/11/2023 22:46:45
 ..\..\..\bin\main\mo\core\v2\model\Organization.class
-13/11/2023 22:32:51
+14/11/2023 22:46:45
 ..\..\..\bin\main\mo\core\v2\model\PluginViewerV2$PluginCellRenderer.class
-13/11/2023 22:32:51
+14/11/2023 22:46:45
 ..\..\..\bin\main\mo\core\v2\model\PluginViewerV2.class
-13/11/2023 22:32:51
+14/11/2023 22:46:45
 ..\..\..\bin\main\mo\core\v2\model\StageModuleV2.class
-13/11/2023 22:32:51
+14/11/2023 22:46:45
 ..\..\..\bin\main\mo\core\v2\model\StagePluginV2.class
-13/11/2023 22:32:51
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\core\v2\ui\WizardDialogV2$1.class
-13/11/2023 22:32:51
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\core\v2\ui\WizardDialogV2$WizardListener.class
-13/11/2023 22:32:51
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\core\v2\ui\WizardDialogV2.class
-13/11/2023 22:32:51
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\core\v2\Vizualization\VisualizationDialogV2$1.class
-13/11/2023 22:32:49
+14/11/2023 22:46:45
 ..\..\..\bin\main\mo\core\v2\Vizualization\VisualizationDialogV2$2.class
-13/11/2023 22:32:49
+14/11/2023 22:46:45
 ..\..\..\bin\main\mo\core\v2\Vizualization\VisualizationDialogV2$3.class
-13/11/2023 22:32:49
+14/11/2023 22:46:45
 ..\..\..\bin\main\mo\core\v2\Vizualization\VisualizationDialogV2$FilePath.class
-13/11/2023 22:32:49
+14/11/2023 22:46:45
 ..\..\..\bin\main\mo\core\v2\Vizualization\VisualizationDialogV2.class
-13/11/2023 22:32:49
+14/11/2023 22:46:45
 ..\..\..\bin\main\mo\core\v2\Vizualization\VisualizeActionV2.class
-13/11/2023 22:32:49
+14/11/2023 22:46:45
 ..\..\..\bin\main\mo\core\WatchHandler.class
-13/11/2023 22:32:46
+14/11/2023 22:46:37
 ..\..\..\bin\main\mo\organization\Configuration.class
-13/11/2023 22:32:51
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\organization\FileDescription.class
-13/11/2023 22:32:51
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\organization\Organization.class
-13/11/2023 22:32:51
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\organization\OrganizationVisualizationMenuItemProvider.class
-13/11/2023 22:32:51
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\organization\Participant.class
-13/11/2023 22:32:51
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\organization\ProjectOrganization.class
-13/11/2023 22:32:51
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\organization\StageAction.class
-13/11/2023 22:32:51
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\organization\StageModule.class
-13/11/2023 22:32:51
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\organization\StagePlugin.class
-13/11/2023 22:32:51
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\organization\visualization\tree\OrganizationDockable$OrganizationCellRenderer.class
-13/11/2023 22:32:51
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\organization\visualization\tree\OrganizationDockable$PluginConfigPair.class
-13/11/2023 22:32:51
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\organization\visualization\tree\OrganizationDockable.class
-13/11/2023 22:32:51
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\organization\visualization\tree\ParticipantDialog.class
-13/11/2023 22:32:51
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\organization\visualization\tree\ProjectOrganizationPlugin.class
-13/11/2023 22:32:51
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\updating\fileClass.class
-13/11/2023 22:32:51
+14/11/2023 23:23:41
 ..\..\..\bin\main\mo\updating\updater.class
-13/11/2023 22:32:51
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\updating\updaterDownloader.class
-14/11/2023 00:48:32
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\updating\updaterPermissions.class
-13/11/2023 22:32:51
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\updating\updaterRegisterComparison.class
-14/11/2023 01:36:56
+14/11/2023 23:20:20
 ..\..\..\bin\main\mo\updating\updaterRegisterCreator.class
-14/11/2023 00:40:01
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\updating\updaterRemoteFilesProcess.class
-13/11/2023 22:32:52
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\updating\updaterZipProcess.class
-13/11/2023 23:10:15
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\visualization\gamelooptest\GameLoopPlayer.class
-13/11/2023 22:32:52
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\visualization\gamelooptest\Playable2.class
-13/11/2023 22:32:52
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\visualization\gamelooptest\PlayerPanel.class
-13/11/2023 22:32:52
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\visualization\gamelooptest\TETFixPlayer.class
-13/11/2023 22:32:52
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\visualization\Playable.class
-13/11/2023 22:32:52
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\visualization\PlayerControlsPanel.class
-13/11/2023 22:32:52
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\visualization\test\FakeNeuroSkyServer.class
-13/11/2023 22:32:52
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\visualization\test\Gradient.class
-13/11/2023 22:32:52
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\visualization\test\LiveHeatMap$1.class
-13/11/2023 22:32:52
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\visualization\test\LiveHeatMap.class
-13/11/2023 22:32:52
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\visualization\VisualizableConfiguration.class
-13/11/2023 22:32:52
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\visualization\VisualizationDialog$1.class
-13/11/2023 22:32:52
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\visualization\VisualizationDialog$2.class
-13/11/2023 22:32:52
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\visualization\VisualizationDialog.class
-13/11/2023 22:32:52
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\visualization\VisualizationDialog2$1.class
-13/11/2023 22:32:52
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\visualization\VisualizationDialog2$2.class
-13/11/2023 22:32:52
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\visualization\VisualizationDialog2$3.class
-13/11/2023 22:32:52
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\visualization\VisualizationDialog2$FilePath.class
-13/11/2023 22:32:52
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\visualization\VisualizationDialog2.class
-13/11/2023 22:32:52
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\visualization\VisualizationPlayer.class
-13/11/2023 22:32:52
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\visualization\VisualizationProvider.class
-13/11/2023 22:32:52
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\visualization\VisualizationStage.class
-13/11/2023 22:32:52
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\visualization\VisualizeAction.class
-13/11/2023 22:32:52
+14/11/2023 22:46:46
 ..\..\..\bin\main\mo\wizardproject\controllers\EditActivityDialogController.class
-13/11/2023 22:32:52
+14/11/2023 22:46:46
 ..\..\..\bin\test\mo\core\plugin\ExtPointTest.class
-13/11/2023 22:32:53
+14/11/2023 22:46:47
 ..\..\..\bin\test\mo\core\plugin\gui\RemotePluginInstallerTest.class
-13/11/2023 22:32:53
+14/11/2023 22:46:48
 ..\..\..\bin\test\mo\core\plugin\PluginDataTest.class
-13/11/2023 22:32:53
+14/11/2023 22:46:48
 ..\..\..\bin\test\mo\core\plugin\PluginTest.class
-13/11/2023 22:32:53
+14/11/2023 22:46:48
 ..\..\..\bin\test\mo\visualization\DummyVisConfig.class
-13/11/2023 22:32:53
+14/11/2023 22:46:48
 ..\..\..\bin\test\mo\visualization\VisualizationPlayerTest.class
-13/11/2023 22:32:53
+14/11/2023 22:46:48
 ..\..\..\build\classes\java\main\es\eucm\i18n\I18N.class
 07/11/2023 23:54:34
 ..\..\..\build\classes\java\main\mo\analysis\AnalysisDialog$1.class
@@ -2101,7 +2101,7 @@
 ..\..\..\src\main\java\mo\core\MainWindow.java
 03/10/2023 16:55:45
 ..\..\..\src\main\java\mo\core\MultimodalObserver.java
-14/11/2023 01:35:29
+14/11/2023 01:45:24
 ..\..\..\src\main\java\mo\core\plugin\Dependency.java
 03/10/2023 16:55:45
 ..\..\..\src\main\java\mo\core\plugin\Extends.java
