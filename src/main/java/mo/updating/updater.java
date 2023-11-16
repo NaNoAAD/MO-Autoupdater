@@ -40,6 +40,9 @@ public class updater {
             //Se procede a reemplazar los archivos con los del comprimible
             updaterZipProcess.unzipFile("../../../Repo.zip", "../../../../", downloadZip);
 
+            //Se acciona el comando que permite la ejecucion del wrapper de gradle
+            updaterCommands.gradleBuildCommand();
+
             // Ruta al archivo JAR MO
             String Mo = "multimodal-observer-server-5-0.0.0"; // Reemplazar con la ruta correcta
 

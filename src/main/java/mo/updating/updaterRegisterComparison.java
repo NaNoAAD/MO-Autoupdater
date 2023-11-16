@@ -80,6 +80,18 @@ public class updaterRegisterComparison {
         System.out.println("Comparacion de tamaños de arreglos ->" + String.valueOf(localFileArray.size()) + "VS " + String.valueOf(remoteFileArray.size())+ "\n");
         if(!(localFileArray.size() == remoteFileArray.size())){
             System.out.println("Caso 1: Tamaños Diferentes\n");
+
+            //Se borran los registros generados para la comparacion
+            //DEBUG: Descomentar si es necesario hacer una comparacion
+            try {
+                // Elimina los registros que fueron sometidos a comparacion (argumentos de este metodo).
+                Files.deleteIfExists(localFile);
+                Files.deleteIfExists(remoteFile);
+                System.out.println("Los archivos de registro comparados fueron borrados");
+            } catch (IOException e) {
+                System.out.println("Error al borrar los archivos de registro comparados" + e.getMessage());
+            }
+
             return true;
         }
 
@@ -93,6 +105,18 @@ public class updaterRegisterComparison {
             } else{
                 System.out.println("Caso 2: discrepancia en archivos\n");
                 System.out.println("El archivo que tiene descrepancia es " + localFileRevisor.getName() + " con fecha: " + localFileRevisor.getDate() + "\n");
+
+                //Se borran los registros generados para la comparacion
+                //DEBUG: Descomentar si es necesario hacer una comparacion
+                try {
+                    // Elimina los registros que fueron sometidos a comparacion (argumentos de este metodo).
+                    Files.deleteIfExists(localFile);
+                    Files.deleteIfExists(remoteFile);
+                    System.out.println("Los archivos de registro comparados fueron borrados");
+                } catch (IOException e) {
+                    System.out.println("Error al borrar los archivos de registro comparados" + e.getMessage());
+                }
+
                 return true;
             }
         }
@@ -111,6 +135,18 @@ public class updaterRegisterComparison {
                     if(fileClass.isSameFileButBeforeDate(localFileRevisor, remoteFileRevisor)){
                         //Si el archivo local revisado es el mismo tanto en nombre pero es anterior en fecha de modificacion al remoteFileRevisor, Existe diferencia (atraso) en un archivo y se debe actualizar
                         System.out.println("Caso 3: Un archivo presenta diferencias desfavorables en la fecha de modificacion .> " + localFileRevisor.getName() + " local: " + localFileRevisor.getDate() + " remoto: " + remoteFileRevisor.getDate() + " \n");
+
+                        //Se borran los registros generados para la comparacion
+                        //DEBUG: Descomentar si es necesario hacer una comparacion
+                        try {
+                            // Elimina los registros que fueron sometidos a comparacion (argumentos de este metodo).
+                            //Files.deleteIfExists(localFile);
+                            Files.deleteIfExists(remoteFile);
+                            System.out.println("Los archivos de registro comparados fueron borrados");
+                        } catch (IOException e) {
+                            System.out.println("Error al borrar los archivos de registro comparados" + e.getMessage());
+                        }
+
                         return true;
                         
                     } else  {
