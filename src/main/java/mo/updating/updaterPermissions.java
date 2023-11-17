@@ -11,12 +11,15 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+/**
+ * Esta clase es la encargada de obtener los permisos correspondientes para actualizar MO
+ */
 public class updaterPermissions {
-    //Esta clase es la encargada de obtener los permisos correspondientes para actualizar MO
 
-    //Metodo que permite obtener la version de MO indicada en el texto de notas de MO
-    //Retorna la primera linea del archivo de notas de version "version=x.x.x.x"
+    /**
+     * Metodo que permite obtener la version de MO indicada en el texto de notas de MO
+     * @return Retorna la primera linea del archivo de notas de version "version=x.x.x.x"
+     */
     public static String getMOVersion(){
         String versionString = "";
         Path file = Paths.get("../../../version.txt");
@@ -44,8 +47,11 @@ public class updaterPermissions {
         return versionString;
     }
 
-    //Metodo que obtiene la version indicada en el txt remoto en el repositorio
-    //Retorna el string que indica la version
+    /**
+     * Metodo que obtiene la version indicada en el txt remoto en el repositorio
+     * @return String con la version
+     * @throws IOException
+     */
     public static String remoteVersionRepository() throws IOException{
 
         String version;
@@ -97,9 +103,17 @@ public class updaterPermissions {
         }
     }
 
-    //Metodo que comparara 2 strings que indican versiones
+    //
     // true si es necesario actualizar
     //False en caso contrario
+
+    /**
+     * Metodo que comparara 2 strings que indican versiones
+     * @param localVersion String con la version local, obtenida desde "Version.txt"
+     * @param RemoteVersion String con la version remota, obtenida desde "Version.txt" desde el repositorio Github
+     * @return true si y solo si, si la version local es inferior a la remota 
+     * @throws IOException
+     */
     public static boolean permissionToUpdateByVersions(String localVersion, String RemoteVersion) throws IOException{
         System.out.println("Versiones a comparar >> local " + localVersion + " " + "remoto: " + RemoteVersion + "\n");
         if(localVersion == "NULL" || RemoteVersion == "NULL"){

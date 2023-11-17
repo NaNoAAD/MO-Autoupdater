@@ -15,10 +15,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Clase que se encarga de crear el registro local de todos los archivos presentes de MO
+ */
 public class updaterRegisterCreator {
-    //METODO
-    //obtiene los directorios de todos los archivos de MO presentes en carpeta "src"
-    //Retorna una lista de PATH's
+   
+    /**
+     * Metodo que obtiene los directorios de todos los archivos de MO presentes en carpeta "src" de manera local. Partiendo por la carpeta padre del proyecto
+     * @return Una lista de Paths de todos los archivos presentes
+     */
     public static List<Path> listPathFiles() {
         //Declaro variable de salida
         List<Path> pathList = new ArrayList<>();
@@ -42,8 +47,10 @@ public class updaterRegisterCreator {
         return pathList;
     }
 
-    //METODO
-    //Escribe en un archivo todos los archivos y su fecha de modificacion, sin contar los excluidos en la funcion misma. Se utiliza un limitador para no escribir un \n al final
+    /**
+     * Metodo que escribe en un archivo .txt todos los archivos y su fecha de modificacion respectiva, sin contar los excluidos en la funcion misma. Se elimina ademas, la ultima linea para evitar insconsitencias en la comparacion posterior
+     * @param pathList Una lista de Paths que es obtenida a traves del metodo listPathFiles
+     */
     public static void createRegisterFile(List<Path> pathList){
         Path file = Paths.get("Register.txt");
 

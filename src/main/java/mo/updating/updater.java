@@ -6,6 +6,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+/**
+ * Clase principal del Updater
+ */
 public class updater {
 
     //METODO MAIN

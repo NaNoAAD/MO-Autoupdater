@@ -2,10 +2,15 @@ package mo.updating;
 
 import java.io.IOException;
 
-//Clase publica que permite la ejecucion de comandos
+/**
+ * Clase publica que permite la ejecucion de comandos en el sistema operativo presente
+ */
 public class updaterCommands {
     
-    //Metodo que permite la ejecucion del comando build del wrapper de gradle dependiendo de que sistema operativo este en uso
+    /**
+     * Metodo que permite la ejecucion del comando build del wrapper de gradle dependiendo de que sistema operativo este en uso
+     * @return void
+     */
     static void gradleBuildCommand(){
         //Se obtiene el sistema operativo
         String operativeSystem = System.getProperty("os.name").toLowerCase();

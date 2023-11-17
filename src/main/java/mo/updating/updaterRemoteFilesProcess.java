@@ -11,9 +11,17 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Collectors;
 
+/**
+ * Clase que obtiene el registro de archivos remotos desde Github
+ */
 public class updaterRemoteFilesProcess {
 
-    //Metodo que obtiene una lista de todos los archivos de un commit desde un repositorio de github publico
+    //
+
+    /**
+     * Metodo que obtiene una lista de todos los archivos de un commit desde un repositorio de github publico usando un token especifico.
+     * @throws IOException
+     */
     public static void getRemoteFiles() throws IOException {
 
 

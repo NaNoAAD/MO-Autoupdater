@@ -11,13 +11,19 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
 
-//Clase que permite la descarga de los archivos remotos de Multimodal observer
+/**
+ * Clase que permite la descarga de los archivos remotos de Multimodal observer
+ */
 public class updaterDownloader {
 
-    //Metodo que descarga el .zip que provee github desde el link predeterminado, si existen los permisos necesarios
-    //Retorna un boolean para los procesos posteriores
-    //true si se da permiso para descomprimir
-    //False si no        
+    /**
+     * Metodo que descarga el .zip que provee github desde el link predeterminado, si existen los permisos necesarios
+     * @param permissionToUpdateByVersions
+     * @param differencesInRegisters
+     * @return true Si la descarga del .zip fue existosa
+     * @return false Si la descarga no fue efectuada
+     * @throws IOException
+     */   
     public static boolean downloadFilesFromRepository(boolean permissionToUpdateByVersions, boolean differencesInRegisters) throws IOException{
         //Se revisan los permisos dados por los resultados de las comparaciones
         if(permissionToUpdateByVersions == false || differencesInRegisters == false){

@@ -10,13 +10,24 @@ import java.io.FileOutputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
+/**
+ * Clase que se encarga de los procesos relacionados al .zip descargado desde Github de MO
+ */
 public class updaterZipProcess {
     //Variables iniciales
     //String zipPath = "ruta/del/archivo.zip"; 
     //static String targetDirectory = "ruta/de/destino";
 
-    //Metodo que descomprime l .zip descargado desde el repositorio
+    //
     //Sin retorno explicito
+
+    /**
+     * Metodo que descomprime el .zip descargado desde el repositorio ya una vez que fue descargado
+     * @param zipPath Es un String con la ruta del .zip descargado
+     * @param targetDirectory Es un String con la ruta de destino a descomprimir
+     * @param permissionFromDownload Boolean recibido con anterioridad para conocer si existe la posibilidad de descomprimir o no
+     * @throws IOException
+     */
     public static void unzipFile(String zipPath, String targetDirectory, boolean permissionFromDownload) throws IOException {
         //Se revisa si el archivo .zip fue descargado
         if (permissionFromDownload == false){

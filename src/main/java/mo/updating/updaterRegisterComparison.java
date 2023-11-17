@@ -9,13 +9,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
 
+/**
+ * Clase que permite la comparacion de los registros .txt creados que contienen los archivos locales/remotos junto con su fecha de modificacion correspondiente
+ */
 public class updaterRegisterComparison {
 
-    //METODO
-    //Compara 2 archivos con igual formato, para obtener respuesta a si los archivos remotos han sido modificados
-    //Retorna un boolean que permite proceder con posterioridad
-    ////True si hay diferencias
-    ////false si no hay diferencias
+    /**
+     * Metodo que compara 2 archivos con igual formato, para obtener respuesta a si los archivos remotos han sido modificados. Primero leera todos los archivos registrados con su fecha de modificacion correspondiente
+     * en ambos .txt, para procesarlos via arreglos
+     * @param localFile Ruta del registro Register.txt con los archivos locales actuales 
+     * @param remoteFile Ruta del registro remoteRegister.txt que se forma a traves de la obtencion de un Json que representa RegisterFiles.txt del repositorio github
+     * @return true si hay diferencias en los archivos. Ya sea por tamaño, la no existencia de un archivo local comparado con el remoto o, alguna diferencia en la fecha de modificacion
+     * @throws IOException
+     */
     public static boolean differencesInRegisters(Path localFile, Path remoteFile) throws IOException {
         //Variables limitadoras
         int evenOdd = 0;
@@ -85,7 +91,7 @@ public class updaterRegisterComparison {
             //DEBUG: Descomentar si es necesario hacer una comparacion
             try {
                 // Elimina los registros que fueron sometidos a comparacion (argumentos de este metodo).
-                Files.deleteIfExists(localFile);
+                //Files.deleteIfExists(localFile);
                 Files.deleteIfExists(remoteFile);
                 System.out.println("Los archivos de registro comparados fueron borrados");
             } catch (IOException e) {

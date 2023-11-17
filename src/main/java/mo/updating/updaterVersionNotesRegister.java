@@ -8,7 +8,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
-//Clase que permite la escritura del archivo .txt con las notas de version
+/**
+ * Clase que permite la escritura del archivo .txt con las notas de version
+ */
 public class updaterVersionNotesRegister {
     
     /**Metodo que permite a traves de un string la creacion/sobreescritura de un nuevo archivo de notas de version
