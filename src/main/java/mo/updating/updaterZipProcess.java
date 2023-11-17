@@ -25,6 +25,7 @@ public class updaterZipProcess {
         }
 
         // En caso de que por algun motivo no exista el directorio, se crea
+        //Aunque este caso es poco probable, se considera por alguna eventualidad
         File dir = new File(targetDirectory);
         if(!dir.exists()) dir.mkdirs();
 

@@ -90,7 +90,7 @@ public class updaterRegisterCreator {
             // Cierra el archivo para guardar cambios
             writer.close();
             System.out.println("Eliminando ultimo salto de linea\n");
-            //Lo volvemos a abrir para eliminar el ultimo salto de linea y evitar insconsistencias
+            //Lo volvemos a abrir para eliminar el ultimo salto de linea y evitar insconsistencias en la comparacion de registros
             File file2 = new File("Register.txt");
             RandomAccessFile raf = new RandomAccessFile(file2, "rw");
             long size = raf.length();

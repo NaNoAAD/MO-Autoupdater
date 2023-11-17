@@ -43,6 +43,10 @@ public class updater {
             //Se acciona el comando que permite la ejecucion del wrapper de gradle
             updaterCommands.gradleBuildCommand();
 
+            //Se crea un nuevo archivo de nota
+            //Este metodo esta listo para recibir un string y ser ocupado para generar/sobreescribir un nuevo archivo de notas de version
+            //updaterVersionNotesRegister.newNotesVersion("Hola\nSoy un nuevo archivo y poseo nuevas notas\nUna de mis cualidades sera\n\nTener nuevas caracteristicas!");
+
             // Ruta al archivo JAR MO
             String Mo = "multimodal-observer-server-5-0.0.0"; // Reemplazar con la ruta correcta
 
