@@ -3,8 +3,6 @@ Notas de la version 5.0.0.0
 Esta nueva version de Multimodal Observer ofrece:
 
 -Cambios significativos en la interfaz de usuario, se espera que la experiencia al usar MO sea mas cómoda y amigable al crear, manejar y desarrollar proyectos de toma de datos multimodales
--Ahora Multimodal Observer muestra su version actual de compilación
--MO ahora puede ejecutar revisiones de actualización gracias a la nueva seccion "Actualizar"
 
 Este atento a futuras actualizaciones
 Gracias por usar Multimodal Observer!

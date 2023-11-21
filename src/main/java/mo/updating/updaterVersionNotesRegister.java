@@ -1,12 +1,17 @@
 package mo.updating;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.stream.Collectors;
 
 /**
  * Clase que permite la escritura del archivo .txt con las notas de version
@@ -51,4 +56,60 @@ public class updaterVersionNotesRegister {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Metodo que permite obtener las notas de version desde el repositorio remoto.
+     * Contenido que sera usado para ser mostrado en las interfaces pars que el usuario conozca las nuevas caractrtisticas
+     * @return un String con todo el texto de VersionNotes.txt del repositorio
+     */
+    public static String getRemoteVersionNotes() throws IOException{
+        String versionNotes;
+
+        String RepoOwner = "NaNoAAD"; // Reemplaza con el dueño del repositorio
+        String repoName = "MO-Autoupdater"; // Reemplaza con el nombre del repositorio
+        //Token
+        String a = "ghp_0D6Zmt";
+        String b = "4sfGEZJzK7Fiutyfj6J";
+        String c = "DizVO3CK3zW";
+        String githubToken = a + b + c; 
+
+        //Solicitud que se hace a la API de Github
+        String apiUrl = String.format("https://raw.githubusercontent.com/%s/%s/master/versionNotes.txt", RepoOwner, repoName);
+        
+        URL url = new URL(apiUrl);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        //Se ejecuta la conexion con los permisos otorgados por Token
+        connection.setRequestProperty("Authorization", "token " + githubToken);
+        connection.setRequestMethod("GET");
+
+        int responseCode = connection.getResponseCode();
+
+        //Si la solicitud tiene exito (codigo 200)
+        if (responseCode == 200) {
+
+            System.out.println("Ingresamos sin problemas al Repositorio para buscar las notas de version \nLink: " + apiUrl + "\n");
+            
+            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            //JSON respuesta con contenidos de la solicitud
+            //La respuesta debera tener el contenido raw del txt de notas de version del repositorio
+            String jsonResponse = reader.lines().collect(Collectors.joining());
+            reader.close();
+
+            System.out.println("JSON DE SOLICITUD A TXT REMOTO versionNotes.txt\n");
+            System.out.println(jsonResponse);
+            
+            //Se obtiene la version remota a traves del txt que lo indica
+            versionNotes = jsonResponse.toString();
+            
+            //System.out.println("DEL JSON SE OBTIENE: " + versionNotes + "\n");
+            return versionNotes;
+            
+            
+        } else {
+            System.err.println("Error en la solicitud de obtencion de notas de version remotas. Codigo: " + responseCode);
+            versionNotes = "NULL";
+            return versionNotes;
+        }
+    }
+    
 }

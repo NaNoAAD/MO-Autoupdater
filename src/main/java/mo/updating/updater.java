@@ -50,6 +50,9 @@ public class updater {
             //Este metodo esta listo para recibir un string y ser ocupado para generar/sobreescribir un nuevo archivo de notas de version
             //updaterVersionNotesRegister.newNotesVersion("Hola\nSoy un nuevo archivo y poseo nuevas notas\nUna de mis cualidades sera\n\nTener nuevas caracteristicas!");
 
+            //Se prueba la obtencion del archivo de notas remoto
+            updaterVersionNotesRegister.getRemoteVersionNotes();
+
             // Ruta al archivo JAR MO
             String Mo = "multimodal-observer-server-5-0.0.0"; // Reemplazar con la ruta correcta
 
