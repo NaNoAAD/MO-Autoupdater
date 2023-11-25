@@ -1,74 +1,62 @@
 package mo.updating;
 
-import java.io.IOException;
-import java.lang.String;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
+import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+import mo.updating.controllers.SplashScreenController;
 
 /**
- * Clase principal del Updater
+ * Clase principal encarga de iniciar el launcher y las vistas
  */
-public class updater {
+public class updater extends Application {
 
-    //METODO MAIN
+    public boolean permissionByVersions;
+    
+
     public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception{
+        // Se inicia la primera vista (Splasher)
+        loadSplashView("visual/Splasher Principal.fxml", "Multimodal Observer - Launcher", primaryStage);
+        //Se configura la vista
+    }
+
+    /**
+     * Metodo que carga la vista Spalsh
+     * @param fxml Archivo que contiene la informacion descriptiva de la vista
+     * @param title String que pone titulo a la ventana que se presenta
+     * @param stage Stage necesaria para proseguir con el funcionamiento de JavaFX
+     */
+    private void loadSplashView(String fxml, String title, Stage stage) throws Exception{
         try {
+            //Se carga el archivo de vista
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
 
-            //Lectura de la version local indicada en version.txt
-            String localVersion = updaterPermissions.getMOVersion();
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
 
-            //Funcion que obtiene version.txt desde el repositorio, que sera anotado como Remoteregister.txt localmente
-            String remoteVersion = updaterPermissions.remoteVersionRepository();
+            //Se instancia controller para poder usar el metodo getFirstsPermission que esta en controlador splasher
+            SplashScreenController controller = loader.getController();
 
-            //Se comparan las versiones declaradas en los txt de version (true == permiso para actualizar)
-            boolean permission1 = updaterPermissions.permissionToUpdateByVersions(localVersion, remoteVersion);
+            //con la vista ya mostrada, se procede a usar la logica de las primeras comparaciones
+            //Primero asegurandonos que se muestre la ventana, la escena y los nodos en el siguiente metodo
+            controller.getFirstsPermission(stage);
 
-            //Se crea una lista con todas las rutas de los archivos locales de MO
-            List<Path> PathFiles = updaterRegisterCreator.listPathFiles();
+            stage.setScene(scene);
+            stage.setTitle(title);
+            stage.setResizable(false);
+            stage.show();     
 
-            //Se crea registro local usando todas las rutas
-            updaterRegisterCreator.createRegisterFile(PathFiles);
-
-            //Se crea registro de los archivos remotos en el repositorio correspondiente
-            updaterRemoteFilesProcess.getRemoteFiles();
-
-            //Se comparan los registros generados para verificar por segunda vez si corresponde actualizar (true == existen diferencias)
-            boolean answer = updaterRegisterComparison.differencesInRegisters(Paths.get("Register.txt"), Paths.get("RemoteRegister.txt"));
-            System.out.println("Procesados los registros en arreglos! y las versiones\nEl permiso por comparar versiones es: " + String.valueOf(permission1) + "\nY las diferencias en los registros son: " + String.valueOf(answer));
-
-            //Si las respuestas son las esperadas, se procede a la descarga de los archivos del repositorio en formato .zip desde link predeterminado
-            boolean downloadZip = updaterDownloader.downloadFilesFromRepository(permission1, answer);
-
-            //Se procede a reemplazar los archivos con los del comprimible
-            updaterZipProcess.unzipFile("../../../Repo.zip", "../../../../", downloadZip);
-
-            //Se acciona el comando que permite la ejecucion del wrapper de gradle
-            updaterCommands.gradleBuildCommand();
-
-            //Se crea un nuevo archivo de nota
-            //Este metodo esta listo para recibir un string y ser ocupado para generar/sobreescribir un nuevo archivo de notas de version
-            //updaterVersionNotesRegister.newNotesVersion("Hola\nSoy un nuevo archivo y poseo nuevas notas\nUna de mis cualidades sera\n\nTener nuevas caracteristicas!");
-
-            //Se prueba la obtencion del archivo de notas remoto
-            updaterVersionNotesRegister.getRemoteVersionNotes();
-
-            // Ruta al archivo JAR MO
-            String Mo = "multimodal-observer-server-5-0.0.0"; // Reemplazar con la ruta correcta
-
-            // ejecución del archivo JAR MO
-            //String command = "java -jar " + Mo + ".jar";
-
-            // Iniciar MO
-            Process process = Runtime.getRuntime().exec("java -jar multimodal-observer-server-5-0.0.0.jar");
-
-            
-            // Esperar a que el proceso termine (en este caso, nunca terminará)
-            process.waitFor();
-        } catch (IOException | InterruptedException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 }
-
-
