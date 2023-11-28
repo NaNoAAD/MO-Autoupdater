@@ -59,4 +59,43 @@ public class updater extends Application {
         }
     }
 
+    /**
+     * Metodo que se utiliza para hacer muestra de la vista de confirmacion
+     */
+    public void loadConfirmationView(String fxml){
+        try {
+            //Se obtiene el classloader del hilo actual para la obtencion del FXML
+            //ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+            // Se carga FXML con vista de confirmacion
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+            Parent root = loader.load();
+
+            // Se configura la nueva escena
+            Scene scene = new Scene(root);
+
+            // Se crea un nuevo Stage para la segunda vista
+            Stage stage = new Stage();
+            stage.setScene(scene);
+
+            // Mostrar la nueva vista
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    /**
+     * Metodo que ejecuta Multimodal Observer
+     */
+    public static void openMO(){
+        try {
+            // Iniciar MO
+            //Es importante que este comando tenga el nombre el .jar de MO (verificar el uso de contains)
+            Runtime.getRuntime().exec("java -jar multimodal-observer-server-5-0.0.0.jar");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

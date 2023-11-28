@@ -2,12 +2,12 @@ package mo.updating.controllers;
 
 import java.io.IOException;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
-import mo.updating.updaterLogic;
-import mo.updating.updaterVersionNotesRegister;
 import javafx.stage.Stage;
+import mo.updating.updaterVersionNotesRegister;
 
 /**
  * Controlador del splasher inicial del Launcher
@@ -25,33 +25,24 @@ public class ConfirmationController {
 
     // Lógica y métodos para el SplashScreen
     @FXML
-    private void initialize() {
+    private void initialize() throws IOException {
         System.out.println("Ahora en primera Vista de confirmacion");
-        noButton.setOnAction(event -> {
-            //Logica al elegir Si
-            String versionNotes = "";
-            try {
-                versionNotes = getVersionNotesUI();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            newNotesVersion.setText(versionNotes);
-        });
-        yesButton.setOnAction(event -> {
-            //Logica al elegir no
-            System.out.println("Selecionamos no");
-        });
+        // Establecer el TextArea newNotesVersion como de solo lectura
+        String notes = getVersionNotesUI();
+        //Se obtienen las notas de version remotas y se muestran en la vista
+        //this.newNotesVersion.setCellValueFactory(new PropertyValueFactory("nombre"));
+        
     }
 
     private String getVersionNotesUI() throws IOException{
         return updaterVersionNotesRegister.getRemoteVersionNotes();
     }
 
-
-    public void getSecondsPermissions(Stage stage, Boolean permission1){
-        stage.setOnShown(event -> {
-        updaterLogic.updaterComparissonLogic(permission1);
-        });
+    @FXML
+    private void cancelUpdate(ActionEvent event){
+        System.out.println("Cerrando app");
+        Stage stage = (Stage) this.noButton.getScene().getWindow();
+        stage.close();
     }
 
 }
