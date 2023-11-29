@@ -35,7 +35,7 @@ public class SplashScreenController {
                     boolean permission1 = updaterLogic.updaterpermissionsLogic();
                     boolean answer = updaterLogic.updaterComparissonLogic(permission1);
                     
-                    //Debug: Prueba de cerrado
+                    //Debug: Prueba de cerrado y de apertura de vista de confirmacion
                     stage.close();
                     //updater.loadConfirmationView("visual/Confirmacion.fxml");
                     try {
