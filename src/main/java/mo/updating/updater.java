@@ -36,6 +36,7 @@ public class updater extends Application {
      */
     private void loadSplashView(String fxml, String title, Stage stage) throws Exception{
         try {
+            System.out.println("-Se carga vista de Splasher");
             //Se carga el archivo de vista
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
 
@@ -61,7 +62,7 @@ public class updater extends Application {
 
     /**
      * Metodo que se utiliza para hacer muestra de la vista de confirmacion
-     */
+     *
     public void loadConfirmationView(String fxml){
         try {
             //Se obtiene el classloader del hilo actual para la obtencion del FXML
@@ -82,7 +83,7 @@ public class updater extends Application {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
 
     /**
@@ -90,6 +91,7 @@ public class updater extends Application {
      */
     public static void openMO(){
         try {
+            System.out.println("-Apertura de MO - Finalizando Launcher");
             // Iniciar MO
             //Es importante que este comando tenga el nombre el .jar de MO (verificar el uso de contains)
             Runtime.getRuntime().exec("java -jar multimodal-observer-server-5-0.0.0.jar");

@@ -2,17 +2,17 @@ package mo.updating.controllers;
 
 import java.io.IOException;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
-import mo.updating.updaterVersionNotesRegister;
+import javafx.stage.WindowEvent;
+import mo.updating.updaterLogic;
 
+/**
+ * Controlador de la vista de proceso de actualizacion
+ */
 public class UpdatingController {
     
     @FXML
@@ -20,9 +20,28 @@ public class UpdatingController {
 
     @FXML
     private void initialize() throws IOException{
-        System.out.println("Ahora en Vista de Actualizacion en progreso");
+        System.out.println("-Inicializando Vista de Actualizacion en progreso");
         //Aca es probable que se deba colocar un sistema para sincronizar el progreso de la logica con la barra de progreso
-        progress.setProgress(0.5);
+        progress.setProgress(0.0);
     }
-    
-}
+
+    /**
+     * Metodo que permite la ejecucion de la logica de actualizacion en segundo plano, obteniendo los booleans dados por los permisos anteriores
+     * @param stage
+     */
+    public void secondPlaneUpdating(Stage stage){
+        System.out.println("-Inicio de secondplaneUpdating");
+        //Se obtienen los permisos de los procesos anteriores de comparacion gracias a su naturaleza Static
+        Boolean permissionBoolean = SplashScreenController.getPermission1Obtained();
+        Boolean answerBoolean = SplashScreenController.getAnswerObtained();
+        //Asegurandonos que la pantalla y la barra de progreso ya estan mostradas, se procede con el procedimiento de actualizacion
+        stage.setOnShown((WindowEvent event) -> {
+                Platform.runLater(() -> {
+                    
+                    updaterLogic.updaterUpdatingLogic(permissionBoolean, answerBoolean);
+                });
+            });
+        
+    }
+
+}  //Fin controller

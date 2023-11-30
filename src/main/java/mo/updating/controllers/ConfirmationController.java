@@ -29,7 +29,7 @@ public class ConfirmationController {
     // Lógica y métodos para el SplashScreen
     @FXML
     private void initialize() throws IOException {
-        System.out.println("Ahora en primera Vista de confirmacion");
+        System.out.println("-Inicializando Vista de confirmacion");
         // Establecer el TextArea newNotesVersion como de solo lectura
         String notes = getVersionNotesUI();
         //Se obtienen las notas de version remotas y se muestran en la vista
@@ -52,6 +52,10 @@ public class ConfirmationController {
         stage.close();
     }
 
+    /**
+     * Metodo que abre la vista que muestra el progreso de la actualizacion de MO
+     * @param event
+     */
     @FXML
     private void acceptUpdate(ActionEvent event){
         System.out.println("Abriendo vista Updating");
@@ -67,6 +71,14 @@ public class ConfirmationController {
 
             // Se configura la nueva escena
             Scene scene = new Scene(root);
+
+            //Se instancia el controller par usar el metodo propio de Updating
+            UpdatingController controller = loader.getController();
+
+            //Con los recursos listos y mostrados, al igual que en SplashController se ejecuta metodo
+            controller.secondPlaneUpdating(stage);
+
+
 
             // Se crea un nuevo Stage para la segunda vista
             Stage newStage = new Stage();

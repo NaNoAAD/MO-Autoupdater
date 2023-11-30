@@ -18,9 +18,31 @@ public class SplashScreenController {
     // Lógica y métodos para el SplashScreen
     @FXML
     private void initialize() {
-        System.out.println("Ahora en primera Vista Splasher");
+        System.out.println("-Inicializando Vista Splasher");
         //boolean permission1 = updaterLogic.updaterComparissonLogic();
         
+    }
+
+    //Variables boolean que se obtienen de la logica de comparacion de registros y n° version
+    private static Boolean permission1Obtained;
+    private static Boolean answerObtained;
+
+    /**
+     * Getter del boolean obtenido de la comparacion entre strings de versiones
+     * @return true si se debe hacer actualizacion. En este contexto, este boolean servira para indicar
+     * el valor obtenido a la vista de updating
+     */
+    public static Boolean getPermission1Obtained(){
+        return permission1Obtained;
+    }
+
+    /**
+     * Getter del boolean obtenido de la comparacion entre registros de archivos
+     * @return true si se debe hacer actualizacion. En este contexto, este boolean servira para indicar
+     * el valor obtenido a la vista de updating
+     */
+    public static Boolean getAnswerObtained(){
+        return answerObtained;
     }
 
     /**
@@ -32,9 +54,12 @@ public class SplashScreenController {
         stage.setOnShown((WindowEvent event) -> {
                 //Luego asegurandonos que se muestre la escena y los nodos
                 Platform.runLater(() -> {
-                    boolean permission1 = updaterLogic.updaterpermissionsLogic();
-                    boolean answer = updaterLogic.updaterComparissonLogic(permission1);
+                    permission1Obtained = updaterLogic.updaterpermissionsLogic();
+                    answerObtained = updaterLogic.updaterComparissonLogic(permission1Obtained);
                     
+                    /*
+                     * ESTA SECCION ES DE PRUEBA Y DEBE ELIMINARSE
+                     *
                     //Debug: Prueba de cerrado y de apertura de vista de confirmacion
                     stage.close();
                     //updater.loadConfirmationView("visual/Confirmacion.fxml");
@@ -61,13 +86,17 @@ public class SplashScreenController {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
+                        /*
+                         * ESTA SECCION ES DE PRUEBA Y DEBE ELIMINARSE
+                         */
 
                     
                     /*Ahora, dependiendo de los 2 valores anteriores, se decide si se lanza la vista de 
                      * confirmacion, o se pasa de largo y continuamos con la apertura sencilla de MO
                       */
-                    if(permission1 == true && answer == true){
+                    if(permission1Obtained == true && answerObtained == true){
                         try {
+                            System.out.println("-Inciando proceso de Updating - permisos en true");
                             //Se debe actualizar, se cierra el splasher y se accede a la vista de confirmacion
                             stage.close();
                             // Se carga FXML con vista de confirmacion
@@ -78,6 +107,12 @@ public class SplashScreenController {
 
                             // Se configura la nueva escena
                             Scene scene = new Scene(root);
+
+                            //Instancia de Controller para uso de metodo static y variables boolean static
+                            UpdatingController controller = loader.getController();
+
+                            //Uso de metodo definido en controller bajo el stage actual
+                            controller.secondPlaneUpdating(stage);
 
                             // Se crea un nuevo Stage para la segunda vista
                             Stage newStage = new Stage();
@@ -92,6 +127,8 @@ public class SplashScreenController {
                     } else {
                         //Se debe simplemente abrir MO
                         updater.openMO();
+                        //y Se cierra el launcher
+                        stage.close();
                     }
                 });
             });
