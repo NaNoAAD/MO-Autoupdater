@@ -27,6 +27,7 @@ public class MultimodalObserver {
         
         PluginRegistry.getInstance();
         
+        //comentario
 
         //Comentario para verificar el reemplazo de archivos via .zip
 
