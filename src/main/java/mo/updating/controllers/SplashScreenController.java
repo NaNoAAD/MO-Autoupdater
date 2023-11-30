@@ -109,14 +109,16 @@ public class SplashScreenController {
                             Scene scene = new Scene(root);
 
                             //Instancia de Controller para uso de metodo static y variables boolean static
-                            UpdatingController controller = loader.getController();
+                            //UpdatingController controller = loader.getController();
 
                             //Uso de metodo definido en controller bajo el stage actual
-                            controller.secondPlaneUpdating(stage);
+                            //controller.secondPlaneUpdating(stage);
 
                             // Se crea un nuevo Stage para la segunda vista
                             Stage newStage = new Stage();
                             newStage.setScene(scene);
+                            newStage.setTitle("Nuevas Caracteristicas encontradas");
+                            newStage.setResizable(false);
 
                             // Mostrar la nueva vista
                             newStage.show();    

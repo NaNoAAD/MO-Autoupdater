@@ -35,12 +35,10 @@ public class UpdatingController {
         Boolean permissionBoolean = SplashScreenController.getPermission1Obtained();
         Boolean answerBoolean = SplashScreenController.getAnswerObtained();
         //Asegurandonos que la pantalla y la barra de progreso ya estan mostradas, se procede con el procedimiento de actualizacion
-        stage.setOnShown((WindowEvent event) -> {
-                Platform.runLater(() -> {
-                    
-                    updaterLogic.updaterUpdatingLogic(permissionBoolean, answerBoolean);
-                });
-            });
+        Platform.runLater(() -> {
+            
+            updaterLogic.updaterUpdatingLogic(permissionBoolean, answerBoolean);
+        });
         
     }
 
