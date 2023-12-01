@@ -3,11 +3,10 @@ package mo.updating.controllers;
 import java.io.IOException;
 
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ProgressBar;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
+import mo.updating.updater;
 import mo.updating.updaterLogic;
 
 /**
@@ -21,8 +20,6 @@ public class UpdatingController {
     @FXML
     private void initialize() throws IOException{
         System.out.println("-Inicializando Vista de Actualizacion en progreso");
-        //Aca es probable que se deba colocar un sistema para sincronizar el progreso de la logica con la barra de progreso
-        progress.setProgress(0.0);
     }
 
     /**
@@ -38,6 +35,8 @@ public class UpdatingController {
         Platform.runLater(() -> {
             
             updaterLogic.updaterUpdatingLogic(permissionBoolean, answerBoolean);
+            System.out.println("updaterUpdatingLogic - Abriendo MO - Terminando Launcher ");
+            updater.openMO();
         });
         
     }

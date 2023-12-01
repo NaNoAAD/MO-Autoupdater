@@ -19,10 +19,10 @@ public class updaterCommands {
         if(operativeSystem.contains("win")){
             //Se genera una instancia que se encarga de ejecutar cmd y accionar el .bat
             try {
-            ProcessBuilder process = new ProcessBuilder("cmd.exe", "/c", "gradlew.bat build");
+            ProcessBuilder processB = new ProcessBuilder("cmd.exe", "/c", "gradlew.bat build");
             System.out.println("Ejecutando : gradlew.bat build en OS: " + operativeSystem + " en directorio: " + System.getProperty("user.dir"));
-            Process proceso = process.start();
-            proceso.waitFor();
+            Process process = processB.start();
+            process.waitFor();
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
             }

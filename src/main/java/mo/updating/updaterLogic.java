@@ -74,7 +74,7 @@ public class updaterLogic {
             //updaterVersionNotesRegister.newNotesVersion("Hola\nSoy un nuevo archivo y poseo nuevas notas\nUna de mis cualidades sera\n\nTener nuevas caracteristicas!");
 
             //Se prueba la obtencion del archivo de notas remoto
-            updaterVersionNotesRegister.getRemoteVersionNotes();
+            //updaterVersionNotesRegister.getRemoteVersionNotes();
 
             // Ruta al archivo JAR MO
             //String Mo = "multimodal-observer-server-5-0.0.0"; // Reemplazar con la ruta correcta
@@ -83,11 +83,9 @@ public class updaterLogic {
             //String command = "java -jar " + Mo + ".jar";
 
             // Iniciar MO
-            Process process = Runtime.getRuntime().exec("java -jar multimodal-observer-server-5-0.0.0.jar");
+            //Process process = Runtime.getRuntime().exec("java -jar multimodal-observer-server-5-0.0.0.jar");
 
             
-            // Esperar a que el proceso termine (en este caso, nunca terminará)
-            process.waitFor();
 
         } catch (Exception e) {
             e.printStackTrace();

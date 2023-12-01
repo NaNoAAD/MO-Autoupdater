@@ -13,7 +13,7 @@
       <children>
             <Pane layoutX="26.0" layoutY="21.0" prefHeight="358.0" prefWidth="586.0">
                <children>
-                  <ProgressBar fx:id="progress" layoutX="50.0" layoutY="179.0" prefHeight="23.0" prefWidth="472.0" progress="0.0" />
+                  <ProgressBar fx:id="progress" layoutX="50.0" layoutY="179.0" prefHeight="23.0" prefWidth="472.0" />
               <Label alignment="CENTER" layoutX="236.0" layoutY="130.0" style="&#10;" text="Actualizando..." textAlignment="CENTER" wrapText="false">
                 <font>
                   <Font size="18.0" />
