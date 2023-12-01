@@ -1,10 +1,13 @@
 package mo.updating.controllers;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -15,7 +18,7 @@ import mo.updating.updaterVersionNotesRegister;
 /**
  * Controlador del splasher inicial del Launcher
  */
-public class ConfirmationController {
+public class ConfirmationController implements Initializable{
 
     @FXML
     private Button noButton;
@@ -26,14 +29,20 @@ public class ConfirmationController {
     @FXML
     private TextArea newNotesVersion;
 
-    // Lógica y métodos para el SplashScreen
-    @FXML
-    private void initialize() throws IOException {
+    // Lógica de inicialiacion de la vista de confirmacion
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
         System.out.println("-Inicializando Vista de confirmacion");
         // Establecer el TextArea newNotesVersion como de solo lectura
-        String notes = getVersionNotesUI();
-        //Se obtienen las notas de version remotas y se muestran en la vista
-        //this.newNotesVersion.setCellValueFactory(new PropertyValueFactory("nombre"));
+        String notes = "";
+        try {
+            //Se obtienen las notas de version remotas y se muestran en la vista
+            notes = getVersionNotesUI();
+            newNotesVersion.setText(notes);
+            newNotesVersion.setEditable(false);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         
     }
 

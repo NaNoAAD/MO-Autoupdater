@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import mo.updating.updater;
@@ -104,6 +105,9 @@ public class SplashScreenController {
                             Parent root = loader.load();
                             //Se carga nuevo controlador (Si es necesario algun procedimiento a priori inicialize)
                             //ConfirmationController controller = loader.getController();
+                            //TextArea newVersionNotes = new TextArea();
+                            //controller.blockTextArea();
+                            //ConfirmationController.blockTextArea();
 
                             // Se configura la nueva escena
                             Scene scene = new Scene(root);

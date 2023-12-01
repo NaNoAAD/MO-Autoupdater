@@ -24,7 +24,7 @@ public class updater extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         // Se inicia la primera vista (Splasher)
-        loadSplashView("visual/Splasher Principal.fxml", "Multimodal Observer - Launcher", primaryStage);
+        loadSplashView("visual/Splasher Principal.fxml", "Bienvenido a Multimodal Observer", primaryStage);
         //Se configura la vista
     }
 

@@ -17,7 +17,7 @@
       <Text layoutX="277.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comprobando actualizaciones..." wrappingWidth="195.13671875" />
       <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="37.0" layoutY="15.0">
          <image>
-            <Image url="@../../../../../MO-Autoupdater/src/main/resources/imagenes/mo.png" />
+            <Image url="@../../../../resources/imagenes/mo.png" />
          </image>
       </ImageView>
    </children>

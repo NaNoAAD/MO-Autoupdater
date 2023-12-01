@@ -16,14 +16,14 @@
             <Font size="18.0" />
           </font>
         </Label>
-            <TextArea fx:id="newVersionNotes" layoutX="35.0" layoutY="64.0" prefHeight="200.0" prefWidth="571.0"/>
+            <TextArea fx:id="newNotesVersion" layoutX="35.0" layoutY="64.0" prefHeight="200.0" prefWidth="571.0" wrapText="true" />
             <Label alignment="CENTER" layoutX="14.0" layoutY="270.0" prefHeight="50.0" prefWidth="613.0" style="&#10;" text="¿Desea descargar y aplicar la nueva versión?" textAlignment="CENTER" wrapText="false">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Button fx:id="yesButton" onAction="#acceptUpdate" layoutX="181.0" layoutY="329.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="114.0" text="Si" />
-            <Button fx:id="noButton" onAction="#cancelUpdate" layoutX="336.0" layoutY="329.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="114.0" text="No" />
+            <Button fx:id="yesButton" layoutX="181.0" layoutY="329.0" mnemonicParsing="false" onAction="#acceptUpdate" prefHeight="43.0" prefWidth="114.0" text="Si" />
+            <Button fx:id="noButton" layoutX="336.0" layoutY="329.0" mnemonicParsing="false" onAction="#cancelUpdate" prefHeight="43.0" prefWidth="114.0" text="No" />
       </children>
     </AnchorPane>
   </children>
