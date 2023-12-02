@@ -1,5 +1,7 @@
 package mo.updating;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Date;
 
 /**
@@ -31,6 +33,20 @@ public class fileClass {
      */
     public static boolean isSameFileButBeforeDate(fileClass file1, fileClass file2){
         if(file1.getName().equals(file2.getName()) && file1.getDate().before(file2.getDate()) ){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Metodo interno de fileClass que permite saber si 2 instancias de Fileclass tienen el mismo nombre
+     * @param file1 fileClass a comparar
+     * @param file2 fileClass a comparar
+     * @return La salida correpsonde a true si los nombre son iguales, caso contrario sera false
+     */
+    public static boolean hasSameName(fileClass file1, fileClass file2){
+        if (file1.getName() == file2.getName()) {
             return true;
         } else {
             return false;

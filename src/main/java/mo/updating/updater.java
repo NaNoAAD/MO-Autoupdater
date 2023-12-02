@@ -95,6 +95,7 @@ public class updater extends Application {
             // Iniciar MO
             //Es importante que este comando tenga el nombre el .jar de MO (verificar el uso de contains)
             Runtime.getRuntime().exec("java -jar multimodal-observer-server-5-0.0.0.jar");
+            
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,5 +1,6 @@
 package mo.updating;
 
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -19,13 +20,16 @@ public class updaterCommands {
         if(operativeSystem.contains("win")){
             //Se genera una instancia que se encarga de ejecutar cmd y accionar el .bat
             try {
-            ProcessBuilder processB = new ProcessBuilder("cmd.exe", "/c", "gradlew.bat build");
-            System.out.println("Ejecutando : gradlew.bat build en OS: " + operativeSystem + " en directorio: " + System.getProperty("user.dir"));
-            Process process = processB.start();
-            process.waitFor();
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
-            }
+                String directory = new File("../../../").getAbsolutePath();
+                ProcessBuilder processB = new ProcessBuilder("cmd.exe", "/c", "gradlew.bat build");
+                processB.directory(new File(directory));
+
+                System.out.println("Ejecutando : gradlew.bat build en OS: " + operativeSystem + " en directorio: " + directory);
+                Process process = processB.start();
+                process.waitFor();
+            } catch (IOException | InterruptedException e) {
+                e.printStackTrace();
+                }
         } else if (operativeSystem.contains("nix") || operativeSystem.contains("nux") || operativeSystem.contains("mac")){
             //comando para Linux o Unix
             try {
