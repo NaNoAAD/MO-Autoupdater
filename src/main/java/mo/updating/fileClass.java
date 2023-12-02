@@ -2,6 +2,7 @@ package mo.updating;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -47,6 +48,21 @@ public class fileClass {
      */
     public static boolean hasSameName(fileClass file1, fileClass file2){
         if (file1.getName() == file2.getName()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static Boolean isInArrayByName(fileClass fileclass, ArrayList<fileClass> fileClassArray){
+        Boolean response = false;
+        for (fileClass fileClassIterator : fileClassArray) {
+            if (fileclass.getName().equals(fileClassIterator.getName())) {
+                response = true;
+                break;
+            }
+        }    
+        if(response == true){
             return true;
         } else {
             return false;

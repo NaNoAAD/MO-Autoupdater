@@ -69,6 +69,9 @@ public class updaterLogic {
             //Se acciona el comando que permite la ejecucion del wrapper de gradle
             updaterCommands.gradleBuildCommand();
 
+            //Con el nuevo .jar creado, se verifica ue no hayan archivos sobrantes borrandolos
+            updaterPostUpdateProcesses.deleteLeftoversFiles();
+
             //Se crea un nuevo archivo de nota
             //Este metodo esta listo para recibir un string y ser ocupado para generar/sobreescribir un nuevo archivo de notas de version
             //updaterVersionNotesRegister.newNotesVersion("Hola\nSoy un nuevo archivo y poseo nuevas notas\nUna de mis cualidades sera\n\nTener nuevas caracteristicas!");

@@ -1,1726 +1,620 @@
 ..\..\..\.classpath
-16/11/2023 23:12:50
+30/11/2023 02:09:39
 ..\..\..\.nb-gradle-properties
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\.project
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\.settings\org.eclipse.buildship.core.prefs
-16/11/2023 23:13:40
+30/11/2023 02:09:39
 ..\..\..\.vscode\settings.json
-19/11/2023 20:33:04
-..\..\..\build\classes\java\main\es\eucm\i18n\I18N.class
-21/11/2023 01:03:38
-..\..\..\build\classes\java\main\mo\analysis\AnalysisDialog$1.class
-21/11/2023 01:03:39
-..\..\..\build\classes\java\main\mo\analysis\AnalysisDialog$2.class
-21/11/2023 01:03:39
-..\..\..\build\classes\java\main\mo\analysis\AnalysisDialog$3.class
-21/11/2023 01:03:39
-..\..\..\build\classes\java\main\mo\analysis\AnalysisDialog$4.class
-21/11/2023 01:03:39
-..\..\..\build\classes\java\main\mo\analysis\AnalysisDialog$FilePath.class
-21/11/2023 01:03:39
-..\..\..\build\classes\java\main\mo\analysis\AnalysisDialog.class
-21/11/2023 01:03:39
-..\..\..\build\classes\java\main\mo\analysis\AnalysisPlayer.class
-21/11/2023 01:03:39
-..\..\..\build\classes\java\main\mo\analysis\AnalysisProvider.class
-21/11/2023 01:03:39
-..\..\..\build\classes\java\main\mo\analysis\AnalysisStage.class
-21/11/2023 01:03:39
-..\..\..\build\classes\java\main\mo\analysis\AnalysisTimePanel$DrawingPane.class
-21/11/2023 01:03:40
-..\..\..\build\classes\java\main\mo\analysis\AnalysisTimePanel.class
-21/11/2023 01:03:40
-..\..\..\build\classes\java\main\mo\analysis\AnalyzableConfiguration.class
-21/11/2023 01:03:39
-..\..\..\build\classes\java\main\mo\analysis\AnalyzeAction$1$1.class
-21/11/2023 01:03:41
-..\..\..\build\classes\java\main\mo\analysis\AnalyzeAction$1.class
-21/11/2023 01:03:41
-..\..\..\build\classes\java\main\mo\analysis\AnalyzeAction.class
-21/11/2023 01:03:41
-..\..\..\build\classes\java\main\mo\analysis\IndividualAnalisisAction.class
-21/11/2023 01:03:41
-..\..\..\build\classes\java\main\mo\analysis\IndividualAnalisisDialog$1.class
-21/11/2023 01:03:41
-..\..\..\build\classes\java\main\mo\analysis\IndividualAnalisisDialog$2.class
-21/11/2023 01:03:41
-..\..\..\build\classes\java\main\mo\analysis\IndividualAnalisisDialog$3$1.class
-21/11/2023 01:03:41
-..\..\..\build\classes\java\main\mo\analysis\IndividualAnalisisDialog$3.class
-21/11/2023 01:03:41
-..\..\..\build\classes\java\main\mo\analysis\IndividualAnalisisDialog.class
-21/11/2023 01:03:41
-..\..\..\build\classes\java\main\mo\analysis\IndividualAnalysisConfiguration.class
-21/11/2023 01:03:41
-..\..\..\build\classes\java\main\mo\analysis\MouseAnalysisPlugin.class
-21/11/2023 01:03:41
-..\..\..\build\classes\java\main\mo\analysis\Note.class
-21/11/2023 01:03:41
-..\..\..\build\classes\java\main\mo\analysis\NotesAnalysisConfig.class
-21/11/2023 01:03:41
-..\..\..\build\classes\java\main\mo\analysis\NotesAnalysisPlugin.class
-21/11/2023 01:03:41
-..\..\..\build\classes\java\main\mo\analysis\NotesConfigDialog$1.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\analysis\NotesConfigDialog$2.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\analysis\NotesConfigDialog.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\analysis\NotesPlayer$1.class
-21/11/2023 01:03:40
-..\..\..\build\classes\java\main\mo\analysis\NotesPlayer.class
-21/11/2023 01:03:41
-..\..\..\build\classes\java\main\mo\analysis\NotesRecorder.class
-21/11/2023 01:03:41
-..\..\..\build\classes\java\main\mo\analysis\NotesVisualization.class
-21/11/2023 01:03:41
-..\..\..\build\classes\java\main\mo\analysis\NotPlayableAnalyzableConfiguration.class
-21/11/2023 01:03:39
-..\..\..\build\classes\java\main\mo\analysis\PlayableAnalyzableConfiguration.class
-21/11/2023 01:03:39
-..\..\..\build\classes\java\main\mo\analysis\PluginTrack.class
-21/11/2023 01:03:40
-..\..\..\build\classes\java\main\mo\analysis\TextBox.class
-21/11/2023 01:03:40
-..\..\..\build\classes\java\main\mo\analysis\TimePanelScroll.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\analysis\TimeRuler.class
-21/11/2023 01:03:40
-..\..\..\build\classes\java\main\mo\capture\CaptureProvider.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\capture\CaptureStage.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\capture\RecordableConfiguration.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\capture\RecordAction$1.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\capture\RecordAction$2.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\capture\RecordAction$3.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\capture\RecordAction$4.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\capture\RecordAction$5.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\capture\RecordAction$6.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\capture\RecordAction$7.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\capture\RecordAction.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\capture\RecordDialog$1.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\capture\RecordDialog$2.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\capture\RecordDialog$3.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\capture\RecordDialog.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\communication\chat\BubblePane.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\communication\chat\ChatEntry.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\communication\chat\ChatPlugin.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\communication\chat\ChatWindow$1.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\communication\chat\ChatWindow$2.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\communication\chat\ChatWindow$3.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\communication\chat\ChatWindow$4.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\communication\chat\ChatWindow.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\communication\chat\VerticalScrollPane.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\communication\Command.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\communication\CommunicationConfiguration.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\communication\CommunicationManagement$1.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\communication\CommunicationManagement.class
-21/11/2023 01:03:43
-..\..\..\build\classes\java\main\mo\communication\CommunicationProvider.class
-21/11/2023 01:03:43
-..\..\..\build\classes\java\main\mo\communication\CommunicationProvider1.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\communication\CommunicationViewer.class
-21/11/2023 01:03:43
-..\..\..\build\classes\java\main\mo\communication\ConnectionListener.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\communication\ConnectionSender.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\communication\DevicesConfigurationWizardPanel$1.class
-21/11/2023 01:03:43
-..\..\..\build\classes\java\main\mo\communication\DevicesConfigurationWizardPanel$2.class
-21/11/2023 01:03:43
-..\..\..\build\classes\java\main\mo\communication\DevicesConfigurationWizardPanel.class
-21/11/2023 01:03:43
-..\..\..\build\classes\java\main\mo\communication\FinishConnectionWizardPanel$1.class
-21/11/2023 01:03:43
-..\..\..\build\classes\java\main\mo\communication\FinishConnectionWizardPanel$2.class
-21/11/2023 01:03:43
-..\..\..\build\classes\java\main\mo\communication\FinishConnectionWizardPanel$3.class
-21/11/2023 01:03:43
-..\..\..\build\classes\java\main\mo\communication\FinishConnectionWizardPanel.class
-21/11/2023 01:03:43
-..\..\..\build\classes\java\main\mo\communication\NewConnectionWizardPanel$1.class
-21/11/2023 01:03:43
-..\..\..\build\classes\java\main\mo\communication\NewConnectionWizardPanel$2.class
-21/11/2023 01:03:43
-..\..\..\build\classes\java\main\mo\communication\NewConnectionWizardPanel$3.class
-21/11/2023 01:03:43
-..\..\..\build\classes\java\main\mo\communication\NewConnectionWizardPanel.class
-21/11/2023 01:03:43
-..\..\..\build\classes\java\main\mo\communication\notes\RemoteNotes.class
-21/11/2023 01:03:43
-..\..\..\build\classes\java\main\mo\communication\PetitionResponse.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\communication\RemoteClient.class
-21/11/2023 01:03:43
-..\..\..\build\classes\java\main\mo\communication\ServerConnection$1.class
-21/11/2023 01:03:43
-..\..\..\build\classes\java\main\mo\communication\ServerConnection.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\communication\ServerTCP.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\communication\ServerUDP.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\communication\StreamableConfiguration.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\communication\streaming\capture\CaptureConfig.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\communication\streaming\capture\CaptureEvent.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\communication\streaming\capture\PluginCaptureListener.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\communication\streaming\capture\PluginCaptureSender.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\core\DataFileFinder.class
-21/11/2023 01:03:38
-..\..\..\build\classes\java\main\mo\core\DirectoryWatcher$1.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\core\DirectoryWatcher$2.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\core\DirectoryWatcher$3.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\core\DirectoryWatcher.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\core\filemanagement\FilePopupMenu.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\core\filemanagement\FileRegistry.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\core\filemanagement\FilesPane$1.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\core\filemanagement\FilesPane$2.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\core\filemanagement\FilesPane.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\core\filemanagement\FilesTreeModel$1.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\core\filemanagement\FilesTreeModel.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\core\filemanagement\FileType.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\core\filemanagement\IFilePopup.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\core\filemanagement\OpenFileLocation$1.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\core\filemanagement\OpenFileLocation.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\core\filemanagement\PopupItem.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\core\filemanagement\PopupOptionProvider.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\core\filemanagement\PopupRegistry.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\core\filemanagement\project\NewProjectWizardPanel$1.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\core\filemanagement\project\NewProjectWizardPanel$2.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\core\filemanagement\project\NewProjectWizardPanel.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\core\filemanagement\project\Project.class
-21/11/2023 01:03:39
-..\..\..\build\classes\java\main\mo\core\filemanagement\project\ProjectCloser$1.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\core\filemanagement\project\ProjectCloser.class
-21/11/2023 01:03:45
-..\..\..\build\classes\java\main\mo\core\filemanagement\project\ProjectManagement$1.class
-21/11/2023 01:03:45
-..\..\..\build\classes\java\main\mo\core\filemanagement\project\ProjectManagement.class
-21/11/2023 01:03:45
-..\..\..\build\classes\java\main\mo\core\filemanagement\project\ProjectOptionProvider.class
-21/11/2023 01:03:45
-..\..\..\build\classes\java\main\mo\core\filemanagement\project\ProjectUtils.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\core\I18n$LocalizablePropertyResourceBundle.class
-21/11/2023 01:03:40
-..\..\..\build\classes\java\main\mo\core\I18n$MatchLevels.class
-21/11/2023 01:03:40
-..\..\..\build\classes\java\main\mo\core\I18n.class
-21/11/2023 01:03:40
-..\..\..\build\classes\java\main\mo\core\Language$1.class
-21/11/2023 01:03:45
-..\..\..\build\classes\java\main\mo\core\Language.class
-21/11/2023 01:03:45
-..\..\..\build\classes\java\main\mo\core\MainPresenter$1.class
-21/11/2023 01:03:45
-..\..\..\build\classes\java\main\mo\core\MainPresenter.class
-21/11/2023 01:03:45
-..\..\..\build\classes\java\main\mo\core\MainWindow.class
-21/11/2023 01:03:45
-..\..\..\build\classes\java\main\mo\core\MultimodalObserver.class
-21/11/2023 01:03:45
-..\..\..\build\classes\java\main\mo\core\plugin\Dependency.class
-21/11/2023 01:03:45
-..\..\..\build\classes\java\main\mo\core\plugin\Extends.class
-21/11/2023 01:03:40
-..\..\..\build\classes\java\main\mo\core\plugin\Extension.class
-21/11/2023 01:03:39
-..\..\..\build\classes\java\main\mo\core\plugin\ExtensionPoint.class
-21/11/2023 01:03:39
-..\..\..\build\classes\java\main\mo\core\plugin\ExtensionScanner$1$1$1.class
-21/11/2023 01:03:45
-..\..\..\build\classes\java\main\mo\core\plugin\ExtensionScanner$1$1.class
-21/11/2023 01:03:45
-..\..\..\build\classes\java\main\mo\core\plugin\ExtensionScanner$1.class
-21/11/2023 01:03:45
-..\..\..\build\classes\java\main\mo\core\plugin\ExtensionScanner$2.class
-21/11/2023 01:03:45
-..\..\..\build\classes\java\main\mo\core\plugin\ExtensionScanner.class
-21/11/2023 01:03:45
-..\..\..\build\classes\java\main\mo\core\plugin\ExtPoint.class
-21/11/2023 01:03:45
-..\..\..\build\classes\java\main\mo\core\plugin\gui\Link$1.class
-21/11/2023 01:03:45
-..\..\..\build\classes\java\main\mo\core\plugin\gui\Link.class
-21/11/2023 01:03:45
-..\..\..\build\classes\java\main\mo\core\plugin\gui\LocalPluginInstaller$1.class
-21/11/2023 01:03:45
-..\..\..\build\classes\java\main\mo\core\plugin\gui\LocalPluginInstaller$2.class
-21/11/2023 01:03:45
-..\..\..\build\classes\java\main\mo\core\plugin\gui\LocalPluginInstaller.class
-21/11/2023 01:03:45
-..\..\..\build\classes\java\main\mo\core\plugin\gui\LogScroll.class
-21/11/2023 01:03:45
-..\..\..\build\classes\java\main\mo\core\plugin\gui\PlaceholderTextField.class
-21/11/2023 01:03:45
-..\..\..\build\classes\java\main\mo\core\plugin\gui\Plugin.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\plugin\gui\PluginError.class
-21/11/2023 01:03:45
-..\..\..\build\classes\java\main\mo\core\plugin\gui\PluginInfo$1.class
-21/11/2023 01:03:45
-..\..\..\build\classes\java\main\mo\core\plugin\gui\PluginInfo.class
-21/11/2023 01:03:46
-..\..\..\build\classes\java\main\mo\core\plugin\gui\PluginList$1.class
-21/11/2023 01:03:45
-..\..\..\build\classes\java\main\mo\core\plugin\gui\PluginList$PluginTreeNode.class
-21/11/2023 01:03:45
-..\..\..\build\classes\java\main\mo\core\plugin\gui\PluginList.class
-21/11/2023 01:03:45
-..\..\..\build\classes\java\main\mo\core\plugin\gui\PluginPlainViewer.class
-21/11/2023 01:03:46
-..\..\..\build\classes\java\main\mo\core\plugin\gui\PluginUncompressor.class
-21/11/2023 01:03:46
-..\..\..\build\classes\java\main\mo\core\plugin\gui\PluginViewer$1.class
-21/11/2023 01:03:46
-..\..\..\build\classes\java\main\mo\core\plugin\gui\PluginViewer$PluginCellRenderer.class
-21/11/2023 01:03:46
-..\..\..\build\classes\java\main\mo\core\plugin\gui\PluginViewer.class
-21/11/2023 01:03:46
-..\..\..\build\classes\java\main\mo\core\plugin\gui\RemotePluginInfo$1.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\plugin\gui\RemotePluginInfo.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\plugin\gui\RemotePluginInstaller$1.class
-21/11/2023 01:03:46
-..\..\..\build\classes\java\main\mo\core\plugin\gui\RemotePluginInstaller$10.class
-21/11/2023 01:03:46
-..\..\..\build\classes\java\main\mo\core\plugin\gui\RemotePluginInstaller$11.class
-21/11/2023 01:03:46
-..\..\..\build\classes\java\main\mo\core\plugin\gui\RemotePluginInstaller$12$1.class
-21/11/2023 01:03:46
-..\..\..\build\classes\java\main\mo\core\plugin\gui\RemotePluginInstaller$12.class
-21/11/2023 01:03:46
-..\..\..\build\classes\java\main\mo\core\plugin\gui\RemotePluginInstaller$13.class
-21/11/2023 01:03:46
-..\..\..\build\classes\java\main\mo\core\plugin\gui\RemotePluginInstaller$14.class
-21/11/2023 01:03:46
-..\..\..\build\classes\java\main\mo\core\plugin\gui\RemotePluginInstaller$15.class
-21/11/2023 01:03:46
-..\..\..\build\classes\java\main\mo\core\plugin\gui\RemotePluginInstaller$16.class
-21/11/2023 01:03:46
-..\..\..\build\classes\java\main\mo\core\plugin\gui\RemotePluginInstaller$17.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\plugin\gui\RemotePluginInstaller$2.class
-21/11/2023 01:03:46
-..\..\..\build\classes\java\main\mo\core\plugin\gui\RemotePluginInstaller$3.class
-21/11/2023 01:03:46
-..\..\..\build\classes\java\main\mo\core\plugin\gui\RemotePluginInstaller$4$1.class
-21/11/2023 01:03:46
-..\..\..\build\classes\java\main\mo\core\plugin\gui\RemotePluginInstaller$4.class
-21/11/2023 01:03:46
-..\..\..\build\classes\java\main\mo\core\plugin\gui\RemotePluginInstaller$5.class
-21/11/2023 01:03:46
-..\..\..\build\classes\java\main\mo\core\plugin\gui\RemotePluginInstaller$6.class
-21/11/2023 01:03:46
-..\..\..\build\classes\java\main\mo\core\plugin\gui\RemotePluginInstaller$7.class
-21/11/2023 01:03:46
-..\..\..\build\classes\java\main\mo\core\plugin\gui\RemotePluginInstaller$8.class
-21/11/2023 01:03:46
-..\..\..\build\classes\java\main\mo\core\plugin\gui\RemotePluginInstaller$9.class
-21/11/2023 01:03:46
-..\..\..\build\classes\java\main\mo\core\plugin\gui\RemotePluginInstaller.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\plugin\gui\Spinner.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\plugin\gui\SplitPaneTriple.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\plugin\gui\TagNode.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\plugin\gui\Title.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\plugin\gui\TupleList.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\plugin\gui\UpdateRightClick$DropDownMenu$1.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\plugin\gui\UpdateRightClick$DropDownMenu.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\plugin\gui\UpdateRightClick.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\plugin\IUpdatable.class
-21/11/2023 01:03:45
-..\..\..\build\classes\java\main\mo\core\plugin\Plugin.class
-21/11/2023 01:03:45
-..\..\..\build\classes\java\main\mo\core\plugin\PluginData.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\plugin\PluginListener.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\plugin\PluginRegistry$1.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\plugin\PluginRegistry.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\plugin\VersionUtils.class
-21/11/2023 01:03:45
-..\..\..\build\classes\java\main\mo\core\preferences\AppPreferencesWrapper.class
-21/11/2023 01:03:45
-..\..\..\build\classes\java\main\mo\core\preferences\AppProjectPreferencesWrapper.class
-21/11/2023 01:03:45
-..\..\..\build\classes\java\main\mo\core\preferences\PreferencesManager.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\Translations_ja.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\ui\dockables\DockableElement.class
-21/11/2023 01:03:41
-..\..\..\build\classes\java\main\mo\core\ui\dockables\DockablesRegistry$1.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\ui\dockables\DockablesRegistry$DockableCheckBoxMenuItem.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\ui\dockables\DockablesRegistry.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\ui\dockables\DockablesTreeRecreator$1.class
-21/11/2023 01:03:41
-..\..\..\build\classes\java\main\mo\core\ui\dockables\DockablesTreeRecreator$ChildrenOrientation.class
-21/11/2023 01:03:41
-..\..\..\build\classes\java\main\mo\core\ui\dockables\DockablesTreeRecreator$Location.class
-21/11/2023 01:03:41
-..\..\..\build\classes\java\main\mo\core\ui\dockables\DockablesTreeRecreator$LocationNode.class
-21/11/2023 01:03:41
-..\..\..\build\classes\java\main\mo\core\ui\dockables\DockablesTreeRecreator.class
-21/11/2023 01:03:41
-..\..\..\build\classes\java\main\mo\core\ui\dockables\IDockableElementProvider.class
-21/11/2023 01:03:43
-..\..\..\build\classes\java\main\mo\core\ui\dockables\StartupDockableProvider.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\core\ui\dockables\StorableDockable.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\core\ui\GridBConstraints.class
-21/11/2023 01:03:39
-..\..\..\build\classes\java\main\mo\core\ui\menubar\IMenuBarItemImpl.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\ui\menubar\IMenuBarItemProvider.class
-21/11/2023 01:03:43
-..\..\..\build\classes\java\main\mo\core\ui\menubar\IMenuBarItems.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\ui\menubar\MenuBar$1.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\ui\menubar\MenuBar.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\ui\menubar\MenuBarItem.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\ui\menubar\MenuItem.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\ui\menubar\MenuItemLocations.class
-21/11/2023 01:03:42
-..\..\..\build\classes\java\main\mo\core\ui\Utils$1.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\ui\Utils$2.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\ui\Utils.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\ui\WizardDialog$1.class
-21/11/2023 01:03:39
-..\..\..\build\classes\java\main\mo\core\ui\WizardDialog$WizardListener.class
-21/11/2023 01:03:39
-..\..\..\build\classes\java\main\mo\core\ui\WizardDialog.class
-21/11/2023 01:03:39
-..\..\..\build\classes\java\main\mo\core\Utils.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\core\v2\Analysis\AnalysisDialogV2$1.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\v2\Analysis\AnalysisDialogV2$2.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\v2\Analysis\AnalysisDialogV2$3.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\v2\Analysis\AnalysisDialogV2$4.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\v2\Analysis\AnalysisDialogV2$FilePath.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\v2\Analysis\AnalysisDialogV2.class
-21/11/2023 01:03:47
-..\..\..\build\classes\java\main\mo\core\v2\Analysis\AnalyzeActionV2$1$1.class
-21/11/2023 01:03:48
-..\..\..\build\classes\java\main\mo\core\v2\Analysis\AnalyzeActionV2$1.class
-21/11/2023 01:03:48
-..\..\..\build\classes\java\main\mo\core\v2\Analysis\AnalyzeActionV2.class
-21/11/2023 01:03:48
-..\..\..\build\classes\java\main\mo\core\v2\controller\AddParticipantController.class
-21/11/2023 01:03:48
-..\..\..\build\classes\java\main\mo\core\v2\controller\AddPluginController.class
-21/11/2023 01:03:48
-..\..\..\build\classes\java\main\mo\core\v2\controller\MainWindowsController.class
-21/11/2023 01:03:48
-..\..\..\build\classes\java\main\mo\core\v2\controller\MyProjectsControllerAux.class
-21/11/2023 01:03:48
-..\..\..\build\classes\java\main\mo\core\v2\controller\NewProjectController$1.class
-21/11/2023 01:03:48
-..\..\..\build\classes\java\main\mo\core\v2\controller\NewProjectController.class
-21/11/2023 01:03:48
-..\..\..\build\classes\java\main\mo\core\v2\controller\PluginsController$1.class
-21/11/2023 01:03:48
-..\..\..\build\classes\java\main\mo\core\v2\controller\PluginsController.class
-21/11/2023 01:03:48
-..\..\..\build\classes\java\main\mo\core\v2\controller\ProjectAnalysisControllerAux.class
-21/11/2023 01:03:48
-..\..\..\build\classes\java\main\mo\core\v2\controller\ProjectCapturesControllerAux.class
-21/11/2023 01:03:48
-..\..\..\build\classes\java\main\mo\core\v2\controller\ProjectMenuController$1.class
-21/11/2023 01:03:49
-..\..\..\build\classes\java\main\mo\core\v2\controller\ProjectMenuController.class
-21/11/2023 01:03:49
-..\..\..\build\classes\java\main\mo\core\v2\controller\ProjectParticipantsControllerAux.class
-21/11/2023 01:03:49
-..\..\..\build\classes\java\main\mo\core\v2\controller\ProjectVisualizationControllerAux.class
-21/11/2023 01:03:49
-..\..\..\build\classes\java\main\mo\core\v2\controller\SettingsController.class
-21/11/2023 01:03:49
-..\..\..\build\classes\java\main\mo\core\v2\Managment$1.class
-21/11/2023 01:03:49
-..\..\..\build\classes\java\main\mo\core\v2\Managment.class
-21/11/2023 01:03:49
-..\..\..\build\classes\java\main\mo\core\v2\model\Activity.class
-21/11/2023 01:03:49
-..\..\..\build\classes\java\main\mo\core\v2\model\CommunicationManagementV2$1.class
-21/11/2023 01:03:49
-..\..\..\build\classes\java\main\mo\core\v2\model\CommunicationManagementV2.class
-21/11/2023 01:03:49
-..\..\..\build\classes\java\main\mo\core\v2\model\ConfigurationV2.class
-21/11/2023 01:03:48
-..\..\..\build\classes\java\main\mo\core\v2\model\Controller.class
-21/11/2023 01:03:49
-..\..\..\build\classes\java\main\mo\core\v2\model\LanguageV2$1.class
-21/11/2023 01:03:49
-..\..\..\build\classes\java\main\mo\core\v2\model\LanguageV2.class
-21/11/2023 01:03:49
-..\..\..\build\classes\java\main\mo\core\v2\model\Module.class
-21/11/2023 01:03:49
-..\..\..\build\classes\java\main\mo\core\v2\model\Organization.class
-21/11/2023 01:03:48
-..\..\..\build\classes\java\main\mo\core\v2\model\PluginViewerV2$1.class
-21/11/2023 01:03:49
-..\..\..\build\classes\java\main\mo\core\v2\model\PluginViewerV2$PluginCellRenderer.class
-21/11/2023 01:03:49
-..\..\..\build\classes\java\main\mo\core\v2\model\PluginViewerV2.class
-21/11/2023 01:03:49
-..\..\..\build\classes\java\main\mo\core\v2\model\StageModuleV2.class
-21/11/2023 01:03:48
-..\..\..\build\classes\java\main\mo\core\v2\model\StagePluginV2.class
-21/11/2023 01:03:48
-..\..\..\build\classes\java\main\mo\core\v2\ui\WizardDialogV2$1.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\core\v2\ui\WizardDialogV2$WizardListener.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\core\v2\ui\WizardDialogV2.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\core\v2\Vizualization\VisualizationDialogV2$1.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\core\v2\Vizualization\VisualizationDialogV2$2.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\core\v2\Vizualization\VisualizationDialogV2$3.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\core\v2\Vizualization\VisualizationDialogV2$FilePath.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\core\v2\Vizualization\VisualizationDialogV2.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\core\v2\Vizualization\VisualizeActionV2.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\core\WatchHandler.class
-21/11/2023 01:03:44
-..\..\..\build\classes\java\main\mo\organization\Configuration.class
-21/11/2023 01:03:39
-..\..\..\build\classes\java\main\mo\organization\FileDescription.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\organization\Organization.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\organization\OrganizationVisualizationMenuItemProvider.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\organization\Participant.class
-21/11/2023 01:03:39
-..\..\..\build\classes\java\main\mo\organization\ProjectOrganization.class
-21/11/2023 01:03:39
-..\..\..\build\classes\java\main\mo\organization\StageAction.class
-21/11/2023 01:03:39
-..\..\..\build\classes\java\main\mo\organization\StageModule.class
-21/11/2023 01:03:39
-..\..\..\build\classes\java\main\mo\organization\StagePlugin.class
-21/11/2023 01:03:39
-..\..\..\build\classes\java\main\mo\organization\visualization\tree\OrganizationDockable$1.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\organization\visualization\tree\OrganizationDockable$2.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\organization\visualization\tree\OrganizationDockable$OrganizationCellRenderer.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\organization\visualization\tree\OrganizationDockable$PluginConfigPair.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\organization\visualization\tree\OrganizationDockable.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\organization\visualization\tree\ParticipantDialog$1.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\organization\visualization\tree\ParticipantDialog.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\organization\visualization\tree\ProjectOrganizationPlugin.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\updating\fileClass.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\updating\updater.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\updating\updaterCommands.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\updating\updaterDownloader.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\updating\updaterPermissions.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\updating\updaterPluginsUpdating.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\updating\updaterRegisterComparison.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\updating\updaterRegisterCreator.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\updating\updaterRemoteFilesProcess.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\updating\updaterVersionNotesRegister.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\updating\updaterZipProcess.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\visualization\gamelooptest\GameLoopPlayer.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\visualization\gamelooptest\Playable2.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\visualization\gamelooptest\PlayerPanel.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\visualization\gamelooptest\TETFixPlayer.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\visualization\Playable.class
-21/11/2023 01:03:39
-..\..\..\build\classes\java\main\mo\visualization\PlayerControlsPanel$1.class
-21/11/2023 01:03:41
-..\..\..\build\classes\java\main\mo\visualization\PlayerControlsPanel$2.class
-21/11/2023 01:03:41
-..\..\..\build\classes\java\main\mo\visualization\PlayerControlsPanel.class
-21/11/2023 01:03:41
-..\..\..\build\classes\java\main\mo\visualization\test\FakeNeuroSkyServer.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\visualization\test\Gradient.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\visualization\test\LiveHeatMap$1.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\visualization\test\LiveHeatMap.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\visualization\VisualizableConfiguration.class
-21/11/2023 01:03:39
-..\..\..\build\classes\java\main\mo\visualization\VisualizationDialog$1.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\visualization\VisualizationDialog$2.class
-21/11/2023 01:03:50
-..\..\..\build\classes\java\main\mo\visualization\VisualizationDialog.class
-21/11/2023 01:03:51
-..\..\..\build\classes\java\main\mo\visualization\VisualizationDialog2$1.class
-21/11/2023 01:03:51
-..\..\..\build\classes\java\main\mo\visualization\VisualizationDialog2$2.class
-21/11/2023 01:03:51
-..\..\..\build\classes\java\main\mo\visualization\VisualizationDialog2$3.class
-21/11/2023 01:03:51
-..\..\..\build\classes\java\main\mo\visualization\VisualizationDialog2$FilePath.class
-21/11/2023 01:03:51
-..\..\..\build\classes\java\main\mo\visualization\VisualizationDialog2.class
-21/11/2023 01:03:51
-..\..\..\build\classes\java\main\mo\visualization\VisualizationPlayer.class
-21/11/2023 01:03:40
-..\..\..\build\classes\java\main\mo\visualization\VisualizationProvider.class
-21/11/2023 01:03:48
-..\..\..\build\classes\java\main\mo\visualization\VisualizationStage.class
-21/11/2023 01:03:51
-..\..\..\build\classes\java\main\mo\visualization\VisualizeAction.class
-21/11/2023 01:03:51
-..\..\..\build\classes\java\main\mo\wizardproject\controllers\EditActivityDialogController.class
-21/11/2023 01:03:51
-..\..\..\build\classes\java\preferences.xml
-07/11/2023 23:55:18
-..\..\..\build\classes\java\test\mo\core\plugin\ExtPointTest.class
-21/11/2023 01:04:42
-..\..\..\build\classes\java\test\mo\core\plugin\gui\RemotePluginInstallerTest.class
-21/11/2023 01:04:42
-..\..\..\build\classes\java\test\mo\core\plugin\PluginDataTest.class
-21/11/2023 01:04:42
-..\..\..\build\classes\java\test\mo\core\plugin\PluginTest.class
-21/11/2023 01:04:42
-..\..\..\build\classes\java\test\mo\visualization\DummyVisConfig.class
-21/11/2023 01:04:42
-..\..\..\build\classes\java\test\mo\visualization\VisualizationPlayerTest.class
-21/11/2023 01:04:42
-..\..\..\build\libs\controlador\MainViewController.java
-21/11/2023 01:04:40
-..\..\..\build\libs\fxml\core\ui\AddParticipant.fxml
-21/11/2023 01:04:40
-..\..\..\build\libs\fxml\core\ui\AddPlugin.fxml
-21/11/2023 01:04:40
-..\..\..\build\libs\fxml\core\ui\MainWindows.fxml
-21/11/2023 01:04:40
-..\..\..\build\libs\fxml\core\ui\MyProjects.fxml
-21/11/2023 01:04:40
-..\..\..\build\libs\fxml\core\ui\NewProject.fxml
-21/11/2023 01:04:40
-..\..\..\build\libs\fxml\core\ui\NewProjectName.fxml
-21/11/2023 01:04:40
-..\..\..\build\libs\fxml\core\ui\Plantilla asitente.fxml
-21/11/2023 01:04:40
-..\..\..\build\libs\fxml\core\ui\Plantilla Config Plugin.fxml
-21/11/2023 01:04:40
-..\..\..\build\libs\fxml\core\ui\Plugins.fxml
-21/11/2023 01:04:40
-..\..\..\build\libs\fxml\core\ui\ProjectAnalysis.fxml
-21/11/2023 01:04:40
-..\..\..\build\libs\fxml\core\ui\ProjectCaptures.fxml
-21/11/2023 01:04:40
-..\..\..\build\libs\fxml\core\ui\ProjectMenu.fxml
-21/11/2023 01:04:40
-..\..\..\build\libs\fxml\core\ui\ProjectParticipants.fxml
-21/11/2023 01:04:40
-..\..\..\build\libs\fxml\core\ui\ProjectVisualization.fxml
-21/11/2023 01:04:40
-..\..\..\build\libs\fxml\core\ui\Settings.fxml
-21/11/2023 01:04:40
-..\..\..\build\libs\fxml\wizard\ui\Activities.fxml
-21/11/2023 01:04:40
-..\..\..\build\libs\fxml\wizard\ui\Capture.fxml
-21/11/2023 01:04:40
-..\..\..\build\libs\fxml\wizard\ui\EditActivityDialog.fxml
-21/11/2023 01:04:40
-..\..\..\build\libs\fxml\wizard\ui\EditParticipantDialog.fxml
-21/11/2023 01:04:40
-..\..\..\build\libs\fxml\wizard\ui\Layout.fxml
-21/11/2023 01:04:40
-..\..\..\build\libs\fxml\wizard\ui\Observations.fxml
-21/11/2023 01:04:40
-..\..\..\build\libs\fxml\wizard\ui\Participants.fxml
-21/11/2023 01:04:40
-..\..\..\build\libs\fxml\wizard\ui\Path.fxml
-21/11/2023 01:04:40
-..\..\..\build\libs\i18n\mo\analysis\Translations.properties
-21/11/2023 01:04:40
-..\..\..\build\libs\i18n\mo\analysis\Translations_en.properties
-21/11/2023 01:04:40
-..\..\..\build\libs\i18n\mo\analysis\Translations_es.properties
-21/11/2023 01:04:40
-..\..\..\build\libs\i18n\mo\capture\Translations.properties
-21/11/2023 01:04:40
-..\..\..\build\libs\i18n\mo\capture\Translations_en.properties
-21/11/2023 01:04:40
-..\..\..\build\libs\i18n\mo\capture\Translations_es.properties
-21/11/2023 01:04:40
-..\..\..\build\libs\i18n\mo\communication\Translations.properties
-21/11/2023 01:04:40
-..\..\..\build\libs\i18n\mo\communication\Translations_en.properties
-21/11/2023 01:04:40
-..\..\..\build\libs\i18n\mo\communication\Translations_es.properties
-21/11/2023 01:04:40
-..\..\..\build\libs\i18n\mo\core\filemanagement\project\Translations.properties
-21/11/2023 01:04:40
-..\..\..\build\libs\i18n\mo\core\filemanagement\project\Translations_en.properties
-21/11/2023 01:04:40
-..\..\..\build\libs\i18n\mo\core\filemanagement\project\Translations_es.properties
-21/11/2023 01:04:40
-..\..\..\build\libs\i18n\mo\core\Translations.properties
-21/11/2023 01:04:40
-..\..\..\build\libs\i18n\mo\core\Translations_en.properties
-21/11/2023 01:04:40
-..\..\..\build\libs\i18n\mo\core\Translations_es.properties
-21/11/2023 01:04:40
-..\..\..\build\libs\i18n\mo\core\ui\menubar\Translations.properties
-21/11/2023 01:04:40
-..\..\..\build\libs\i18n\mo\core\ui\menubar\Translations_en.properties
-21/11/2023 01:04:40
-..\..\..\build\libs\i18n\mo\core\ui\menubar\Translations_es.properties
-21/11/2023 01:04:40
-..\..\..\build\libs\i18n\mo\visualization\Translations.properties
-21/11/2023 01:04:40
-..\..\..\build\libs\i18n\mo\visualization\Translations_en.properties
-21/11/2023 01:04:40
-..\..\..\build\libs\i18n\mo\visualization\Translations_es.properties
-21/11/2023 01:04:40
-..\..\..\build\libs\i18n\mo\wizardproject\Translations.properties
-21/11/2023 01:04:40
-..\..\..\build\libs\i18n\mo\wizardproject\Translations_en.properties
-21/11/2023 01:04:40
-..\..\..\build\libs\i18n\mo\wizardproject\Translations_es.properties
-21/11/2023 01:04:40
-..\..\..\build\libs\i18n\mo.core.filemanagement.Translations.properties
-21/11/2023 01:04:40
-..\..\..\build\libs\i18n\mo.core.filemanagement.Translations_en.properties
-21/11/2023 01:04:40
-..\..\..\build\libs\i18n\mo.core.filemanagement.Translations_es.properties
-21/11/2023 01:04:40
-..\..\..\build\libs\i18n\mo.core.ui.dockables.Translations.properties
-21/11/2023 01:04:40
-..\..\..\build\libs\i18n\mo.core.ui.dockables.Translations_es.properties
-21/11/2023 01:04:40
-..\..\..\build\libs\i18n\mo.organization.visualization.tree.Translations.properties
-21/11/2023 01:04:40
-..\..\..\build\libs\i18n\mo.organization.visualization.tree.Translations_en.properties
-21/11/2023 01:04:40
-..\..\..\build\libs\i18n\mo.organization.visualization.tree.Translations_es.properties
-21/11/2023 01:04:40
-..\..\..\build\libs\imagenes\audio.jpg
-21/11/2023 01:04:40
-..\..\..\build\libs\imagenes\cerrar.png
-21/11/2023 01:04:40
-..\..\..\build\libs\imagenes\maximizar.png
-21/11/2023 01:04:40
-..\..\..\build\libs\imagenes\minimizar.png
-21/11/2023 01:04:40
-..\..\..\build\libs\imagenes\mo.png
-21/11/2023 01:04:40
-..\..\..\build\libs\imagenes\plus_icon-icons.com_69476.png
-21/11/2023 01:04:40
-..\..\..\build\libs\imagenes\pre mockup.jpeg
-21/11/2023 01:04:40
-..\..\..\build\libs\imagenes\reproductor.png
-21/11/2023 01:04:40
-..\..\..\build\libs\imagenes\restaurar.png
-21/11/2023 01:04:40
-..\..\..\build\libs\imagenes\user-icon.png
-21/11/2023 01:04:40
-..\..\..\build\libs\imagenes\video.png
-21/11/2023 01:04:40
-..\..\..\build\libs\images\add.png
-21/11/2023 01:04:40
-..\..\..\build\libs\images\addCircle.png
-21/11/2023 01:04:40
-..\..\..\build\libs\images\analysis.png
-21/11/2023 01:04:40
-..\..\..\build\libs\images\audio.png
-21/11/2023 01:04:40
-..\..\..\build\libs\images\Capture (2).png
-21/11/2023 01:04:40
-..\..\..\build\libs\images\capture.png
-21/11/2023 01:04:40
-..\..\..\build\libs\images\delete.png
-21/11/2023 01:04:40
-..\..\..\build\libs\images\dragndrop.png
-21/11/2023 01:04:40
-..\..\..\build\libs\images\edit.png
-21/11/2023 01:04:40
-..\..\..\build\libs\images\folder.png
-21/11/2023 01:04:40
-..\..\..\build\libs\images\interface.png
-21/11/2023 01:04:40
-..\..\..\build\libs\images\locked-padlock_icon-icons.com_72677.png
-21/11/2023 01:04:40
-..\..\..\build\libs\images\locked.png
-21/11/2023 01:04:40
-..\..\..\build\libs\images\locked2.png
-21/11/2023 01:04:40
-..\..\..\build\libs\images\mo.png
-21/11/2023 01:04:40
-..\..\..\build\libs\images\mouse.png
-21/11/2023 01:04:40
-..\..\..\build\libs\images\padlock (1).png
-21/11/2023 01:04:40
-..\..\..\build\libs\images\participant.png
-21/11/2023 01:04:40
-..\..\..\build\libs\images\participant2.png
-21/11/2023 01:04:40
-..\..\..\build\libs\images\participants.png
-21/11/2023 01:04:40
-..\..\..\build\libs\images\picture.png
-21/11/2023 01:04:40
-..\..\..\build\libs\images\plugin.png
-21/11/2023 01:04:40
-..\..\..\build\libs\images\rec-paused.png
-21/11/2023 01:04:40
-..\..\..\build\libs\images\rec.png
-21/11/2023 01:04:40
-..\..\..\build\libs\images\screen.png
-21/11/2023 01:04:40
-..\..\..\build\libs\images\spinner.gif
-21/11/2023 01:04:40
-..\..\..\build\libs\images\unlocked.png
-21/11/2023 01:04:40
-..\..\..\build\libs\images\unlocked2.png
-21/11/2023 01:04:40
-..\..\..\build\libs\multimodal-observer-server-5-0.0.0.jar
-21/11/2023 01:04:40
-..\..\..\build\libs\preferences.xml
-15/11/2023 23:57:53
-..\..\..\build\reports\tests\test\classes\mo.core.plugin.ExtPointTest.html
-21/11/2023 01:04:51
-..\..\..\build\reports\tests\test\classes\mo.core.plugin.gui.RemotePluginInstallerTest.html
-21/11/2023 01:04:51
-..\..\..\build\reports\tests\test\classes\mo.core.plugin.PluginDataTest.html
-21/11/2023 01:04:51
-..\..\..\build\reports\tests\test\classes\mo.core.plugin.PluginTest.html
-21/11/2023 01:04:51
-..\..\..\build\reports\tests\test\classes\mo.visualization.VisualizationPlayerTest.html
-21/11/2023 01:04:51
-..\..\..\build\reports\tests\test\css\base-style.css
-21/11/2023 01:04:51
-..\..\..\build\reports\tests\test\css\style.css
-21/11/2023 01:04:51
-..\..\..\build\reports\tests\test\index.html
-21/11/2023 01:04:51
-..\..\..\build\reports\tests\test\js\report.js
-21/11/2023 01:04:51
-..\..\..\build\reports\tests\test\packages\mo.core.plugin.gui.html
-21/11/2023 01:04:51
-..\..\..\build\reports\tests\test\packages\mo.core.plugin.html
-21/11/2023 01:04:51
-..\..\..\build\reports\tests\test\packages\mo.visualization.html
-21/11/2023 01:04:51
-..\..\..\build\resources\main\controlador\MainViewController.java
-21/11/2023 01:04:14
-..\..\..\build\resources\main\fxml\core\ui\AddParticipant.fxml
-21/11/2023 01:04:14
-..\..\..\build\resources\main\fxml\core\ui\AddPlugin.fxml
-21/11/2023 01:04:14
-..\..\..\build\resources\main\fxml\core\ui\MainWindows.fxml
-21/11/2023 01:04:14
-..\..\..\build\resources\main\fxml\core\ui\MyProjects.fxml
-21/11/2023 01:04:14
-..\..\..\build\resources\main\fxml\core\ui\NewProject.fxml
-21/11/2023 01:04:14
-..\..\..\build\resources\main\fxml\core\ui\NewProjectName.fxml
-21/11/2023 01:04:14
-..\..\..\build\resources\main\fxml\core\ui\Plantilla asitente.fxml
-21/11/2023 01:04:14
-..\..\..\build\resources\main\fxml\core\ui\Plantilla Config Plugin.fxml
-21/11/2023 01:04:14
-..\..\..\build\resources\main\fxml\core\ui\Plugins.fxml
-21/11/2023 01:04:14
-..\..\..\build\resources\main\fxml\core\ui\ProjectAnalysis.fxml
-21/11/2023 01:04:14
-..\..\..\build\resources\main\fxml\core\ui\ProjectCaptures.fxml
-21/11/2023 01:04:14
-..\..\..\build\resources\main\fxml\core\ui\ProjectMenu.fxml
-21/11/2023 01:04:14
-..\..\..\build\resources\main\fxml\core\ui\ProjectParticipants.fxml
-21/11/2023 01:04:14
-..\..\..\build\resources\main\fxml\core\ui\ProjectVisualization.fxml
-21/11/2023 01:04:14
-..\..\..\build\resources\main\fxml\core\ui\Settings.fxml
-21/11/2023 01:04:14
-..\..\..\build\resources\main\fxml\wizard\ui\Activities.fxml
-21/11/2023 01:04:14
-..\..\..\build\resources\main\fxml\wizard\ui\Capture.fxml
-21/11/2023 01:04:14
-..\..\..\build\resources\main\fxml\wizard\ui\EditActivityDialog.fxml
-21/11/2023 01:04:14
-..\..\..\build\resources\main\fxml\wizard\ui\EditParticipantDialog.fxml
-21/11/2023 01:04:14
-..\..\..\build\resources\main\fxml\wizard\ui\Layout.fxml
-21/11/2023 01:04:14
-..\..\..\build\resources\main\fxml\wizard\ui\Observations.fxml
-21/11/2023 01:04:14
-..\..\..\build\resources\main\fxml\wizard\ui\Participants.fxml
-21/11/2023 01:04:14
-..\..\..\build\resources\main\fxml\wizard\ui\Path.fxml
-21/11/2023 01:04:14
-..\..\..\build\resources\main\i18n\mo\analysis\Translations.properties
-21/11/2023 01:04:14
-..\..\..\build\resources\main\i18n\mo\analysis\Translations_en.properties
-21/11/2023 01:04:14
-..\..\..\build\resources\main\i18n\mo\analysis\Translations_es.properties
-21/11/2023 01:04:14
-..\..\..\build\resources\main\i18n\mo\capture\Translations.properties
-21/11/2023 01:04:14
-..\..\..\build\resources\main\i18n\mo\capture\Translations_en.properties
-21/11/2023 01:04:14
-..\..\..\build\resources\main\i18n\mo\capture\Translations_es.properties
-21/11/2023 01:04:14
-..\..\..\build\resources\main\i18n\mo\communication\Translations.properties
-21/11/2023 01:04:14
-..\..\..\build\resources\main\i18n\mo\communication\Translations_en.properties
-21/11/2023 01:04:14
-..\..\..\build\resources\main\i18n\mo\communication\Translations_es.properties
-21/11/2023 01:04:14
-..\..\..\build\resources\main\i18n\mo\core\filemanagement\project\Translations.properties
-21/11/2023 01:04:14
-..\..\..\build\resources\main\i18n\mo\core\filemanagement\project\Translations_en.properties
-21/11/2023 01:04:14
-..\..\..\build\resources\main\i18n\mo\core\filemanagement\project\Translations_es.properties
-21/11/2023 01:04:14
-..\..\..\build\resources\main\i18n\mo\core\Translations.properties
-21/11/2023 01:04:14
-..\..\..\build\resources\main\i18n\mo\core\Translations_en.properties
-21/11/2023 01:04:14
-..\..\..\build\resources\main\i18n\mo\core\Translations_es.properties
-21/11/2023 01:04:14
-..\..\..\build\resources\main\i18n\mo\core\ui\menubar\Translations.properties
-21/11/2023 01:04:15
-..\..\..\build\resources\main\i18n\mo\core\ui\menubar\Translations_en.properties
-21/11/2023 01:04:15
-..\..\..\build\resources\main\i18n\mo\core\ui\menubar\Translations_es.properties
-21/11/2023 01:04:15
-..\..\..\build\resources\main\i18n\mo\visualization\Translations.properties
-21/11/2023 01:04:15
-..\..\..\build\resources\main\i18n\mo\visualization\Translations_en.properties
-21/11/2023 01:04:15
-..\..\..\build\resources\main\i18n\mo\visualization\Translations_es.properties
-21/11/2023 01:04:15
-..\..\..\build\resources\main\i18n\mo\wizardproject\Translations.properties
-21/11/2023 01:04:15
-..\..\..\build\resources\main\i18n\mo\wizardproject\Translations_en.properties
-21/11/2023 01:04:15
-..\..\..\build\resources\main\i18n\mo\wizardproject\Translations_es.properties
-21/11/2023 01:04:15
-..\..\..\build\resources\main\i18n\mo.core.filemanagement.Translations.properties
-21/11/2023 01:04:15
-..\..\..\build\resources\main\i18n\mo.core.filemanagement.Translations_en.properties
-21/11/2023 01:04:15
-..\..\..\build\resources\main\i18n\mo.core.filemanagement.Translations_es.properties
-21/11/2023 01:04:15
-..\..\..\build\resources\main\i18n\mo.core.ui.dockables.Translations.properties
-21/11/2023 01:04:15
-..\..\..\build\resources\main\i18n\mo.core.ui.dockables.Translations_es.properties
-21/11/2023 01:04:15
-..\..\..\build\resources\main\i18n\mo.organization.visualization.tree.Translations.properties
-21/11/2023 01:04:15
-..\..\..\build\resources\main\i18n\mo.organization.visualization.tree.Translations_en.properties
-21/11/2023 01:04:15
-..\..\..\build\resources\main\i18n\mo.organization.visualization.tree.Translations_es.properties
-21/11/2023 01:04:15
-..\..\..\build\resources\main\imagenes\audio.jpg
-21/11/2023 01:04:15
-..\..\..\build\resources\main\imagenes\cerrar.png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\imagenes\maximizar.png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\imagenes\minimizar.png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\imagenes\mo.png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\imagenes\plus_icon-icons.com_69476.png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\imagenes\pre mockup.jpeg
-21/11/2023 01:04:15
-..\..\..\build\resources\main\imagenes\reproductor.png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\imagenes\restaurar.png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\imagenes\user-icon.png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\imagenes\video.png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\images\add.png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\images\addCircle.png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\images\analysis.png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\images\audio.png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\images\Capture (2).png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\images\capture.png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\images\delete.png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\images\dragndrop.png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\images\edit.png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\images\folder.png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\images\interface.png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\images\locked-padlock_icon-icons.com_72677.png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\images\locked.png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\images\locked2.png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\images\mo.png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\images\mouse.png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\images\padlock (1).png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\images\participant.png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\images\participant2.png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\images\participants.png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\images\picture.png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\images\plugin.png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\images\rec-paused.png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\images\rec.png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\images\screen.png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\images\spinner.gif
-21/11/2023 01:04:15
-..\..\..\build\resources\main\images\unlocked.png
-21/11/2023 01:04:15
-..\..\..\build\resources\main\images\unlocked2.png
-21/11/2023 01:04:15
-..\..\..\build\test-results\test\TEST-mo.core.plugin.ExtPointTest.xml
-21/11/2023 01:04:51
-..\..\..\build\test-results\test\TEST-mo.core.plugin.gui.RemotePluginInstallerTest.xml
-21/11/2023 01:04:51
-..\..\..\build\test-results\test\TEST-mo.core.plugin.PluginDataTest.xml
-21/11/2023 01:04:51
-..\..\..\build\test-results\test\TEST-mo.core.plugin.PluginTest.xml
-21/11/2023 01:04:51
-..\..\..\build\test-results\test\TEST-mo.visualization.VisualizationPlayerTest.xml
-21/11/2023 01:04:51
-..\..\..\build\tmp\jar\MANIFEST.MF
-07/11/2023 23:54:50
+30/11/2023 02:09:39
 ..\..\..\desktop.ini
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\gradle\wrapper\gradle-wrapper.jar
-15/11/2023 23:44:54
+30/11/2023 02:09:20
 ..\..\..\gradle\wrapper\gradle-wrapper.properties
-15/11/2023 23:44:54
+30/11/2023 02:09:20
 ..\..\..\gradlew
-15/11/2023 23:44:55
+30/11/2023 02:09:20
 ..\..\..\gradlew.bat
-15/11/2023 23:44:55
+30/11/2023 02:09:39
 ..\..\..\IndividualAnalisisAction.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\libs\docking-frames-common.jar
-15/11/2023 00:20:51
+30/11/2023 02:09:20
 ..\..\..\libs\docking-frames-core.jar
-15/11/2023 00:20:51
+30/11/2023 02:09:20
 ..\..\..\libs\preferences.xml
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\LICENSE
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\nbproject\project.properties
-15/11/2023 00:20:51
+30/11/2023 02:09:20
 ..\..\..\preferences.xml
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\README.md
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\sonar-project.properties
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\es\eucm\i18n\I18N.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\analysis\AnalysisDialog.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\analysis\AnalysisPlayer.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\analysis\AnalysisProvider.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\analysis\AnalysisStage.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\analysis\AnalysisTimePanel.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\analysis\AnalyzableConfiguration.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\analysis\AnalyzeAction.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\analysis\IndividualAnalisisAction.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\analysis\IndividualAnalisisDialog.form
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\analysis\IndividualAnalisisDialog.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\analysis\IndividualAnalysisConfiguration.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\analysis\MouseAnalysisPlugin.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\analysis\Note.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\analysis\NotesAnalysisConfig.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\analysis\NotesAnalysisPlugin.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\analysis\NotesConfigDialog.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\analysis\NotesPlayer.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\analysis\NotesRecorder.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\analysis\NotesVisualization.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\analysis\NotPlayableAnalyzableConfiguration.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\analysis\PlayableAnalyzableConfiguration.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\analysis\PluginTrack.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\analysis\TextBox.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\analysis\TimePanelScroll.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\analysis\TimeRuler.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\capture\CaptureProvider.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\capture\CaptureStage.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\capture\RecordableConfiguration.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\capture\RecordAction.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\capture\RecordDialog.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\communication\chat\BubblePane.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\communication\chat\ChatEntry.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\communication\chat\ChatPlugin.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\communication\chat\ChatWindow.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\communication\chat\VerticalScrollPane.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\communication\Command.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\communication\CommunicationConfiguration.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\communication\CommunicationManagement.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\communication\CommunicationProvider.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\communication\CommunicationProvider1.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\communication\CommunicationViewer.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\communication\ConnectionListener.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\communication\ConnectionSender.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\communication\DevicesConfigurationWizardPanel.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\communication\FinishConnectionWizardPanel.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\communication\NewConnectionWizardPanel.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\communication\notes\RemoteNotes.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\communication\PetitionResponse.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\communication\RemoteClient.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\communication\ServerConnection.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\communication\ServerTCP.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\communication\ServerUDP.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\communication\StreamableConfiguration.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\communication\streaming\capture\CaptureConfig.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\communication\streaming\capture\CaptureEvent.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\communication\streaming\capture\PluginCaptureListener.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\communication\streaming\capture\PluginCaptureSender.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\DataFileFinder.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\DirectoryWatcher.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\filemanagement\FilePopupMenu.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\filemanagement\FileRegistry.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\filemanagement\FilesPane.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\filemanagement\FilesTreeModel.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\filemanagement\FileType.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\filemanagement\IFilePopup.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\filemanagement\OpenFileLocation.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\filemanagement\PopupItem.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\filemanagement\PopupOptionProvider.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\filemanagement\PopupRegistry.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\filemanagement\project\NewProjectWizardPanel.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\filemanagement\project\Project.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\filemanagement\project\ProjectCloser.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\filemanagement\project\ProjectManagement.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\filemanagement\project\ProjectOptionProvider.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\filemanagement\project\ProjectUtils.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\I18n.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\Language.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\MainPresenter.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\MainWindow.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\MultimodalObserver.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\plugin\Dependency.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\plugin\Extends.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\plugin\Extension.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\plugin\ExtensionPoint.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\plugin\ExtensionScanner.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\plugin\ExtPoint.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\plugin\gui\Link.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\plugin\gui\LocalPluginInstaller.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\plugin\gui\LogScroll.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\plugin\gui\PlaceholderTextField.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\plugin\gui\PluginError.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\plugin\gui\PluginInfo.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\plugin\gui\PluginList.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\plugin\gui\PluginPlainViewer.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\plugin\gui\PluginUncompressor.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\plugin\gui\PluginViewer.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\plugin\gui\RemotePluginInstaller.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\plugin\gui\Spinner.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\plugin\gui\SplitPaneTriple.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\plugin\gui\Title.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\plugin\gui\TupleList.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\plugin\gui\UpdateRightClick.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\plugin\IUpdatable.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\plugin\Plugin.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\plugin\PluginData.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\plugin\PluginListener.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\plugin\PluginRegistry.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\plugin\VersionUtils.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\preferences\AppPreferencesWrapper.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\preferences\AppProjectPreferencesWrapper.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\preferences\PreferencesManager.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\Translations_ja.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\ui\dockables\DockableElement.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\ui\dockables\DockablesRegistry.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\ui\dockables\DockablesTreeRecreator.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\ui\dockables\IDockableElementProvider.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\ui\dockables\StartupDockableProvider.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\ui\dockables\StorableDockable.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\ui\GridBConstraints.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\ui\menubar\IMenuBarItemImpl.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\ui\menubar\IMenuBarItemProvider.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\ui\menubar\IMenuBarItems.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\ui\menubar\MenuBar.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\ui\menubar\MenuBarItem.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\ui\menubar\MenuItem.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\ui\menubar\MenuItemLocations.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\ui\Utils.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\ui\WizardDialog.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\Utils.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\v2\Analysis\AnalysisDialogV2.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\v2\Analysis\AnalyzeActionV2.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\v2\controller\AddParticipantController.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\v2\controller\AddPluginController.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\v2\controller\MainWindowsController.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\v2\controller\MyProjectsControllerAux.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\v2\controller\NewProjectController.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\v2\controller\PluginsController.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\v2\controller\ProjectAnalysisControllerAux.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\v2\controller\ProjectCapturesControllerAux.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\v2\controller\ProjectMenuController.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\v2\controller\ProjectParticipantsControllerAux.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\v2\controller\ProjectVisualizationControllerAux.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\v2\controller\SettingsController.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\v2\Managment.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\v2\model\Activity.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\v2\model\CommunicationManagementV2.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\v2\model\ConfigurationV2.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\v2\model\Controller.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\v2\model\LanguageV2.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\v2\model\Module.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\v2\model\Organization.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\v2\model\PluginViewerV2.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\v2\model\StageModuleV2.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\v2\model\StagePluginV2.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\v2\ui\WizardDialogV2.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\v2\Vizualization\VisualizationDialogV2.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\v2\Vizualization\VisualizeActionV2.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\core\WatchHandler.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\organization\Configuration.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\organization\FileDescription.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\organization\Organization.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\organization\OrganizationVisualizationMenuItemProvider.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\organization\Participant.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\organization\ProjectOrganization.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\organization\StageAction.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\organization\StageModule.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\organization\StagePlugin.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\organization\visualization\tree\OrganizationDockable.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\organization\visualization\tree\ParticipantDialog.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\organization\visualization\tree\ProjectOrganizationPlugin.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\visualization\gamelooptest\GameLoopPlayer.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\visualization\gamelooptest\Playable2.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\visualization\gamelooptest\PlayerPanel.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\visualization\gamelooptest\TETFixPlayer.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\visualization\Playable.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\visualization\PlayerControlsPanel.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\visualization\test\FakeNeuroSkyServer.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\visualization\test\Gradient.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\visualization\test\LiveHeatMap.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\visualization\VisualizableConfiguration.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\visualization\VisualizationDialog.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\visualization\VisualizationDialog2.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\visualization\VisualizationPlayer.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\visualization\VisualizationProvider.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\visualization\VisualizationStage.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\visualization\VisualizeAction.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\java\mo\wizardproject\controllers\EditActivityDialogController.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\controlador\MainViewController.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\fxml\core\ui\AddParticipant.fxml
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\fxml\core\ui\AddPlugin.fxml
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\fxml\core\ui\MainWindows.fxml
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\fxml\core\ui\MyProjects.fxml
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\fxml\core\ui\NewProject.fxml
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\fxml\core\ui\NewProjectName.fxml
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\fxml\core\ui\Plantilla asitente.fxml
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\fxml\core\ui\Plantilla Config Plugin.fxml
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\fxml\core\ui\Plugins.fxml
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\fxml\core\ui\ProjectAnalysis.fxml
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\fxml\core\ui\ProjectCaptures.fxml
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\fxml\core\ui\ProjectMenu.fxml
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\fxml\core\ui\ProjectParticipants.fxml
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\fxml\core\ui\ProjectVisualization.fxml
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\fxml\core\ui\Settings.fxml
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\fxml\wizard\ui\Activities.fxml
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\fxml\wizard\ui\Capture.fxml
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\fxml\wizard\ui\EditActivityDialog.fxml
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\fxml\wizard\ui\EditParticipantDialog.fxml
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\fxml\wizard\ui\Layout.fxml
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\fxml\wizard\ui\Observations.fxml
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\fxml\wizard\ui\Participants.fxml
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\fxml\wizard\ui\Path.fxml
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\i18n\mo\analysis\Translations.properties
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\i18n\mo\analysis\Translations_en.properties
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\i18n\mo\analysis\Translations_es.properties
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\i18n\mo\capture\Translations.properties
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\i18n\mo\capture\Translations_en.properties
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\i18n\mo\capture\Translations_es.properties
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\i18n\mo\communication\Translations.properties
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\i18n\mo\communication\Translations_en.properties
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\i18n\mo\communication\Translations_es.properties
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\i18n\mo\core\filemanagement\project\Translations.properties
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\i18n\mo\core\filemanagement\project\Translations_en.properties
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\i18n\mo\core\filemanagement\project\Translations_es.properties
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\i18n\mo\core\Translations.properties
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\i18n\mo\core\Translations_en.properties
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\i18n\mo\core\Translations_es.properties
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\i18n\mo\core\ui\menubar\Translations.properties
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\i18n\mo\core\ui\menubar\Translations_en.properties
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\i18n\mo\core\ui\menubar\Translations_es.properties
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\i18n\mo\visualization\Translations.properties
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\i18n\mo\visualization\Translations_en.properties
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\i18n\mo\visualization\Translations_es.properties
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\i18n\mo\wizardproject\Translations.properties
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\i18n\mo\wizardproject\Translations_en.properties
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\i18n\mo\wizardproject\Translations_es.properties
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\i18n\mo.core.filemanagement.Translations.properties
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\i18n\mo.core.filemanagement.Translations_en.properties
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\i18n\mo.core.filemanagement.Translations_es.properties
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\i18n\mo.core.ui.dockables.Translations.properties
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\i18n\mo.core.ui.dockables.Translations_es.properties
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\i18n\mo.organization.visualization.tree.Translations.properties
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\i18n\mo.organization.visualization.tree.Translations_en.properties
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\i18n\mo.organization.visualization.tree.Translations_es.properties
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\main\resources\imagenes\audio.jpg
-15/11/2023 00:20:57
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\imagenes\cerrar.png
-15/11/2023 00:20:57
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\imagenes\maximizar.png
-15/11/2023 00:20:57
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\imagenes\minimizar.png
-15/11/2023 00:20:57
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\imagenes\mo.png
-15/11/2023 00:20:57
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\imagenes\plus_icon-icons.com_69476.png
-15/11/2023 00:20:57
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\imagenes\pre mockup.jpeg
-15/11/2023 00:20:57
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\imagenes\reproductor.png
-15/11/2023 00:20:57
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\imagenes\restaurar.png
-15/11/2023 00:20:57
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\imagenes\user-icon.png
-15/11/2023 00:20:57
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\imagenes\video.png
-15/11/2023 00:20:57
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\images\add.png
-15/11/2023 00:20:57
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\images\addCircle.png
-15/11/2023 00:20:57
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\images\analysis.png
-15/11/2023 00:20:57
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\images\audio.png
-15/11/2023 00:20:57
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\images\Capture (2).png
-15/11/2023 00:20:57
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\images\capture.png
-15/11/2023 00:20:57
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\images\delete.png
-15/11/2023 00:20:57
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\images\dragndrop.png
-15/11/2023 00:20:57
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\images\edit.png
-15/11/2023 00:20:57
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\images\folder.png
-15/11/2023 00:20:57
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\images\interface.png
-15/11/2023 00:20:57
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\images\locked-padlock_icon-icons.com_72677.png
-15/11/2023 00:20:57
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\images\locked.png
-15/11/2023 00:20:57
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\images\locked2.png
-15/11/2023 00:20:57
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\images\mo.png
-15/11/2023 00:20:57
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\images\mouse.png
-15/11/2023 00:20:57
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\images\padlock (1).png
-15/11/2023 00:20:57
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\images\participant.png
-15/11/2023 00:20:57
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\images\participant2.png
-15/11/2023 00:20:57
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\images\participants.png
-15/11/2023 00:20:57
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\images\picture.png
-15/11/2023 00:20:57
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\images\plugin.png
-15/11/2023 00:20:57
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\images\rec-paused.png
-15/11/2023 00:20:58
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\images\rec.png
-15/11/2023 00:20:58
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\images\screen.png
-15/11/2023 00:20:58
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\images\spinner.gif
-15/11/2023 00:20:58
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\images\unlocked.png
-15/11/2023 00:20:58
+30/11/2023 02:09:21
 ..\..\..\src\main\resources\images\unlocked2.png
-15/11/2023 00:20:58
+30/11/2023 02:09:21
 ..\..\..\src\test\java\mo\core\plugin\ExtPointTest.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\test\java\mo\core\plugin\gui\RemotePluginInstallerTest.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\test\java\mo\core\plugin\PluginDataTest.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\test\java\mo\core\plugin\PluginTest.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\test\java\mo\visualization\DummyVisConfig.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\src\test\java\mo\visualization\VisualizationPlayerTest.java
-15/11/2023 01:07:55
+30/11/2023 02:09:39
 ..\..\..\version.txt
-15/11/2023 00:20:58
+01/12/2023 01:23:28
 ..\..\..\versionNotes.txt
-20/11/2023 23:44:03
+30/11/2023 02:09:39

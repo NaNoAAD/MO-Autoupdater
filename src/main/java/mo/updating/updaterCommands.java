@@ -27,6 +27,7 @@ public class updaterCommands {
                 System.out.println("Ejecutando : gradlew.bat build en OS: " + operativeSystem + " en directorio: " + directory);
                 Process process = processB.start();
                 process.waitFor();
+
             } catch (IOException | InterruptedException e) {
                 e.printStackTrace();
                 }

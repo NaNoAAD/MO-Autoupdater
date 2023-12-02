@@ -37,8 +37,8 @@ public class UpdatingController {
             updaterLogic.updaterUpdatingLogic(permissionBoolean, answerBoolean);
             System.out.println("updaterUpdatingLogic - Abriendo MO - Terminando Launcher ");
             //Se abre MO y se cierra la vista y la app
-            updater.openMO();
             stage.close();
+            updater.openMO();
         });
         
     }

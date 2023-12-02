@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 public class updaterPostUpdateProcesses {
     
-    public void deleteLeftoversFiles() throws IOException{
+    public static void deleteLeftoversFiles() throws IOException{
         //Declaro arreglo con archivos locales post update
         List<Path> postUpdatepathList = new ArrayList<>();
 
@@ -63,7 +63,7 @@ public class updaterPostUpdateProcesses {
                 //Se anotan de manera local todos los directorios y fechas de modificacion mientras no contengan las frases en el IF siguiente
                 try {
                     if ( !(pathfile.toString().contains("java\\mo\\updating")) && !(pathfile.toString().contains("Register.txt")) && !(pathfile.toString().contains("RemoteRegister.txt")) && !(pathfile.toString().contains("FileRegister.txt")) && !(pathfile.toString().contains("Repo.zip")) &&
-                    !(pathfile.toString().contains(".gradle")) && !(pathfile.toString().contains(".git")) && !(pathfile.toString().contains("\\bin")) && !(pathfile.toString().contains("PostUpdateRegister.txt")) ){
+                    !(pathfile.toString().contains(".gradle")) && !(pathfile.toString().contains(".git")) && !(pathfile.toString().contains("\\bin")) && !(pathfile.toString().contains("PostUpdateRegister.txt")) && !(pathfile.toString().contains("\\build")) ){
                         BasicFileAttributes attributes = Files.readAttributes(pathfile, BasicFileAttributes.class);
                         long milisegundos = attributes.lastModifiedTime().toMillis();
                         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -84,7 +84,7 @@ public class updaterPostUpdateProcesses {
             writer.close();
             System.out.println("Eliminando ultimo salto de linea\n");
             //Lo volvemos a abrir para eliminar el ultimo salto de linea y evitar insconsistencias en la comparacion de registros
-            File file2 = new File("PostUpdateRegister.txt.txt");
+            File file2 = new File("PostUpdateRegister.txt");
             RandomAccessFile raf = new RandomAccessFile(file2, "rw");
             long size = raf.length();
             if (size > 0) {
@@ -134,27 +134,36 @@ public class updaterPostUpdateProcesses {
             e.printStackTrace();
         }
 
+        //Se hara el mismo proceso con el arreglo de fileClass post update
+        System.out.println("Se procesa el nuevo registro local post update en arreglos\n");
+        //Variable limitadoras
+        evenOdd = 0;
+        fileName = "";
+        try {
+            for (String content : remoteFileContent) {
+                if(evenOdd == 0){
+                    fileName = content;
+                    evenOdd += 1;
+                }else {                    
+                    date = dateFormat.parse(content);
+                    evenOdd -= 1;
+                    fileClass postfile = new fileClass(fileName, date);
+                    remoteFileArray.add(postfile);
+                }
+            } 
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
 
         //Este proceso comparara los arreglos de una forma diferente como se maneja en updaterRegisterComparisson
         //Si un archivo local luego del update NO esta en el registro remoto con anterioridad, este se borrara
-        for(fileClass postUpdatefilePath: postUpdatelocalFileArray){
-            int count = 0;
-            for(fileClass remoteFileClass: remoteFileArray){
-                if (fileClass.hasSameName(postUpdatefilePath, remoteFileClass)) {
-                    //Se encontro el archivo en el registro remoto, su existencia es valida
-                    count += 1;
-                    break;
-                } else {
-                    continue;
-                }
-            }
-            if (count == 0) {
+        for(fileClass postUpdatefileclass: postUpdatelocalFileArray){
+            if(!fileClass.isInArrayByName(postUpdatefileclass, remoteFileArray)){
                 //Si su existencia por nombre no fue igualada, este se borra
-                Files.deleteIfExists(Paths.get(postUpdatefilePath.getName()));
-                System.out.println("Archivo Sobrante borrado : " + postUpdatefilePath.getName());
-            } else {
-                count = 0;
-                continue;
+                Files.deleteIfExists(Paths.get(postUpdatefileclass.getName()));
+                System.out.println("Archivo Sobrante borrado : " + postUpdatefileclass.getName());
             }
         }
 
