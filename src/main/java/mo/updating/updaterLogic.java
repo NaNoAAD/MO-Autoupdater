@@ -49,7 +49,7 @@ public class updaterLogic {
 
             //Se comparan los registros generados para verificar por segunda vez si corresponde actualizar (true == existen diferencias)
             boolean answer = updaterRegisterComparison.differencesInRegisters(Paths.get("Register.txt"), Paths.get("RemoteRegister.txt"));
-            System.out.println("(updaterLogic.java) - Procesados los registros en arreglos! y las versiones\nEl permiso por comparar versiones es: " + String.valueOf(permission1) + "\nY las diferencias en los registros son: " + String.valueOf(answer));
+            System.out.println("(updaterLogic.java) - Procesados los registros en arreglos! y las versiones\n--- El permiso por comparar versiones es: " + String.valueOf(permission1) + "\n--- Y las diferencias en los registros son: " + String.valueOf(answer));
 
             return answer;
         } catch (IOException e) {

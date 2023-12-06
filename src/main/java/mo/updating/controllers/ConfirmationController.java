@@ -82,10 +82,10 @@ public class ConfirmationController implements Initializable{
             Scene scene = new Scene(root);
 
             //Se instancia el controller par usar el metodo propio de Updating
-            UpdatingController controller = loader.getController();
+            //UpdatingController controller = loader.getController();
 
             //Con los recursos listos y mostrados, al igual que en SplashController se ejecuta metodo
-            controller.secondPlaneUpdating(stage);
+            //controller.secondPlaneUpdating(stage);
 
 
 
@@ -97,6 +97,9 @@ public class ConfirmationController implements Initializable{
 
             // Mostrar la nueva vista
             newStage.show();    
+
+            //Con los recursos listos y mostrados, al igual que en SplashController se ejecuta metodo
+            //controller.secondPlaneUpdating(stage);
         } catch (Exception e) {
             e.printStackTrace();
         }

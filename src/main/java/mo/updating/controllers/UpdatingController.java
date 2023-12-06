@@ -1,6 +1,7 @@
 package mo.updating.controllers;
 
 import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -20,27 +21,35 @@ public class UpdatingController {
     @FXML
     private void initialize() throws IOException{
         System.out.println("(UpdatingController.java) - Inicializando Vista de Actualizacion en progreso");
+        progress.setProgress(ProgressBar.INDETERMINATE_PROGRESS);
+        //Ejecutamos las operaciones logicas de actualizacion en un hilo de fondo
+        //Para evitar que bloqueen la responsividad de la animcacion de la barra de progreso indeterminada
+        CompletableFuture.runAsync(() -> {
+            //Asegurandonos que la pantalla y la barra de progreso ya estan mostradas, se procede con el procedimiento de actualizacion
+            // Se obtienen los permisos de los procesos anteriores de comparacion gracias a su naturaleza Static
+            Boolean permissionBoolean = SplashScreenController.getPermission1Obtained();
+            Boolean answerBoolean = SplashScreenController.getAnswerObtained();
+            //Usamos la logica responsable de actualizacion
+            updaterLogic.updaterUpdatingLogic(permissionBoolean, answerBoolean);
+
+            System.out.println("(UpdatingController.java) - Abriendo MO - Terminando Launcher ");
+
+            // Se abre MO
+            updater.openMO();
+
+            // Cierra la vista en el hilo de JavaFX y se cierra la app
+            Platform.runLater(() -> closeStage());
+        });
     }
 
     /**
-     * Metodo que permite la ejecucion de la logica de actualizacion en segundo plano, obteniendo los booleans dados por los permisos anteriores
-     * @param stage
+     * Metodo interno del conrolador que cierra la vista y tambien la app
      */
-    public void secondPlaneUpdating(Stage stage){
-        System.out.println("(UpdatingController.java) - Inicio de secondplaneUpdating");
-        //Se obtienen los permisos de los procesos anteriores de comparacion gracias a su naturaleza Static
-        Boolean permissionBoolean = SplashScreenController.getPermission1Obtained();
-        Boolean answerBoolean = SplashScreenController.getAnswerObtained();
-        //Asegurandonos que la pantalla y la barra de progreso ya estan mostradas, se procede con el procedimiento de actualizacion
-        Platform.runLater(() -> {
-            
-            updaterLogic.updaterUpdatingLogic(permissionBoolean, answerBoolean);
-            System.out.println("(UpdatingController.java) - Abriendo MO - Terminando Launcher ");
-            //Se abre MO y se cierra la vista y la app
-            stage.close();
-            updater.openMO();
-        });
-        
+    private void closeStage() {
+        // Obtén el Stage asociado a la vista a traves de la barra de progreso
+        Stage stage = (Stage) progress.getScene().getWindow();
+        // Cerrado del Stage (y la vista)
+        stage.close();
     }
 
 }  //Fin controller
