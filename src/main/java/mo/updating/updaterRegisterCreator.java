@@ -58,12 +58,12 @@ public class updaterRegisterCreator {
             // Crea el archivo si no existe
             if (!Files.exists(file)) {
                 Files.createFile(file);
-                System.out.println("El registro no existia, Se ha creado el archivo 'Register.txt' con lo necesario\n");
+                System.out.println("(updaterRegisterCreator.java) - El registro no existia, Se ha creado el archivo 'Register.txt' con lo necesario\n");
             } else {
-                System.out.println("El archivo 'Register.txt' ya existe. Se borra para crear uno nuevo\n");
+                System.out.println("(updaterRegisterCreator.java) - El archivo 'Register.txt' ya existe. Se borra para crear uno nuevo\n");
                 Files.delete(file);
                 Files.createFile(file);
-                System.out.println("Se ha creado otro archivo 'Register.txt\n");
+                System.out.println("(updaterRegisterCreator.java) - Se ha creado otro archivo 'Register.txt\n");
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -96,7 +96,7 @@ public class updaterRegisterCreator {
     
             // Cierra el archivo para guardar cambios
             writer.close();
-            System.out.println("Eliminando ultimo salto de linea\n");
+            System.out.println("(updaterRegisterCreator.java) - Eliminando ultimo salto de linea\n");
             //Lo volvemos a abrir para eliminar el ultimo salto de linea y evitar insconsistencias en la comparacion de registros
             File file2 = new File("Register.txt");
             RandomAccessFile raf = new RandomAccessFile(file2, "rw");

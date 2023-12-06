@@ -27,13 +27,13 @@ public class updaterDownloader {
     public static boolean downloadFilesFromRepository(boolean permissionToUpdateByVersions, boolean differencesInRegisters) throws IOException{
         //Se revisan los permisos dados por los resultados de las comparaciones
         if(permissionToUpdateByVersions == false || differencesInRegisters == false){
-            System.out.println("No se cumplen los requisitos para actualizar\nSe vuelve a Updater.main() \n");
-            System.out.println("permissionToUpdateByVersions indica: " + String.valueOf(permissionToUpdateByVersions) + "\n" + "differencesInRegisters indica: " + String.valueOf(differencesInRegisters) + "\n");
+            System.out.println("(updaterDownloader.java) - No se cumplen los requisitos para actualizar\nSe vuelve a Updater.main() \n");
+            System.out.println("(updaterDownloader.java) - permissionToUpdateByVersions indica: " + String.valueOf(permissionToUpdateByVersions) + "\n" + "differencesInRegisters indica: " + String.valueOf(differencesInRegisters) + "\n");
             return false;
         } else {
             try {
                 //Se descarga el codigo fuente del repositorio de github desde el link predeterminado
-                System.out.println("Se descarga el zip desde el repositorio\n");
+                System.out.println("(updaterDownloader.java) - Se descarga el zip desde el repositorio\n");
                 URL website = new URL("https://github.com/NaNoAAD/MO-Autoupdater/archive/refs/heads/master.zip");
                 ReadableByteChannel rbc = Channels.newChannel(website.openStream());
                 FileOutputStream fos = new FileOutputStream("Repo.zip");

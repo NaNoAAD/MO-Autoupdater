@@ -32,7 +32,7 @@ public class ConfirmationController implements Initializable{
     // Lógica de inicialiacion de la vista de confirmacion
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("-Inicializando Vista de confirmacion");
+        System.out.println("(ConfirmationController.java) - Inicializando Vista de confirmacion");
         // Establecer el TextArea newNotesVersion como de solo lectura
         String notes = "";
         try {
@@ -56,7 +56,7 @@ public class ConfirmationController implements Initializable{
      */
     @FXML
     private void cancelUpdate(ActionEvent event){
-        System.out.println("Cerrando app");
+        System.out.println("(ConfirmationController.java) - Cerrando app");
         Stage stage = (Stage) this.noButton.getScene().getWindow();
         stage.close();
     }
@@ -67,7 +67,7 @@ public class ConfirmationController implements Initializable{
      */
     @FXML
     private void acceptUpdate(ActionEvent event){
-        System.out.println("Abriendo vista Updating");
+        System.out.println("(ConfirmationController.java) - Abriendo vista Updating");
         Stage stage = (Stage) this.yesButton.getScene().getWindow();
         stage.close();
         //Se hace apertura de la vista de actualizacion en progreso

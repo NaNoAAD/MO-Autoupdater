@@ -30,12 +30,12 @@ public class updaterVersionNotesRegister {
             // Crea el archivo si no existe
             if (!Files.exists(file)) {
                 Files.createFile(file);
-                System.out.println("El registro de notas no existia, Se ha creado el archivo 'versionNotes.txt'\n");
+                System.out.println("(updaterVersionNotesRegister.java) - El registro de notas no existia, Se ha creado el archivo 'versionNotes.txt'\n");
             } else {
                 System.out.println("El archivo 'versionNotes.txt' ya existe. Se borra para crear uno nuevo\n");
                 Files.delete(file);
                 Files.createFile(file);
-                System.out.println("Se ha creado otro archivo 'versionNotes.txt\n");
+                System.out.println("(updaterVersionNotesRegister.java) - Se ha creado otro archivo 'versionNotes.txt\n");
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -87,7 +87,7 @@ public class updaterVersionNotesRegister {
         //Si la solicitud tiene exito (codigo 200)
         if (responseCode == 200) {
 
-            System.out.println("Ingresamos sin problemas al Repositorio para buscar las notas de version \nLink: " + apiUrl + "\n");
+            System.out.println("(updaterVersionNotesRegister.java) - Ingresamos sin problemas al Repositorio para buscar las notas de version \nLink: " + apiUrl + "\n");
             
             BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             //JSON respuesta con contenidos de la solicitud
@@ -95,7 +95,7 @@ public class updaterVersionNotesRegister {
             String jsonResponse = reader.lines().collect(Collectors.joining());
             reader.close();
 
-            System.out.println("JSON DE SOLICITUD A TXT REMOTO versionNotes.txt\n");
+            System.out.println("(updaterVersionNotesRegister.java) - JSON DE SOLICITUD A TXT REMOTO versionNotes.txt\n");
             System.out.println(jsonResponse);
             
             //Se obtiene la version remota a traves del txt que lo indica
@@ -106,7 +106,7 @@ public class updaterVersionNotesRegister {
             
             
         } else {
-            System.err.println("Error en la solicitud de obtencion de notas de version remotas. Codigo: " + responseCode);
+            System.err.println("(updaterVersionNotesRegister.java) - Error en la solicitud de obtencion de notas de version remotas. Codigo: " + responseCode);
             versionNotes = "NULL";
             return versionNotes;
         }

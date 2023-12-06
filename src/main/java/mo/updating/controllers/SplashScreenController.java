@@ -19,7 +19,7 @@ public class SplashScreenController {
     // Lógica y métodos para el SplashScreen
     @FXML
     private void initialize() {
-        System.out.println("-Inicializando Vista Splasher");
+        System.out.println("(SplashScreenController.java) - Inicializando Vista Splasher");
         //boolean permission1 = updaterLogic.updaterComparissonLogic();
         
     }
@@ -97,7 +97,7 @@ public class SplashScreenController {
                       */
                     if(permission1Obtained == true && answerObtained == true){
                         try {
-                            System.out.println("-Inciando proceso de Updating - permisos en true");
+                            System.out.println("(SplashScreenController.java) - Inciando proceso de Updating - permisos en true");
                             //Se debe actualizar, se cierra el splasher y se accede a la vista de confirmacion
                             stage.close();
                             // Se carga FXML con vista de confirmacion

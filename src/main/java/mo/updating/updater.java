@@ -10,7 +10,8 @@ import javafx.stage.WindowEvent;
 import mo.updating.controllers.SplashScreenController;
 
 /**
- * Clase principal encarga de iniciar el launcher y las vistas
+ * Clase principal encarga de iniciar el launcher, la logica y todo los demas procesos
+ * Contiene el metodo main()
  */
 public class updater extends Application {
 
@@ -36,7 +37,7 @@ public class updater extends Application {
      */
     private void loadSplashView(String fxml, String title, Stage stage) throws Exception{
         try {
-            System.out.println("-Se carga vista de Splasher");
+            System.out.println("(updater.java) - Se carga vista de Splasher");
             //Se carga el archivo de vista
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
 
@@ -87,11 +88,11 @@ public class updater extends Application {
 
 
     /**
-     * Metodo que ejecuta Multimodal Observer
+     * Metodo que ejecuta Multimodal Observer a traves de su .jar
      */
     public static void openMO(){
         try {
-            System.out.println("-Apertura de MO - Finalizando Launcher");
+            System.out.println("(updater.java) -Apertura de MO - Finalizando Launcher");
             // Iniciar MO
             //Es importante que este comando tenga el nombre el .jar de MO (verificar el uso de contains)
             Runtime.getRuntime().exec("java -jar multimodal-observer-server-5-0.0.0.jar");

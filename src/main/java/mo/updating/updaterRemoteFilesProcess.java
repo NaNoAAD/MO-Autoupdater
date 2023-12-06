@@ -46,7 +46,7 @@ public class updaterRemoteFilesProcess {
         //Si la solicitud tiene exito (codigo 200)
         if (responseCode == 200) {
 
-            System.out.println(" (updaterRemoteFilesProcess) Ingresamos sin problemas al Repositorio! \nLink: " + apiUrl + "\n");
+            System.out.println("(updaterRemotefilesProcess.java) - Ingresamos sin problemas al Repositorio! \nLink: " + apiUrl + "\n");
             
             //Se genera un buffer que leera la respuesta de la solicitud de la API
             BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -62,7 +62,7 @@ public class updaterRemoteFilesProcess {
             if (Files.exists(registerPath)) {
                 try {
                     //Si archivo existe, se borra y se crea de nuevo
-                    System.out.println("Registro remoto existia localmente\n");
+                    System.out.println("(updaterRemotefilesProcess.java) - Registro remoto existia localmente\n");
                     Files.delete(registerPath);
                     FileWriter fileWriter = new FileWriter("RemoteRegister.txt");
                     fileWriter.write(jsonResponse);
@@ -72,14 +72,14 @@ public class updaterRemoteFilesProcess {
                 }
             } else {
                 //Caso contrario, simplemente se crea
-                System.out.println("Registro remoto no existia localmente\n");
+                System.out.println("(updaterRemotefilesProcess.java) - Registro remoto no existia localmente\n");
                 FileWriter fileWriter = new FileWriter("RemoteRegister.txt");
                 fileWriter.write(jsonResponse);
                 fileWriter.close();
             }          
 
         } else {
-            System.err.println("Error en la solicitud. Codigo: " + responseCode);
+            System.err.println("(updaterRemotefilesProcess.java) - Error en la solicitud. Codigo: " + responseCode);
         }
     }
 }

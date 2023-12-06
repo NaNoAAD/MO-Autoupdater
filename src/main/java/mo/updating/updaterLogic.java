@@ -7,16 +7,19 @@ import java.nio.file.Paths;
 import java.util.List;
 
 /**
- * Clase principal del Updater
+ * Clase que contiene de manera general toa la logica del updater. Dividida en 3 metodos
  */
 public class updaterLogic {
 
-    //METODO MAIN
+    /**
+     * Primer metodo contendor de la logica del updater. Obtiene los primeros permisos para establecer si se puede o no
+     *  actualizar Multimodal Observer
+     * @return true si las comparaciones entre registros entre archivos y las versiones declaradas arrojan diferencias necesarias para actulizar
+     */
     public static boolean updaterpermissionsLogic() {
         boolean permission1 = false;
 
         try {
-
             //Lectura de la version local indicada en version.txt
             String localVersion = updaterPermissions.getMOVersion();
 
@@ -46,13 +49,13 @@ public class updaterLogic {
 
             //Se comparan los registros generados para verificar por segunda vez si corresponde actualizar (true == existen diferencias)
             boolean answer = updaterRegisterComparison.differencesInRegisters(Paths.get("Register.txt"), Paths.get("RemoteRegister.txt"));
-            System.out.println("Procesados los registros en arreglos! y las versiones\nEl permiso por comparar versiones es: " + String.valueOf(permission1) + "\nY las diferencias en los registros son: " + String.valueOf(answer));
+            System.out.println("(updaterLogic.java) - Procesados los registros en arreglos! y las versiones\nEl permiso por comparar versiones es: " + String.valueOf(permission1) + "\nY las diferencias en los registros son: " + String.valueOf(answer));
 
             return answer;
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("updaterComparissonLogic . Respuesta defecto: false");
+        System.out.println("(updaterLogic.java) - Respuesta defecto: false");
         return false;
 
     }

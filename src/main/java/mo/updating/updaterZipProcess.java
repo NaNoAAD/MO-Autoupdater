@@ -31,7 +31,7 @@ public class updaterZipProcess {
     public static void unzipFile(String zipPath, String targetDirectory, boolean permissionFromDownload) throws IOException {
         //Se revisa si el archivo .zip fue descargado
         if (permissionFromDownload == false){
-            System.out.println("El proceso de unzipping no tiene los permisos\n");
+            System.out.println("(updaterZipProcess.java) - El proceso de unzipping no tiene los permisos\n");
             return;
         }
 
@@ -60,7 +60,7 @@ public class updaterZipProcess {
 
                 if (zipEntry.isDirectory()) {
                     //Si lo procesado resulta ser un directorio, se crea un igual como tal
-                    System.out.println("Unzipping Directorio: " + fileName);
+                    System.out.println("(updaterZipProcess.java) - Unzipping Directorio: " + fileName);
                     newFile.mkdirs();
                 } else {
                     //Caso contrario, es un archivo y con su nombre se procede a crear el mismo
@@ -68,7 +68,7 @@ public class updaterZipProcess {
                     new File(newFile.getParent()).mkdirs();
                     //Y con necesario, se crea el nuevo archivo hasta agotar los bytes del buffer de lectura
                     try (FileOutputStream fos = new FileOutputStream(newFile)) {
-                        System.out.println("Unzipping Archivo: " + fileName);
+                        System.out.println("(updaterZipProcess.java) - Unzipping Archivo: " + fileName);
                         int len;
                         while ((len = zis.read(buffer)) > 0) {
                             fos.write(buffer, 0, len);
@@ -82,7 +82,7 @@ public class updaterZipProcess {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("El proceso de unzipping ha terminado\n");
+        System.out.println("(updaterZipProcess.java) - El proceso de unzipping ha terminado\n");
         //Se procede con el borrado del archivo .zip descargado
         try {
             // Se obtiene la ruta del .zip descargado
@@ -91,9 +91,9 @@ public class updaterZipProcess {
             // Si existe el archivo, se eliminara
             Files.deleteIfExists(ZIPdownloaded);
 
-            System.out.println("Archivo .zip Descargado Eliminado");
+            System.out.println("(updaterZipProcess.java) - Archivo .zip Descargado Eliminado");
         } catch (IOException e) {
-            System.out.println("Error intentando eliminar el .zip" + e.getMessage());
+            System.out.println("(updaterZipProcess.java) - Error intentando eliminar el .zip" + e.getMessage());
         }
     }
 

@@ -19,10 +19,10 @@ public class updaterPluginsUpdating {
         try {
             // Si el archivo no existe, no es posible saber que plugins pueden/deben actualizarse
             if (!Files.exists(registerFile)) {
-                System.out.println("El registro de plugins a supervisar no existe\n Se omite la revision de los Plugins");
+                System.out.println("(updaterPluginsUpdating.java) - El registro de plugins a supervisar no existe\n Se omite la revision de los Plugins");
                 Files.deleteIfExists(registerFile);
             } else {
-                System.out.println("El registro de plugins a supervisar existe\n Se revisa si el formato es el adecuado");
+                System.out.println("(updaterPluginsUpdating.java) - El registro de plugins a supervisar existe\n Se revisa si el formato es el adecuado");
                 Files.deleteIfExists(registerFile);
             }
         } catch (IOException e) {

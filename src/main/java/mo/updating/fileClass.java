@@ -54,6 +54,12 @@ public class fileClass {
         }
     }
 
+    /**
+     * Metodo fileClassque permite averiguar si un objeto fileClass se encuentra solo por NOMBRE en un arreglo de objetos fileClass
+     * @param fileclass Objeto sencillo fileClass que se busca encontrar por nombre
+     * @param fileClassArray Arreglo de objetos fileClass
+     * @return true si el objeto fileclass est presente por su nombre, false en caso contrario
+     */
     public static Boolean isInArrayByName(fileClass fileclass, ArrayList<fileClass> fileClassArray){
         Boolean response = false;
         for (fileClass fileClassIterator : fileClassArray) {

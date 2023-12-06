@@ -29,17 +29,17 @@ public class updaterPermissions {
             // Si el archivo de Notas de version no existe, se cancela la opcion de actualizar y se da el paso a ejecutar directamente MO
             if (!Files.exists(file)) {
                 //Files.createFile(file);
-                System.out.println("El archivo de version no existe \n");
+                System.out.println("(updaterPermissions.java) - El archivo de version no existe \n");
                 return versionString = "NULL";
             } else {
-                System.out.println("El archivo de version ya existe. Se Procede con Launcher\n");
+                System.out.println("(updaterPermissions.java) - El archivo de version ya existe. Se Procede con Launcher\n");
                 //Files.delete(file);
                 //Files.createFile(file);
                 //System.out.println("Se ha creado otro archivo 'Register.txt'");
                 // Creating object of FileReader and BufferedReader  
                 lines = Files.readAllLines(file);
                 versionString = lines.get(0);
-                System.out.println("version indicada en version.txt local: " + versionString + "\n" );
+                System.out.println("(updaterPermissions.java) - version indicada en version.txt local: " + versionString + "\n" );
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -78,7 +78,7 @@ public class updaterPermissions {
         //Si la solicitud tiene exito (codigo 200)
         if (responseCode == 200) {
 
-            System.out.println("Ingresamos sin problemas al Repositorio para buscar la version en txt remoto! \nLink: " + apiUrl + "\n");
+            System.out.println("(updaterPermissions.java) - Ingresamos sin problemas al Repositorio para buscar la version en txt remoto! \nLink: " + apiUrl + "\n");
             
             BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             //JSON respuesta con contenidos de la solicitud
@@ -86,18 +86,18 @@ public class updaterPermissions {
             String jsonResponse = reader.lines().collect(Collectors.joining());
             reader.close();
 
-            System.out.println("JSON DE SOLICITUD A TXT REMOTO version.txt\n");
+            System.out.println("(updaterPermissions.java) - JSON DE SOLICITUD A TXT REMOTO version.txt\n");
             System.out.println(jsonResponse.toString());
             
             //Se obtiene la version remota a traves del txt que lo indica
             version = jsonResponse.toString();
             
-            System.out.println("DEL JSON SE OBTIENE: " + version + "\n");
+            System.out.println("(updaterPermissions.java) - DEL JSON SE OBTIENE: " + version + "\n");
             return version;
             
             
         } else {
-            System.err.println("Error en la solicitud de obtencion de version remota. Codigo: " + responseCode);
+            System.err.println("(updaterPermissions.java) - Error en la solicitud de obtencion de version remota. Codigo: " + responseCode);
             version = "NULL";
             return version;
         }
@@ -115,18 +115,18 @@ public class updaterPermissions {
      * @throws IOException
      */
     public static boolean permissionToUpdateByVersions(String localVersion, String RemoteVersion) throws IOException{
-        System.out.println("Versiones a comparar >> local " + localVersion + " " + "remoto: " + RemoteVersion + "\n");
+        System.out.println("(updaterPermissions.java) - Versiones a comparar >> local " + localVersion + " " + "remoto: " + RemoteVersion + "\n");
         if(localVersion == "NULL" || RemoteVersion == "NULL"){
-            System.out.println("localVersion o RemoteVersion indican NULL, no hay actualizacion\n");
+            System.out.println("(updaterPermissions.java) - localVersion o RemoteVersion indican NULL, no hay actualizacion\n");
             return false;
         } else if (localVersion.compareTo(RemoteVersion) < 0) {
-            System.out.println("localVersion" + " es menor que " + "RemoteVersion\nSe procede a Actualizar\n");
+            System.out.println("(updaterPermissions.java) - localVersion" + " es menor que " + "RemoteVersion\nSe procede a Actualizar\n");
             return true;
         } else if (localVersion.compareTo(RemoteVersion) > 0) {
-            System.out.println("localVersion" + " es mayor que " + "RemoteVersion\n Innecesario Actualizar\n");
+            System.out.println("(updaterPermissions.java) - localVersion" + " es mayor que " + "RemoteVersion\n Innecesario Actualizar\n");
             return false;
         } else {
-            System.out.println("Los txt indican versiones iguales, no se Actualiza\n");
+            System.out.println("(updaterPermissions.java) - Los txt indican versiones iguales, no se Actualiza\n");
             return false;
         }
     }

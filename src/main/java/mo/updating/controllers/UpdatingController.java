@@ -19,7 +19,7 @@ public class UpdatingController {
 
     @FXML
     private void initialize() throws IOException{
-        System.out.println("-Inicializando Vista de Actualizacion en progreso");
+        System.out.println("(UpdatingController.java) - Inicializando Vista de Actualizacion en progreso");
     }
 
     /**
@@ -27,7 +27,7 @@ public class UpdatingController {
      * @param stage
      */
     public void secondPlaneUpdating(Stage stage){
-        System.out.println("-Inicio de secondplaneUpdating");
+        System.out.println("(UpdatingController.java) - Inicio de secondplaneUpdating");
         //Se obtienen los permisos de los procesos anteriores de comparacion gracias a su naturaleza Static
         Boolean permissionBoolean = SplashScreenController.getPermission1Obtained();
         Boolean answerBoolean = SplashScreenController.getAnswerObtained();
@@ -35,7 +35,7 @@ public class UpdatingController {
         Platform.runLater(() -> {
             
             updaterLogic.updaterUpdatingLogic(permissionBoolean, answerBoolean);
-            System.out.println("updaterUpdatingLogic - Abriendo MO - Terminando Launcher ");
+            System.out.println("(UpdatingController.java) - Abriendo MO - Terminando Launcher ");
             //Se abre MO y se cierra la vista y la app
             stage.close();
             updater.openMO();

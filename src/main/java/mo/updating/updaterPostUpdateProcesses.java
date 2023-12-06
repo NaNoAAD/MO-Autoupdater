@@ -82,7 +82,7 @@ public class updaterPostUpdateProcesses {
     
             // Cierra el archivo para guardar cambios
             writer.close();
-            System.out.println("Eliminando ultimo salto de linea\n");
+            System.out.println("(updaterPostUpdateProcess.java) - Eliminando ultimo salto de linea\n");
             //Lo volvemos a abrir para eliminar el ultimo salto de linea y evitar insconsistencias en la comparacion de registros
             File file2 = new File("PostUpdateRegister.txt");
             RandomAccessFile raf = new RandomAccessFile(file2, "rw");
@@ -100,7 +100,7 @@ public class updaterPostUpdateProcesses {
         List<String> postUpdateLocalFileContent = Files.readAllLines(Paths.get("PostUpdateRegister.txt"));
         List<String> remoteFileContent = Files.readAllLines(Paths.get("RemoteRegister.txt"));
 
-        System.out.println("Post Update -> Tamaño Listas" + String.valueOf(postUpdateLocalFileContent.size()) + " VS " + String.valueOf(remoteFileContent.size())+ "\n");
+        System.out.println("(updaterPostUpdateProcess.java) - Tamaño Listas" + String.valueOf(postUpdateLocalFileContent.size()) + " VS " + String.valueOf(remoteFileContent.size())+ "\n");
 
         //Se inicializa una lista con objetos File
         ArrayList<fileClass> postUpdatelocalFileArray = new ArrayList<>();
@@ -113,7 +113,7 @@ public class updaterPostUpdateProcesses {
 
         //Para el nuevo registro, se tomaran los pares como archivos, y los impares como ultimas fechas de modificacion siguiendo el formato de los registros
         //Se usara la clase fileclass propia de updater para manejar y procesar la informacion
-        System.out.println("Se procesa el nuevo registro local post update en arreglos\n");
+        System.out.println("(updaterPostUpdateProcess.java) - Se procesa el nuevo registro local post update en arreglos\n");
         //Variable limitadoras
         int evenOdd = 0;
         String fileName = "";
@@ -135,7 +135,7 @@ public class updaterPostUpdateProcesses {
         }
 
         //Se hara el mismo proceso con el arreglo de fileClass post update
-        System.out.println("Se procesa el nuevo registro local post update en arreglos\n");
+        System.out.println("(updaterPostUpdateProcess.java) - Se procesa el nuevo registro local post update en arreglos\n");
         //Variable limitadoras
         evenOdd = 0;
         fileName = "";
@@ -163,7 +163,7 @@ public class updaterPostUpdateProcesses {
             if(!fileClass.isInArrayByName(postUpdatefileclass, remoteFileArray)){
                 //Si su existencia por nombre no fue igualada, este se borra
                 Files.deleteIfExists(Paths.get(postUpdatefileclass.getName()));
-                System.out.println("Archivo Sobrante borrado : " + postUpdatefileclass.getName());
+                System.out.println("(updaterPostUpdateProcess.java) - Archivo Sobrante borrado : " + postUpdatefileclass.getName());
             }
         }
 

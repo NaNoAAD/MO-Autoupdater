@@ -24,7 +24,7 @@ public class updaterCommands {
                 ProcessBuilder processB = new ProcessBuilder("cmd.exe", "/c", "gradlew.bat build");
                 processB.directory(new File(directory));
 
-                System.out.println("Ejecutando : gradlew.bat build en OS: " + operativeSystem + " en directorio: " + directory);
+                System.out.println("(updatercommands.java) - Ejecutando : gradlew.bat build en OS: " + operativeSystem + " en directorio: " + directory);
                 Process process = processB.start();
                 process.waitFor();
 
@@ -34,15 +34,18 @@ public class updaterCommands {
         } else if (operativeSystem.contains("nix") || operativeSystem.contains("nux") || operativeSystem.contains("mac")){
             //comando para Linux o Unix
             try {
-                ProcessBuilder process = new ProcessBuilder("bash", "-c", "gradlew build");
-                System.out.println("Ejecutando : gradlew build en OS: " + operativeSystem);
-                Process proceso = process.start();
+                String directory = new File("../../../").getAbsolutePath();
+                ProcessBuilder processB = new ProcessBuilder("bash", "-c", "gradlew build");
+                processB.directory(new File(directory));
+
+                System.out.println("(updatercommands.java) - Ejecutando : gradlew build en OS: " + operativeSystem);
+                Process proceso = processB.start();
                 proceso.waitFor();
             } catch (IOException | InterruptedException e) {
                 e.printStackTrace();
             }
         } else {
-            System.out.println("Sistema operativo no compatible con el comando");
+            System.out.println("(updatercommands.java) - Sistema operativo no compatible con el comando");
         }
     }
 
