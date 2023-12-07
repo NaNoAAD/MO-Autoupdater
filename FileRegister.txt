@@ -6,8 +6,6 @@
 30/11/2023 02:09:39
 ..\..\..\.settings\org.eclipse.buildship.core.prefs
 30/11/2023 02:09:39
-..\..\..\.vscode\settings.json
-30/11/2023 02:09:39
 ..\..\..\desktop.ini
 30/11/2023 02:09:39
 ..\..\..\gradle\wrapper\gradle-wrapper.jar
@@ -24,14 +22,10 @@
 30/11/2023 02:09:20
 ..\..\..\libs\docking-frames-core.jar
 30/11/2023 02:09:20
-..\..\..\libs\preferences.xml
-30/11/2023 02:09:39
 ..\..\..\LICENSE
 30/11/2023 02:09:39
 ..\..\..\nbproject\project.properties
 30/11/2023 02:09:20
-..\..\..\preferences.xml
-30/11/2023 02:09:39
 ..\..\..\README.md
 30/11/2023 02:09:39
 ..\..\..\sonar-project.properties

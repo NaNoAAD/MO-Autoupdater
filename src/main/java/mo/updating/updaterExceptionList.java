@@ -13,6 +13,8 @@ public class updaterExceptionList {
     ".gradle",
     ".git",
     "\\bin",
-    "\\build"
+    "\\build",
+    ".vscode",
+    "preferences.xml"
     };
 }
