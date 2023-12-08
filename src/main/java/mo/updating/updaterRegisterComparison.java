@@ -6,8 +6,8 @@ import java.nio.file.Path;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Clase que permite la comparacion de los registros .txt creados que contienen los archivos locales/remotos junto con su fecha de modificacion correspondiente
@@ -91,8 +91,8 @@ public class updaterRegisterComparison {
             //DEBUG: Descomentar si es necesario hacer una comparacion
             try {
                 // Elimina los registros que fueron sometidos a comparacion (argumentos de este metodo).
-                Files.deleteIfExists(localFile);
-                //Files.deleteIfExists(remoteFile);
+                //Files.deleteIfExists(localFile);
+                Files.deleteIfExists(remoteFile);
                 System.out.println("(updaterRegisterComparison.java) - Los archivos de registro comparados fueron borrados");
             } catch (IOException e) {
                 System.out.println("(updaterRegisterComparison.java) - Error al borrar los archivos de registro comparados" + e.getMessage());
@@ -185,4 +185,24 @@ public class updaterRegisterComparison {
 
         return false;
     }
+
+    /**
+     * Este es un pequeño metodo que borrara el remote file en caso de que no se cumplan los permisos para actualizar
+     * Se hace para que no quede sobrando, ya que si hay permisos, remotefile se mantiene para la comparacion post update
+     * @param permissiBoolean booleano que se toma desde la comparacion entre numero de versiones
+     * @param remoteFile El path con la ruta del remote file creado
+     * @throws IOException Lanza un error en caso de deleteIfExists obtenga algun error
+     */
+    public static void deleteFilesIfNotPermission(Boolean permissiBoolean, Path remoteFile) throws IOException{
+        if (!permissiBoolean){
+            System.out.println("(updaterRegisterComparison.java) - Borrando RemoteFile al no haber actualizacion");
+            try {
+                Files.deleteIfExists(remoteFile);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        
+    }
+
 }

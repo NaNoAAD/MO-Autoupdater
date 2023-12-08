@@ -43,7 +43,7 @@ public class updaterDownloader {
                 // Se mueve el archivo descargado a la raiz de la carpeta del proyecto
                 //Nota: Las rutas indicadas aca podrian ser modificadas a posteriormente
                 Path fileDownloaded = Paths.get("Repo.zip");
-                Path targetDirectory = Paths.get("../../..");               
+                Path targetDirectory = Paths.get("./");               
                 Path targetFile = targetDirectory.resolve(fileDownloaded.getFileName());
                 Path temp = Files.move(fileDownloaded, targetFile, StandardCopyOption.REPLACE_EXISTING);
 

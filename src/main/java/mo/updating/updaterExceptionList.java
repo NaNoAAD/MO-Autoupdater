@@ -15,6 +15,8 @@ public class updaterExceptionList {
     "\\bin",
     "\\build",
     ".vscode",
-    "preferences.xml"
+    "preferences.xml",
+    "LaunchMO.jar",
+    ".classpath"
     };
 }

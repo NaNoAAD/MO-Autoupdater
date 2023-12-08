@@ -25,7 +25,7 @@ public class updaterVersionNotesRegister {
     */
     public static void newNotesVersion(String notes){
         //Se considera la revision de la existencia de un nuevo archivo de notas de version
-        Path file = Paths.get("versionNotes.txt");
+        Path file = Paths.get("./versionNotes.txt");
         try {
             // Crea el archivo si no existe
             if (!Files.exists(file)) {

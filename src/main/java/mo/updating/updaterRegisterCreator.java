@@ -31,7 +31,7 @@ public class updaterRegisterCreator {
 
         //formo variable con directorio de inicio
         //Path startDir = Paths.get("../../../..");  // Atencion, este directorio solo servia con el programa no modulado
-        Path startDir = Paths.get("../../../");  // Nuevo directorio, para ejecutar usar el comando "java mo.updating.updater" desde la carpeta .../main/java, el programa "partira" aca y no donde este el .class
+        Path startDir = Paths.get("./");  // Nuevo directorio, para ejecutar usar el comando "java mo.updating.updater" desde la carpeta .../main/java, el programa "partira" aca y no donde este el .class
         
         //coleccionar todos los archivos desde inicio declarado
         try {
@@ -53,7 +53,7 @@ public class updaterRegisterCreator {
      * @param pathList Una lista de Paths que es obtenida a traves del metodo listPathFiles
      */
     public static void createRegisterFile(List<Path> pathList){
-        Path file = Paths.get("Register.txt");
+        Path file = Paths.get("./Register.txt");
 
         try {
             // Crea el archivo si no existe
@@ -106,7 +106,7 @@ public class updaterRegisterCreator {
             writer.close();
             System.out.println("(updaterRegisterCreator.java) - Eliminando ultimo salto de linea\n");
             //Lo volvemos a abrir para eliminar el ultimo salto de linea y evitar insconsistencias en la comparacion de registros
-            File file2 = new File("Register.txt");
+            File file2 = new File("./Register.txt");
             RandomAccessFile raf = new RandomAccessFile(file2, "rw");
             long size = raf.length();
             if (size > 0) {

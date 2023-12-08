@@ -22,7 +22,7 @@ public class updaterPermissions {
      */
     public static String getMOVersion(){
         String versionString = "";
-        Path file = Paths.get("../../../version.txt");
+        Path file = Paths.get("./version.txt");
         List<String> lines;        
 
         try {

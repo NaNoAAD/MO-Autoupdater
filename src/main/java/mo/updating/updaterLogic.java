@@ -48,8 +48,10 @@ public class updaterLogic {
             updaterRemoteFilesProcess.getRemoteFiles();
 
             //Se comparan los registros generados para verificar por segunda vez si corresponde actualizar (true == existen diferencias)
-            boolean answer = updaterRegisterComparison.differencesInRegisters(Paths.get("Register.txt"), Paths.get("RemoteRegister.txt"));
+            boolean answer = updaterRegisterComparison.differencesInRegisters(Paths.get("./Register.txt"), Paths.get("./RemoteRegister.txt"));
             System.out.println("(updaterLogic.java) - Procesados los registros en arreglos! y las versiones\n--- El permiso por comparar versiones es: " + String.valueOf(permission1) + "\n--- Y las diferencias en los registros son: " + String.valueOf(answer));
+            
+            updaterRegisterComparison.deleteFilesIfNotPermission(permission1, Paths.get("./RemoteRegister.txt") );
 
             return answer;
         } catch (IOException e) {
@@ -67,7 +69,7 @@ public class updaterLogic {
             boolean downloadZip = updaterDownloader.downloadFilesFromRepository(permission1, answer);
 
             //Se procede a reemplazar los archivos con los del comprimible
-            updaterZipProcess.unzipFile("../../../Repo.zip", "../../../../", downloadZip);
+            updaterZipProcess.unzipFile("./Repo.zip", "./", downloadZip);
 
             //Se acciona el comando que permite la ejecucion del wrapper de gradle
             updaterCommands.gradleBuildCommand();

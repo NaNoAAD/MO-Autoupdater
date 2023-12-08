@@ -73,7 +73,7 @@ public class ConfirmationController implements Initializable{
         //Se hace apertura de la vista de actualizacion en progreso
         try {
             // Se carga FXML con vista de confirmacion
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../visual/Updating.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/src/main/java/mo/updating/visual/Updating.fxml"));
             Parent root = loader.load();
             //Se carga nuevo controlador (Si es necesario algun procedimiento a priori)
             //ConfirmationController controller = loader.getController();

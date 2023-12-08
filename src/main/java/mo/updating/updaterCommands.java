@@ -20,7 +20,7 @@ public class updaterCommands {
         if(operativeSystem.contains("win")){
             //Se genera una instancia que se encarga de ejecutar cmd y accionar el .bat
             try {
-                String directory = new File("../../../").getAbsolutePath();
+                String directory = new File("./").getAbsolutePath();
                 ProcessBuilder processB = new ProcessBuilder("cmd.exe", "/c", "gradlew.bat build");
                 processB.directory(new File(directory));
 
@@ -34,7 +34,7 @@ public class updaterCommands {
         } else if (operativeSystem.contains("nix") || operativeSystem.contains("nux") || operativeSystem.contains("mac")){
             //comando para Linux o Unix
             try {
-                String directory = new File("../../../").getAbsolutePath();
+                String directory = new File("./").getAbsolutePath();
                 ProcessBuilder processB = new ProcessBuilder("bash", "-c", "gradlew build");
                 processB.directory(new File(directory));
 

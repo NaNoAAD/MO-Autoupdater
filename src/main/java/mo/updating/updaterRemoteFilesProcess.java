@@ -57,7 +57,7 @@ public class updaterRemoteFilesProcess {
             //DEBUG: print mostrara como el json fue capturado
             //System.out.println(jsonResponse);
 
-            Path registerPath = Paths.get("RemoteRegister.txt");
+            Path registerPath = Paths.get("./RemoteRegister.txt");
 
             if (Files.exists(registerPath)) {
                 try {
@@ -73,7 +73,7 @@ public class updaterRemoteFilesProcess {
             } else {
                 //Caso contrario, simplemente se crea
                 System.out.println("(updaterRemotefilesProcess.java) - Registro remoto no existia localmente\n");
-                FileWriter fileWriter = new FileWriter("RemoteRegister.txt");
+                FileWriter fileWriter = new FileWriter("./RemoteRegister.txt");
                 fileWriter.write(jsonResponse);
                 fileWriter.close();
             }          

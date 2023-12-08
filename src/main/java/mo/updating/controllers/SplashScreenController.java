@@ -101,7 +101,7 @@ public class SplashScreenController {
                             //Se debe actualizar, se cierra el splasher y se accede a la vista de confirmacion
                             stage.close();
                             // Se carga FXML con vista de confirmacion
-                            FXMLLoader loader = new FXMLLoader(getClass().getResource("../visual/Confirmacion.fxml"));
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/src/main/java/mo/updating/visual/Confirmacion.fxml"));
                             Parent root = loader.load();
                             //Se carga nuevo controlador (Si es necesario algun procedimiento a priori inicialize)
                             //ConfirmationController controller = loader.getController();

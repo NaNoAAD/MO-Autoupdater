@@ -1,5 +1,7 @@
 package mo.updating;
 
+import java.net.URL;
+
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -25,7 +27,10 @@ public class updater extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         // Se inicia la primera vista (Splasher)
-        loadSplashView("visual/Splasher Principal.fxml", "Bienvenido a Multimodal Observer", primaryStage);
+        //String currentPath = System.getProperty("user.dir").replace("\\", "/");
+        //System.out.println("BRRR: " + currentPath);
+
+        loadSplashView("/src/main/java/mo/updating/visual/SplasherPrincipal.fxml", "Bienvenido a Multimodal Observer", primaryStage);
         //Se configura la vista
     }
 
@@ -37,9 +42,11 @@ public class updater extends Application {
      */
     private void loadSplashView(String fxml, String title, Stage stage) throws Exception{
         try {
-            System.out.println("(updater.java) - Se carga vista de Splasher");
+            System.out.println("(updater.java) - Se carga vista de Splasher" + getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
             //Se carga el archivo de vista
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+            URL fxmlURL = getClass().getResource(fxml);
+             System.out.println(fxml);
+            FXMLLoader loader = new FXMLLoader(fxmlURL);
 
             Parent root = loader.load();
             Scene scene = new Scene(root);
@@ -95,7 +102,7 @@ public class updater extends Application {
             System.out.println("(updater.java) -Apertura de MO - Finalizando Launcher");
             // Iniciar MO
             //Es importante que este comando tenga el nombre el .jar de MO (verificar el uso de contains)
-            Runtime.getRuntime().exec("java -jar multimodal-observer-server-5-0.0.0.jar");
+            Runtime.getRuntime().exec("java -jar ./build/libs/multimodal-observer-server-5-0.0.0.jar");
             
         } catch (Exception e) {
             e.printStackTrace();

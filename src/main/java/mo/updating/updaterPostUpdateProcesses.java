@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
+import mo.updating.fileClass;
 
 public class updaterPostUpdateProcesses {
     
@@ -24,7 +25,7 @@ public class updaterPostUpdateProcesses {
         List<Path> postUpdatepathList = new ArrayList<>();
 
         //formo variable con directorio de inicio
-        Path startDir = Paths.get("../../../");  // Se partira la recoleccion desde la carpeta padre el proyecto, desde carpeta Java
+        Path startDir = Paths.get("./");  // Se partira la recoleccion desde la carpeta padre el proyecto, desde carpeta Java
 
         //coleccionar todos los archivos desde inicio declarado
         try {
@@ -39,7 +40,7 @@ public class updaterPostUpdateProcesses {
         }
         
         //Se crea un archivo para postprocesado
-        Path file = Paths.get("PostUpdateRegister.txt");
+        Path file = Paths.get("./PostUpdateRegister.txt");
         try {
             // Crea el archivo si no existe
             if (!Files.exists(file)) {
@@ -84,7 +85,7 @@ public class updaterPostUpdateProcesses {
             writer.close();
             System.out.println("(updaterPostUpdateProcess.java) - Eliminando ultimo salto de linea\n");
             //Lo volvemos a abrir para eliminar el ultimo salto de linea y evitar insconsistencias en la comparacion de registros
-            File file2 = new File("PostUpdateRegister.txt");
+            File file2 = new File("./PostUpdateRegister.txt");
             RandomAccessFile raf = new RandomAccessFile(file2, "rw");
             long size = raf.length();
             if (size > 0) {
@@ -97,8 +98,8 @@ public class updaterPostUpdateProcesses {
         }
 
         //Se guarda todo el contenido respectivo de los archivos en bruto como strings
-        List<String> postUpdateLocalFileContent = Files.readAllLines(Paths.get("PostUpdateRegister.txt"));
-        List<String> remoteFileContent = Files.readAllLines(Paths.get("RemoteRegister.txt"));
+        List<String> postUpdateLocalFileContent = Files.readAllLines(Paths.get("./PostUpdateRegister.txt"));
+        List<String> remoteFileContent = Files.readAllLines(Paths.get("./RemoteRegister.txt"));
 
         System.out.println("(updaterPostUpdateProcess.java) - Tamaño Listas" + String.valueOf(postUpdateLocalFileContent.size()) + " VS " + String.valueOf(remoteFileContent.size())+ "\n");
 
