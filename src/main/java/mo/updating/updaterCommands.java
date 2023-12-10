@@ -14,6 +14,7 @@ public class updaterCommands {
      */
     static void gradleBuildCommand(){
         //Se obtiene el sistema operativo
+        System.out.println("(updatercommands.java) - Iniciando");
         String operativeSystem = System.getProperty("os.name").toLowerCase();
 
         //Caso 1: el OS es Windows
