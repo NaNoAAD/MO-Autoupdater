@@ -51,7 +51,7 @@ public class updaterLogic {
             boolean answer = updaterRegisterComparison.differencesInRegisters(Paths.get("./Register.txt"), Paths.get("./RemoteRegister.txt"));
             System.out.println("(updaterLogic.java) - Procesados los registros en arreglos! y las versiones\n--- El permiso por comparar versiones es: " + String.valueOf(permission1) + "\n--- Y las diferencias en los registros son: " + String.valueOf(answer));
             
-            updaterRegisterComparison.deleteFilesIfNotPermission(permission1, Paths.get("./RemoteRegister.txt") );
+            updaterRegisterComparison.deleteFilesIfNotPermission(permission1, answer, Paths.get("./RemoteRegister.txt") );
 
             return answer;
         } catch (IOException e) {

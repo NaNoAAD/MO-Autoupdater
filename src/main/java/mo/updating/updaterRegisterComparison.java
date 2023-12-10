@@ -193,8 +193,8 @@ public class updaterRegisterComparison {
      * @param remoteFile El path con la ruta del remote file creado
      * @throws IOException Lanza un error en caso de deleteIfExists obtenga algun error
      */
-    public static void deleteFilesIfNotPermission(Boolean permissiBoolean, Path remoteFile) throws IOException{
-        if (!permissiBoolean){
+    public static void deleteFilesIfNotPermission(Boolean permissiBoolean, Boolean answer, Path remoteFile) throws IOException{
+        if (!permissiBoolean || !answer){
             System.out.println("(updaterRegisterComparison.java) - Borrando RemoteFile al no haber actualizacion");
             try {
                 Files.deleteIfExists(remoteFile);
