@@ -85,8 +85,8 @@ public class updaterZipProcess {
         System.out.println("(updaterZipProcess.java) - El proceso de unzipping ha terminado\n");
         //Se procede con el borrado del archivo .zip descargado
         try {
-            // Se obtiene la ruta del .zip descargado
-            Path ZIPdownloaded = Paths.get("../../../Repo.zip");
+            // Se obtiene la ruta del .zip descargado (que es la carpeta donde esta el .jar launcher)
+            Path ZIPdownloaded = Paths.get("./Repo.zip");
 
             // Si existe el archivo, se eliminara
             Files.deleteIfExists(ZIPdownloaded);

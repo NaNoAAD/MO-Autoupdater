@@ -69,7 +69,7 @@ public class updaterLogic {
             boolean downloadZip = updaterDownloader.downloadFilesFromRepository(permission1, answer);
 
             //Se procede a reemplazar los archivos con los del comprimible
-            updaterZipProcess.unzipFile("./Repo.zip", "./", downloadZip);
+            updaterZipProcess.unzipFile("./Repo.zip", "../", downloadZip);
 
             //Se acciona el comando que permite la ejecucion del wrapper de gradle
             updaterCommands.gradleBuildCommand();

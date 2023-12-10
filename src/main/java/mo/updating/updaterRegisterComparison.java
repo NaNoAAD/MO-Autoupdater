@@ -91,8 +91,8 @@ public class updaterRegisterComparison {
             //DEBUG: Descomentar si es necesario hacer una comparacion
             try {
                 // Elimina los registros que fueron sometidos a comparacion (argumentos de este metodo).
-                //Files.deleteIfExists(localFile);
-                Files.deleteIfExists(remoteFile);
+                Files.deleteIfExists(localFile);
+                //Files.deleteIfExists(remoteFile);
                 System.out.println("(updaterRegisterComparison.java) - Los archivos de registro comparados fueron borrados");
             } catch (IOException e) {
                 System.out.println("(updaterRegisterComparison.java) - Error al borrar los archivos de registro comparados" + e.getMessage());
