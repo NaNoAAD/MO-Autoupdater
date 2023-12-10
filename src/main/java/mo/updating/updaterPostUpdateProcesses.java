@@ -13,6 +13,7 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -63,8 +64,7 @@ public class updaterPostUpdateProcesses {
             for (Path pathfile : postUpdatepathList) {
                 //Se anotan de manera local todos los directorios y fechas de modificacion mientras no contengan las frases en el IF siguiente
                 try {
-                    if ( !(pathfile.toString().contains("java\\mo\\updating")) && !(pathfile.toString().contains("Register.txt")) && !(pathfile.toString().contains("RemoteRegister.txt")) && !(pathfile.toString().contains("FileRegister.txt")) && !(pathfile.toString().contains("Repo.zip")) &&
-                    !(pathfile.toString().contains(".gradle")) && !(pathfile.toString().contains(".git")) && !(pathfile.toString().contains("\\bin")) && !(pathfile.toString().contains("PostUpdateRegister.txt")) && !(pathfile.toString().contains("\\build")) ){
+                    if ( !Arrays.stream(updaterExceptionList.fileNamesToAvoid).anyMatch(keyword -> pathfile.toString().contains(keyword)) ){
                         BasicFileAttributes attributes = Files.readAttributes(pathfile, BasicFileAttributes.class);
                         long milisegundos = attributes.lastModifiedTime().toMillis();
                         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
