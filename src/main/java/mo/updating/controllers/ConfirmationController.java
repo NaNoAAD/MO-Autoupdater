@@ -2,6 +2,7 @@ package mo.updating.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -13,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
+import mo.updating.updaterRegisterComparison;
 import mo.updating.updaterVersionNotesRegister;
 
 /**
@@ -55,8 +57,9 @@ public class ConfirmationController implements Initializable{
      * @param event
      */
     @FXML
-    private void cancelUpdate(ActionEvent event){
-        System.out.println("(ConfirmationController.java) - Cerrando app");
+    private void cancelUpdate(ActionEvent event) throws IOException {
+        System.out.println("(ConfirmationController.java) - Eliminando Archivo remoto obtenido y cerrando app");
+        updaterRegisterComparison.deleteFilesIfNotPermission(false, false, Paths.get("./RemoteRegister.txt") );
         Stage stage = (Stage) this.noButton.getScene().getWindow();
         stage.close();
     }

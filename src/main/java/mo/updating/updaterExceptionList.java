@@ -17,6 +17,7 @@ public class updaterExceptionList {
     ".vscode",
     "preferences.xml",
     "LaunchMO.jar",
-    ".classpath"
+    ".classpath",
+    "CreateRegister.jar"
     };
 }

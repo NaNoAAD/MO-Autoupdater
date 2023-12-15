@@ -89,13 +89,13 @@ public class updaterVersionNotesRegister {
 
             System.out.println("(updaterVersionNotesRegister.java) - Ingresamos sin problemas al Repositorio para buscar las notas de version \nLink: " + apiUrl + "\n");
             
-            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
             //JSON respuesta con contenidos de la solicitud
             //La respuesta debera tener el contenido raw del txt de notas de version del repositorio
-            String jsonResponse = reader.lines().collect(Collectors.joining());
+            String jsonResponse = reader.lines().collect(Collectors.joining(System.lineSeparator()));
             reader.close();
 
-            System.out.println("(updaterVersionNotesRegister.java) - JSON DE SOLICITUD A TXT REMOTO versionNotes.txt\n");
+            System.out.println("(updaterVersionNotesRegister.java) - JSON DE SOLICITUD A TXT REMOTO versionNotes.txt\n----\n");
             System.out.println(jsonResponse);
             
             //Se obtiene la version remota a traves del txt que lo indica
