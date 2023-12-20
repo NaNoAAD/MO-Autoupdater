@@ -58,23 +58,23 @@ public class updaterVersionNotesRegister {
     }
 
     /**
-     * Metodo que permite obtener las notas de version desde el repositorio remoto.
-     * Contenido que sera usado para ser mostrado en las interfaces pars que el usuario conozca las nuevas caractrtisticas
+     * Metodo que permite obtener las notas de version desde el repositorio remoto. Llamado por primera vez en el controlador
+     *  de la vista de confirmacion
+     * @param aToken Uno de las tres partes del token usado para el acceso al repositorio
+     * @param bToken Uno de las tres partes del token usado para el acceso al repositorio
+     * @param cToken Uno de las tres partes del token usado para el acceso al repositorio
+     * @param remoteNotesApiUrl String con la url para la obtencion del texto que contiene las notas de version remotas
      * @return un String con todo el texto de VersionNotes.txt del repositorio
+     * @throws IOException
      */
-    public static String getRemoteVersionNotes() throws IOException{
+    public static String getRemoteVersionNotes(String aToken, String bToken, String cToken, String remoteNotesApiUrl) throws IOException{
+        
         String versionNotes;
-
-        String RepoOwner = "NaNoAAD"; // Reemplaza con el dueño del repositorio
-        String repoName = "MO-Autoupdater"; // Reemplaza con el nombre del repositorio
         //Token
-        String a = "ghp_0D6Zmt";
-        String b = "4sfGEZJzK7Fiutyfj6J";
-        String c = "DizVO3CK3zW";
-        String githubToken = a + b + c; 
+        String githubToken = aToken + bToken + cToken; 
 
         //Solicitud que se hace a la API de Github
-        String apiUrl = String.format("https://raw.githubusercontent.com/%s/%s/master/versionNotes.txt", RepoOwner, repoName);
+        String apiUrl = String.format(remoteNotesApiUrl);
         
         URL url = new URL(apiUrl);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();

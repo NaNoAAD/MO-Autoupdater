@@ -2,7 +2,6 @@ package mo.updating.controllers;
 
 import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
-
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.ProgressBar;

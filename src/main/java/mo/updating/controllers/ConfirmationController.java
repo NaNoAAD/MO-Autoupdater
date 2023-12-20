@@ -39,17 +39,15 @@ public class ConfirmationController implements Initializable{
         String notes = "";
         try {
             //Se obtienen las notas de version remotas y se muestran en la vista
-            notes = getVersionNotesUI();
+            notes = updaterVersionNotesRegister.getRemoteVersionNotes("ghp_0D6Zmt", "4sfGEZJzK7Fiutyfj6J", 
+            "DizVO3CK3zW", "https://raw.githubusercontent.com/NaNoAAD/MO-Autoupdater/master/versionNotes.txt");
+            //Se solocan las notas obtenidas en la vista
             newNotesVersion.setText(notes);
             newNotesVersion.setEditable(false);
         } catch (IOException e) {
             e.printStackTrace();
         }
         
-    }
-
-    private String getVersionNotesUI() throws IOException{
-        return updaterVersionNotesRegister.getRemoteVersionNotes();
     }
 
     /**
