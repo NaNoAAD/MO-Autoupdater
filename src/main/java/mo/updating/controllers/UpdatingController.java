@@ -29,8 +29,10 @@ public class UpdatingController {
             // Se obtienen los permisos de los procesos anteriores de comparacion gracias a su naturaleza Static
             Boolean permissionBoolean = SplashScreenController.getPermission1Obtained();
             Boolean answerBoolean = SplashScreenController.getAnswerObtained();
+            
             //Usamos la logica responsable de actualizacion
-            updaterLogic.updaterUpdatingLogic(permissionBoolean, answerBoolean);
+            updaterLogic.updaterUpdatingLogic(permissionBoolean, answerBoolean, "https://github.com/NaNoAAD/MO-Autoupdater/archive/refs/heads/master.zip", 
+                "./", "./Repo.zip", "../", "./");
 
             System.out.println("(UpdatingController.java) - Abriendo MO - Terminando Launcher ");
 

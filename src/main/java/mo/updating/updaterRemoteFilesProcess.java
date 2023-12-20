@@ -16,27 +16,24 @@ import java.util.stream.Collectors;
  */
 public class updaterRemoteFilesProcess {
 
-    //
-
     /**
-     * Metodo que obtiene una lista de todos los archivos de un commit desde un repositorio de github publico usando un token especifico.
+     * Metodo que obtiene una lista de todos los archivos de un commit desde un repositorio de github publico usando un token especifico. Trabaja internamente con un
+     * archivo txt que usa para guardar y trabajar la lista de archivos remotos y sus atributos necesarios.
+     * @param aToken Una de tres partes del token a usar para obtener informacion del repositorio respectivo
+     * @param bToken Una de tres partes del token a usar para obtener informacion del repositorio respectivo
+     * @param cToken Una de tres partes del token a usar para obtener informacion del repositorio respectivo
+     * @param remoteRegisterApiUrl String con el link que lleva al contenido RAW del registro remoto de archivos fileregister.txt
      * @throws IOException
      */
-    public static void getRemoteFiles() throws IOException {
+    public static void getRemoteFiles(String aToken, String bToken, String cToken, String remoteRegisterApiUrl) throws IOException {
 
-
-        String RepoOwner = "NaNoAAD"; // Reemplazar con el dueño del repositorio
-        String repoName = "MO-Autoupdater"; // Reemplazar con el nombre del repositorio
         //Token
-        String a = "ghp_0D6Zmt";
-        String b = "4sfGEZJzK7Fiutyfj6J";
-        String c = "DizVO3CK3zW";
-        String githubToken = a + b + c; 
-
-        String apiUrl = String.format("https://raw.githubusercontent.com/%s/%s/master/FileRegister.txt", RepoOwner, repoName);
-        
+        String githubToken = aToken + bToken + cToken; 
+        //URL del RAW de registerfile.txt que se ubica remotamente
+        String apiUrl = String.format(remoteRegisterApiUrl);
         URL url = new URL(apiUrl);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
         //Se ejecuta la conexion con los permisos otorgados por Token
         connection.setRequestProperty("Authorization", "token " + githubToken);
         connection.setRequestMethod("GET");
@@ -57,6 +54,7 @@ public class updaterRemoteFilesProcess {
             //DEBUG: print mostrara como el json fue capturado
             //System.out.println(jsonResponse);
 
+            //Se crea un archivo de uso interno que captura en txt lo obtenido desde la api de Github
             Path registerPath = Paths.get("./RemoteRegister.txt");
 
             if (Files.exists(registerPath)) {

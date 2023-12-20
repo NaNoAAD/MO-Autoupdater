@@ -18,11 +18,13 @@ public class updaterPermissions {
 
     /**
      * Metodo que permite obtener la version de MO indicada en el texto de notas de MO
+     * @param localVersionFilePath String que indica el path del archivo e texto con la version actual
      * @return Retorna la primera linea del archivo de notas de version "version=x.x.x.x"
      */
-    public static String getMOVersion(){
+    public static String getLocalVersion(String localVersionFilePath){
         String versionString = "";
-        Path file = Paths.get("./version.txt");
+        Path file = Paths.get(localVersionFilePath);
+        //////////Path file = Paths.get("./version.txt");
         List<String> lines;        
 
         try {
@@ -47,27 +49,24 @@ public class updaterPermissions {
         return versionString;
     }
 
+
     /**
-     * Metodo que obtiene la version indicada en el txt remoto en el repositorio
-     * @return String con la version
+     * Metodo que obtiene la version indicada en el txt remoto en el repositorio a traves del uso de la API de Github
+     * @param aToken Una de las tres partes del Token generado
+     * @param bToken Una de las tres partes del Token generado
+     * @param cToken Una de las tres partes del Token generado
+     * @param apiUrl String con el enlace adecuado que permita la obtencion del RAW con el contenido del archivo de texto que indica la version remota
+     * @return String con la version remota
      * @throws IOException
      */
-    public static String remoteVersionRepository() throws IOException{
-
-        String version;
-
-        String RepoOwner = "NaNoAAD"; // Reemplaza con el dueño del repositorio
-        String repoName = "MO-Autoupdater"; // Reemplaza con el nombre del repositorio
-        //Token
-        String a = "ghp_0D6Zmt";
-        String b = "4sfGEZJzK7Fiutyfj6J";
-        String c = "DizVO3CK3zW";
-        String githubToken = a + b + c; 
-
-        //Solicitud que se hace a la API de Github
-        String apiUrl = String.format("https://raw.githubusercontent.com/%s/%s/master/version.txt", RepoOwner, repoName);
+    public static String remoteVersionRepository(String aToken, String bToken, String cToken, String remoteVersionApiUrlString) throws IOException{
         
-        URL url = new URL(apiUrl);
+        String version;
+        //reunion de los Tokens
+        String githubToken = aToken + bToken + cToken; 
+
+        //Solicitud que se hace a la API de Github        
+        URL url = new URL(remoteVersionApiUrlString);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         //Se ejecuta la conexion con los permisos otorgados por Token
         connection.setRequestProperty("Authorization", "token " + githubToken);
@@ -78,7 +77,7 @@ public class updaterPermissions {
         //Si la solicitud tiene exito (codigo 200)
         if (responseCode == 200) {
 
-            System.out.println("(updaterPermissions.java) - Ingresamos sin problemas al Repositorio para buscar la version en txt remoto! \nLink: " + apiUrl + "\n");
+            System.out.println("(updaterPermissions.java) - Ingresamos sin problemas al Repositorio para buscar la version en txt remoto! \nLink: " + remoteVersionApiUrlString + "\n");
             
             BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             //JSON respuesta con contenidos de la solicitud

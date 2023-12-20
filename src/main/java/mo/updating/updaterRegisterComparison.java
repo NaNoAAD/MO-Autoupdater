@@ -1,5 +1,6 @@
 package mo.updating;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -23,6 +24,14 @@ public class updaterRegisterComparison {
      * @throws IOException
      */
     public static boolean differencesInRegisters(Path localFile, Path remoteFile) throws IOException {
+
+        //CASO BASE: Algo sucedio con los registros de uso interno que, no estan disponibles o no existen desde procesos anteriores
+        if( !Files.exists(localFile) || !Files.exists(remoteFile)) {
+            System.err.println("(updaterRemotefilesProcess.java) - Los archivos internos de comparacion no estan disponibles - Se cancela la comparacion entre registros y la actualizacion");
+            //Se retorna false para indicar a procesos posteriores que no no hubo comparacion ni habra permisos para actualizar
+            return false;
+        }
+
         //Variables limitadoras
         int evenOdd = 0;
         String fileName = "";

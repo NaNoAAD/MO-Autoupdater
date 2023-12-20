@@ -55,8 +55,14 @@ public class SplashScreenController {
         stage.setOnShown((WindowEvent event) -> {
                 //Luego asegurandonos que se muestre la escena y los nodos
                 Platform.runLater(() -> {
-                    permission1Obtained = updaterLogic.updaterpermissionsLogic();
-                    answerObtained = updaterLogic.updaterComparissonLogic(permission1Obtained);
+                    //Se obtienen booleans a traves por comparaciones entre los numeros de versiones local/remoto
+                    permission1Obtained = updaterLogic.updaterpermissionsLogic("./version.txt", 
+                        "ghp_0D6Zmt", "4sfGEZJzK7Fiutyfj6J", "DizVO3CK3zW", 
+                        "https://raw.githubusercontent.com/NaNoAAD/MO-Autoupdater/master/version.txt");
+                        
+                    //Se obtiene el segundo boolean solo si el anterior fue true
+                    answerObtained = updaterLogic.updaterComparissonLogic(permission1Obtained, "./", "ghp_0D6Zmt", "4sfGEZJzK7Fiutyfj6J", "DizVO3CK3zW", 
+                        "https://raw.githubusercontent.com/NaNoAAD/MO-Autoupdater/master/FileRegister.txt");
                     
                     /*
                      * ESTA SECCION ES DE PRUEBA Y DEBE ELIMINARSE

@@ -24,7 +24,7 @@ public class updaterDownloader {
      * @return false Si la descarga no fue efectuada
      * @throws IOException
      */   
-    public static boolean downloadFilesFromRepository(boolean permissionToUpdateByVersions, boolean differencesInRegisters) throws IOException{
+    public static boolean downloadFilesFromRepository(boolean permissionToUpdateByVersions, boolean differencesInRegisters, String downloadLinkZip, String targetDirectoryToMoveZip) throws IOException{
         //Se revisan los permisos dados por los resultados de las comparaciones
         if(permissionToUpdateByVersions == false || differencesInRegisters == false){
             System.out.println("(updaterDownloader.java) - No se cumplen los requisitos para actualizar\nSe vuelve a Updater.main() \n");
@@ -34,7 +34,7 @@ public class updaterDownloader {
             try {
                 //Se descarga el codigo fuente del repositorio de github desde el link predeterminado
                 System.out.println("(updaterDownloader.java) - Se descarga el zip desde el repositorio\n");
-                URL website = new URL("https://github.com/NaNoAAD/MO-Autoupdater/archive/refs/heads/master.zip");
+                URL website = new URL(downloadLinkZip);
                 ReadableByteChannel rbc = Channels.newChannel(website.openStream());
                 FileOutputStream fos = new FileOutputStream("Repo.zip");
                 fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
@@ -43,9 +43,9 @@ public class updaterDownloader {
                 // Se mueve el archivo descargado a la raiz de la carpeta del proyecto
                 //Nota: Las rutas indicadas aca podrian ser modificadas a posteriormente
                 Path fileDownloaded = Paths.get("Repo.zip");
-                Path targetDirectory = Paths.get("./");               
+                Path targetDirectory = Paths.get(targetDirectoryToMoveZip);               
                 Path targetFile = targetDirectory.resolve(fileDownloaded.getFileName());
-                Path temp = Files.move(fileDownloaded, targetFile, StandardCopyOption.REPLACE_EXISTING);
+                Files.move(fileDownloaded, targetFile, StandardCopyOption.REPLACE_EXISTING);
 
             } catch (IOException e){
                 e.printStackTrace();

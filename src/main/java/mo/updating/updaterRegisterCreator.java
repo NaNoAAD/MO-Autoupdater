@@ -23,15 +23,16 @@ public class updaterRegisterCreator {
    
     /**
      * Metodo que obtiene los directorios de todos los archivos de MO presentes en carpeta "src" de manera local. Partiendo por la carpeta padre del proyecto
+     * @param startString String que indique el directorio donde emepzar a reloectar los archivos y sus atributos
      * @return Una lista de Paths de todos los archivos presentes
      */
-    public static List<Path> listPathFiles() {
+    public static List<Path> listPathFiles(String startString) {
         //Declaro variable de salida
         List<Path> pathList = new ArrayList<>();
 
         //formo variable con directorio de inicio
         //Path startDir = Paths.get("../../../..");  // Atencion, este directorio solo servia con el programa no modulado
-        Path startDir = Paths.get("./");  // Nuevo directorio, para ejecutar usar el comando "java mo.updating.updater" desde la carpeta .../main/java, el programa "partira" aca y no donde este el .class
+        Path startDir = Paths.get(startString);  // Nuevo directorio, para ejecutar usar el comando "java mo.updating.updater" desde la carpeta .../main/java, el programa "partira" aca y no donde este el .class
         
         //coleccionar todos los archivos desde inicio declarado
         try {
@@ -52,19 +53,19 @@ public class updaterRegisterCreator {
      * Metodo que escribe en un archivo .txt todos los archivos y su fecha de modificacion respectiva, sin contar los excluidos en la funcion misma. Se elimina ademas, la ultima linea para evitar insconsitencias en la comparacion posterior
      * @param pathList Una lista de Paths que es obtenida a traves del metodo listPathFiles
      */
-    public static void createRegisterFile(List<Path> pathList){
-        Path file = Paths.get("./Register.txt");
+    public static void createRegisterFile(List<Path> pathList, String localRegisterPath){
+        Path file = Paths.get(localRegisterPath);
 
         try {
             // Crea el archivo si no existe
             if (!Files.exists(file)) {
                 Files.createFile(file);
-                System.out.println("(updaterRegisterCreator.java) - El registro no existia, Se ha creado el archivo 'Register.txt' con lo necesario\n");
+                System.out.println("(updaterRegisterCreator.java) - El registro no existia, Se ha creado el archivo " + localRegisterPath + " con lo necesario\n");
             } else {
-                System.out.println("(updaterRegisterCreator.java) - El archivo 'Register.txt' ya existe. Se borra para crear uno nuevo\n");
+                System.out.println("(updaterRegisterCreator.java) - El archivo " + localRegisterPath + " ya existe. Se borra para crear uno nuevo\n");
                 Files.delete(file);
                 Files.createFile(file);
-                System.out.println("(updaterRegisterCreator.java) - Se ha creado otro archivo 'Register.txt\n");
+                System.out.println("(updaterRegisterCreator.java) - Se ha creado otro archivo " + localRegisterPath);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -106,7 +107,7 @@ public class updaterRegisterCreator {
             writer.close();
             System.out.println("(updaterRegisterCreator.java) - Eliminando ultimo salto de linea\n");
             //Lo volvemos a abrir para eliminar el ultimo salto de linea y evitar insconsistencias en la comparacion de registros
-            File file2 = new File("./Register.txt");
+            File file2 = new File(localRegisterPath);
             RandomAccessFile raf = new RandomAccessFile(file2, "rw");
             long size = raf.length();
             if (size > 0) {

@@ -23,12 +23,12 @@ public class updaterZipProcess {
 
     /**
      * Metodo que descomprime el .zip descargado desde el repositorio ya una vez que fue descargado
-     * @param zipPath Es un String con la ruta del .zip descargado
+     * @param zipDownloadedPath Es un String con la ruta del .zip descargado
      * @param targetDirectory Es un String con la ruta de destino a descomprimir
      * @param permissionFromDownload Boolean recibido con anterioridad para conocer si existe la posibilidad de descomprimir o no
      * @throws IOException
      */
-    public static void unzipFile(String zipPath, String targetDirectory, boolean permissionFromDownload) throws IOException {
+    public static void unzipFile(String zipDownloadedPath, String targetDirectoryToExtract, boolean permissionFromDownload) throws IOException {
         //Se revisa si el archivo .zip fue descargado
         if (permissionFromDownload == false){
             System.out.println("(updaterZipProcess.java) - El proceso de unzipping no tiene los permisos\n");
@@ -37,25 +37,25 @@ public class updaterZipProcess {
 
         // En caso de que por algun motivo no exista el directorio, se crea
         //Aunque este caso es poco probable, se considera por alguna eventualidad
-        File dir = new File(targetDirectory);
+        File dir = new File(targetDirectoryToExtract);
         if(!dir.exists()) dir.mkdirs();
 
         //buffer para lectura y escritura de los contenidos del zip
         byte[] buffer = new byte[1024];
 
         // A traves de este bloque try, nos aseguramos que se cierren los recursos usados
-        try (ZipInputStream zis = new ZipInputStream(new FileInputStream(zipPath))) {
+        try (ZipInputStream zis = new ZipInputStream(new FileInputStream(zipDownloadedPath))) {
             //Obtenemos el contenido del zip
             ZipEntry zipEntry = zis.getNextEntry();
             //Uno por uno hasta que no sea null
             while (zipEntry != null) {
                 //obteniendo su nombre se crea un nuevo File
                 String fileName = zipEntry.getName();
-                File newFile = new File(targetDirectory, fileName);
+                File newFile = new File(targetDirectoryToExtract, fileName);
 
                 //Como el .zip descargado incluye el nombre del arbol principal, se le reemplaza con un "" (asi al unzip se hace reemplazo directo de los archivos!)
                 if(fileName.contains("-master")){
-                    newFile = new File(targetDirectory, fileName.replace("-master", ""));
+                    newFile = new File(targetDirectoryToExtract, fileName.replace("-master", ""));
                 }
 
                 if (zipEntry.isDirectory()) {
