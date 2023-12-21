@@ -1,0 +1,13 @@
+localVersionString: ./version.txt
+aToken: ghp_0D6Zmt
+bToken: 4sfGEZJzK7Fiutyfj6J
+cToken: DizVO3CK3zW
+remoteVersionApiUrl: https://raw.githubusercontent.com/NaNoAAD/MO-Autoupdater/master/version.txt
+startDirRegister: ./
+remoteRegisterApiUrl: https://raw.githubusercontent.com/NaNoAAD/MO-Autoupdater/master/FileRegister.txt
+remoteNotesApiUrl: https://raw.githubusercontent.com/NaNoAAD/MO-Autoupdater/master/versionNotes.txt
+downloadLinkZip: https://github.com/NaNoAAD/MO-Autoupdater/archive/refs/heads/master.zip
+targetDirectoryToMoveZip: ./
+zipDownloadedPath: ./Repo.zip
+targetDirectoryToExtract: ../
+pathToExecuteWrapperGradle: ./

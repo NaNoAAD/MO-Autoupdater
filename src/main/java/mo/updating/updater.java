@@ -30,6 +30,9 @@ public class updater extends Application {
         //String currentPath = System.getProperty("user.dir").replace("\\", "/");
         //System.out.println("BRRR: " + currentPath);
 
+        //Se cargan y setean los argumentos globales desde el archivo args.up
+        updaterArguments.setArguments(updaterArguments.saveArguments("./args.up"));
+
         loadSplashView("/src/main/java/mo/updating/visual/SplasherPrincipal.fxml", "Bienvenido a Multimodal Observer", primaryStage);
         //Se configura la vista
     }

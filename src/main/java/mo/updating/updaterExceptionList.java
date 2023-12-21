@@ -18,6 +18,7 @@ public class updaterExceptionList {
     "preferences.xml",
     "LaunchMO.jar",
     ".classpath",
-    "CreateRegister.jar"
+    "CreateRegister.jar",
+    "args.up"
     };
 }

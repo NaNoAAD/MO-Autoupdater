@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ProgressBar;
 import javafx.stage.Stage;
 import mo.updating.updater;
+import mo.updating.updaterArguments;
 import mo.updating.updaterLogic;
 
 /**
@@ -30,8 +31,11 @@ public class UpdatingController {
             Boolean answerBoolean = SplashScreenController.getAnswerObtained();
             
             //Usamos la logica responsable de actualizacion
-            updaterLogic.updaterUpdatingLogic(permissionBoolean, answerBoolean, "https://github.com/NaNoAAD/MO-Autoupdater/archive/refs/heads/master.zip", 
-                "./", "./Repo.zip", "../", "./");
+            //updaterLogic.updaterUpdatingLogic(permissionBoolean, answerBoolean, "https://github.com/NaNoAAD/MO-Autoupdater/archive/refs/heads/master.zip", 
+              //  "./", "./Repo.zip", "../", "./");
+
+            updaterLogic.updaterUpdatingLogic(permissionBoolean, answerBoolean, updaterArguments.getDownloadLinkZip(), updaterArguments.getTargetDirectoryToMoveZip(), 
+            updaterArguments.getZipDownloadedPath(), updaterArguments.getTargetDirectoryToExtract(), updaterArguments.getPathToExecuteWrapperGradle());
 
             System.out.println("(UpdatingController.java) - Abriendo MO - Terminando Launcher ");
 

@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
+import mo.updating.updaterArguments;
 import mo.updating.updaterRegisterComparison;
 import mo.updating.updaterVersionNotesRegister;
 
@@ -39,8 +40,10 @@ public class ConfirmationController implements Initializable{
         String notes = "";
         try {
             //Se obtienen las notas de version remotas y se muestran en la vista
-            notes = updaterVersionNotesRegister.getRemoteVersionNotes("ghp_0D6Zmt", "4sfGEZJzK7Fiutyfj6J", 
-            "DizVO3CK3zW", "https://raw.githubusercontent.com/NaNoAAD/MO-Autoupdater/master/versionNotes.txt");
+            //notes = updaterVersionNotesRegister.getRemoteVersionNotes("ghp_0D6Zmt", "4sfGEZJzK7Fiutyfj6J", 
+            //"DizVO3CK3zW", "https://raw.githubusercontent.com/NaNoAAD/MO-Autoupdater/master/versionNotes.txt");
+            notes = updaterVersionNotesRegister.getRemoteVersionNotes(updaterArguments.getAToken(), updaterArguments.getBToken(), updaterArguments.getCToken(),
+                 updaterArguments.getRemoteNotesApiUrl());
             //Se solocan las notas obtenidas en la vista
             newNotesVersion.setText(notes);
             newNotesVersion.setEditable(false);
