@@ -11,3 +11,4 @@ targetDirectoryToMoveZip: ./
 zipDownloadedPath: ./Repo.zip
 targetDirectoryToExtract: ../
 pathToExecuteWrapperGradle: ./
+pathToPluginRegisterFile: ./

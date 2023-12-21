@@ -21,6 +21,7 @@ public class updaterArguments {
     private  static String zipDownloadedPath;
     private  static String targetDirectoryToExtract;
     private  static String pathToExecuteWrapperGradle;
+    private  static String pathToPluginRegisterFile;
 
     public static String getLocalVersionString(){
         return localVersionString;
@@ -74,11 +75,16 @@ public class updaterArguments {
         return pathToExecuteWrapperGradle;
     }
 
+    public static String getPathToPluginRegisterFile(){
+        return pathToPluginRegisterFile;
+    }
+
+
+    /**
     public void setlocalVersionString(String argument){
         localVersionString = argument;
     }
 
-    /**
     public void setAToken(String argument){
         aToken = argument;
     }
@@ -129,20 +135,27 @@ public class updaterArguments {
     **/
     
 
-    public static void setArguments(List<String> arguments){
-        localVersionString = arguments.get(0);
-        aToken = arguments.get(1);
-        bToken = arguments.get(2);
-        cToken = arguments.get(3);
-        remoteVersionApiUrl = arguments.get(4);
-        startDirRegister = arguments.get(5);
-        remoteRegisterApiUrl = arguments.get(6);
-        remoteNotesApiUrl = arguments.get(7);
-        downloadLinkZip = arguments.get(8);
-        targetDirectoryToMoveZip = arguments.get(9);
-        zipDownloadedPath = arguments.get(10);
-        targetDirectoryToExtract = arguments.get(11);
-        pathToExecuteWrapperGradle = arguments.get(12);
+    public static boolean setArguments(List<String> arguments){
+        if (arguments.size() != 14) {
+            return false;
+        } else {
+            localVersionString = arguments.get(0);
+            aToken = arguments.get(1);
+            bToken = arguments.get(2);
+            cToken = arguments.get(3);
+            remoteVersionApiUrl = arguments.get(4);
+            startDirRegister = arguments.get(5);
+            remoteRegisterApiUrl = arguments.get(6);
+            remoteNotesApiUrl = arguments.get(7);
+            downloadLinkZip = arguments.get(8);
+            targetDirectoryToMoveZip = arguments.get(9);
+            zipDownloadedPath = arguments.get(10);
+            targetDirectoryToExtract = arguments.get(11);
+            pathToExecuteWrapperGradle = arguments.get(12);
+            pathToPluginRegisterFile = arguments.get(13);
+            return true;
+        }
+        
     }
 
     public static List<String> saveArguments(String filePath) {

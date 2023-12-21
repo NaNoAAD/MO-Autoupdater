@@ -1,6 +1,8 @@
 package mo.updating;
 
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -18,6 +20,7 @@ import mo.updating.controllers.SplashScreenController;
 public class updater extends Application {
 
     public boolean permissionByVersions;
+    public boolean pluginPermission;
     
 
     public static void main(String[] args) {
@@ -27,11 +30,16 @@ public class updater extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         // Se inicia la primera vista (Splasher)
-        //String currentPath = System.getProperty("user.dir").replace("\\", "/");
-        //System.out.println("BRRR: " + currentPath);
+        String currentPath = System.getProperty("user.dir").replace("\\", "/");
+        System.out.println("UPDATER INICIADO DESDE: " + currentPath + "\n");
 
         //Se cargan y setean los argumentos globales desde el archivo args.up
         updaterArguments.setArguments(updaterArguments.saveArguments("./args.up"));
+
+        //Se carga el archivo que contiene los plugins integrados a ser revisados en la carpeta .ups
+        //y se guardan en la variable estatica para ser usado en los procesos posteriores a actualizar mo
+        ///Este archivo a capturar tiene en cada linea <nombre_del_plugin>: <string ruta a argumentos de trabajo de plugin>
+        updaterPluginsUpdating.upFile.addAll(updaterPluginsUpdating.getUpFilePluginsToUpdate("./plugins.up"));
 
         loadSplashView("/src/main/java/mo/updating/visual/SplasherPrincipal.fxml", "Bienvenido a Multimodal Observer", primaryStage);
         //Se configura la vista

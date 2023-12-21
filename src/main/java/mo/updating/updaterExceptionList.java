@@ -19,6 +19,7 @@ public class updaterExceptionList {
     "LaunchMO.jar",
     ".classpath",
     "CreateRegister.jar",
-    "args.up"
+    "args.up",
+    "\\ups\\"
     };
 }

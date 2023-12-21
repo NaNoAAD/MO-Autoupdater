@@ -1,0 +1,18 @@
+.\gradle\wrapper\gradle-wrapper.jar
+16/12/2023 23:44:51
+.\gradle\wrapper\gradle-wrapper.properties
+16/12/2023 23:44:51
+.\gradlew
+16/12/2023 23:44:51
+.\gradlew.bat
+16/12/2023 23:44:51
+.\libs\multimodal-observer-0.0.0.jar
+16/12/2023 00:55:22
+.\src\main\java\mo\keyboard\capture\KeyboardCaptureConfiguration.java
+16/12/2023 00:55:22
+.\src\main\java\mo\keyboard\capture\KeyboardCaptureConfigurationDialog.java
+16/12/2023 00:55:22
+.\src\main\java\mo\keyboard\capture\KeyboardCapturePlugin.java
+16/12/2023 00:55:22
+.\src\main\java\mo\keyboard\capture\KeyboardRecorder.java
+16/12/2023 00:55:22
