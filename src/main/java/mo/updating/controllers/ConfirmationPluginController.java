@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import mo.updating.updaterArguments;
+import mo.updating.updaterPluginsUpdating;
 import mo.updating.updaterRegisterComparison;
 import mo.updating.updaterVersionNotesRegister;
 
@@ -35,7 +36,7 @@ public class ConfirmationPluginController implements Initializable{
     // Lógica de inicialiacion de la vista de confirmacion
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("(ConfirmationController.java) - Inicializando Vista de confirmacion");
+        System.out.println("(ConfirmationPluginController.java) - Inicializando Vista de confirmacion de plugin");
         // Establecer el TextArea newNotesVersion como de solo lectura
         String notes = "";
         try {
@@ -59,10 +60,16 @@ public class ConfirmationPluginController implements Initializable{
      */
     @FXML
     private void cancelUpdate(ActionEvent event) throws IOException {
-        System.out.println("(ConfirmationController.java) - Eliminando Archivo remoto obtenido y cerrando app");
-        updaterRegisterComparison.deleteFilesIfNotPermission(false, false, Paths.get("./RemoteRegister.txt") );
-        Stage stage = (Stage) this.noButton.getScene().getWindow();
-        stage.close();
+        if(updaterPluginsUpdating.loopRevisorPluginsToUpdate()){
+            //si y solo si hay archivos up disponibles, se carga la vista de confirmationPlugin
+            loadConfirmationPluginView();
+        } else {
+            System.out.println("(ConfirmationController.java) - Eliminando Archivo remoto obtenido y cerrando app");
+            updaterRegisterComparison.deleteFilesIfNotPermission(false, false, Paths.get("./RemoteRegister.txt") );
+            Stage stage = (Stage) this.noButton.getScene().getWindow();
+            stage.close();
+        }
+        
     }
 
     /**
@@ -77,7 +84,7 @@ public class ConfirmationPluginController implements Initializable{
         //Se hace apertura de la vista de actualizacion en progreso
         try {
             // Se carga FXML con vista de confirmacion
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/src/main/java/mo/updating/visual/Updating.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/src/main/java/mo/updating/visual/UpdatingPlugin.fxml"));
             Parent root = loader.load();
             //Se carga nuevo controlador (Si es necesario algun procedimiento a priori)
             //ConfirmationController controller = loader.getController();
@@ -104,6 +111,31 @@ public class ConfirmationPluginController implements Initializable{
 
             //Con los recursos listos y mostrados, al igual que en SplashController se ejecuta metodo
             //controller.secondPlaneUpdating(stage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadConfirmationPluginView(){
+        try {
+            // Se carga FXML con vista de confirmacion
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/src/main/java/mo/updating/visual/ConfirmacionPlugin.fxml"));
+            Parent root = loader.load();
+            //Se carga nuevo controlador (Si es necesario algun procedimiento a priori)
+            //ConfirmationController controller = loader.getController();
+
+            // Se configura la nueva escena
+            Scene scene = new Scene(root);
+
+            // Se crea un nuevo Stage para la segunda vista
+            Stage newStage = new Stage();
+            newStage.setScene(scene);
+            newStage.setTitle("Actualizacion para Plugin encontrada");
+            newStage.setResizable(false);
+
+            // Mostrar la nueva vista
+            newStage.show();   
+
         } catch (Exception e) {
             e.printStackTrace();
         }

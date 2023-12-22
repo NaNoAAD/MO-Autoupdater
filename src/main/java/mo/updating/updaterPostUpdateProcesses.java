@@ -171,4 +171,15 @@ public class updaterPostUpdateProcesses {
         
     }//fin metodo
 
+    public static void deleteLeftoversFilesPlugin(String nameRepository) throws IOException{
+        Path relativePath = Paths.get("/ups/" + nameRepository);
+        try {
+            Files.deleteIfExists(relativePath);
+            System.out.println("(updaterPostUpdateProcesses.java) - El .zip de " + nameRepository + "Fue borrado en: " + relativePath.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }//Fin clase

@@ -15,35 +15,34 @@ import mo.updating.updater;
 import mo.updating.updaterArguments;
 import mo.updating.updaterLogic;
 import mo.updating.updaterPluginsUpdating;
+import mo.updating.updaterPostUpdateProcesses;
 
 /**
  * Controlador de la vista de proceso de actualizacion
  */
-public class UpdatingController {
+public class UpdatingPluginController {
     
     @FXML
     private ProgressBar progress;
 
     @FXML
     private void initialize() throws IOException{
-        System.out.println("(UpdatingController.java) - Inicializando Vista de Actualizacion en progreso");
+        System.out.println("(UpdatingPluginController.java) - Inicializando Vista de Actualizacion en progreso");
         progress.setProgress(ProgressBar.INDETERMINATE_PROGRESS);
         //Ejecutamos las operaciones logicas de actualizacion en un hilo de fondo
         //Para evitar que bloqueen la responsividad de la animcacion de la barra de progreso indeterminada
         CompletableFuture.runAsync(() -> {
             //Asegurandonos que la pantalla y la barra de progreso ya estan mostradas, se procede con el procedimiento de actualizacion
-            // Se obtienen los permisos de los procesos anteriores de comparacion gracias a su naturaleza Static
-            Boolean permissionBoolean = SplashScreenController.getPermission1Obtained();
-            Boolean answerBoolean = SplashScreenController.getAnswerObtained();
-            
-            //Usamos la logica responsable de actualizacion
-            //updaterLogic.updaterUpdatingLogic(permissionBoolean, answerBoolean, "https://github.com/NaNoAAD/MO-Autoupdater/archive/refs/heads/master.zip", 
-              //  "./", "./Repo.zip", "../", "./");
 
-            updaterLogic.updaterUpdatingLogic(permissionBoolean, answerBoolean, updaterArguments.getDownloadLinkZip(), updaterArguments.getTargetDirectoryToMoveZip(), 
+            updaterLogic.updaterUpdatingLogic(true, true, updaterArguments.getDownloadLinkZip(), updaterArguments.getTargetDirectoryToMoveZip(), 
             updaterArguments.getZipDownloadedPath(), updaterArguments.getTargetDirectoryToExtract(), updaterArguments.getPathToExecuteWrapperGradle());
+            try {
+                updaterPostUpdateProcesses.deleteLeftoversFilesPlugin(updaterArguments.getRepositoryName());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
-            //Una vez que la actualizacion de MO termino, si hay upfiles que revisar, entonces es el turno de los plugins
+            //Una vez que la actualizacion de mo termino, si hay upfiles que revisar, entonces es el turno de los plugins
             //Y para ello se vuelve a abrir la vista de confirmacion pero antes! se actualizan las variables globales del updater
             if(updaterPluginsUpdating.loopRevisorPluginsToUpdate()){
                 //si y solo si hay archivos up disponibles, se carga la vista de confirmationPlugin
