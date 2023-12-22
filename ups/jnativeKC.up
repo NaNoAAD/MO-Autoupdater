@@ -10,5 +10,6 @@ downloadLinkZip: https://github.com/NaNoAAD/mo-jnativehook/archive/refs/heads/ma
 targetDirectoryToMoveZip: ./ups
 zipDownloadedPath: ./ups/Repo.zip
 targetDirectoryToExtract: ./ups
+repositoryName: mo-jnativehook
 pathToExecuteWrapperGradle: ./ups/mo-jnativehook-master/jnativehook-keyboard-capture
 pathToPluginRegisterFile: ./ups/register/jnativeKCFileRegister.txt

@@ -10,5 +10,6 @@ downloadLinkZip: https://github.com/NaNoAAD/MO-Autoupdater/archive/refs/heads/ma
 targetDirectoryToMoveZip: ./
 zipDownloadedPath: ./Repo.zip
 targetDirectoryToExtract: ../
+repositoryName: MO-Autoupdater
 pathToExecuteWrapperGradle: ./
 pathToPluginRegisterFile: ./

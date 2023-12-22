@@ -42,21 +42,21 @@ public class UpdatingController {
             //Y para ello se vuelve a abrir la vista de confirmacion pero antes! se actualizan las variables globales del updater
             if (updaterPluginsUpdating.upFile.size() != 0) {
                 //Actualizacion de las variables globales
-                //Se obtiene el primer string del archivo .up
-                ///De este archivo de obtienen las nuevas variables globales
-                ////con estas variables globales se hace set de las variables obtenidas
+                //Se obtiene el primer string de upFile, que es un String con la direccion relativa de un .up de la carpeta /ups
+                ///Con esta ruta, se trabaja el archivo del cual se obtienen las nuevas variables 
+                ////con estas variables se hace set de las variables globales del updater 
                 updaterArguments.setArguments(updaterArguments.saveArguments(updaterPluginsUpdating.upFile.get(0)));
-                System.out.println("(UpdatingController.java) - Variables globales actualizadas con el archivo: " + updaterPluginsUpdating.upFile.get(0));
-
+                System.out.println("(UpdatingController.java) - Variables globales actualizadas con el archivo: " + updaterPluginsUpdating.upFile.get(0) + " pertenecientes al plugin " + updaterPluginsUpdating.pluginName.get(0));
+                
                 //Ahora que las variables fueron actualizadas, se abre la vista de confirmacion de actualizacion de plugin
-
-                //revisar los plugins
-            } else {
-                System.out.println("(UpdatingController.java) - Abriendo MO - Terminando Launcher ");
-                // Se abre MO
-                updater.openMO();
-                // Cierra la vista en el hilo de JavaFX y se cierra la app
-                Platform.runLater(() -> closeStage());
+                
+            
+                } else {
+                    System.out.println("(UpdatingController.java) - Abriendo MO - Terminando Launcher ");
+                    // Se abre MO
+                    updater.openMO();
+                    // Cierra la vista en el hilo de JavaFX y se cierra la app
+                    Platform.runLater(() -> closeStage());
             }
 
             

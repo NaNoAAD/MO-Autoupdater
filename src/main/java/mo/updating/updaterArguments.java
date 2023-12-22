@@ -20,6 +20,7 @@ public class updaterArguments {
     private  static String targetDirectoryToMoveZip;
     private  static String zipDownloadedPath;
     private  static String targetDirectoryToExtract;
+    private  static String repositoryName;
     private  static String pathToExecuteWrapperGradle;
     private  static String pathToPluginRegisterFile;
 
@@ -69,6 +70,10 @@ public class updaterArguments {
 
     public static String getTargetDirectoryToExtract(){
         return targetDirectoryToExtract;
+    }
+
+    public static String getRepositoryName(){
+        return repositoryName;
     }
 
     public static String getPathToExecuteWrapperGradle(){
@@ -136,7 +141,7 @@ public class updaterArguments {
     
 
     public static boolean setArguments(List<String> arguments){
-        if (arguments.size() != 14) {
+        if (arguments.size() != 15) {
             return false;
         } else {
             localVersionString = arguments.get(0);
@@ -151,8 +156,9 @@ public class updaterArguments {
             targetDirectoryToMoveZip = arguments.get(9);
             zipDownloadedPath = arguments.get(10);
             targetDirectoryToExtract = arguments.get(11);
-            pathToExecuteWrapperGradle = arguments.get(12);
-            pathToPluginRegisterFile = arguments.get(13);
+            repositoryName = arguments.get(12);
+            pathToExecuteWrapperGradle = arguments.get(13);
+            pathToPluginRegisterFile = arguments.get(14);
             return true;
         }
         
