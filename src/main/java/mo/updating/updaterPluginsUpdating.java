@@ -17,6 +17,7 @@ public class updaterPluginsUpdating {
     public static List<String> upFile = new ArrayList<>();
 
 
+
     public static void setUpFilesList(List<String> uPListIncoming){
         upFile.addAll(uPListIncoming);
     }
@@ -26,6 +27,11 @@ public class updaterPluginsUpdating {
      * @param registerFile es la ruta Path del registro .txt que lista los plugins registrados
      * @return void
      */
+    /**
+     * Metodo que lee el registro de plugins bajo supervision a actualizar
+     * @param filePath String que indica la ruta del archivo donde obtener la lista de archivos .up a trabajar
+     * @return Una lista con todas las rutas relativas a todos los archivos .up que serviran para actualizar los plugins registrados
+     */
     public static List<String> getUpFilePluginsToUpdate(String filePath) {
         List<String> prePluginsList = new ArrayList<>();
         List<String> PluginList = new ArrayList<>();
@@ -34,13 +40,36 @@ public class updaterPluginsUpdating {
             prePluginsList = Files.readAllLines(path);
             for (String line : prePluginsList) {
                 String[] parts = line.split(": ", 2);
-                PluginList.add(parts[1]);
+                PluginList.add("./ups/" + parts[1]);
                 System.out.println("(updaterArguments.java) - obtenido el .up de nombre: " + parts[1]);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return PluginList;
+    }
+
+    public static boolean updaterComparissonLogicPlugin(boolean permission1, String aToken, String bToken, String cToken, String remoteRegisterApiUrl, String pathToPluginRegisterFile){
+        try{
+            //Se crea registro de los archivos remotos en el repositorio correspondiente
+            updaterRemoteFilesProcess.getRemoteFiles(aToken, bToken, cToken, remoteRegisterApiUrl);
+
+            //Se comparan los registros generados de manera interna para verificar por segunda vez si corresponde actualizar (true == existen diferencias)
+            //Este metodo ocupa el mismo metodod para actualizar mo, pero en modo plugin, esto es, que no borrara el registro local, dado que en este caso, el registro
+            //no es creado por la app, si no que es recogido desde la carpeta ups, y logicamente, no queremos borrarlo, a deferencia del otro.
+            boolean answer = updaterRegisterComparison.differencesInRegisters(Paths.get(pathToPluginRegisterFile), Paths.get("./RemoteRegister.txt"), "plugin");
+            System.out.println("(updaterPluginUpdater.java) - Procesados los registros en arreglos! y las versiones\n--- El permiso por comparar versiones es: " + String.valueOf(permission1) + "\n--- Y las diferencias en los registros son: " + String.valueOf(answer));
+            
+            //Si updater genero booleans que no permiten la actualizacion, se borra el registros generados internamente
+            updaterRegisterComparison.deleteFilesIfNotPermission(permission1, answer, Paths.get("./RemoteRegister.txt") );
+
+            return answer;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("(updaterLogic.java) - Respuesta defecto: false");
+        return false;
+
     }
      
     

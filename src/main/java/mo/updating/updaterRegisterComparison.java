@@ -23,7 +23,7 @@ public class updaterRegisterComparison {
      * @return true si hay diferencias en los archivos. Ya sea por tamaño, la no existencia de un archivo local comparado con el remoto o, alguna diferencia en la fecha de modificacion
      * @throws IOException
      */
-    public static boolean differencesInRegisters(Path localFile, Path remoteFile) throws IOException {
+    public static boolean differencesInRegisters(Path localFile, Path remoteFile, String mode) throws IOException {
 
         //CASO BASE: Algo sucedio con los registros de uso interno que, no estan disponibles o no existen desde procesos anteriores
         if( !Files.exists(localFile) || !Files.exists(remoteFile)) {
@@ -100,9 +100,13 @@ public class updaterRegisterComparison {
             //DEBUG: Descomentar si es necesario hacer una comparacion
             try {
                 // Elimina los registros que fueron sometidos a comparacion (argumentos de este metodo).
-                Files.deleteIfExists(localFile);
-                //Files.deleteIfExists(remoteFile);
+                if (mode.equals("mo")) {
+                    Files.deleteIfExists(localFile);
+                    System.out.println("(updaterRegisterComparison.java) - Los archivos de registro comparados fueron borrados");
+                } else {
+                    //Files.deleteIfExists(remoteFile);
                 System.out.println("(updaterRegisterComparison.java) - Los archivos de registro comparados fueron borrados");
+                }                
             } catch (IOException e) {
                 System.out.println("(updaterRegisterComparison.java) - Error al borrar los archivos de registro comparados" + e.getMessage());
             }
@@ -125,9 +129,13 @@ public class updaterRegisterComparison {
                 //DEBUG: Descomentar si es necesario hacer una comparacion
                 try {
                     // Elimina los registros que fueron sometidos a comparacion (argumentos de este metodo).
+                if (mode.equals("mo")) {
                     Files.deleteIfExists(localFile);
+                    System.out.println("(updaterRegisterComparison.java) - Los archivos de registro comparados fueron borrados");
+                } else {
                     //Files.deleteIfExists(remoteFile);
                     System.out.println("(updaterRegisterComparison.java) - Los archivos de registro comparados fueron borrados");
+                }  
                 } catch (IOException e) {
                     System.out.println("(updaterRegisterComparison.java) - Error al borrar los archivos de registro comparados" + e.getMessage());
                 }
@@ -155,9 +163,13 @@ public class updaterRegisterComparison {
                         //DEBUG: Descomentar si es necesario hacer una comparacion
                         try {
                             // Elimina los registros que fueron sometidos a comparacion (argumentos de este metodo).
-                            Files.deleteIfExists(localFile);
-                            //Files.deleteIfExists(remoteFile);
+                            if (mode.equals("mo")) {
+                                Files.deleteIfExists(localFile);
+                                System.out.println("(updaterRegisterComparison.java) - Los archivos de registro comparados fueron borrados");
+                            } else {
+                                //Files.deleteIfExists(remoteFile);
                             System.out.println("(updaterRegisterComparison.java) - Los archivos de registro comparados fueron borrados");
+                            }  
                         } catch (IOException e) {
                             System.out.println("(updaterRegisterComparison.java) - Error al borrar los archivos de registro comparados" + e.getMessage());
                         }
@@ -185,9 +197,13 @@ public class updaterRegisterComparison {
         
         try {
             // Elimina los registros que fueron sometidos a comparacion (argumentos de este metodo).
-            Files.deleteIfExists(localFile);
-            //Files.deleteIfExists(remoteFile);
+            if (mode.equals("mo")) {
+                Files.deleteIfExists(localFile);
+                System.out.println("(updaterRegisterComparison.java) - Los archivos de registro comparados fueron borrados");
+            } else {
+                //Files.deleteIfExists(remoteFile);
             System.out.println("(updaterRegisterComparison.java) - Los archivos de registro comparados fueron borrados");
+            }  
         } catch (IOException e) {
             System.out.println("(updaterRegisterComparison.java) - Error al borrar los archivos de registro comparados" + e.getMessage());
         }
