@@ -33,7 +33,7 @@ public class updater extends Application {
         String currentPath = System.getProperty("user.dir").replace("\\", "/");
         System.out.println("UPDATER INICIADO DESDE: " + currentPath + "\n");
 
-        //Se cargan y setean los argumentos globales desde el archivo args.up
+        //Se cargan y setean los argumentos globales desde el archivo args.up para trabajar MO
         updaterArguments.setArguments(updaterArguments.saveArguments("./args.up"));
 
         //Se carga el archivo que contiene los plugins integrados a ser revisados en la carpeta .ups
@@ -41,8 +41,8 @@ public class updater extends Application {
         ///Este archivo a capturar tiene en cada linea <nombre_del_plugin>: <string ruta a argumentos de trabajo de plugin>
         updaterPluginsUpdating.upFile.addAll(updaterPluginsUpdating.getUpFilePluginsToUpdate("./plugins.up"));
 
+        //Con todo lo anterior listo, se inicia el splasher de MO y las logicas posteriores
         loadSplashView("/src/main/java/mo/updating/visual/SplasherPrincipal.fxml", "Bienvenido a Multimodal Observer", primaryStage);
-        //Se configura la vista
     }
 
     /**

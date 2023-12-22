@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class updaterPluginsUpdating {
 
-    public static List<String> plugin;
+    public static List<String> pluginName = new ArrayList<>();
     public static List<String> upFile = new ArrayList<>();
 
 
@@ -40,6 +41,7 @@ public class updaterPluginsUpdating {
             prePluginsList = Files.readAllLines(path);
             for (String line : prePluginsList) {
                 String[] parts = line.split(": ", 2);
+                pluginName.add(parts[0]);
                 PluginList.add("./ups/" + parts[1]);
                 System.out.println("(updaterArguments.java) - obtenido el .up de nombre: " + parts[1]);
             }
@@ -70,6 +72,24 @@ public class updaterPluginsUpdating {
         System.out.println("(updaterLogic.java) - Respuesta defecto: false");
         return false;
 
+    }
+
+    public static void moveJarToPluginsFolder(String origin, String target){
+        Path originPath = Paths.get(origin);
+        Path targetPath = Paths.get(target);
+        try {
+            Files.move(originPath, targetPath, StandardCopyOption.REPLACE_EXISTING);
+            System.out.println("(updaterPluginsUpdating.java) - archivo Jar movido desde " + originPath + " a " + targetPath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void removeFirstsElements(List<String> upList, List<String> nameList){
+        if (upList.size() != 0 && nameList.size() != 0) {
+            upList.remove(0);
+            nameList.remove(0);
+        }
     }
      
     
