@@ -23,6 +23,8 @@ public class updaterArguments {
     private  static String repositoryName;
     private  static String pathToExecuteWrapperGradle;
     private  static String pathToPluginRegisterFile;
+    private  static String jarLocationInRepository;
+    private  static String buildedJarFileName; 
 
     public static String getLocalVersionString(){
         return localVersionString;
@@ -84,6 +86,14 @@ public class updaterArguments {
         return pathToPluginRegisterFile;
     }
 
+    public static String getJarLocationInRepository(){
+        return jarLocationInRepository;
+    }
+
+    public static String getBuildedJarFileName(){
+        return buildedJarFileName;
+    }
+
 
     /**
     public void setlocalVersionString(String argument){
@@ -141,7 +151,7 @@ public class updaterArguments {
     
 
     public static boolean setArguments(List<String> arguments){
-        if (arguments.size() != 15) {
+        if (arguments.size() != 17) {
             return false;
         } else {
             localVersionString = arguments.get(0);
@@ -159,6 +169,8 @@ public class updaterArguments {
             repositoryName = arguments.get(12);
             pathToExecuteWrapperGradle = arguments.get(13);
             pathToPluginRegisterFile = arguments.get(14);
+            jarLocationInRepository = arguments.get(15);
+            buildedJarFileName = arguments.get(16);
             return true;
         }
         

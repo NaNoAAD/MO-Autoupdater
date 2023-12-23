@@ -37,6 +37,11 @@ public class UpdatingPluginController {
             updaterLogic.updaterUpdatingLogic(true, true, updaterArguments.getDownloadLinkZip(), updaterArguments.getTargetDirectoryToMoveZip(), 
             updaterArguments.getZipDownloadedPath(), updaterArguments.getTargetDirectoryToExtract(), updaterArguments.getPathToExecuteWrapperGradle());
             try {
+                //Con el plugin actualizado, se intenta mover el jar generado a la carpeta de plugins de MO y a eliminar la carpeta extraida
+
+                updaterPluginsUpdating.moveJarToPluginsFolder("./ups/" + updaterArguments.getJarLocationInRepository() + "/" + updaterArguments.getBuildedJarFileName(), "./build/libs/plugins/" + updaterArguments.getBuildedJarFileName());
+
+
                 updaterPostUpdateProcesses.deleteLeftoversFilesPlugin(updaterArguments.getRepositoryName());
             } catch (IOException e) {
                 e.printStackTrace();

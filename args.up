@@ -13,3 +13,5 @@ targetDirectoryToExtract: ../
 repositoryName: MO-Autoupdater
 pathToExecuteWrapperGradle: ./
 pathToPluginRegisterFile: ./
+jarLocationInRepository: ./
+buildedJarFileName: ./
