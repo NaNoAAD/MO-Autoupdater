@@ -168,6 +168,14 @@ public class updaterPostUpdateProcesses {
             }
         }
 
+        //Finalmente, se intenta borrar el registro post update
+        try {
+            Files.deleteIfExists(Paths.get("./PostUpdateRegister.txt"));
+            System.out.println("(updaterPostUpdateProcess.java) - Archivo ./PostUpdateRegister.txt borrado" );
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         
     }//fin metodo
 
