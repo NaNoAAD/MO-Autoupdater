@@ -11,6 +11,7 @@ import javafx.stage.WindowEvent;
 import mo.updating.updater;
 import mo.updating.updaterArguments;
 import mo.updating.updaterLogic;
+import mo.updating.updaterPluginsUpdating;
 
 /**
  * Controlador del splasher inicial del Launcher
@@ -143,14 +144,50 @@ public class SplashScreenController {
                         }
                         
                     } else {
-                        //Se debe simplemente abrir MO
-                        updater.openMO();
-                        //y Se cierra el launcher
-                        stage.close();
+                        System.out.println("(SplashScreenController.java) - Los permisos no permiten actualizar - Se revisan ahora los .up");
+                        if(updaterPluginsUpdating.loopRevisorPluginsToUpdate()){
+                            //si y solo si hay archivos up disponibles, se carga la vista de confirmationPlugin
+                            loadConfirmationPluginView();
+                        } else {
+                            //Se debe simplemente abrir MO
+                            updater.openMO();
+                            //y Se cierra el launcher
+                            stage.close();
+                        }
+
+                        
                     }
                 });
             });
         
+    }
+
+    /**
+     * Metodo que se encarga de cargar la vista de confirmacion para plugin
+     */
+    private void loadConfirmationPluginView(){
+        try {
+            // Se carga FXML con vista de confirmacion
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/src/main/java/mo/updating/visual/ConfirmacionPlugin.fxml"));
+            Parent root = loader.load();
+            //Se carga nuevo controlador (Si es necesario algun procedimiento a priori)
+            //ConfirmationController controller = loader.getController();
+
+            // Se configura la nueva escena
+            Scene scene = new Scene(root);
+
+            // Se crea un nuevo Stage para la segunda vista
+            Stage newStage = new Stage();
+            newStage.setScene(scene);
+            newStage.setTitle("Actualizacion para Plugin encontrada");
+            newStage.setResizable(false);
+
+            // Mostrar la nueva vista
+            newStage.show();   
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

@@ -24,10 +24,16 @@ public class updaterRegisterComparison {
      * @throws IOException
      */
     public static boolean differencesInRegisters(Path localFile, Path remoteFile, String mode) throws IOException {
-
+        System.out.println("(updaterRegisterComparison.java) - Los archivos a comparar: " + localFile.toString() + " vs " + remoteFile.toString());
         //CASO BASE: Algo sucedio con los registros de uso interno que, no estan disponibles o no existen desde procesos anteriores
         if( !Files.exists(localFile) || !Files.exists(remoteFile)) {
-            System.err.println("(updaterRemotefilesProcess.java) - Los archivos internos de comparacion no estan disponibles - Se cancela la comparacion entre registros y la actualizacion");
+            if (!Files.exists(localFile)) {
+                System.out.println("(updaterRegisterComparison.java) - Archivo local no existe/no se encuentra");
+            }
+            if (!Files.exists(remoteFile)) {
+                System.out.println("(updaterRegisterComparison.java) - Archivo con registros remoto no existe/no se encuentra");
+            }
+            System.out.println("(updaterRegisterComparison.java) - Los archivos internos de comparacion no estan disponibles - Se cancela la comparacion entre registros y la actualizacion");
             //Se retorna false para indicar a procesos posteriores que no no hubo comparacion ni habra permisos para actualizar
             return false;
         }

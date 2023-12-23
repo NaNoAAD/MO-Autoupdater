@@ -12,4 +12,4 @@ zipDownloadedPath: ./ups/Repo.zip
 targetDirectoryToExtract: ./ups
 repositoryName: mo-jnativehook
 pathToExecuteWrapperGradle: ./ups/mo-jnativehook-master/jnativehook-keyboard-capture
-pathToPluginRegisterFile: ./ups/register/jnativeKCFileRegister.txt
+pathToPluginRegisterFile: ./ups/registers/jnativeKCFileRegister.txt

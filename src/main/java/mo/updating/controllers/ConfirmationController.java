@@ -61,7 +61,7 @@ public class ConfirmationController implements Initializable{
     @FXML
     private void cancelUpdate(ActionEvent event) throws IOException {
         System.out.println("(ConfirmationController.java) - Eliminando Archivo remoto obtenido y cerrando app");
-        updaterRegisterComparison.deleteFilesIfNotPermission(false, false, Paths.get("./RemoteRegister.txt") );
+        updaterRegisterComparison.deleteFilesIfNotPermission(SplashScreenController.getPermission1Obtained(), SplashScreenController.getAnswerObtained(), Paths.get("./RemoteRegister.txt") );
         if(updaterPluginsUpdating.loopRevisorPluginsToUpdate()){
             //si y solo si hay archivos up disponibles, se carga la vista de confirmationPlugin
             loadConfirmationPluginView();
@@ -114,6 +114,9 @@ public class ConfirmationController implements Initializable{
         }
     }
 
+    /**
+     * Metodo que se encarga de cargar la vista de confirmacion para plugin
+     */
     private void loadConfirmationPluginView(){
         try {
             // Se carga FXML con vista de confirmacion

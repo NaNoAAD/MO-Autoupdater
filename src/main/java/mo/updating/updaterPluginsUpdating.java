@@ -7,7 +7,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -24,11 +23,6 @@ public class updaterPluginsUpdating {
         upFile.addAll(uPListIncoming);
     }
 
-    /**
-     * Metodo que lee el registro de plugins bajo supervision a actualizar
-     * @param registerFile es la ruta Path del registro .txt que lista los plugins registrados
-     * @return void
-     */
     /**
      * Metodo que lee el registro de plugins bajo supervision a actualizar
      * @param filePath String que indica la ruta del archivo donde obtener la lista de archivos .up a trabajar
@@ -64,6 +58,18 @@ public class updaterPluginsUpdating {
         return PluginList;
     }
 
+    /**
+     * Metodo que se encarga de manejar la logica de los metodos de comparacion entre los registros de archivos de los plugins registrados en el Updater. 
+     * A diferencia del original que se encarga de manejar la actualizacion de MO, este no crea un registro nuevo segun los archivos presentes, dado que no estan localmente, 
+     * si no que rescata un registro local que se encuentra en la carpeta ups/registers
+     * @param permission1 El Boolean que se obtiene de comparar las versiones registradas
+     * @param aToken Una de tres partes del token de actualización
+     * @param bToken Una de tres partes del token de actualización
+     * @param cToken Una de tres partes del token de actualización
+     * @param remoteRegisterApiUrl String con la url que permite la obtencion del RAW del registro remoto ubicado en el repositorio del plugin
+     * @param pathToPluginRegisterFile String con la ruta relativa al registro local de archivos del plugin, ubicado en ups/registers
+     * @return Boolean con el resultado de la comparacion. True si existe diferencia
+     */
     public static boolean updaterComparissonLogicPlugin(boolean permission1, String aToken, String bToken, String cToken, String remoteRegisterApiUrl, String pathToPluginRegisterFile){
         try{
             //Se crea registro de los archivos remotos en el repositorio correspondiente
@@ -87,6 +93,11 @@ public class updaterPluginsUpdating {
 
     }
 
+    /**
+     * Metodo que se encarga de mover un archivo a traves de Files.move()
+     * @param origin String con la ruta relativa de origen
+     * @param target String con la ruta relativa objetivo
+     */
     public static void moveJarToPluginsFolder(String origin, String target){
         Path originPath = Paths.get(origin);
         Path targetPath = Paths.get(target);
@@ -98,13 +109,13 @@ public class updaterPluginsUpdating {
         }
     }
 
-    public static void removeFirstsElements(List<String> upList, List<String> nameList){
-        if (upList.size() != 0 && nameList.size() != 0) {
-            upList.remove(0);
-            nameList.remove(0);
-        }
-    }
 
+    /**
+     * bucle que se encarga de manejar la logica de comparacion entre versiones y registros. A traves de un loop que recorre lo capturado en el archivo plugins.up, se toman 
+     * las lineas que contienen el nombre del plugin a actualizar junto con el archivo .up que tiene las variables globales para que updater trabaje. Si existe necesidad de
+     * actualizar un plugin, se retornara un true para interrumpir el bucle para proceder con la actualizacion, caso contrario, se seguira con otra linea hasta un false por defecto
+     * @return Boolean, true si existe necesidad de actualizar un plugin
+     */
     public static boolean loopRevisorPluginsToUpdate(){
         if (updaterPluginsUpdating.upFile.size() != 0) {
             int sizeUpFiles = updaterPluginsUpdating.upFile.size();
