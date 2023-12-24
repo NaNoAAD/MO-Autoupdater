@@ -116,20 +116,9 @@ public class SplashScreenController {
                             // Se carga FXML con vista de confirmacion
                             FXMLLoader loader = new FXMLLoader(getClass().getResource("/src/main/java/mo/updating/visual/Confirmacion.fxml"));
                             Parent root = loader.load();
-                            //Se carga nuevo controlador (Si es necesario algun procedimiento a priori inicialize)
-                            //ConfirmationController controller = loader.getController();
-                            //TextArea newVersionNotes = new TextArea();
-                            //controller.blockTextArea();
-                            //ConfirmationController.blockTextArea();
 
                             // Se configura la nueva escena
                             Scene scene = new Scene(root);
-
-                            //Instancia de Controller para uso de metodo static y variables boolean static
-                            //UpdatingController controller = loader.getController();
-
-                            //Uso de metodo definido en controller bajo el stage actual
-                            //controller.secondPlaneUpdating(stage);
 
                             // Se crea un nuevo Stage para la segunda vista
                             Stage newStage = new Stage();
@@ -146,6 +135,8 @@ public class SplashScreenController {
                     } else {
                         System.out.println("(SplashScreenController.java) - Los permisos no permiten actualizar - Se revisan ahora los .up");
                         if(updaterPluginsUpdating.loopRevisorPluginsToUpdate()){
+                            //Se debe actualizar, se cierra el splasher y se accede a la vista de confirmacion de plugin
+                            stage.close();
                             //si y solo si hay archivos up disponibles, se carga la vista de confirmationPlugin
                             loadConfirmationPluginView();
                         } else {

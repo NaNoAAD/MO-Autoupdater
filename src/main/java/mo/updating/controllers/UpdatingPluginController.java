@@ -34,7 +34,7 @@ public class UpdatingPluginController {
         CompletableFuture.runAsync(() -> {
             //Asegurandonos que la pantalla y la barra de progreso ya estan mostradas, se procede con el procedimiento de actualizacion
 
-            updaterLogic.updaterUpdatingLogic(true, true, updaterArguments.getDownloadLinkZip(), updaterArguments.getTargetDirectoryToMoveZip(), 
+            updaterLogic.updaterUpdatingPluginLogic(true, true, updaterArguments.getDownloadLinkZip(), updaterArguments.getTargetDirectoryToMoveZip(), 
             updaterArguments.getZipDownloadedPath(), updaterArguments.getTargetDirectoryToExtract(), updaterArguments.getPathToExecuteWrapperGradle());
             try {
                 //Con el plugin actualizado, se intenta mover el jar generado a la carpeta de plugins de MO y a eliminar la carpeta extraida
@@ -44,7 +44,9 @@ public class UpdatingPluginController {
                 //Se actualiza desde lo descargado, el registro local y el indicador de version local
                 updaterPostUpdateProcesses.updatingLocalRegisterAndLocalVersionPlugin(updaterArguments.getPathToExecuteWrapperGradle(), updaterArguments.getPathToPluginRegisterFile(), updaterArguments.getLocalVersionString());
 
+                //Se borran los archivos sobrantes
                 updaterPostUpdateProcesses.deleteLeftoversFilesPlugin(updaterArguments.getRepositoryName());
+
             } catch (IOException e) {
                 e.printStackTrace();
             }

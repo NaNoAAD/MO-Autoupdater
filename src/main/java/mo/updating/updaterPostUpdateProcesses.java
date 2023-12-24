@@ -212,26 +212,32 @@ public class updaterPostUpdateProcesses {
 
 
     /**
-     * Metodo que reemplaza los archivos locales de version y registro de archivos por los descargados. Se llama luego de haber actualizado y movido el nuevo .jar del plugin
+     * Metodo que reemplaza los archivos locales de version y registro de archivos por los descargados. Se llama luego de haber actualizado y movido el nuevo .jar del plugin. 
+     * Es importante por esta funcion, que RegisterFile.txt y Version.txt se llamen como tal en el repositorio
      * @param pathToFatherFolderDownloaded String con la ruta de donde se ubiquen Version.txt y RegisterFile.txt del plugin. Por defecto, debiese ser el mismo donde esta build.gradle, por lo que ocupara la variable pathToExecuteWrapperGradle del plugin
      * @param pathLocalPluginRegister String con la ruta de donde se ubique RegisterFile....txt del plugin de manera local en carpeta ups
      * @param pathLocalVersionPlugin String con la ruta de donde se ubique RegisterFile.....txt del plugin de manera local en carpeta ups
      */
     public static void updatingLocalRegisterAndLocalVersionPlugin(String pathToFatherFolderDownloaded, String pathLocalPluginRegister, String pathLocalVersionPlugin){
-        Path originPath = Paths.get(pathToFatherFolderDownloaded);
         Path targetPathRegisterFile = Paths.get(pathLocalPluginRegister);
         Path targetPathVersionFile = Paths.get(pathLocalVersionPlugin);
         //Se intenta actualizar el registro
         try {
-            Files.move(originPath, targetPathRegisterFile, StandardCopyOption.REPLACE_EXISTING);
-            System.out.println("(updaterPostUpdateProcess.java) - Se actualizo el registro del plugin localmente desde: " + originPath + " a " + pathLocalPluginRegister);
+            //En los repositorios, el registro se llama FileRegister.txt
+            //Atencion con el orden
+            Path originPathRegister = Paths.get(pathToFatherFolderDownloaded + "/FileRegister.txt");
+            System.out.println("(updaterPostUpdateProcess.java) - Se actualizara el registro del plugin con: " + originPathRegister.toString() + " a " + targetPathRegisterFile.toString());
+            Files.move(originPathRegister, targetPathRegisterFile, StandardCopyOption.REPLACE_EXISTING);
+            System.out.println("(updaterPostUpdateProcess.java) - Se actualizo el registro del plugin localmente desde: " + pathToFatherFolderDownloaded + " a " + pathLocalPluginRegister);
         } catch (Exception e) {
             e.printStackTrace();
         }
         //Se intenta actualizar el indicador de version del plugin
         try {
-            Files.move(originPath, targetPathVersionFile, StandardCopyOption.REPLACE_EXISTING);
-            System.out.println("(updaterPostUpdateProcess.java) - Se actualizo el indicador de version del plugin localmente desde: " + originPath + " a " + pathLocalVersionPlugin);
+            Path originPathVersion = Paths.get(pathToFatherFolderDownloaded + "/Version.txt");
+            System.out.println("(updaterPostUpdateProcess.java) - Se actualizara el indicador de version con: " + originPathVersion.toString() + " a " + targetPathVersionFile.toString());
+            Files.move(originPathVersion, targetPathVersionFile, StandardCopyOption.REPLACE_EXISTING);
+            System.out.println("(updaterPostUpdateProcess.java) - Se actualizo el indicador de version del plugin localmente desde: " + pathToFatherFolderDownloaded + " a " + pathLocalVersionPlugin);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -110,6 +110,33 @@ public class updaterLogic {
         }
     }
 
+    /**
+     * Metodo que contiene la logica y los submetodos que permiten la descarga, la descompresion, el reemplazo y la compilacion de una nueva version de Mo/plugin.
+     *  Usado por primera vez por el controlador de la vista updating. Es igual que la logica de actualizar MO, pero no ejecuta borrado de archivos
+     * @param permission1 Boolean obtenido desde el proceso anterior de compracion entre numero de version local vs remoto
+     * @param answer Boolean obtenido desde el proces anterior entre la comparacion entre registros internos que comparan el registro local vs remoto
+     * @param downloadLinkZip String que contiene la url que descarga el .zip del repositorio
+     * @param targetDirectoryToMoveZip String que contiene la ruta relativa para mover el zip descargado (mover a carpeta arriba es util para descomprimir y reemplazar)
+     * @param zipDownloadedPath String con path relativo que indica la ubicacion del zip descargado
+     * @param targetDirectoryToExtract String con el path del directorio a usar para descomprimir (se creara si no existe)
+     * @param pathToExecuteWrapperGradle String con el path relativo para indicar donde usar el comando gradlew.bat/gradle build para compilar
+     */
+    public static void updaterUpdatingPluginLogic(boolean permission1, boolean answer, String downloadLinkZip, String targetDirectoryToMoveZip ,String zipDownloadedPath, String targetDirectoryToExtract, String pathToExecuteWrapperGradle){
+        try {
+            //Si las respuestas son las esperadas, se procede a la descarga de los archivos del repositorio en formato .zip desde link predeterminado
+            boolean permissionToDownloadZip = updaterDownloader.downloadFilesFromRepository(permission1, answer, downloadLinkZip, targetDirectoryToMoveZip);
+
+            //Se procede a reemplazar los archivos con los del comprimible
+            updaterZipProcess.unzipFile(zipDownloadedPath, targetDirectoryToExtract, permissionToDownloadZip);
+
+            //Se acciona el comando que permite la ejecucion del wrapper de gradle
+            updaterCommands.gradleBuildCommand(pathToExecuteWrapperGradle);       
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
 
 
