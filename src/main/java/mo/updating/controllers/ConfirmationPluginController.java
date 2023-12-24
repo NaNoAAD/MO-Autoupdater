@@ -5,6 +5,7 @@ import java.net.URL;
 import java.nio.file.Paths;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -61,8 +62,16 @@ public class ConfirmationPluginController implements Initializable{
     @FXML
     private void cancelUpdate(ActionEvent event) throws IOException {
         if(updaterPluginsUpdating.loopRevisorPluginsToUpdate()){
-            //si y solo si hay archivos up disponibles, se carga la vista de confirmationPlugin
+            //si y solo si hay archivos up disponibles, se carga la nueva vista de confirmationPlugin para el proximo plugin si hay disponible
+
+            //Se cierra el stage actual
+            //Stage stage = (Stage) this.noButton.getScene().getWindow();
+            //stage.close();
+
+            //Se abre la vista
+            //Platform.runLater(() -> loadConfirmationPluginView());
             loadConfirmationPluginView();
+            
         } else {
             System.out.println("(ConfirmationController.java) - Eliminando Archivo remoto obtenido y cerrando app");
             updaterRegisterComparison.deleteFilesIfNotPermission(false, false, Paths.get("./RemoteRegister.txt") );
@@ -78,7 +87,7 @@ public class ConfirmationPluginController implements Initializable{
      */
     @FXML
     private void acceptUpdate(ActionEvent event){
-        System.out.println("(ConfirmationController.java) - Abriendo vista Updating");
+        System.out.println("(ConfirmationPluginController.java) - Abriendo vista UpdatingPlugin");
         Stage stage = (Stage) this.yesButton.getScene().getWindow();
         stage.close();
         //Se hace apertura de la vista de actualizacion en progreso
