@@ -8,12 +8,14 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.nio.file.StandardOpenOption;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -179,14 +181,61 @@ public class updaterPostUpdateProcesses {
         
     }//fin metodo
 
+    /**
+     * Metodo que borra elementos innecesarios luego de la actualizacion de un plugin
+     * @param nameRepository String con el nombre del repositorio de donde se descarga el codigo fuente del plugin. Sirve para armar las rutas relativas a ser usadas para borrar
+     * @throws IOException
+     */
     public static void deleteLeftoversFilesPlugin(String nameRepository) throws IOException{
-        Path relativePath = Paths.get("/ups/" + nameRepository);
+        Path relativePathZip = Paths.get("./ups/Repo.zip");
+        Path relativePathFolderDownloaded = Paths.get("./ups/" + nameRepository);
+        System.out.println("(updaterPostUpdateProcesses.java) - Intentando borrar carpeta de " + nameRepository + " en: " + relativePathZip.toString());
         try {
-            Files.deleteIfExists(relativePath);
-            System.out.println("(updaterPostUpdateProcesses.java) - El .zip de " + nameRepository + "Fue borrado en: " + relativePath.toString());
+            Files.deleteIfExists(relativePathZip);
+            System.out.println("(updaterPostUpdateProcesses.java) - El .zip de " + nameRepository + "Fue borrado en: " + relativePathZip.toString());
+
         } catch (Exception e) {
             e.printStackTrace();
         }
+        try {
+            Files.walk(relativePathFolderDownloaded)
+                 .sorted(Comparator.reverseOrder())
+                 .map(Path::toFile)
+                 .forEach(File::delete);
+
+            System.out.println("(updaterPostUpdateProcess) -Carpeta " + relativePathFolderDownloaded + " borrada");
+        } catch (Exception e) {
+            // TODO: handle exception
+            System.err.println("(updaterPostUpdateProcess) - Error al borrar la carpeta descargada: " + e.getMessage());
+        }
+    }
+
+
+    /**
+     * Metodo que reemplaza los archivos locales de version y registro de archivos por los descargados. Se llama luego de haber actualizado y movido el nuevo .jar del plugin
+     * @param pathToFatherFolderDownloaded String con la ruta de donde se ubiquen Version.txt y RegisterFile.txt del plugin. Por defecto, debiese ser el mismo donde esta build.gradle, por lo que ocupara la variable pathToExecuteWrapperGradle del plugin
+     * @param pathLocalPluginRegister String con la ruta de donde se ubique RegisterFile....txt del plugin de manera local en carpeta ups
+     * @param pathLocalVersionPlugin String con la ruta de donde se ubique RegisterFile.....txt del plugin de manera local en carpeta ups
+     */
+    public static void updatingLocalRegisterAndLocalVersionPlugin(String pathToFatherFolderDownloaded, String pathLocalPluginRegister, String pathLocalVersionPlugin){
+        Path originPath = Paths.get(pathToFatherFolderDownloaded);
+        Path targetPathRegisterFile = Paths.get(pathLocalPluginRegister);
+        Path targetPathVersionFile = Paths.get(pathLocalVersionPlugin);
+        //Se intenta actualizar el registro
+        try {
+            Files.move(originPath, targetPathRegisterFile, StandardCopyOption.REPLACE_EXISTING);
+            System.out.println("(updaterPostUpdateProcess.java) - Se actualizo el registro del plugin localmente desde: " + originPath + " a " + pathLocalPluginRegister);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //Se intenta actualizar el indicador de version del plugin
+        try {
+            Files.move(originPath, targetPathVersionFile, StandardCopyOption.REPLACE_EXISTING);
+            System.out.println("(updaterPostUpdateProcess.java) - Se actualizo el indicador de version del plugin localmente desde: " + originPath + " a " + pathLocalVersionPlugin);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
 

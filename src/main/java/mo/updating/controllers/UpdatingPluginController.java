@@ -41,6 +41,8 @@ public class UpdatingPluginController {
 
                 updaterPluginsUpdating.moveJarToPluginsFolder("./ups/" + updaterArguments.getJarLocationInRepository() + "/" + updaterArguments.getBuildedJarFileName(), "./build/libs/plugins/" + updaterArguments.getBuildedJarFileName());
 
+                //Se actualiza desde lo descargado, el registro local y el indicador de version local
+                updaterPostUpdateProcesses.updatingLocalRegisterAndLocalVersionPlugin(updaterArguments.getPathToExecuteWrapperGradle(), updaterArguments.getPathToPluginRegisterFile(), updaterArguments.getLocalVersionString());
 
                 updaterPostUpdateProcesses.deleteLeftoversFilesPlugin(updaterArguments.getRepositoryName());
             } catch (IOException e) {
