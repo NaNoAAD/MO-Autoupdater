@@ -527,7 +527,7 @@
 .\src\main\resources\imagenes\minimizar.png
 27/12/2023 03:00:13
 .\src\main\resources\imagenes\mo.png
-27/12/2023 03:00:13
+27/12/2023 12:25:43
 .\src\main\resources\imagenes\plus_icon-icons.com_69476.png
 27/12/2023 03:00:13
 .\src\main\resources\imagenes\pre mockup.jpeg
@@ -569,7 +569,7 @@
 .\src\main\resources\images\locked2.png
 27/12/2023 03:00:13
 .\src\main\resources\images\mo.png
-27/12/2023 03:00:13
+27/12/2023 12:25:43
 .\src\main\resources\images\mouse.png
 27/12/2023 03:00:13
 .\src\main\resources\images\padlock (1).png
@@ -609,6 +609,6 @@
 .\src\test\java\mo\visualization\VisualizationPlayerTest.java
 27/12/2023 03:01:47
 .\version.txt
-27/12/2023 12:08:40
+27/12/2023 12:24:47
 .\versionNotes.txt
-27/12/2023 12:09:07
+27/12/2023 12:24:35
