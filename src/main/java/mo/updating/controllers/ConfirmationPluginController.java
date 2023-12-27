@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
+import mo.updating.updater;
 import mo.updating.updaterArguments;
 import mo.updating.updaterPluginsUpdating;
 import mo.updating.updaterRegisterComparison;
@@ -65,8 +66,8 @@ public class ConfirmationPluginController implements Initializable{
             //si y solo si hay archivos up disponibles, se carga la nueva vista de confirmationPlugin para el proximo plugin si hay disponible
 
             //Se cierra el stage actual
-            //Stage stage = (Stage) this.noButton.getScene().getWindow();
-            //stage.close();
+            Stage stage = (Stage) this.noButton.getScene().getWindow();
+            stage.close();
 
             //Se abre la vista
             //Platform.runLater(() -> loadConfirmationPluginView());
@@ -77,6 +78,7 @@ public class ConfirmationPluginController implements Initializable{
             updaterRegisterComparison.deleteFilesIfNotPermission(false, false, Paths.get("./RemoteRegister.txt") );
             Stage stage = (Stage) this.noButton.getScene().getWindow();
             stage.close();
+            updater.openMO();
         }
         
     }

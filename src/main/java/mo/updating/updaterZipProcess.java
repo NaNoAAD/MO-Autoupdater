@@ -57,24 +57,26 @@ public class updaterZipProcess {
                 if(fileName.contains("-master")){
                     newFile = new File(targetDirectoryToExtract, fileName.replace("-master", ""));
                 }
-
-                if (zipEntry.isDirectory()) {
-                    //Si lo procesado resulta ser un directorio, se crea un igual como tal
-                    System.out.println("(updaterZipProcess.java) - Unzipping Directorio: " + fileName);
-                    newFile.mkdirs();
-                } else {
-                    //Caso contrario, es un archivo y con su nombre se procede a crear el mismo
-                    //Primero, se creara un directorio padre en caso de que no exista
-                    new File(newFile.getParent()).mkdirs();
-                    //Y con necesario, se crea el nuevo archivo hasta agotar los bytes del buffer de lectura
-                    try (FileOutputStream fos = new FileOutputStream(newFile)) {
-                        System.out.println("(updaterZipProcess.java) - Unzipping Archivo: " + fileName);
-                        int len;
-                        while ((len = zis.read(buffer)) > 0) {
-                            fos.write(buffer, 0, len);
+                if(!fileName.contains("/ups/")){
+                    if (zipEntry.isDirectory()) {
+                        //Si lo procesado resulta ser un directorio, se crea un igual como tal
+                        System.out.println("(updaterZipProcess.java) - Unzipping Directorio: " + fileName);
+                        newFile.mkdirs();
+                    } else {
+                        //Caso contrario, es un archivo y con su nombre se procede a crear el mismo
+                        //Primero, se creara un directorio padre en caso de que no exista
+                        new File(newFile.getParent()).mkdirs();
+                        //Y con necesario, se crea el nuevo archivo hasta agotar los bytes del buffer de lectura
+                        try (FileOutputStream fos = new FileOutputStream(newFile)) {
+                            System.out.println("(updaterZipProcess.java) - Unzipping Archivo: " + fileName);
+                            int len;
+                            while ((len = zis.read(buffer)) > 0) {
+                                fos.write(buffer, 0, len);
+                            }
                         }
                     }
                 }
+                
                 //Se cierra el ZipEntry y se continua al siguiente archivo del .zip
                 zis.closeEntry();
                 zipEntry = zis.getNextEntry();

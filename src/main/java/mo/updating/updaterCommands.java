@@ -13,7 +13,7 @@ public class updaterCommands {
      * en el controlador de la vista updating
      * @param pathToExecuteWrapperGradle String que indica el path relativo para ejecutar gradlew/gradle para hacer build
      */
-    static void gradleBuildCommand(String pathToExecuteWrapperGradle){
+    public static void gradleBuildCommand(String pathToExecuteWrapperGradle){
         //Se obtiene el path absoluto (ejemplo abs: C:\\Users\\Usuario\\Documentos\\miArchivo.txt) para ejecutar el wrapper de gradle
         String directory = new File(pathToExecuteWrapperGradle).getAbsolutePath();
 

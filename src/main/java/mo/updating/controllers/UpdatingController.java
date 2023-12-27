@@ -42,12 +42,14 @@ public class UpdatingController {
 
             updaterLogic.updaterUpdatingLogic(permissionBoolean, answerBoolean, updaterArguments.getDownloadLinkZip(), updaterArguments.getTargetDirectoryToMoveZip(), 
             updaterArguments.getZipDownloadedPath(), updaterArguments.getTargetDirectoryToExtract(), updaterArguments.getPathToExecuteWrapperGradle());
-
+            /**
             //Una vez que la actualizacion de MO termino, si hay upfiles que revisar, entonces es el turno de los plugins
             //Y para ello se vuelve a abrir la vista de confirmacion pero antes! se actualizan las variables globales del updater
             if(updaterPluginsUpdating.loopRevisorPluginsToUpdate()){
                 //si y solo si hay archivos up disponibles, se carga la vista de confirmationPlugin
-                loadConfirmationPluginView();
+                closeStage();
+                updater.openMO();
+                //loadConfirmationPluginView();
             } else {
                 //Si simplemente no habian archivos .up identificados, simplemente procedemos a cerrar el updater
                 System.out.println("(UpdatingController.java) - Abriendo MO - Terminando Launcher ");
@@ -55,9 +57,16 @@ public class UpdatingController {
                 updater.openMO();
                 // Cierra la vista en el hilo de JavaFX y se cierra la app
                 Platform.runLater(() -> closeStage());
-            }
+            } */
 
             
+        }).thenRun(() -> {
+            //Si simplemente no habian archivos .up identificados, simplemente procedemos a cerrar el updater
+                System.out.println("(UpdatingController.java) - Abriendo MO - Terminando Launcher ");
+                // Se abre MO
+                updater.openMO();
+                // Cierra la vista en el hilo de JavaFX y se cierra la app
+                Platform.runLater(() -> closeStage());
         });
     }
 

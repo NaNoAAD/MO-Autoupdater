@@ -63,11 +63,15 @@ public class ConfirmationController implements Initializable{
         System.out.println("(ConfirmationController.java) - Eliminando Archivo remoto obtenido y cerrando app");
         updaterRegisterComparison.deleteFilesIfNotPermission(SplashScreenController.getPermission1Obtained(), SplashScreenController.getAnswerObtained(), Paths.get("./RemoteRegister.txt") );
         if(updaterPluginsUpdating.loopRevisorPluginsToUpdate()){
+            Stage stage = (Stage) this.noButton.getScene().getWindow();
+            stage.close();
             //si y solo si hay archivos up disponibles, se carga la vista de confirmationPlugin
             loadConfirmationPluginView();
+        } else {
+            Stage stage = (Stage) this.noButton.getScene().getWindow();
+            stage.close();
         }
-        Stage stage = (Stage) this.noButton.getScene().getWindow();
-        stage.close();
+        
     }
 
     /**
