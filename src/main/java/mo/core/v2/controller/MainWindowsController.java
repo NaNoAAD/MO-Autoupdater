@@ -258,6 +258,7 @@ public class MainWindowsController implements Initializable {
     @FXML
     public void exit(ActionEvent event) {
         saveProjectInAppPreferences(model.getProject());
+        //Salir
         Stage stage = (Stage) this.buttonExit.getScene().getWindow();
         stage.close();
         System.exit(0);

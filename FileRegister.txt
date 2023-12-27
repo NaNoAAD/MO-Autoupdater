@@ -299,7 +299,7 @@
 .\src\main\java\mo\core\v2\controller\AddPluginController.java
 27/12/2023 03:01:47
 .\src\main\java\mo\core\v2\controller\MainWindowsController.java
-27/12/2023 11:57:49
+27/12/2023 12:09:25
 .\src\main\java\mo\core\v2\controller\MyProjectsControllerAux.java
 27/12/2023 03:01:47
 .\src\main\java\mo\core\v2\controller\NewProjectController.java
@@ -609,6 +609,6 @@
 .\src\test\java\mo\visualization\VisualizationPlayerTest.java
 27/12/2023 03:01:47
 .\version.txt
-27/12/2023 03:00:13
+27/12/2023 12:08:40
 .\versionNotes.txt
-27/12/2023 03:01:47
+27/12/2023 12:09:07
