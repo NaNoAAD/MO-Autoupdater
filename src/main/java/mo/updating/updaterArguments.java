@@ -1,6 +1,7 @@
 package mo.updating;
 
 import java.nio.file.Paths;
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -149,7 +150,11 @@ public class updaterArguments {
     }
     **/
     
-
+    /**
+     * Metodo que permite setear todas las variables globales necesarias para el funcionamiento del modulo launcher
+     * @param arguments Lista de Strings que contienen los argumentos obtenidos desde saveArguments()
+     * @return Un boolean que indica el resultado de la operacion
+     */
     public static boolean setArguments(List<String> arguments){
         if (arguments.size() != 17) {
             return false;
@@ -176,21 +181,36 @@ public class updaterArguments {
         
     }
 
+    /**
+     * Metodo que permite el guardado de los argumentos desde un archivo .up 
+     * En caso de que no exista el archivo, se abre MO y se cierra el launcher con codigo 1
+     * @param filePath String con la direccion del archivo args.up
+     * @return una lista de strings, lista para ser leida por el metodo setArguments()
+     */
     public static List<String> saveArguments(String filePath) {
-        List<String> preArgumentsList = new ArrayList<>();
-        List<String> argumentsList = new ArrayList<>();
-        try {
-            Path path = Paths.get(filePath);
-            preArgumentsList = Files.readAllLines(path);
-            for (String line : preArgumentsList) {
-                String[] parts = line.split(": ", 2);
-                argumentsList.add(parts[1]);
-                System.err.println("(updaterArguments.java) - Añadido el argumento: " + parts[1]);
+        File file = new File(filePath);
+        if (file.exists()) {
+            List<String> preArgumentsList = new ArrayList<>();
+            List<String> argumentsList = new ArrayList<>();
+            try {
+                Path path = Paths.get(filePath);
+                preArgumentsList = Files.readAllLines(path);
+                for (String line : preArgumentsList) {
+                    String[] parts = line.split(": ", 2);
+                    argumentsList.add(parts[1]);
+                    System.out.println("(updaterArguments.java) - Añadido el argumento: " + parts[1]);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+            return argumentsList;
+        } else {
+            System.out.println("(updaterArguments.java) - Archivo args.up no detectado - Cerrando Launcher - iniciando MO");
+            updater.openMO();
+            System.exit(1);
+            return null;
         }
-        return argumentsList;
+        
     }
 
 

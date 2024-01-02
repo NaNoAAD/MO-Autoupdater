@@ -29,33 +29,43 @@ public class updaterPluginsUpdating {
      * @return Una lista con todas las rutas relativas a todos los archivos .up que serviran para actualizar los plugins registrados
      */
     public static List<String> getUpFilePluginsToUpdate(String filePath) {
-        List<String> prePluginsList = new ArrayList<>();
-        List<String> PluginList = new ArrayList<>();
-        try {
-            Path path = Paths.get(filePath);
-            prePluginsList = Files.readAllLines(path);
-            if (prePluginsList.isEmpty()) {
-                System.out.println("El archivo plugins.up está vacío.");
-                PluginList.add("null");
-                return PluginList;
-            } else if (prePluginsList.stream().allMatch(String::isEmpty)) {
-                System.out.println("El archivo plugins.up tiene todas sus lineas vacias.");
-                PluginList.add("null");
-                return PluginList;
-            } else {
-                for (String line : prePluginsList) {
-                String[] parts = line.split(": ", 2);
-                //Se guarda el nombre del plugin
-                pluginName.add(parts[0]);
-                //Se agrega la reuta de donde esta el archivo .up
-                PluginList.add("./ups/" + parts[1]);
-                System.out.println("(updaterArguments.java) - obtenido el .up de nombre: " + parts[1]);
+        File file = new File(filePath);
+        if (file.exists()) {
+            List<String> prePluginsList = new ArrayList<>();
+            List<String> PluginList = new ArrayList<>();
+            try {
+                Path path = Paths.get(filePath);
+                prePluginsList = Files.readAllLines(path);
+                if (prePluginsList.isEmpty()) {
+                    System.out.println("updaterPluginsUpdating - El archivo plugins.up está vacío.");
+                    PluginList.add("null");
+                    return PluginList;
+                } else if (prePluginsList.stream().allMatch(String::isEmpty)) {
+                    System.out.println("updaterPluginsUpdating - El archivo plugins.up tiene todas sus lineas vacias.");
+                    PluginList.add("null");
+                    return PluginList;
+                } else {
+                    for (String line : prePluginsList) {
+                    String[] parts = line.split(": ", 2);
+                    //Se guarda el nombre del plugin
+                    pluginName.add(parts[0]);
+                    //Se agrega la reuta de donde esta el archivo .up
+                    PluginList.add("./ups/" + parts[1]);
+                    System.out.println("(updaterPluginsUpdating.java) - obtenido el .up de nombre: " + parts[1]);
+                    }
                 }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+            return PluginList;
+        } else {
+            System.out.println("(updaterPluginsUpdating.java) - Archivo plugins.up no detectado - Cerrando Launcher - iniciando MO");
+            updater.openMO();
+            System.exit(1);
+            return null;
         }
-        return PluginList;
+
+        
     }
 
     /**

@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -14,11 +16,16 @@
             <Pane layoutX="26.0" layoutY="21.0" prefHeight="358.0" prefWidth="586.0">
                <children>
                   <ProgressBar fx:id="progress" layoutX="50.0" layoutY="179.0" prefHeight="23.0" prefWidth="472.0" />
-              <Label alignment="CENTER" layoutX="236.0" layoutY="130.0" style="&#10;" text="Actualizando..." textAlignment="CENTER" wrapText="false">
+              <Label alignment="CENTER" layoutX="236.0" layoutY="130.0" style="&#10;" text="Actualizando..." textAlignment="CENTER" underline="true">
                 <font>
                   <Font size="18.0" />
                 </font>
               </Label>
+                  <ImageView fitHeight="394.0" fitWidth="386.0" layoutX="100.0" layoutY="-14.0" opacity="0.15" preserveRatio="true">
+                     <image>
+                        <Image url="@/src/main/resources/imagenes/mo.png" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
       </children>
