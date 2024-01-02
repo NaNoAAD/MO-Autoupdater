@@ -1,9 +1,6 @@
 package mo.updating.controllers;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressBar;
 import javafx.stage.Stage;
+import javafx.concurrent.Task;
 import mo.updating.updater;
 import mo.updating.updaterArguments;
 import mo.updating.updaterLogic;
@@ -19,7 +17,9 @@ import mo.updating.updaterPluginsUpdating;
 /**
  * Controlador de la vista de proceso de actualizacion
  */
-public class UpdatingController {
+public class UpdatingController{
+
+    Boolean updatePluginFlag;
     
     @FXML
     private ProgressBar progress;
@@ -30,44 +30,53 @@ public class UpdatingController {
         progress.setProgress(ProgressBar.INDETERMINATE_PROGRESS);
         //Ejecutamos las operaciones logicas de actualizacion en un hilo de fondo
         //Para evitar que bloqueen la responsividad de la animcacion de la barra de progreso indeterminada
-        CompletableFuture.runAsync(() -> {
-            //Asegurandonos que la pantalla y la barra de progreso ya estan mostradas, se procede con el procedimiento de actualizacion
-            // Se obtienen los permisos de los procesos anteriores de comparacion gracias a su naturaleza Static
+        Task<Void> updateTask = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception{
             Boolean permissionBoolean = SplashScreenController.getPermission1Obtained();
             Boolean answerBoolean = SplashScreenController.getAnswerObtained();
             
             //Usamos la logica responsable de actualizacion
-            //updaterLogic.updaterUpdatingLogic(permissionBoolean, answerBoolean, "https://github.com/NaNoAAD/MO-Autoupdater/archive/refs/heads/master.zip", 
-              //  "./", "./Repo.zip", "../", "./");
-
             updaterLogic.updaterUpdatingLogic(permissionBoolean, answerBoolean, updaterArguments.getDownloadLinkZip(), updaterArguments.getTargetDirectoryToMoveZip(), 
             updaterArguments.getZipDownloadedPath(), updaterArguments.getTargetDirectoryToExtract(), updaterArguments.getPathToExecuteWrapperGradle());
-            /**
-            //Una vez que la actualizacion de MO termino, si hay upfiles que revisar, entonces es el turno de los plugins
-            //Y para ello se vuelve a abrir la vista de confirmacion pero antes! se actualizan las variables globales del updater
             if(updaterPluginsUpdating.loopRevisorPluginsToUpdate()){
                 //si y solo si hay archivos up disponibles, se carga la vista de confirmationPlugin
-                closeStage();
-                updater.openMO();
-                //loadConfirmationPluginView();
+                
+                updatePluginFlag = true;
+                //Aseguramos una pausa para evitar inconsistencias entre la ejecucion de los threads (tasks)
+                Thread.sleep(2000);
+                
             } else {
+                updatePluginFlag = false;
                 //Si simplemente no habian archivos .up identificados, simplemente procedemos a cerrar el updater
                 System.out.println("(UpdatingController.java) - Abriendo MO - Terminando Launcher ");
-                // Se abre MO
-                updater.openMO();
-                // Cierra la vista en el hilo de JavaFX y se cierra la app
-                Platform.runLater(() -> closeStage());
-            } */
+        
+            }
+            return null;
+            }
+        };
 
-            
-        }).thenRun(() -> {
-            //Si simplemente no habian archivos .up identificados, simplemente procedemos a cerrar el updater
-                System.out.println("(UpdatingController.java) - Abriendo MO - Terminando Launcher ");
-                // Se abre MO
-                updater.openMO();
-                // Cierra la vista en el hilo de JavaFX y se cierra la app
+        new Thread(updateTask).start();
+
+        updateTask.setOnSucceeded(event -> {
+            if (updatePluginFlag) {
+                //Si se detectaron plugins por actualizar, cerramos la vista y procedemos a cargar la vista de confirmacion plugin
+                System.out.println("(UpdatingController.java) - Actualización plugin disponible ");
+                Platform.runLater(() -> {
+                    closeStage();
+                    loadConfirmationPluginView();
+                    
+                }); 
+                            
+            } else {
+                //Caso contrario, simplemente cerramos el launcher y abrimos MO
+                System.out.println("(UpdatingController.java) - Actualización plugin no disponible ");
                 Platform.runLater(() -> closeStage());
+                updater.openMO();
+            }
+
         });
+
     }
 
     /**
@@ -80,7 +89,9 @@ public class UpdatingController {
         stage.close();
     }
 
-
+    /**
+     * Metodo que abre la vista de confirmacion de actualizaicon de plugin
+     */
     private void loadConfirmationPluginView(){
         try {
             // Se carga FXML con vista de confirmacion

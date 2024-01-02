@@ -5,6 +5,7 @@ package mo.updating;
  */
 public class updaterExceptionList {
     
+    //Palabras que el creador de registro debe evitar considerar
     public static final String[] fileNamesToAvoid = {"java\\mo\\updating",
     "Register.txt",
     "RemoteRegister.txt",
@@ -22,4 +23,7 @@ public class updaterExceptionList {
     "args.up",
     "\\ups\\"
     };
+
+    //Palabras que el extractor de .zip debe evitar al descomprimir 
+    public static final String[] filesToNotExtract = {"/ups/", "/updating/", "LaunchMO"};
 }

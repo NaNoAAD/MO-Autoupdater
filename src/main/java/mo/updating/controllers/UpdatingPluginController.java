@@ -1,8 +1,6 @@
 package mo.updating.controllers;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -88,7 +86,9 @@ public class UpdatingPluginController {
         stage.close();
     }
 
-
+    /**
+     * Metodo que permite la apertura de la vista de confirmacion de actualizacion de los plugins
+     */
     private void loadConfirmationPluginView(){
         try {
             // Se carga FXML con vista de confirmacion

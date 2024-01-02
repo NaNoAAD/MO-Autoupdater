@@ -1,15 +1,10 @@
 package mo.updating.controllers;
 
 import java.io.IOException;
-import java.net.URL;
 import java.nio.file.Paths;
-import java.util.ResourceBundle;
-
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -24,7 +19,7 @@ import mo.updating.updaterVersionNotesRegister;
 /**
  * Controlador del splasher inicial del Launcher
  */
-public class ConfirmationPluginController implements Initializable{
+public class ConfirmationPluginController{
 
     @FXML
     private Button noButton;
@@ -36,8 +31,8 @@ public class ConfirmationPluginController implements Initializable{
     private TextArea newNotesVersion;
 
     // Lógica de inicialiacion de la vista de confirmacion
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    @FXML
+    private void initialize() throws IOException{
         System.out.println("(ConfirmationPluginController.java) - Inicializando Vista de confirmacion de plugin");
         // Establecer el TextArea newNotesVersion como de solo lectura
         String notes = "";
@@ -97,19 +92,9 @@ public class ConfirmationPluginController implements Initializable{
             // Se carga FXML con vista de confirmacion
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/src/main/java/mo/updating/visual/UpdatingPlugin.fxml"));
             Parent root = loader.load();
-            //Se carga nuevo controlador (Si es necesario algun procedimiento a priori)
-            //ConfirmationController controller = loader.getController();
-
+    
             // Se configura la nueva escena
             Scene scene = new Scene(root);
-
-            //Se instancia el controller par usar el metodo propio de Updating
-            //UpdatingController controller = loader.getController();
-
-            //Con los recursos listos y mostrados, al igual que en SplashController se ejecuta metodo
-            //controller.secondPlaneUpdating(stage);
-
-
 
             // Se crea un nuevo Stage para la segunda vista
             Stage newStage = new Stage();

@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.util.Arrays;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -14,12 +15,7 @@ import java.util.zip.ZipInputStream;
  * Clase que se encarga de los procesos relacionados al .zip descargado desde Github de MO
  */
 public class updaterZipProcess {
-    //Variables iniciales
-    //String zipPath = "ruta/del/archivo.zip"; 
-    //static String targetDirectory = "ruta/de/destino";
-
-    //
-    //Sin retorno explicito
+    
 
     /**
      * Metodo que descomprime el .zip descargado desde el repositorio ya una vez que fue descargado
@@ -56,8 +52,10 @@ public class updaterZipProcess {
                 //Como el .zip descargado incluye el nombre del arbol principal, se le reemplaza con un "" (asi al unzip se hace reemplazo directo de los archivos!)
                 if(fileName.contains("-master")){
                     newFile = new File(targetDirectoryToExtract, fileName.replace("-master", ""));
-                }
-                if(!fileName.contains("/ups/")){
+                    }
+                //Evitamos que la descompresion toque elementos relcionados al launcher
+                //NOTA DEBUG: Esto impide que el src del launcher se actualice, lo que hace que el launcher en si solo este en los Release del repositorio
+                if(!Arrays.stream(updaterExceptionList.filesToNotExtract).anyMatch(keyword -> fileName.contains(keyword))){                   
                     if (zipEntry.isDirectory()) {
                         //Si lo procesado resulta ser un directorio, se crea un igual como tal
                         System.out.println("(updaterZipProcess.java) - Unzipping Directorio: " + fileName);

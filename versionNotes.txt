@@ -1,4 +1,4 @@
-Notas de la version 5.0.0.1
+Notas de la version 5.0.0.3
 
 Esta nueva version de Multimodal Observer ofrece:
 
