@@ -48,6 +48,8 @@ public class errorController {
             errorText.setText("Formato de Args.up corrupto: " + fileName);
         } else if (error == 2) {
             errorText.setText("Archivo .up de plugin corrupto: " + fileName);
+        } if (error == 3) {
+            errorText.setText("Variable de entorno no definida: " + fileName);
         } else {
             errorText.setText("Error");
         }
