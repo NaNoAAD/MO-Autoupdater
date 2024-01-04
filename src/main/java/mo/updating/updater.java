@@ -21,6 +21,7 @@ public class updater extends Application {
 
     public boolean permissionByVersions;
     public boolean pluginPermission;
+    public boolean detectedEnviromentVariable;
     
 
     public static void main(String[] args) {
@@ -32,6 +33,9 @@ public class updater extends Application {
         // Se inicia la primera vista (Splasher)
         String currentPath = System.getProperty("user.dir").replace("\\", "/");
         System.out.println("UPDATER INICIADO DESDE: " + currentPath + "\n");
+
+        //Se detecta la variable de entorno necesaria
+        detectEnviromentVariable();
 
         //Se cargan y setean los argumentos globales desde el archivo args.up para trabajar MO
         updaterArguments.setArguments(updaterArguments.saveArguments("./args.up"));
@@ -79,31 +83,6 @@ public class updater extends Application {
         }
     }
 
-    /**
-     * Metodo que se utiliza para hacer muestra de la vista de confirmacion
-     *
-    public void loadConfirmationView(String fxml){
-        try {
-            //Se obtiene el classloader del hilo actual para la obtencion del FXML
-            //ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-            // Se carga FXML con vista de confirmacion
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
-            Parent root = loader.load();
-
-            // Se configura la nueva escena
-            Scene scene = new Scene(root);
-
-            // Se crea un nuevo Stage para la segunda vista
-            Stage stage = new Stage();
-            stage.setScene(scene);
-
-            // Mostrar la nueva vista
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }*/
-
 
     /**
      * Metodo que ejecuta Multimodal Observer a traves de su .jar
@@ -119,5 +98,19 @@ public class updater extends Application {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Metodo que detecta la existencia de la variable de entorno JAVA_HOME en el sistema de la computadora
+     * @return false si no encuentra la variable en el sistema, true si la encuentra
+     */
+    public void detectEnviromentVariable(){
+        String javaHome = System.getenv("JAVA_HOME");
+        if (javaHome == null) {
+            System.err.println("Variable JAVA HOME no detectada - Se aborta la revisiones - Se inicia MO");
+            updater.openMO();
+            System.exit(1);
+        }
+    }
+    
 
 }
