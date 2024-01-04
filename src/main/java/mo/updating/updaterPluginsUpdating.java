@@ -141,18 +141,23 @@ public class updaterPluginsUpdating {
                 //Se obtiene el primer string de upFile, que es un String con la direccion relativa de un .up de la carpeta /ups
                 ///Con esta ruta, se trabaja el archivo del cual se obtienen las nuevas variables 
                 ////con estas variables se hace set de las variables globales del updater 
-                updaterArguments.setArguments(updaterArguments.saveArguments(upFile));
-                System.out.println("(UpdatingPlugins.java) - Variables globales actualizadas con el archivo: " + upFile + " pertenecientes al plugin " + pluginName);
+                if (!updaterArguments.setArguments(updaterArguments.saveArguments(upFile, "pluginRevision"))){
+                    System.err.println("(UpdatingPlugins.java) - Variables globales NO actualizadas con el archivo: " + upFile + " pertenecientes al plugin " + pluginName);
+                } else {
+                    System.out.println("(UpdatingPlugins.java) - Variables globales actualizadas con el archivo: " + upFile + " pertenecientes al plugin " + pluginName);
 
-                //aprovechando que la vista de pdating tiene la barra de progreso en marcha, se revisara a traves de las variables obtenidas que sus versiones y registros
-                //remotos vs locales permitan hacer una actualizacion
-                boolean permission = updaterLogic.updaterpermissionsLogic(updaterArguments.getLocalVersionString(), updaterArguments.getAToken(),
-                    updaterArguments.getBToken(), updaterArguments.getCToken(), updaterArguments.getRemoteVersionApiUrl());
-                boolean answer = updaterComparissonLogicPlugin(permission, updaterArguments.getAToken(), updaterArguments.getBToken(), updaterArguments.getCToken(), 
-                    updaterArguments.getRemoteRegisterApiUrl(), updaterArguments.getPathToPluginRegisterFile());
-                if (permission && answer) {
-                    return true;
+                    //aprovechando que la vista de pdating tiene la barra de progreso en marcha, se revisara a traves de las variables obtenidas que sus versiones y registros
+                    //remotos vs locales permitan hacer una actualizacion
+                    boolean permission = updaterLogic.updaterpermissionsLogic(updaterArguments.getLocalVersionString(), updaterArguments.getAToken(),
+                        updaterArguments.getBToken(), updaterArguments.getCToken(), updaterArguments.getRemoteVersionApiUrl());
+                    boolean answer = updaterComparissonLogicPlugin(permission, updaterArguments.getAToken(), updaterArguments.getBToken(), updaterArguments.getCToken(), 
+                        updaterArguments.getRemoteRegisterApiUrl(), updaterArguments.getPathToPluginRegisterFile());
+                    if (permission && answer) {
+                        return true;
+                    }
+
                 }
+                
             }
             //si ninguno de los plugins cumple con las condiciones actualizarse, se arrojara un false  
             return false;

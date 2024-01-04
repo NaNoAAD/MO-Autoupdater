@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
+import mo.updating.updater;
 import mo.updating.updaterArguments;
 import mo.updating.updaterPluginsUpdating;
 import mo.updating.updaterRegisterComparison;
@@ -66,6 +67,7 @@ public class ConfirmationController {
         } else {
             Stage stage = (Stage) this.noButton.getScene().getWindow();
             stage.close();
+            updater.openMO();
         }
         
     }

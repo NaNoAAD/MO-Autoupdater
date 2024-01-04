@@ -52,47 +52,13 @@ public class SplashScreenController {
      * ademas de lso archivos, ganando los boolean necesarios para ejecutar la actualizacion si correspondiese
      * @param stage
      */
-    public void getFirstsPermission(Stage stage){
+    public void getFirstsPermission(Stage stage, boolean argumentsPermission){
         stage.setOnShown((WindowEvent event) -> {
                 //Luego asegurandonos que se muestre la escena y los nodos
                 Platform.runLater(() -> {
-                    //Se obtienen booleans a traves por comparaciones entre los numeros de versiones local/remoto
-                    permission1Obtained = updaterLogic.updaterpermissionsLogic(updaterArguments.getLocalVersionString(), updaterArguments.getAToken(), updaterArguments.getBToken(), 
-                    updaterArguments.getCToken(), updaterArguments.getRemoteVersionApiUrl());
-                        
-                    //Se obtiene el segundo boolean solo si el anterior fue true
-                    answerObtained = updaterLogic.updaterComparissonLogic(permission1Obtained, updaterArguments.getStartDirRegister(), updaterArguments.getAToken(), updaterArguments.getBToken(),
-                        updaterArguments.getCToken(), updaterArguments.getRemoteRegisterApiUrl());
-                              
-                    /*Ahora, dependiendo de los 2 valores anteriores, se decide si se lanza la vista de 
-                     * confirmacion, o se pasa de largo y continuamos con la apertura sencilla de MO
-                      */
-                    if(permission1Obtained == true && answerObtained == true){
-                        try {
-                            System.out.println("(SplashScreenController.java) - Inciando proceso de Updating - permisos en true");
-                            //Se debe actualizar, se cierra el splasher y se accede a la vista de confirmacion
-                            stage.close();
-                            // Se carga FXML con vista de confirmacion
-                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/src/main/java/mo/updating/visual/Confirmacion.fxml"));
-                            Parent root = loader.load();
 
-                            // Se configura la nueva escena
-                            Scene scene = new Scene(root);
-
-                            // Se crea un nuevo Stage para la segunda vista
-                            Stage newStage = new Stage();
-                            newStage.setScene(scene);
-                            newStage.setTitle("Nuevas Caracteristicas encontradas");
-                            newStage.setResizable(false);
-
-                            // Mostrar la nueva vista
-                            newStage.show();    
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        
-                    } else {
-                        System.out.println("(SplashScreenController.java) - Los permisos no permiten actualizar - Se revisan ahora los .up");
+                    if (!argumentsPermission) {
+                        System.out.println("(SplashScreenController.java) - Argumentos iniciales no permiten actualizar - Se revisan ahora los .up");
                         if(updaterPluginsUpdating.loopRevisorPluginsToUpdate()){
                             //Se debe actualizar, se cierra el splasher y se accede a la vista de confirmacion de plugin
                             stage.close();
@@ -104,9 +70,62 @@ public class SplashScreenController {
                             //y Se cierra el launcher
                             stage.close();
                         }
+                    } else {
 
+                        //Se obtienen booleans a traves por comparaciones entre los numeros de versiones local/remoto
+                        permission1Obtained = updaterLogic.updaterpermissionsLogic(updaterArguments.getLocalVersionString(), updaterArguments.getAToken(), updaterArguments.getBToken(), 
+                        updaterArguments.getCToken(), updaterArguments.getRemoteVersionApiUrl());
                         
+                        //Se obtiene el segundo boolean solo si el anterior fue true
+                        answerObtained = updaterLogic.updaterComparissonLogic(permission1Obtained, updaterArguments.getStartDirRegister(), updaterArguments.getAToken(), updaterArguments.getBToken(),
+                            updaterArguments.getCToken(), updaterArguments.getRemoteRegisterApiUrl());
+                              
+                        /*Ahora, dependiendo de los 2 valores anteriores, se decide si se lanza la vista de 
+                        * confirmacion, o se pasa de largo y continuamos con la apertura sencilla de MO
+                        */
+                        if(permission1Obtained == true && answerObtained == true){
+                            try {
+                                System.out.println("(SplashScreenController.java) - Inciando proceso de Updating - permisos en true");
+                                //Se debe actualizar, se cierra el splasher y se accede a la vista de confirmacion
+                                stage.close();
+                                // Se carga FXML con vista de confirmacion
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/src/main/java/mo/updating/visual/Confirmacion.fxml"));
+                                Parent root = loader.load();
+
+                                // Se configura la nueva escena
+                                Scene scene = new Scene(root);
+
+                                // Se crea un nuevo Stage para la segunda vista
+                                Stage newStage = new Stage();
+                                newStage.setScene(scene);
+                                newStage.setTitle("Nuevas Caracteristicas encontradas");
+                                newStage.setResizable(false);
+
+                                // Mostrar la nueva vista
+                                newStage.show();    
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            
+                        } else {
+                            System.out.println("(SplashScreenController.java) - Los permisos no permiten actualizar - Se revisan ahora los .up");
+                            if(updaterPluginsUpdating.loopRevisorPluginsToUpdate()){
+                                //Se debe actualizar, se cierra el splasher y se accede a la vista de confirmacion de plugin
+                                stage.close();
+                                //si y solo si hay archivos up disponibles, se carga la vista de confirmationPlugin
+                                loadConfirmationPluginView();
+                            } else {
+                                //Se debe simplemente abrir MO
+                                updater.openMO();
+                                //y Se cierra el launcher
+                                stage.close();
+                            }
+
+                            
+                        }
                     }
+
+                    
                 });
             });
         

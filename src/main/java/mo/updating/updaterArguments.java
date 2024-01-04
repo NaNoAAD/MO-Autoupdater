@@ -6,6 +6,16 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import mo.updating.controllers.errorController;
 
 public class updaterArguments {
 
@@ -156,7 +166,7 @@ public class updaterArguments {
      * @return Un boolean que indica el resultado de la operacion
      */
     public static boolean setArguments(List<String> arguments){
-        if (arguments.size() != 17) {
+        if (arguments.size() != 17 || arguments.get(0).equals("Error")) {
             return false;
         } else {
             localVersionString = arguments.get(0);
@@ -187,18 +197,75 @@ public class updaterArguments {
      * @param filePath String con la direccion del archivo args.up
      * @return una lista de strings, lista para ser leida por el metodo setArguments()
      */
-    public static List<String> saveArguments(String filePath) {
+    public static List<String> saveArguments(String filePath, String stageInProgress) {
         File file = new File(filePath);
+        String patron = "^(\\S+):\\s(\\S+)$";
+        Pattern pattern = Pattern.compile(patron);
+        Matcher matcher;
+        int error;
+        updaterArguments object = new updaterArguments();
+        List<String> list = new ArrayList<>();
+
         if (file.exists()) {
             List<String> preArgumentsList = new ArrayList<>();
             List<String> argumentsList = new ArrayList<>();
             try {
                 Path path = Paths.get(filePath);
                 preArgumentsList = Files.readAllLines(path);
+                //Nos aseguramos que el archivo .up cumpla con el formato requerido <string>: <string>
                 for (String line : preArgumentsList) {
-                    String[] parts = line.split(": ", 2);
-                    argumentsList.add(parts[1]);
+                    matcher = pattern.matcher(line);
+                    if (matcher.matches()) {
+                        String[] parts = line.split(": ", 2);
+                        argumentsList.add(parts[1]);
                     System.out.println("(updaterArguments.java) - Añadido el argumento: " + parts[1]);
+                    } else {
+                        System.err.println("(updaterArguments.java) - Error de formato en archivo: " + filePath);
+                        if (stageInProgress.equals("MO")) {
+                            System.err.println("(updaterArguments.java) - Error de formato durante etapa MO");
+                            Stage stage = new Stage();
+                            stage.initModality(Modality.APPLICATION_MODAL);
+                            error = 1;
+                            FXMLLoader loader = new FXMLLoader(object.getClass().getResource("/src/main/java/mo/updating/visual/error.fxml"));
+                            AnchorPane root = loader.load();
+                            Scene scene = new Scene(root);
+                            errorController controller = loader.getController();
+                            controller.setTextInScreen(error, filePath);
+                            stage.setScene(scene);
+                            stage.showAndWait();
+                            list.add("Error");
+                            return list;
+                            
+                            
+                            
+                        } if (stageInProgress.equals("pluginRevision")) {
+                            System.err.println("(updaterArguments.java) - Error de formato durante etapa plugin");
+                            Stage stage = new Stage();
+                            stage.initModality(Modality.APPLICATION_MODAL);
+                            error = 2;
+                            FXMLLoader loader = new FXMLLoader(object.getClass().getResource("/src/main/java/mo/updating/visual/error.fxml"));
+                            AnchorPane root = loader.load();
+                            Scene scene = new Scene(root);
+                            errorController controller = loader.getController();
+                            controller.setTextInScreen(error, filePath);
+                            stage.setScene(scene);
+                            stage.showAndWait();
+                            list.add("Error");
+                            return list;
+                        } else {
+                            //Cualquier otro caso cierra launcher
+                            System.out.println("(updaterArguments.java) El Archivo " + filePath + " no cumple con el formato .up requerido - Iniciando MO");
+                            updater.openMO();
+                            System.exit(1);
+                            list.add("Error");
+                            return list;
+                        }
+
+
+
+                        
+                    }
+                    
                 }
             } catch (Exception e) {
                 e.printStackTrace();

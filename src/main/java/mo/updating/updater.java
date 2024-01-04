@@ -22,6 +22,7 @@ public class updater extends Application {
     public boolean permissionByVersions;
     public boolean pluginPermission;
     public boolean detectedEnviromentVariable;
+    public boolean argumentsPermission;
     
 
     public static void main(String[] args) {
@@ -38,7 +39,7 @@ public class updater extends Application {
         detectEnviromentVariable();
 
         //Se cargan y setean los argumentos globales desde el archivo args.up para trabajar MO
-        updaterArguments.setArguments(updaterArguments.saveArguments("./args.up"));
+        argumentsPermission = updaterArguments.setArguments(updaterArguments.saveArguments("./args.up", "MO"));
 
         //Se carga el archivo que contiene los plugins integrados a ser revisados en la carpeta .ups
         //y se guardan en la variable estatica para ser usado en los procesos posteriores a actualizar mo
@@ -46,7 +47,7 @@ public class updater extends Application {
         updaterPluginsUpdating.upFile.addAll(updaterPluginsUpdating.getUpFilePluginsToUpdate("./plugins.up"));
 
         //Con todo lo anterior listo, se inicia el splasher de MO y las logicas posteriores
-        loadSplashView("/src/main/java/mo/updating/visual/SplasherPrincipal.fxml", "Bienvenido a Multimodal Observer", primaryStage);
+        loadSplashView("/src/main/java/mo/updating/visual/SplasherPrincipal.fxml", "Bienvenido a Multimodal Observer", primaryStage, argumentsPermission);
     }
 
     /**
@@ -55,7 +56,7 @@ public class updater extends Application {
      * @param title String que pone titulo a la ventana que se presenta
      * @param stage Stage necesaria para proseguir con el funcionamiento de JavaFX
      */
-    private void loadSplashView(String fxml, String title, Stage stage) throws Exception{
+    private void loadSplashView(String fxml, String title, Stage stage, boolean argumentsPermission) throws Exception{
         try {
             System.out.println("(updater.java) - Se carga vista de Splasher" + getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
             //Se carga el archivo de vista
@@ -71,7 +72,7 @@ public class updater extends Application {
 
             //con la vista ya mostrada, se procede a usar la logica de las primeras comparaciones
             //Primero asegurandonos que se muestre la ventana, la escena y los nodos en el siguiente metodo
-            controller.getFirstsPermission(stage);
+            controller.getFirstsPermission(stage, argumentsPermission);
 
             stage.setScene(scene);
             stage.setTitle(title);
