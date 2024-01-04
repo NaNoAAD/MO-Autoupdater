@@ -1,5 +1,6 @@
 package mo.updating;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
@@ -40,7 +41,7 @@ public class updater extends Application {
         System.out.println("UPDATER INICIADO DESDE: " + currentPath + "\n");
 
         //Se detecta la variable de entorno necesaria para gradle wrapper
-        detectEnviromentVariable();
+        detectEnviromentVariableAndArgsUp();
 
         //Se cargan y setean los argumentos globales desde el archivo args.up para trabajar MO
         argumentsPermission = updaterArguments.setArguments(updaterArguments.saveArguments("./args.up", "MO"));
@@ -109,7 +110,8 @@ public class updater extends Application {
      * Este metodo hace aparecer una pantalla de error.
      * @return false si no encuentra la variable en el sistema, true si la encuentra
      */
-    public void detectEnviromentVariable() throws IOException{
+    public void detectEnviromentVariableAndArgsUp() throws IOException{
+        File file = new File("args.up");
         String javaHome = System.getenv("JAVA_HOME");
         if (javaHome == null) {
             System.err.println("Variable JAVA HOME no detectada - Se aborta la revisiones - Se inicia MO");
@@ -122,6 +124,22 @@ public class updater extends Application {
             Scene scene = new Scene(root);
             errorController controller = loader.getController();
             controller.setTextInScreen(3, "JAVA_HOME");
+            stage.setScene(scene);
+            stage.showAndWait();
+            //Se abre Multimodal Observer
+            updater.openMO();
+            System.exit(1);
+        } else if (!file.exists()) {
+            System.err.println("Args.up no detectado - Se aborta la revisiones - Se inicia MO");
+            //Se llama a la pantalla de error
+            updater object = new updater();
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            FXMLLoader loader = new FXMLLoader(object.getClass().getResource("/src/main/java/mo/updating/visual/error.fxml"));
+            AnchorPane root = loader.load();
+            Scene scene = new Scene(root);
+            errorController controller = loader.getController();
+            controller.setTextInScreen(4, "args.up");
             stage.setScene(scene);
             stage.showAndWait();
             //Se abre Multimodal Observer
