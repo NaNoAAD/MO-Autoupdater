@@ -27,8 +27,9 @@ public class updaterPluginsUpdating {
      * Metodo que lee el registro de plugins bajo supervision a actualizar
      * @param filePath String que indica la ruta del archivo donde obtener la lista de archivos .up a trabajar
      * @return Una lista con todas las rutas relativas a todos los archivos .up que serviran para actualizar los plugins registrados
+     * @throws IOException
      */
-    public static List<String> getUpFilePluginsToUpdate(String filePath) {
+    public static List<String> getUpFilePluginsToUpdate(String filePath) throws IOException {
         File file = new File(filePath);
         if (file.exists()) {
             List<String> prePluginsList = new ArrayList<>();
@@ -125,8 +126,9 @@ public class updaterPluginsUpdating {
      * las lineas que contienen el nombre del plugin a actualizar junto con el archivo .up que tiene las variables globales para que updater trabaje. Si existe necesidad de
      * actualizar un plugin, se retornara un true para interrumpir el bucle para proceder con la actualizacion, caso contrario, se seguira con otra linea hasta un false por defecto
      * @return Boolean, true si existe necesidad de actualizar un plugin
+     * @throws IOException
      */
-    public static boolean loopRevisorPluginsToUpdate(){
+    public static boolean loopRevisorPluginsToUpdate() throws IOException{
         if (updaterPluginsUpdating.upFile.size() != 0) {
             int sizeUpFiles = updaterPluginsUpdating.upFile.size();
             while (sizeUpFiles > 0) {

@@ -1,5 +1,7 @@
 package mo.updating.controllers;
 
+import java.io.IOException;
+
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -59,16 +61,21 @@ public class SplashScreenController {
 
                     if (!argumentsPermission) {
                         System.out.println("(SplashScreenController.java) - Argumentos iniciales no permiten actualizar - Se revisan ahora los .up");
-                        if(updaterPluginsUpdating.loopRevisorPluginsToUpdate()){
-                            //Se debe actualizar, se cierra el splasher y se accede a la vista de confirmacion de plugin
-                            stage.close();
-                            //si y solo si hay archivos up disponibles, se carga la vista de confirmationPlugin
-                            loadConfirmationPluginView();
-                        } else {
-                            //Se debe simplemente abrir MO
-                            updater.openMO();
-                            //y Se cierra el launcher
-                            stage.close();
+                        try {
+                            if(updaterPluginsUpdating.loopRevisorPluginsToUpdate()){
+                                //Se debe actualizar, se cierra el splasher y se accede a la vista de confirmacion de plugin
+                                stage.close();
+                                //si y solo si hay archivos up disponibles, se carga la vista de confirmationPlugin
+                                loadConfirmationPluginView();
+                            } else {
+                                //Se debe simplemente abrir MO
+                                updater.openMO();
+                                //y Se cierra el launcher
+                                stage.close();
+                            }
+                        } catch (IOException e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
                         }
                     } else {
 
@@ -109,16 +116,21 @@ public class SplashScreenController {
                             
                         } else {
                             System.out.println("(SplashScreenController.java) - Los permisos no permiten actualizar - Se revisan ahora los .up");
-                            if(updaterPluginsUpdating.loopRevisorPluginsToUpdate()){
-                                //Se debe actualizar, se cierra el splasher y se accede a la vista de confirmacion de plugin
-                                stage.close();
-                                //si y solo si hay archivos up disponibles, se carga la vista de confirmationPlugin
-                                loadConfirmationPluginView();
-                            } else {
-                                //Se debe simplemente abrir MO
-                                updater.openMO();
-                                //y Se cierra el launcher
-                                stage.close();
+                            try {
+                                if(updaterPluginsUpdating.loopRevisorPluginsToUpdate()){
+                                    //Se debe actualizar, se cierra el splasher y se accede a la vista de confirmacion de plugin
+                                    stage.close();
+                                    //si y solo si hay archivos up disponibles, se carga la vista de confirmationPlugin
+                                    loadConfirmationPluginView();
+                                } else {
+                                    //Se debe simplemente abrir MO
+                                    updater.openMO();
+                                    //y Se cierra el launcher
+                                    stage.close();
+                                }
+                            } catch (IOException e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
                             }
 
                             

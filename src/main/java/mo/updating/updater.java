@@ -91,17 +91,59 @@ public class updater extends Application {
 
 
     /**
-     * Metodo que ejecuta Multimodal Observer a traves de su .jar
+     * Metodo que ejecuta Multimodal Observer a traves de su .jar. Si no lo encuentra, lanza una pantalla de error
+     * @throws IOException
      */
-    public static void openMO(){
+    public static void openMO() throws IOException{
         try {
             System.out.println("(updater.java) -Apertura de MO - Finalizando Launcher");
             // Iniciar MO
             //Es importante que este comando tenga el nombre el .jar de MO (verificar el uso de contains)
-            Runtime.getRuntime().exec("java -jar ./build/libs/multimodal-observer-server-5-0.0.0.jar");
+            //Runtime.getRuntime().exec("java -jar ./build/libs/multimodal-observer-server-5-0.0.0.jar");
+
+            ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", "./build/libs/multimodal-observer-server-5-0.0.0.jar");
+            Process process = processBuilder.start();
+            //SE almacena el codigo de salida
+            int exitCode = process.waitFor();
+
+            // Se verifica que el proceso se ejecutó correctamente
+            if (exitCode == 0) {
+                // El proceso se ejecutó
+                System.out.println("Proceso ejecutado correctamente");
+            } else {
+                // El proceso falló
+                System.err.println("Ejecutable de MO no encontrado");
+                //Se llama a la pantalla de error
+                updater object = new updater();
+                Stage stage = new Stage();
+                stage.initModality(Modality.APPLICATION_MODAL);
+                FXMLLoader loader = new FXMLLoader(object.getClass().getResource("/src/main/java/mo/updating/visual/error.fxml"));
+                AnchorPane root = loader.load();
+                Scene scene = new Scene(root);
+                errorController controller = loader.getController();
+                controller.setTextInScreen(5, "Multimodal Observer");
+                stage.setScene(scene);
+                stage.showAndWait();
+                System.exit(1);
+                }
             
         } catch (Exception e) {
+            //Si no se encuntra el ejecutable de Multimodal Observer se configura y llama a la vista de error
             e.printStackTrace();
+            System.err.println("Ejecutable de MO no encontrado");
+            //Se llama a la pantalla de error
+            updater object = new updater();
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            FXMLLoader loader = new FXMLLoader(object.getClass().getResource("/src/main/java/mo/updating/visual/error.fxml"));
+            AnchorPane root = loader.load();
+            Scene scene = new Scene(root);
+            errorController controller = loader.getController();
+            controller.setTextInScreen(5, "Multimodal Observer");
+            stage.setScene(scene);
+            stage.showAndWait();
+            //Se abre Multimodal Observer
+            System.exit(1);
         }
     }
 

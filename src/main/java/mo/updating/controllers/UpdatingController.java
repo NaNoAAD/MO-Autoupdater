@@ -72,7 +72,12 @@ public class UpdatingController{
                 //Caso contrario, simplemente cerramos el launcher y abrimos MO
                 System.out.println("(UpdatingController.java) - Actualización plugin no disponible ");
                 Platform.runLater(() -> closeStage());
-                updater.openMO();
+                try {
+                    updater.openMO();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
 
         });

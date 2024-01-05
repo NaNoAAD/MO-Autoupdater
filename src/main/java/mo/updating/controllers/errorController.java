@@ -52,6 +52,8 @@ public class errorController {
             errorText.setText("Variable de entorno no definida: " + fileName);
         } else if (error == 4){
             errorText.setText("Inexistencia de archivo: " + fileName);
+        } else if (error == 5){
+            errorText.setText("No se encuentra el ejecutable: " + fileName);
         } else {
             errorText.setText("Error");
         }

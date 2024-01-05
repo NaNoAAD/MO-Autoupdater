@@ -2,6 +2,7 @@ package mo.updating;
 
 import java.nio.file.Paths;
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -196,8 +197,9 @@ public class updaterArguments {
      * En caso de que no exista el archivo, se abre MO y se cierra el launcher con codigo 1
      * @param filePath String con la direccion del archivo args.up
      * @return una lista de strings, lista para ser leida por el metodo setArguments()
+     * @throws IOException
      */
-    public static List<String> saveArguments(String filePath, String stageInProgress) {
+    public static List<String> saveArguments(String filePath, String stageInProgress) throws IOException {
         File file = new File(filePath);
         String patron = "^(\\S+):\\s(\\S+)$";
         Pattern pattern = Pattern.compile(patron);
