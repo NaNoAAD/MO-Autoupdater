@@ -31,6 +31,7 @@
             </Label>
             <Button fx:id="yesButton" layoutX="181.0" layoutY="329.0" mnemonicParsing="false" onAction="#acceptUpdate" prefHeight="43.0" prefWidth="114.0" text="Si" underline="true" />
             <Button fx:id="noButton" layoutX="336.0" layoutY="329.0" mnemonicParsing="false" onAction="#cancelUpdate" prefHeight="43.0" prefWidth="114.0" text="No" underline="true" />
+            <Button fx:id="skipButton" layoutX="544.0" layoutY="335.0" mnemonicParsing="false" onAction="#skipUpdates" text="Omitir" />
       </children>
     </AnchorPane>
   </children>

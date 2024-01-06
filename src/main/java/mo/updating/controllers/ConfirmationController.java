@@ -30,6 +30,9 @@ public class ConfirmationController {
     @FXML
     private TextArea newNotesVersion;
 
+    @FXML
+    private Button skipButton;
+
     // Lógica de inicialiacion de la vista de confirmacion
     @FXML
     private void initialize() throws IOException {
@@ -132,6 +135,23 @@ public class ConfirmationController {
             newStage.show();   
 
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Metodo que permite omitir todas las actualizaciones venideras
+     * @param event
+     */
+    @FXML
+    private void skipUpdates(ActionEvent event){
+        System.out.println("(ConfirmationController.java) - Omitiendo actualizaciones - Abriendo vista Updating");
+        Stage stage = (Stage) this.skipButton.getScene().getWindow();
+        stage.close();
+        try {
+            updater.openMO();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
