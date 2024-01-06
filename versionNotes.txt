@@ -4,6 +4,7 @@ Esta nueva version de Multimodal Observer ofrece:
 
 -Cambios significativos en la interfaz de usuario, se espera que la experiencia al usar MO sea mas cómoda y amigable al crear, manejar y desarrollar proyectos de toma de datos multimodales
 -Nuestra Vaquita Favorita ahora tiene un cambio de Look!
+-Cambio de color en el titulo
 
 
 

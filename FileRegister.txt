@@ -413,7 +413,7 @@
 .\src\main\resources\fxml\core\ui\AddPlugin.fxml
 01/01/2024 18:22:26
 .\src\main\resources\fxml\core\ui\MainWindows.fxml
-05/01/2024 23:50:33
+05/01/2024 23:57:27
 .\src\main\resources\fxml\core\ui\MyProjects.fxml
 01/01/2024 18:22:26
 .\src\main\resources\fxml\core\ui\NewProject.fxml
@@ -609,6 +609,6 @@
 .\src\test\java\mo\visualization\VisualizationPlayerTest.java
 01/01/2024 18:22:26
 .\version.txt
-05/01/2024 23:50:47
+05/01/2024 23:58:21
 .\versionNotes.txt
-05/01/2024 23:50:58
+05/01/2024 23:58:33
