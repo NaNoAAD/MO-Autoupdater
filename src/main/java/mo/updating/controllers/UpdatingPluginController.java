@@ -1,8 +1,8 @@
 package mo.updating.controllers;
 
 import java.io.IOException;
-import java.util.concurrent.CompletableFuture;
 import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -29,9 +29,14 @@ public class UpdatingPluginController {
         progress.setProgress(ProgressBar.INDETERMINATE_PROGRESS);
         //Ejecutamos las operaciones logicas de actualizacion en un hilo de fondo
         //Para evitar que bloqueen la responsividad de la animcacion de la barra de progreso indeterminada
-        CompletableFuture.runAsync(() -> {
-            //Asegurandonos que la pantalla y la barra de progreso ya estan mostradas, se procede con el procedimiento de actualizacion
 
+
+        Task<Void> updateTask = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception{
+            
+            
+            //Usamos la logica responsable de actualizacion
             updaterLogic.updaterUpdatingPluginLogic(true, true, updaterArguments.getDownloadLinkZip(), updaterArguments.getTargetDirectoryToMoveZip(), 
             updaterArguments.getZipDownloadedPath(), updaterArguments.getTargetDirectoryToExtract(), updaterArguments.getPathToExecuteWrapperGradle());
             try {
@@ -45,11 +50,16 @@ public class UpdatingPluginController {
                 //Se borran los archivos sobrantes
                 updaterPostUpdateProcesses.deleteLeftoversFilesPlugin(updaterArguments.getRepositoryName());
 
-            } catch (IOException e) {
-                e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            return null;
             }
-            
-        }).thenRun(()-> {
+        };
+
+        new Thread(updateTask).start();
+
+        updateTask.setOnSucceeded(event -> {
             //Una vez que la actualizacion de mo termino, si hay upfiles que revisar, entonces es el turno de los plugins
             //Y para ello se vuelve a abrir la vista de confirmacion pero antes! se actualizan las variables globales del updater
             try {
@@ -69,17 +79,21 @@ public class UpdatingPluginController {
                 } else {
                     //Si simplemente no habian archivos .up identificados, simplemente procedemos a cerrar el updater
                     System.out.println("(UpdatingController.java) - Abriendo MO - Terminando Launcher ");
+                    // Cierra la vista en el hilo de JavaFX y se cierra la app
+                    closeStage();
                     // Se abre MO
                     updater.openMO();
-                    // Cierra la vista en el hilo de JavaFX y se cierra la app
-                    Platform.runLater(() -> closeStage());
+                    
                 }
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
+
         });
+        
     }
+
 
     /**
      * Metodo interno del conrolador que cierra la vista y tambien la app
