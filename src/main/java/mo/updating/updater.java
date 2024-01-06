@@ -108,8 +108,9 @@ public class updater extends Application {
 
             // Se verifica que el proceso se ejecutó correctamente
             if (exitCode == 0) {
-                // El proceso se ejecutó
+                // El proceso se ejecutó sin problemas, se abre MO y se cierra el launcher
                 System.out.println("Proceso ejecutado correctamente");
+                System.exit(0);
             } else {
                 // El proceso falló
                 System.err.println("Ejecutable de MO no encontrado");

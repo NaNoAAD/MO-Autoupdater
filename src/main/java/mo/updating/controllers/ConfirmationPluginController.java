@@ -151,6 +151,7 @@ public class ConfirmationPluginController{
         stage.close();
         try {
             updater.openMO();
+            System.exit(0);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
