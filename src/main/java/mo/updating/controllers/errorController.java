@@ -54,6 +54,8 @@ public class errorController {
             errorText.setText("Inexistencia de archivo: " + fileName);
         } else if (error == 5){
             errorText.setText("No se encuentra el ejecutable: " + fileName);
+        } else if (error == 6){
+            errorText.setText("Sin Conexion a internet");
         } else {
             errorText.setText("Error");
         }

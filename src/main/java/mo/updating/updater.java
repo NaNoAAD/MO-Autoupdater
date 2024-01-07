@@ -2,7 +2,9 @@ package mo.updating;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -51,8 +53,16 @@ public class updater extends Application {
         ///Este archivo a capturar tiene en cada linea <nombre_del_plugin>: <string ruta a argumentos de trabajo de plugin>
         updaterPluginsUpdating.upFile.addAll(updaterPluginsUpdating.getUpFilePluginsToUpdate("./plugins.up"));
 
-        //Con todo lo anterior listo, se inicia el splasher de MO y las logicas posteriores
-        loadSplashView("/src/main/java/mo/updating/visual/SplasherPrincipal.fxml", "Bienvenido a Multimodal Observer", primaryStage, argumentsPermission);
+        //Comprobamos si existe conexion a internet
+        if (internetConnectionChecker()) {
+            //Con todo lo anterior listo, se inicia el splasher de MO y las logicas posteriores
+            loadSplashView("/src/main/java/mo/updating/visual/SplasherPrincipal.fxml", "Bienvenido a Multimodal Observer", primaryStage, argumentsPermission);
+        } else {
+            //si no existe conexion, se cierra el launcher
+            loadErrorView();
+        }
+
+        
     }
 
     /**
@@ -189,6 +199,38 @@ public class updater extends Application {
             updater.openMO();
             System.exit(1);
         }
+    }
+
+    public boolean internetConnectionChecker(){
+        try {
+            // Comprobamos una direccion sencilla
+            InetAddress.getByName("www.google.com").isReachable(5000); // 5000 ms de tiempo de espera (5 segundos)
+            return true;
+        } catch (UnknownHostException e) {
+            // No se pudo resolver el nombre de dominio
+            return false;
+        } catch (Exception e) {
+            // Otras excepciones
+            return false;
+        }
+    }
+
+    public void loadErrorView() throws IOException {
+        System.err.println("Args.up no detectado - Se aborta la revisiones - Se inicia MO");
+        //Se llama a la pantalla de error
+        updater object = new updater();
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        FXMLLoader loader = new FXMLLoader(object.getClass().getResource("/src/main/java/mo/updating/visual/error.fxml"));
+        AnchorPane root = loader.load();
+        Scene scene = new Scene(root);
+        errorController controller = loader.getController();
+        controller.setTextInScreen(6, "Launcher");
+        stage.setScene(scene);
+        stage.showAndWait();
+        //Se abre Multimodal Observer
+        updater.openMO();
+        System.exit(1);
     }
     
 
