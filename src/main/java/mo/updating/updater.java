@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.URL;
 import java.net.UnknownHostException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -44,6 +45,9 @@ public class updater extends Application {
 
         //Se detecta la variable de entorno necesaria para gradle wrapper
         detectEnviromentVariableAndArgsUp();
+
+        //Se detecta la presencia del ejecutable de MO
+        detectExecutable();
 
         //Se cargan y setean los argumentos globales desde el archivo args.up para trabajar MO
         argumentsPermission = updaterArguments.setArguments(updaterArguments.saveArguments("./args.up", "MO"));
@@ -231,6 +235,28 @@ public class updater extends Application {
         //Se abre Multimodal Observer
         updater.openMO();
         System.exit(1);
+    }
+
+    public void detectExecutable() throws IOException{
+        String filePath = "./build/libs/multimodal-observer-server-5-0.0.0.jar";
+        Path path = Paths.get(filePath);
+        if (Files.exists(path) && Files.isRegularFile(path)) {
+            return;            
+        } else {
+            //Se llama a la pantalla de error
+            updater object = new updater();
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            FXMLLoader loader = new FXMLLoader(object.getClass().getResource("/src/main/java/mo/updating/visual/error.fxml"));
+            AnchorPane root = loader.load();
+            Scene scene = new Scene(root);
+            errorController controller = loader.getController();
+            controller.setTextInScreen(5, "Multimodal Observer");
+            stage.setScene(scene);
+            stage.showAndWait();
+            //Se abre Multimodal Observer
+            System.exit(1);
+        }
     }
     
 
