@@ -115,6 +115,40 @@ public class updater extends Application {
             //Es importante que este comando tenga el nombre el .jar de MO (verificar el uso de contains)
             //Runtime.getRuntime().exec("java -jar ./build/libs/multimodal-observer-server-5-0.0.0.jar");
 
+            String MOLocation = "./build/libs/multimodal-observer-server-5-0.0.0.jar";
+            Path MOPath = Paths.get(MOLocation);
+
+            if (Files.exists(MOPath) && Files.isRegularFile(MOPath)) {
+                //El ejecutable de MO existe, se ejecuta
+                ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", "./build/libs/multimodal-observer-server-5-0.0.0.jar");
+                processBuilder.start();
+                //Se termina el launcher
+                System.out.println("MO ejecutado correctamente");
+                System.exit(0);
+            } else {
+                //Si el ejecutable de MO no existe y se requirio su apertura, entonces se informa el error
+                System.err.println("Ejecutable de MO no encontrado");
+                //Se llama a la pantalla de error
+                updater object = new updater();
+                Stage stage = new Stage();
+                //Se configura como MODAL para evitar que se interactue con otras ventanas
+                stage.initModality(Modality.APPLICATION_MODAL);
+                FXMLLoader loader = new FXMLLoader(object.getClass().getResource("/src/main/java/mo/updating/visual/error.fxml"));
+                AnchorPane root = loader.load();
+                Scene scene = new Scene(root);
+                errorController controller = loader.getController();
+                controller.setTextInScreen(5, "Multimodal Observer");
+                stage.setScene(scene);
+                stage.showAndWait();
+                //Se cierra el launcher con codigo de error 1
+                System.exit(1);
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+            /**
+
             ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", "./build/libs/multimodal-observer-server-5-0.0.0.jar");
             Process process = processBuilder.start();
             //SE almacena el codigo de salida
@@ -160,6 +194,7 @@ public class updater extends Application {
             //Se abre Multimodal Observer
             System.exit(1);
         }
+        */
     }
 
     /**
