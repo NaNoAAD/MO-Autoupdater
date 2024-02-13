@@ -27,10 +27,12 @@ import mo.updating.controllers.errorController;
  */
 public class updater extends Application {
 
-    public boolean permissionByVersions;
-    public boolean pluginPermission;
-    public boolean detectedEnviromentVariable;
-    public boolean argumentsPermission;
+    //Variables
+    public boolean permissionByVersions; //Si las versiones tienen diferencia
+    public boolean pluginPermission; //Si los plugins tienen necesidad de actualizarse
+    public boolean detectedEnviromentVariable; //Si las variables globables fueron detectadas en su archivo
+    public boolean argumentsPermission; //Para permtir permiso para actualizar
+    public static boolean yesToAll = false; //Para ejecutar todas las actualizaciones sin preguntar una por una (Variable global)
     
 
     public static void main(String[] args) {

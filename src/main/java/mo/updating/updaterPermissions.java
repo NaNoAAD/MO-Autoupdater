@@ -96,7 +96,7 @@ public class updaterPermissions {
             
             
         } else {
-            System.err.println("(updaterPermissions.java) - Error en la solicitud de obtencion de version remota. Codigo: " + responseCode);
+            System.err.println("(updaterPermissions.java) - Error en la solicitud de obtencion de version remota. Codigo: " + responseCode + "\nLINK: " + remoteVersionApiUrlString);
             version = "NULL";
             return version;
         }

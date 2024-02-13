@@ -34,8 +34,7 @@ public class UpdatingPluginController {
         Task<Void> updateTask = new Task<Void>() {
             @Override
             protected Void call() throws Exception{
-            
-            
+                        
             //Usamos la logica responsable de actualizacion
             updaterLogic.updaterUpdatingPluginLogic(true, true, updaterArguments.getDownloadLinkZip(), updaterArguments.getTargetDirectoryToMoveZip(), 
             updaterArguments.getZipDownloadedPath(), updaterArguments.getTargetDirectoryToExtract(), updaterArguments.getPathToExecuteWrapperGradle());
@@ -63,28 +62,57 @@ public class UpdatingPluginController {
             //Una vez que la actualizacion de mo termino, si hay upfiles que revisar, entonces es el turno de los plugins
             //Y para ello se vuelve a abrir la vista de confirmacion pero antes! se actualizan las variables globales del updater
             try {
-                if(updaterPluginsUpdating.loopRevisorPluginsToUpdate()){
-                    //Se cierra la vista de la barra de progeso para dar paso a la siguiente vista de confirmacion
-
-                    //si y solo si hay archivos up disponibles, se carga la vista de confirmationPlugin
-                    Platform.runLater(() -> {
+                //CASO 1: el usuario anteriormente decidio actualziar todo
+                if (updater.yesToAll) {
+                    if(updaterPluginsUpdating.loopRevisorPluginsToUpdate()){
+                        //Se cierra la vista de la barra de progeso para dar paso a la siguiente vista de confirmacion
+    
+                        //si y solo si hay archivos up disponibles, se carga la vista de confirmationPlugin
+                        Platform.runLater(() -> {
+                            closeStage();
+                            loadUpdatingPluginView();
+                        });
+                        
+    
+                        // Cierra la vista en el hilo de JavaFX y se cierra la app
+                        //Platform.runLater(() -> closeStage());
+    
+                    } else {
+                        //Si simplemente no habian archivos .up identificados, simplemente procedemos a cerrar el updater
+                        System.out.println("(UpdatingController.java) - Abriendo MO - Terminando Launcher ");
+                        // Cierra la vista en el hilo de JavaFX y se cierra la app
                         closeStage();
-                        loadConfirmationPluginView();
-                    });
+                        // Se abre MO
+                        updater.openMO();
+                        
+                    }
                     
-
-                    // Cierra la vista en el hilo de JavaFX y se cierra la app
-                    //Platform.runLater(() -> closeStage());
-
+                //CASO 2: Si el usuario no ha decidido actualizar todo    
                 } else {
-                    //Si simplemente no habian archivos .up identificados, simplemente procedemos a cerrar el updater
-                    System.out.println("(UpdatingController.java) - Abriendo MO - Terminando Launcher ");
-                    // Cierra la vista en el hilo de JavaFX y se cierra la app
-                    closeStage();
-                    // Se abre MO
-                    updater.openMO();
-                    
+                    if(updaterPluginsUpdating.loopRevisorPluginsToUpdate()){
+                        //Se cierra la vista de la barra de progeso para dar paso a la siguiente vista de confirmacion
+    
+                        //si y solo si hay archivos up disponibles, se carga la vista de confirmationPlugin
+                        Platform.runLater(() -> {
+                            closeStage();
+                            loadConfirmationPluginView();
+                        });
+                        
+    
+                        // Cierra la vista en el hilo de JavaFX y se cierra la app
+                        //Platform.runLater(() -> closeStage());
+    
+                    } else {
+                        //Si simplemente no habian archivos .up identificados, simplemente procedemos a cerrar el updater
+                        System.out.println("(UpdatingController.java) - Abriendo MO - Terminando Launcher ");
+                        // Cierra la vista en el hilo de JavaFX y se cierra la app
+                        closeStage();
+                        // Se abre MO
+                        updater.openMO();
+                        
+                    }
                 }
+
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -122,7 +150,7 @@ public class UpdatingPluginController {
             // Se crea un nuevo Stage para la segunda vista
             Stage newStage = new Stage();
             newStage.setScene(scene);
-            newStage.setTitle("Actualizacion para Plugin encontrada");
+            newStage.setTitle("Actualizacion para Plugin: " + updaterArguments.getBuildedJarFileName());
             newStage.setResizable(false);
 
             // Mostrar la nueva vista
@@ -132,5 +160,34 @@ public class UpdatingPluginController {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Metodo que abre la vista de actualizacion de plugin
+     */
+    private void loadUpdatingPluginView(){
+        try {
+            // Se carga FXML con vista de confirmacion
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/src/main/java/mo/updating/visual/UpdatingPlugin.fxml"));
+            Parent root = loader.load();
+            //Se carga nuevo controlador (Si es necesario algun procedimiento a priori)
+            //ConfirmationController controller = loader.getController();
+
+            // Se configura la nueva escena
+            Scene scene = new Scene(root);
+
+            // Se crea un nuevo Stage para la segunda vista
+            Stage newStage = new Stage();
+            newStage.setScene(scene);
+            newStage.setTitle("Actualizando Plugin " + updaterArguments.getBuildedJarFileName());
+            newStage.setResizable(false);
+
+            // Mostrar la nueva vista
+            newStage.show();   
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }  //Fin controller

@@ -50,8 +50,7 @@ public class UpdatingController{
                 updatePluginFlag = false;
                 //Si simplemente no habian archivos .up identificados, simplemente procedemos a cerrar el updater
                 System.out.println("(UpdatingController.java) - Abriendo MO - Terminando Launcher ");
-        
-            }
+                }
             return null;
             }
         };
@@ -59,15 +58,22 @@ public class UpdatingController{
         new Thread(updateTask).start();
 
         updateTask.setOnSucceeded(event -> {
-            if (updatePluginFlag) {
-                //Si se detectaron plugins por actualizar, cerramos la vista y procedemos a cargar la vista de confirmacion plugin
-                System.out.println("(UpdatingController.java) - Actualización plugin disponible ");
+            //Si existen plugins por actualizar y el usuario de primeras apreto en actualizar todo
+            if (updatePluginFlag && updater.yesToAll) {
+                System.out.println("(UpdatingController.java) - Actualizando todo");
                 Platform.runLater(() -> {
                     closeStage();
-                    loadConfirmationPluginView();
-                    
+                    //Se abre de manera directa la vista de updating de los plugins (Cual sera es decidido por las variables globales de los archivos .up)
+                    loadUpdatingPluginView();
                 }); 
-                            
+            } else if (updatePluginFlag && updater.yesToAll == false) {
+                     //Si se detectaron plugins por actualizar, cerramos la vista y procedemos a cargar la vista de confirmacion plugin
+                    System.out.println("(UpdatingController.java) - Actualización plugin disponible ");
+                    Platform.runLater(() -> {
+                        closeStage();
+                        loadConfirmationPluginView();
+                    }); 
+                                
             } else {
                 //Caso contrario, simplemente cerramos el launcher y abrimos MO
                 System.out.println("(UpdatingController.java) - Actualización plugin no disponible ");
@@ -112,6 +118,34 @@ public class UpdatingController{
             Stage newStage = new Stage();
             newStage.setScene(scene);
             newStage.setTitle("Actualizacion para Plugin encontrada");
+            newStage.setResizable(false);
+
+            // Mostrar la nueva vista
+            newStage.show();   
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Metodo que abre la vista de actualizacion de plugin
+     */
+    private void loadUpdatingPluginView(){
+        try {
+            // Se carga FXML con vista de confirmacion
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/src/main/java/mo/updating/visual/UpdatingPlugin.fxml"));
+            Parent root = loader.load();
+            //Se carga nuevo controlador (Si es necesario algun procedimiento a priori)
+            //ConfirmationController controller = loader.getController();
+
+            // Se configura la nueva escena
+            Scene scene = new Scene(root);
+
+            // Se crea un nuevo Stage para la segunda vista
+            Stage newStage = new Stage();
+            newStage.setScene(scene);
+            newStage.setTitle("Actualizando Plugin " + updaterArguments.getBuildedJarFileName());
             newStage.setResizable(false);
 
             // Mostrar la nueva vista

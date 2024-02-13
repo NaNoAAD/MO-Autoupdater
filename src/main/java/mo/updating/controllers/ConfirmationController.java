@@ -33,6 +33,9 @@ public class ConfirmationController {
     @FXML
     private Button skipButton;
 
+    @FXML
+    private Button updateAll;
+
     // Lógica de inicialiacion de la vista de confirmacion
     @FXML
     private void initialize() throws IOException {
@@ -98,7 +101,41 @@ public class ConfirmationController {
             // Se crea un nuevo Stage para la segunda vista
             Stage newStage = new Stage();
             newStage.setScene(scene);
-            newStage.setTitle("Actualizando...");
+            newStage.setTitle("Actualizando Multimodal Observer");
+            newStage.setResizable(false);
+
+            // Mostrar la nueva vista
+            newStage.show();    
+
+            //Con los recursos listos y mostrados, al igual que en SplashController se ejecuta metodo
+            //controller.secondPlaneUpdating(stage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void updateAll(ActionEvent event){
+        System.out.println("(ConfirmationController.java) - Abriendo vista Updating");
+        Stage stage = (Stage) this.updateAll.getScene().getWindow();
+        stage.close();
+        //Se coloca la variable global a true, para ser usada con posterioridad
+        updater.yesToAll = true;
+        //Se hace apertura de la vista de actualizacion en progreso
+        try {
+            // Se carga FXML con vista de confirmacion
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/src/main/java/mo/updating/visual/Updating.fxml"));
+            Parent root = loader.load();
+            //Se carga nuevo controlador (Si es necesario algun procedimiento a priori)
+            //ConfirmationController controller = loader.getController();
+
+            // Se configura la nueva escena
+            Scene scene = new Scene(root);
+
+            // Se crea un nuevo Stage para la segunda vista
+            Stage newStage = new Stage();
+            newStage.setScene(scene);
+            newStage.setTitle("Actualizando " + updaterArguments.getBuildedJarFileName());
             newStage.setResizable(false);
 
             // Mostrar la nueva vista
