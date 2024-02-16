@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -26,6 +27,7 @@
                         <Image url="@/src/main/resources/imagenes/mo.png" />
                      </image>
                   </ImageView>
+                  <TextArea fx:id="statusText" editable="false" layoutX="50.0" layoutY="229.0" opacity="0.8" prefHeight="85.0" prefWidth="472.0" wrapText="true" />
                </children>
             </Pane>
       </children>

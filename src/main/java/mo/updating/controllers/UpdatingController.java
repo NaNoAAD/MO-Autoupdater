@@ -7,8 +7,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import javafx.concurrent.Task;
+import mo.updating.redirectText;
 import mo.updating.updater;
 import mo.updating.updaterArguments;
 import mo.updating.updaterLogic;
@@ -25,7 +27,15 @@ public class UpdatingController{
     private ProgressBar progress;
 
     @FXML
+    private TextArea statusText;
+
+    @FXML
     private void initialize() throws IOException{
+        // Redireccion de System.out a TextArea
+        System.setOut(new java.io.PrintStream(new redirectText(statusText), true));
+        // Redireccion de System.err a TextArea
+        System.setErr(new java.io.PrintStream(new redirectText(statusText), true));
+        
         System.out.println("(UpdatingController.java) - Inicializando Vista de Actualizacion en progreso");
         progress.setProgress(ProgressBar.INDETERMINATE_PROGRESS);
         //Ejecutamos las operaciones logicas de actualizacion en un hilo de fondo
