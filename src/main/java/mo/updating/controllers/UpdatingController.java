@@ -22,9 +22,6 @@ import mo.updating.updaterPluginsUpdating;
 public class UpdatingController{
 
     Boolean updatePluginFlag;
-    
-    @FXML
-    private ProgressBar progress;
 
     @FXML
     private TextArea statusText;
@@ -37,7 +34,6 @@ public class UpdatingController{
         System.setErr(new java.io.PrintStream(new redirectText(statusText), true));
         
         System.out.println("(UpdatingController.java) - Inicializando Vista de Actualizacion en progreso");
-        progress.setProgress(ProgressBar.INDETERMINATE_PROGRESS);
         //Ejecutamos las operaciones logicas de actualizacion en un hilo de fondo
         //Para evitar que bloqueen la responsividad de la animcacion de la barra de progreso indeterminada
         Task<Void> updateTask = new Task<Void>() {
@@ -105,7 +101,7 @@ public class UpdatingController{
      */
     private void closeStage() {
         // Obtén el Stage asociado a la vista a traves de la barra de progreso
-        Stage stage = (Stage) progress.getScene().getWindow();
+        Stage stage = (Stage) statusText.getScene().getWindow();
         // Cerrado del Stage (y la vista)
         stage.close();
     }
