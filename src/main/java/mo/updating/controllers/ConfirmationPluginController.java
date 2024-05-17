@@ -1,6 +1,7 @@
 package mo.updating.controllers;
 
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -187,6 +188,7 @@ public class ConfirmationPluginController{
         Stage stage = (Stage) this.skipButton.getScene().getWindow();
         stage.close();
         try {
+            Files.deleteIfExists(Paths.get("./RemoteRegister.txt"));
             updater.openMO();
             System.exit(0);
         } catch (IOException e) {
