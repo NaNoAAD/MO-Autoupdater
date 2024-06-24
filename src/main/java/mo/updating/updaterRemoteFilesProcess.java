@@ -27,15 +27,15 @@ public class updaterRemoteFilesProcess {
      */
     public static void getRemoteFiles(String aToken, String bToken, String cToken, String remoteRegisterApiUrl) throws IOException {
 
-        //Token
+        //Reunion de los Tokens (Si es necesario para un repo privado)
         String githubToken = aToken + bToken + cToken; 
         //URL del RAW de registerfile.txt que se ubica remotamente
         String apiUrl = String.format(remoteRegisterApiUrl);
         URL url = new URL(apiUrl);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
-        //Se ejecuta la conexion con los permisos otorgados por Token
-        connection.setRequestProperty("Authorization", "token " + githubToken);
+        //La siguiente linea es usada en caso de que se quiera acceder a un repositorio privado
+        //connection.setRequestProperty("Authorization", "token " + githubToken);
         connection.setRequestMethod("GET");
 
         int responseCode = connection.getResponseCode();

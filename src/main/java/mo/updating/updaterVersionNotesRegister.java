@@ -70,7 +70,7 @@ public class updaterVersionNotesRegister {
     public static String getRemoteVersionNotes(String aToken, String bToken, String cToken, String remoteNotesApiUrl) throws IOException{
         
         String versionNotes;
-        //Token
+        //Reunion de los Tokens (Si es necesario para un repo privado)
         String githubToken = aToken + bToken + cToken; 
 
         //Solicitud que se hace a la API de Github
@@ -78,8 +78,8 @@ public class updaterVersionNotesRegister {
         
         URL url = new URL(apiUrl);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        //Se ejecuta la conexion con los permisos otorgados por Token
-        connection.setRequestProperty("Authorization", "token " + githubToken);
+        //La siguiente linea es usada en caso de que se quiera acceder a un repositorio privado
+        //connection.setRequestProperty("Authorization", "token " + githubToken);
         connection.setRequestMethod("GET");
 
         int responseCode = connection.getResponseCode();

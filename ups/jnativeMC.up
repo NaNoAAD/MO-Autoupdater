@@ -1,7 +1,7 @@
 localVersionString: ./ups/versions/jnativeMCVersion.txt
-aToken: ghp_qF1B9H3G2x3
-bToken: Bu3rpxmL3VLXM
-cToken: DWIdI10adZ4C
+aToken: A
+bToken: B
+cToken: C
 remoteVersionApiUrl: https://raw.githubusercontent.com/NaNoAAD/mo-jnativehook/master/jnativehook-mouse-capture/Version.txt
 startDirRegister: ./
 remoteRegisterApiUrl: https://raw.githubusercontent.com/NaNoAAD/mo-jnativehook/master/jnativehook-mouse-capture/FileRegister.txt

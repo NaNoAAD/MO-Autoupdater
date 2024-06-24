@@ -62,14 +62,14 @@ public class updaterPermissions {
     public static String remoteVersionRepository(String aToken, String bToken, String cToken, String remoteVersionApiUrlString) throws IOException{
         
         String version;
-        //reunion de los Tokens
+        //Reunion de los Tokens (Si es necesario para un repo privado)
         String githubToken = aToken + bToken + cToken; 
 
         //Solicitud que se hace a la API de Github        
         URL url = new URL(remoteVersionApiUrlString);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        //Se ejecuta la conexion con los permisos otorgados por Token
-        connection.setRequestProperty("Authorization", "token " + githubToken);
+        //La siguiente linea es usada en caso de que se quiera acceder a un repositorio privado
+        //connection.setRequestProperty("Authorization", "token " + githubToken);
         connection.setRequestMethod("GET");
 
         int responseCode = connection.getResponseCode();
