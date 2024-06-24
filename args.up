@@ -2,11 +2,11 @@ localVersionString: ./version.txt
 aToken: A
 bToken: B
 cToken: C
-remoteVersionApiUrl: https://raw.githubusercontent.com/NaNoAAD/MO-Autoupdater/master/version.txt
+remoteVersionApiUrl: https://raw.githubusercontent.com/MultimodalObserver/MO-Prototipos-Nueva-Interfaz/master/version.txt
 startDirRegister: ./
-remoteRegisterApiUrl: https://raw.githubusercontent.com/NaNoAAD/MO-Autoupdater/master/FileRegister.txt
-remoteNotesApiUrl: https://raw.githubusercontent.com/NaNoAAD/MO-Autoupdater/master/versionNotes.txt
-downloadLinkZip: https://github.com/NaNoAAD/MO-Autoupdater/archive/refs/heads/master.zip
+remoteRegisterApiUrl: https://raw.githubusercontent.com/MultimodalObserver/MO-Prototipos-Nueva-Interfaz/master/FileRegister.txt
+remoteNotesApiUrl: https://raw.githubusercontent.com/MultimodalObserver/MO-Prototipos-Nueva-Interfaz/master/versionNotes.txt
+downloadLinkZip: https://github.com/MultimodalObserver/MO-Prototipos-Nueva-Interfaz/archive/refs/heads/master.zip
 targetDirectoryToMoveZip: ./
 zipDownloadedPath: ./Repo.zip
 targetDirectoryToExtract: ../

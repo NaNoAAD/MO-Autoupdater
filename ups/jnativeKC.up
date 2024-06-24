@@ -2,11 +2,11 @@ localVersionString: ./ups/versions/jnativeKCVersion.txt
 aToken: A
 bToken: B
 cToken: C
-remoteVersionApiUrl: https://raw.githubusercontent.com/NaNoAAD/mo-jnativehook/master/jnativehook-keyboard-capture/Version.txt
+remoteVersionApiUrl: https://raw.githubusercontent.com/MultimodalObserver/mo-jnativehook/master/jnativehook-keyboard-capture/Version.txt
 startDirRegister: ./
-remoteRegisterApiUrl: https://raw.githubusercontent.com/NaNoAAD/mo-jnativehook/master/jnativehook-keyboard-capture/FileRegister.txt
-remoteNotesApiUrl: https://raw.githubusercontent.com/NaNoAAD/mo-jnativehook/master/jnativehook-keyboard-capture/VersionNotes.txt
-downloadLinkZip: https://github.com/NaNoAAD/mo-jnativehook/archive/refs/heads/master.zip
+remoteRegisterApiUrl: https://raw.githubusercontent.com/MultimodalObserver/mo-jnativehook/master/jnativehook-keyboard-capture/FileRegister.txt
+remoteNotesApiUrl: https://raw.githubusercontent.com/MultimodalObserver/mo-jnativehook/master/jnativehook-keyboard-capture/VersionNotes.txt
+downloadLinkZip: https://github.com/MultimodalObserver/mo-jnativehook/archive/refs/heads/master.zip
 targetDirectoryToMoveZip: ./ups
 zipDownloadedPath: ./ups/Repo.zip
 targetDirectoryToExtract: ./ups
